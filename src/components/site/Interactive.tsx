@@ -161,13 +161,77 @@ const STEPS = [
 export function ProcessTimeline() {
   return (
     <section className="container-x py-24 md:py-32">
+      <style>{`
+        @keyframes lineTravel {
+          0% { stroke-dashoffset: 0; }
+          100% { stroke-dashoffset: -700; }
+        }
+      `}</style>
       <div className="max-w-3xl mb-16">
         <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Il nostro processo</span>
         <h2 className="mt-3 text-4xl md:text-5xl font-bold leading-tight">Dalla prima idea al <span className="text-gradient">go-live.</span></h2>
       </div>
       <div className="relative">
-        <div aria-hidden className="hidden lg:block absolute top-10 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-accent to-primary opacity-30" />
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-4">
+        <div aria-hidden className="hidden lg:block absolute inset-x-0 top-[24%] h-32 pointer-events-none overflow-visible">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
+            <defs>
+              <filter id="timelineGlowFilter" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <linearGradient id="timelineGlowA" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="rgba(56, 189, 248, 0)" />
+                <stop offset="20%" stopColor="rgba(56, 189, 248, 0.85)" />
+                <stop offset="70%" stopColor="rgba(248, 146, 6, 0.95)" />
+                <stop offset="100%" stopColor="rgba(248, 146, 6, 0)" />
+              </linearGradient>
+              <linearGradient id="timelineGlowB" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="rgba(56, 189, 248, 0)" />
+                <stop offset="15%" stopColor="rgba(56, 189, 248, 0.7)" />
+                <stop offset="60%" stopColor="rgba(248, 146, 6, 0.8)" />
+                <stop offset="100%" stopColor="rgba(248, 146, 6, 0)" />
+              </linearGradient>
+            </defs>
+
+            <path
+              d="M0,25 C20,0 35,65 50,30 C65,0 80,55 100,30"
+              fill="none"
+              stroke="url(#timelineGlowA)"
+              strokeWidth="3.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeDasharray="60 220"
+              filter="url(#timelineGlowFilter)"
+              style={{ animation: "lineTravel 5.5s linear infinite", animationTimingFunction: "linear" }}
+            />
+            <path
+              d="M0,45 C22,25 38,80 52,42 C66,20 82,75 100,48"
+              fill="none"
+              stroke="rgba(56,189,248,0.55)"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeDasharray="60 220"
+              filter="url(#timelineGlowFilter)"
+              style={{ animation: "lineTravel 5s linear infinite", animationTimingFunction: "linear" }}
+            />
+            <path
+              d="M0,18 C18,55 32,18 50,34 C68,50 82,20 100,28"
+              fill="none"
+              stroke="url(#timelineGlowB)"
+              strokeWidth="2.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeDasharray="80 220"
+              filter="url(#timelineGlowFilter)"
+              style={{ animation: "lineTravel 6s linear infinite", animationTimingFunction: "linear" }}
+            />
+          </svg>
+        </div>
+        <div className="grid lg:grid-cols-5 gap-8 lg:gap-4 pt-8">
           {STEPS.map((s, i) => (
             <div key={s.title} className="relative group">
               <div className="relative w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-primary to-accent text-white grid place-items-center shadow-lg group-hover:scale-110 transition-transform">
@@ -188,6 +252,31 @@ export function ProcessTimeline() {
 
 /* -------------------------- Italy interactive map ------------------------- */
 const REGIONS = [
+  {
+    id: "Piemonte",
+    x: 22,
+    y: 25,
+  },
+  {
+    id: "Lombardia",
+    x: 33,
+    y: 23,
+  },
+  {
+    id: "Veneto",
+    x: 46,
+    y: 22,
+  },
+  {
+    id: "Toscana",
+    x: 36,
+    y: 38,
+  },
+  {
+    id: "Lazio",
+    x: 48,
+    y: 49,
+  },
   {
     id: "Campania",
     x: 63,
@@ -232,8 +321,8 @@ export function ItalyMap() {
           </span>
 
           <h2 className="mt-3 text-4xl md:text-5xl font-bold text-white">
-            Presenza consolidata nel{" "}
-            <span className="text-gradient">Sud Italia.</span>
+            Presenza consolidata in tutta{" "}
+            <span className="text-gradient">Italia.</span>
           </h2>
         </div>
 

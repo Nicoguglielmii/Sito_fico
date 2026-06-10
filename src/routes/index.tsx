@@ -46,7 +46,7 @@ function Index() {
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-8 text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed">
-              Condividiamo sinergie trasformando le idee in risultati. Progettazione, gestione e sviluppo di reti in fibra ottica per imprese pubbliche e private.
+              FI.CO. SRL supporta lo sviluppo delle reti in fibra ottica attraverso progettazione, coordinamento operativo, gestione autorizzativa e consulenza tecnica, creando il collegamento tra committenti, imprese e pubbliche amministrazioni.
             </p>
           </Reveal>
           <Reveal delay={300}>
@@ -69,7 +69,7 @@ function Index() {
           <Reveal>
             <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Chi siamo</span>
             <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
-              Uniamo eccellenza progettuale, affidabilità e rapidità operativa per trasformare ogni progetto in<br /><span className="text-gradient">risultati concreti.</span>
+              Siamo il punto di <br /><span className="text-gradient">connessione.</span>
             </h2>
           </Reveal>
           <Reveal delay={150}>
