@@ -104,7 +104,7 @@ function Index() {
                   <div className="font-[var(--font-display)] text-5xl md:text-7xl font-bold text-gradient">
                     <Counter to={s.n} suffix={s.suf} />
                   </div>
-                  <div className="mt-3 text-white/70 text-sm uppercase tracking-wider">{s.label}</div>
+                  <div className="mt-3 text-white/70 text-sm uppercase tracking-wider">{s.label} </div>
                 </div>
               </Reveal>
             ))}
