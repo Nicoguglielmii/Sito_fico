@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServiziRouteImport } from './routes/servizi'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
-import { Route as FuturoRouteImport } from './routes/futuro'
 import { Route as ContattiRouteImport } from './routes/contatti'
 import { Route as ChiSiamoRouteImport } from './routes/chi-siamo'
 import { Route as IndexRouteImport } from './routes/index'
@@ -30,11 +29,6 @@ const ServiziRoute = ServiziRouteImport.update({
 const PortfolioRoute = PortfolioRouteImport.update({
   id: '/portfolio',
   path: '/portfolio',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FuturoRoute = FuturoRouteImport.update({
-  id: '/futuro',
-  path: '/futuro',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContattiRoute = ContattiRouteImport.update({
@@ -57,7 +51,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/chi-siamo': typeof ChiSiamoRoute
   '/contatti': typeof ContattiRoute
-  '/futuro': typeof FuturoRoute
   '/portfolio': typeof PortfolioRoute
   '/servizi': typeof ServiziRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -66,7 +59,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/chi-siamo': typeof ChiSiamoRoute
   '/contatti': typeof ContattiRoute
-  '/futuro': typeof FuturoRoute
   '/portfolio': typeof PortfolioRoute
   '/servizi': typeof ServiziRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -76,7 +68,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/chi-siamo': typeof ChiSiamoRoute
   '/contatti': typeof ContattiRoute
-  '/futuro': typeof FuturoRoute
   '/portfolio': typeof PortfolioRoute
   '/servizi': typeof ServiziRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -87,7 +78,6 @@ export interface FileRouteTypes {
     | '/'
     | '/chi-siamo'
     | '/contatti'
-    | '/futuro'
     | '/portfolio'
     | '/servizi'
     | '/sitemap.xml'
@@ -96,7 +86,6 @@ export interface FileRouteTypes {
     | '/'
     | '/chi-siamo'
     | '/contatti'
-    | '/futuro'
     | '/portfolio'
     | '/servizi'
     | '/sitemap.xml'
@@ -105,7 +94,6 @@ export interface FileRouteTypes {
     | '/'
     | '/chi-siamo'
     | '/contatti'
-    | '/futuro'
     | '/portfolio'
     | '/servizi'
     | '/sitemap.xml'
@@ -115,7 +103,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ChiSiamoRoute: typeof ChiSiamoRoute
   ContattiRoute: typeof ContattiRoute
-  FuturoRoute: typeof FuturoRoute
   PortfolioRoute: typeof PortfolioRoute
   ServiziRoute: typeof ServiziRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -142,13 +129,6 @@ declare module '@tanstack/react-router' {
       path: '/portfolio'
       fullPath: '/portfolio'
       preLoaderRoute: typeof PortfolioRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/futuro': {
-      id: '/futuro'
-      path: '/futuro'
-      fullPath: '/futuro'
-      preLoaderRoute: typeof FuturoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contatti': {
@@ -179,7 +159,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ChiSiamoRoute: ChiSiamoRoute,
   ContattiRoute: ContattiRoute,
-  FuturoRoute: FuturoRoute,
   PortfolioRoute: PortfolioRoute,
   ServiziRoute: ServiziRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,

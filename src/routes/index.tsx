@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: "Telecomunicazioni, fibra ottica, permitting e servizi IT." },
       { property: "og:url", content: "/" },
     ],
-    links: [{ rel: "canonical", href: "/" }, { rel: "icon", href: "/fico-logo-in-alto.png" }],
+    links: [{ rel: "canonical", href: "/" }],
   }),
   component: Index,
 });

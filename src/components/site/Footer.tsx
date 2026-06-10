@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin, Linkedin} from "lucide-react";
 
+const MAPS_URL = "https://www.google.com/maps?q=Corso+Cavour+9,+Andria+BT,+Italy";
 
 export function Footer() {
   return (
@@ -25,7 +26,6 @@ export function Footer() {
             <li><Link to="/chi-siamo" className="hover:text-accent">Chi siamo</Link></li>
             <li><Link to="/servizi" className="hover:text-accent">Servizi</Link></li>
             <li><Link to="/portfolio" className="hover:text-accent">Portfolio</Link></li>
-            <li><Link to="/futuro" className="hover:text-accent">Futuro e crescita</Link></li>
           </ul>
         </div>
 
@@ -42,7 +42,17 @@ export function Footer() {
         <div>
           <h4 className="text-sm font-semibold uppercase tracking-widest text-accent">Contatti</h4>
           <ul className="mt-4 space-y-3 text-sm text-white/80">
-            <li className="flex gap-3"><MapPin size={16} className="text-accent flex-shrink-0 mt-0.5" /><span>Corso Cavour 9<br />76123 Andria (BT)</span></li>
+            <li className="flex gap-3">
+              <MapPin size={16} className="text-accent flex-shrink-0 mt-0.5" />
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent transition-colors"
+              >
+                Corso Cavour 9<br />76123 Andria (BT)
+              </a>
+            </li>
             <li className="flex gap-3"><Phone size={16} className="text-accent flex-shrink-0 mt-0.5" /><a href="tel:+393757932669" className="hover:text-accent">+39 375 793 2669</a></li>
             <li className="flex gap-3"><Mail size={16} className="text-accent flex-shrink-0 mt-0.5" /><a href="mailto:amministrazione@ficohub.it" className="hover:text-accent break-all">amministrazione@ficohub.it</a></li>
           </ul>

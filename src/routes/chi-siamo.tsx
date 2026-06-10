@@ -1,5 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Cpu, Linkedin, ClipboardCheck, PencilRuler, KanbanSquare, MapPinned} from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Linkedin, ClipboardCheck, PencilRuler, KanbanSquare, MapPinned, Rocket, TrendingUp, Handshake, Globe2, ArrowRight } from "lucide-react";
 import aboutImg from "@/assets/about-team.jpg";
 import { Reveal } from "@/components/site/Reveal";
 
@@ -21,6 +21,13 @@ const TIMELINE = [
   { year: "Fondazione", title: "L'inizio del progetto", desc: "Un team di giovani professionisti delle telecomunicazioni dà vita a FI.CO. con una visione chiara." },
   { year: "Primi progetti", title: "Sul campo", desc: "I primi cantieri di fibra ottica e le prime collaborazioni con enti pubblici e operatori." },
   { year: "Nuove opportunità", title: "Verso il futuro", desc: "Innovazione continua, partnership strategiche e nuove sfide su scala nazionale." },
+];
+
+const ROADMAP = [
+  { icon: Rocket, title: "Innovazione tecnologica", desc: "Adozione di nuove tecnologie per reti più intelligenti e sostenibili." },
+  { icon: Handshake, title: "Partnership strategiche", desc: "Alleanze con operatori, enti e fornitori per accelerare la trasformazione." },
+  { icon: TrendingUp, title: "Scalabilità operativa", desc: "Processi e team strutturati per affrontare progetti complessi su scala." },
+  { icon: Globe2, title: "Espansione territoriale", desc: "Presenza capillare sul territorio nazionale, con visione internazionale." },
 ];
 
 const TEAM = [
@@ -111,6 +118,44 @@ function ChiSiamo() {
         </div>
       </section>
 
+      {/* FUTURO E CRESCITA */}
+      <section className="container-x py-24">
+        <Reveal>
+          <div className="max-w-2xl mb-16">
+            <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Futuro e crescita</span>
+            <h2 className="mt-3 text-4xl md:text-5xl font-bold">
+              Motori di <span className="text-gradient">crescita.</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              La nostra visione si fonda sull'innovazione e sulla continua ricerca di nuove opportunità. Collaborare con noi significa affrontare sfide stimolanti e trasformarle in crescita condivisa.
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="relative grid md:grid-cols-2 gap-6">
+          {ROADMAP.map((r, i) => (
+            <Reveal key={r.title} delay={i * 120}>
+              <div className="card-lift relative h-full p-8 rounded-2xl bg-card border border-border overflow-hidden">
+                <div className="absolute top-4 right-6 text-6xl font-bold font-[var(--font-display)] text-primary/10">0{i + 1}</div>
+                <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary grid place-items-center"><r.icon size={22} /></div>
+                <h3 className="mt-5 text-2xl font-bold">{r.title}</h3>
+                <p className="mt-2 text-muted-foreground">{r.desc}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal>
+          <div className="mt-16 p-12 rounded-3xl surface-navy text-center relative overflow-hidden">
+            <div className="absolute inset-0 opacity-40" style={{ backgroundImage: "var(--gradient-glow)" }} />
+            <div className="relative">
+              <h3 className="text-3xl md:text-4xl font-bold">Costruiamo insieme il prossimo capitolo.</h3>
+              <Link to="/contatti" className="btn-hero mt-8">Parla con noi <ArrowRight size={18} /></Link>
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
       {/* TEAM */}
       <section className="container-x py-24">
         <Reveal>
@@ -128,25 +173,26 @@ function ChiSiamo() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Profilo LinkedIn di ${person.name}`}
-                className="card-lift group relative block overflow-hidden rounded-2xl border border-border bg-card focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                className="team-card group relative block overflow-hidden rounded-2xl border border-border bg-card focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
-                <div className="relative aspect-square overflow-hidden">
+                <div className="relative aspect-square overflow-hidden bg-muted">
                   <img
                     src={person.photo}
                     alt={person.name}
                     loading="lazy"
+                    decoding="async"
                     width={400}
                     height={400}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="h-full w-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/0 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <span className="absolute right-3 top-3 grid h-10 w-10 translate-y-2 place-items-center rounded-full bg-white/90 text-primary opacity-0 shadow-lg transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                    <Linkedin size={18} />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100" />
+                  <span className="pointer-events-none absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/95 text-primary opacity-0 shadow-md transition-opacity duration-200 ease-out group-hover:opacity-100">
+                    <Linkedin size={16} />
                   </span>
                 </div>
                 <div className="p-4">
-                  <h3 className="font-bold leading-tight transition-colors group-hover:text-primary">{person.name}</h3>
-                    <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <h3 className="font-bold leading-tight transition-colors duration-200 group-hover:text-primary">{person.name}</h3>
+                  <span className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold text-primary opacity-0 transition-opacity duration-200 ease-out group-hover:opacity-100">
                     <Linkedin size={14} /> Vedi profilo
                   </span>
                 </div>

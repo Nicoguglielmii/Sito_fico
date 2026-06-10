@@ -237,3 +237,19 @@
   box-shadow: var(--shadow-card);
   border-color: color-mix(in oklab, var(--primary) 40%, transparent);
 }
+
+.team-card {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  contain: layout paint;
+}
+.team-card:hover {
+  border-color: color-mix(in oklab, var(--primary) 35%, transparent);
+  box-shadow: var(--shadow-card);
+}
+.team-card img {
+  transform: translateZ(0);
+  transition: transform 0.2s ease-out;
+}
+.team-card:hover img {
+  transform: translateZ(0) scale(1.04);
+}
