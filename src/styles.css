@@ -131,13 +131,15 @@
 
 :root {
   --radius: 0.75rem;
-  /* Brand */
-  --navy-deep: #003B5C;
-  --navy: #005A8C;
-  --electric: #009EDA;
+  /* Brand - Updated */
+  --navy-deep: #001A33;
+  --navy: #003D5C;
+  --electric: #0099F2;
   --cyan-accent: #40E0FF;
-  --primary: #009EDA;
+  --primary: #0099F2;
   --accent: #FABD18;
+  --accent-warm: #FF6B35;
+  --success: #20D9A3;
 
   --background: #F4FAFD;
   --foreground: #002233;
@@ -170,8 +172,8 @@
   --sidebar-border: #C8E2ED;
   --sidebar-ring: #009EDA;
 
-  --gradient-brand: linear-gradient(135deg, #009EDA, #FABD18);
-  --gradient-navy: linear-gradient(160deg, #003B5C 0%, #004A75 60%, #005A8C 100%);
+  --gradient-brand: linear-gradient(135deg, #0099F2, #FABD18);
+  --gradient-navy: linear-gradient(160deg, #001A33 0%, #003D5C 60%, #004D7C 100%);
   --gradient-glow: radial-gradient(circle at 30% 20%, color-mix(in oklab, var(--primary) 30%, transparent), transparent 60%);
   --shadow-elegant: 0 24px 60px -20px color-mix(in oklab, var(--primary) 35%, transparent);
   --shadow-card: 0 8px 30px -12px #00223326;
@@ -184,7 +186,7 @@
   --card-foreground: #F4FAFD;
   --popover: #003345;
   --popover-foreground: #F4FAFD;
-  --primary: #009EDA;
+  --primary: #0099F2;
   --primary-foreground: #FFFFFF;
   --secondary: #004466;
   --secondary-foreground: #F4FAFD;
@@ -196,7 +198,7 @@
   --destructive-foreground: #FFFFFF;
   --border: #1A4D66;
   --input: #1A4D66;
-  --ring: #009EDA;
+  --ring: #0099F2;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -204,12 +206,12 @@
   --chart-5: oklch(0.645 0.246 16.439);
   --sidebar: #003345;
   --sidebar-foreground: #F4FAFD;
-  --sidebar-primary: #009EDA;
+  --sidebar-primary: #0099F2;
   --sidebar-primary-foreground: #FFFFFF;
   --sidebar-accent: #004466;
   --sidebar-accent-foreground: #F4FAFD;
   --sidebar-border: #1A4D66;
-  --sidebar-ring: #009EDA;
+  --sidebar-ring: #0099F2;
 }
 
 @layer base {
@@ -324,4 +326,86 @@
 }
 .team-card:hover img {
   transform: translateZ(0) scale(1.04);
+}
+
+/* ═══════════════════════════════════════════════════════════════ */
+/* GROWTH SECTION - NEW PREMIUM DESIGN                              */
+/* ═══════════════════════════════════════════════════════════════ */
+
+@keyframes spin-smooth {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.3; filter: blur(20px); }
+  50% { opacity: 0.6; filter: blur(40px); }
+}
+
+@keyframes border-glow {
+  0%, 100% { border-color: rgba(255, 255, 255, 0.1); }
+  50% { border-color: rgba(0, 153, 242, 0.4); }
+}
+
+@keyframes float-subtle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.growth-section {
+  background: linear-gradient(180deg, #001A33 0%, #003D5C 50%, #001A33 100%);
+  color: #F4FAFD;
+  position: relative;
+}
+
+.growth-card {
+  /* Base styles */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  /* Transition smoothing */
+  will-change: transform, box-shadow, background, border-color;
+  
+  /* Glassmorphism base */
+  backdrop-filter: blur(10px);
+}
+
+/* Enhanced hover state */
+.growth-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 153, 242, 0.5);
+  box-shadow: 
+    0 0 60px rgba(0, 153, 242, 0.2),
+    0 20px 80px rgba(0, 153, 242, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  transform: translateY(-8px);
+}
+
+/* Icon animation */
+.growth-card:hover svg {
+  animation: spin-smooth 2s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+}
+
+/* Number counter effect */
+.growth-card .text-7xl {
+  font-variant-numeric: tabular-nums;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.growth-card:hover .text-7xl {
+  transform: scale(1.2) translateY(-4px);
+  text-shadow: 0 0 40px rgba(0, 153, 242, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .growth-section {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
 }
