@@ -152,11 +152,11 @@ export function CookieBanner() {
 
 /* ----------------------------- Process timeline --------------------------- */
 const STEPS = [
-  { icon: Search, title: "Survey & rilievi", desc: "Sopralluoghi tecnici e analisi del territorio per mappare ogni dettaglio del progetto." },
-  { icon: Compass, title: "Progettazione", desc: "Studio rete, dimensionamento, GIS e scelta degli apparati trasmissivi più adatti." },
-  { icon: FileCheck2, title: "Permitting", desc: "Gestione delle pratiche autorizzative con PA ed enti competenti." },
-  { icon: HardHat, title: "Realizzazione", desc: "Coordinamento operativo, walk-in/walk-out e controllo qualità in cantiere." },
-  { icon: ShieldCheck, title: "Delivery & supporto", desc: "Documentazione as-built e supporto post-realizzazione H24." },
+  { icon: Search, title: "Survey & rilievi", desc: "" },
+  { icon: Compass, title: "Progettazione", desc: "" },
+  { icon: FileCheck2, title: "Permitting", desc: "" },
+  { icon: HardHat, title: "Realizzazione", desc: "" },
+  { icon: ShieldCheck, title: "Delivery & supporto", desc: "" },
 ];
 export function ProcessTimeline() {
   return (

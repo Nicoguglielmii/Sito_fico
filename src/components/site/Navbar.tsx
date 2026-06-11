@@ -5,7 +5,7 @@ import { ThemeToggle } from "./Interactive";
 
 const NAV = [
   { to: "/", label: "Home" },
-  { to: "/chi-siamo", label: "Chi siamo" },
+  { to: "/chi-siamo", label: "About Us"},
   { to: "/servizi", label: "Servizi" },
   { to: "/portfolio", label: "Portfolio" },
   { to: "/contatti", label: "Contatti" },
@@ -79,9 +79,6 @@ export function Navbar() {
         </div>
 
         <div className="relative z-10 flex items-center gap-2 shrink-0">
-          <Link to="/contatti" className="hidden lg:inline-flex btn-hero text-sm py-2.5 px-5">
-            Richiedi consulenza
-          </Link>
           <div className="hidden lg:block">
             <ThemeToggle />
           </div>

@@ -1,11 +1,19 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Cable, FileCheck2, Server, Sparkles, ShieldCheck, Zap, Award, Network, Building2 } from "lucide-react";
+import { Rocket, TrendingUp, Handshake, Globe2} from "lucide-react"
 import heroImg from "@/assets/hero-fiber.jpg";
 import projFiber from "@/assets/project-fiber.jpg";
 import projPermit from "@/assets/project-permit.jpg";
 import projIt from "@/assets/project-it.jpg";
 import { Reveal, Counter, Tilt } from "@/components/site/Reveal";
 import { HeroParticles, ProcessTimeline, ItalyMap, Magnetic } from "@/components/site/Interactive";
+
+const ROADMAP = [
+  { icon: Rocket, title: "Innovazione tecnologica", desc: "Adozione di nuove tecnologie per reti più intelligenti e sostenibili." },
+  { icon: Handshake, title: "Partnership strategiche", desc: "Alleanze con operatori, enti e fornitori per accelerare la trasformazione." },
+  { icon: TrendingUp, title: "Scalabilità operativa", desc: "Processi e team strutturati per affrontare progetti complessi su scala." },
+  { icon: Globe2, title: "Espansione territoriale", desc: "Presenza capillare sul territorio nazionale, con visione internazionale." },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -46,7 +54,7 @@ function Index() {
           </Reveal>
           <Reveal delay={200}>
             <p className="mt-8 text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed">
-              FI.CO. SRL supporta lo sviluppo delle reti in fibra ottica attraverso progettazione, coordinamento operativo, gestione autorizzativa e consulenza tecnica, creando il collegamento tra committenti, imprese e pubbliche amministrazioni.
+              Connettiamo idee, persone e infrastrutture per costruire il futuro digitale.
             </p>
           </Reveal>
           <Reveal delay={300}>
@@ -67,15 +75,15 @@ function Index() {
       <section className="container-x py-24 md:py-32">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <Reveal>
-            <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Chi siamo</span>
+            <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Il nostro ruolo</span>
             <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
               Siamo il punto di <br /><span className="text-gradient">connessione.</span>
             </h2>
           </Reveal>
           <Reveal delay={150}>
             <div className="space-y-5 text-muted-foreground text-lg leading-relaxed">
-              <p>FI.CO. nasce dall'iniziativa di giovani professionisti specializzati nel settore delle telecomunicazioni.</p>
-              <p>Forniamo servizi di progettazione, gestione e sviluppo di reti in fibra ottica, manutenzione, consulenza e supporto tecnico per imprese pubbliche e private.</p>
+              <p>FI.CO nasce per semplificare ciò che spesso appare complesso. Ogni progetto infrastrutturale coinvolge operatori, imprese, amministrazioni pubbliche e professionisti. Il nostro ruolo è creare dialogo, coordinare attività e trasformare ogni esigenza in una soluzione concreta.</p>
+              <p>Siamo il collegamento tra chi immagina la rete e chi la realizza</p>
               <Link to="/chi-siamo" className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all pt-2">
                 Scopri la nostra storia <ArrowRight size={16} />
               </Link>
@@ -84,95 +92,37 @@ function Index() {
         </div>
       </section>
 
-      {/* KEY NUMBERS */}
-      <section className="surface-navy py-24 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "var(--gradient-glow)" }} />
-        <div className="container-x relative">
-          <Reveal>
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">Numeri</span>
-              <h2 className="mt-3 text-4xl md:text-5xl font-bold">I risultati parlano per noi</h2>
-            </div>
-          </Reveal>
-          <div className="grid grid-cols-2 lg:grid-cols-2 gap-8">
-            {[
-              { n: 9000, suf: "+", label: "Progetti gestiti" },
-              { n: 100, suf: "%", label: "Orientamento al System" },
-            ].map((s, i) => (
-              <Reveal key={s.label} delay={i * 100}>
-                <div className="text-center">
-                  <div className="font-[var(--font-display)] text-5xl md:text-7xl font-bold text-gradient">
-                    <Counter to={s.n} suffix={s.suf} />
-                  </div>
-                  <div className="mt-3 text-white/70 text-sm uppercase tracking-wider">{s.label} </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CORE SERVICES */}
-      <section className="container-x py-24 md:py-32">
+      {/* FUTURO E CRESCITA */}
+      <section className="container-x py-24">
         <Reveal>
-          <div className="max-w-3xl mb-16">
-            <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Di cosa ci occupiamo</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-bold leading-tight">Servizi end-to-end<br />per le tue infrastrutture.</h2>
+          <div className="max-w-2xl mb-16">
+            <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Futuro e crescita</span>
+            <h2 className="mt-3 text-4xl md:text-5xl font-bold">
+              Motori di <span className="text-gradient">crescita.</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              La nostra visione si fonda sull'innovazione e sulla continua ricerca di nuove opportunità. Collaborare con noi significa affrontare sfide stimolanti e trasformarle in crescita condivisa.
+            </p>
           </div>
         </Reveal>
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { icon: Cable, title: "Consulenza Imprese", desc: "Supportiamo le imprese in ogni fase dei lavori di collegamento in fibra ottica verso clienti privati e pubblici, curandone survey, rilievi, progettazione e documentazione del realizzato.", to: "/servizi" },
-            { icon: FileCheck2, title: "Rapporti e Gestione Enti", desc: "Intermediamo con le pubbliche amministrazioni e altri enti per l'ottenimento di autorizzazioni, licenze e concessioni volte alla realizzazione dei progetti.", to: "/servizi" },
-            { icon: Server, title: "Servizi IT", desc: "Offriamo servizi di installazione, manutenzione ed assistenza hardware e software h 24, adeguandoci alle necessità dei clienti in funzione delle loro esigenze e criticità.", to: "/servizi" },
-          ].map((s, i) => (
-            <Reveal key={s.title} delay={i * 120}>
-              <Tilt>
-                <Link to={s.to} className="card-lift group block h-full p-8 rounded-2xl bg-card border border-border">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-accent grid place-items-center text-white shadow-md group-hover:scale-110 transition-transform">
-                    <s.icon size={26} />
-                  </div>
-                  <h3 className="mt-6 text-2xl font-bold">{s.title}</h3>
-                  <p className="mt-3 text-muted-foreground leading-relaxed">{s.desc}</p>
-                  <span className="mt-6 inline-flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all">
-                    Scopri di più <ArrowRight size={16} />
-                  </span>
-                </Link>
-              </Tilt>
+        
+
+        <div className="relative grid md:grid-cols-2 gap-6">
+          {ROADMAP.map((r, i) => (
+            <Reveal key={r.title} delay={i * 120}>
+              <div className="card-lift relative h-full p-8 rounded-2xl bg-card border border-border overflow-hidden">
+                <div className="absolute top-4 right-6 text-6xl font-bold font-[var(--font-display)] text-primary/10">0{i + 1}</div>
+                <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary grid place-items-center"><r.icon size={22} /></div>
+                <h3 className="mt-5 text-2xl font-bold">{r.title}</h3>
+                <p className="mt-2 text-muted-foreground">{r.desc}</p>
+              </div>
             </Reveal>
           ))}
         </div>
-      </section>
 
       {/* PROCESS TIMELINE */}
       <ProcessTimeline />
 
-      {/* WHY CHOOSE US */}
-      <section className="bg-secondary py-24">
-        <div className="container-x">
-          <Reveal>
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Perché sceglierci</span>
-              <h2 className="mt-3 text-4xl md:text-5xl font-bold">I valori che ci guidano</h2>
-            </div>
-          </Reveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: Sparkles, title: "Innovazione e problem solving", desc: "La nostra mentalità proattiva è alla costante ricerca di soluzioni innovative" },
-              { icon: ShieldCheck, title: "Affidabilità e resilienza", desc: "In un mercato in costante evoluzione, la nostra agilità strategica ci permette di adattarci velocemente alle nuove sfide, la nostra resilienza operativa assicura la stabilità e la continuità del vostro successo" },
-              { icon: Zap, title: "Fiducia e connessione", desc: "Crediamo che la fiducia reciproca e la collaborazione siano la chiave per raggiungere i migliori risultati insieme ai nostri clienti, trasformando così ogni progetto in una vera partnership" },
-              { icon: Award, title: "Self improvement", desc: "La passione guida il nostro impegno: investiamo nella crescita personale affinché ognuno esprima il proprio potenziale." },
-            ].map((p, i) => (
-              <Reveal key={p.title} delay={i * 100}>
-                <div className="card-lift bg-card p-8 rounded-2xl border border-border h-full">
-                  <p.icon className="text-primary" size={32} />
-                  <h3 className="mt-5 text-xl font-bold">{p.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* ITALY MAP */}
@@ -214,6 +164,34 @@ function Index() {
         </div>
       </section>
 
+            {/* WHY CHOOSE US */}
+      <section className="bg-secondary py-24">
+        <div className="container-x">
+          <Reveal>
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Perché sceglierci</span>
+              <h2 className="mt-3 text-4xl md:text-5xl font-bold">I valori che ci guidano</h2>
+            </div>
+          </Reveal>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: Sparkles, title: "Innovazione e problem solving", desc: "La nostra mentalità proattiva è alla costante ricerca di soluzioni innovative" },
+              { icon: ShieldCheck, title: "Affidabilità e resilienza", desc: "In un mercato in costante evoluzione, la nostra agilità strategica ci permette di adattarci velocemente alle nuove sfide, la nostra resilienza operativa assicura la stabilità e la continuità del vostro successo" },
+              { icon: Zap, title: "Fiducia e connessione", desc: "Crediamo che la fiducia reciproca e la collaborazione siano la chiave per raggiungere i migliori risultati insieme ai nostri clienti, trasformando così ogni progetto in una vera partnership" },
+              { icon: Award, title: "Self improvement", desc: "La passione guida il nostro impegno: investiamo nella crescita personale affinché ognuno esprima il proprio potenziale." },
+            ].map((p, i) => (
+              <Reveal key={p.title} delay={i * 100}>
+                <div className="card-lift bg-card p-8 rounded-2xl border border-border h-full">
+                  <p.icon className="text-primary" size={32} />
+                  <h3 className="mt-5 text-xl font-bold">{p.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FINAL CTA */}
       <section className="container-x pb-24">
         <Reveal>
@@ -226,7 +204,7 @@ function Index() {
                 Trasformiamo le idee in <span className="text-gradient">risultati concreti.</span>
               </h2>
               <p className="mt-6 text-lg text-white/75 max-w-2xl mx-auto">
-                Mettiamo il nostro know-how al servizio delle imprese per costruire insieme progetti di successo.
+              Parlaci del tuo progetto. Noi ci occuperemo di creare il collegamento giusto tra idee, persone e opportunità.
               </p>
               <Link to="/contatti" className="btn-hero mt-10">
                 Contattaci <ArrowRight size={18} />

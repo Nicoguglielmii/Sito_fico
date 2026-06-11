@@ -23,13 +23,6 @@ const TIMELINE = [
   { year: "Nuove opportunità", title: "Verso il futuro", desc: "Innovazione continua, partnership strategiche e nuove sfide su scala nazionale." },
 ];
 
-const ROADMAP = [
-  { icon: Rocket, title: "Innovazione tecnologica", desc: "Adozione di nuove tecnologie per reti più intelligenti e sostenibili." },
-  { icon: Handshake, title: "Partnership strategiche", desc: "Alleanze con operatori, enti e fornitori per accelerare la trasformazione." },
-  { icon: TrendingUp, title: "Scalabilità operativa", desc: "Processi e team strutturati per affrontare progetti complessi su scala." },
-  { icon: Globe2, title: "Espansione territoriale", desc: "Presenza capillare sul territorio nazionale, con visione internazionale." },
-];
-
 const TEAM = [
   { name: "Stefano Confalone", photo: "https://media.licdn.com/dms/image/v2/D4E03AQE7roow2jx2MA/profile-displayphoto-scale_400_400/B4EZtKz4AdJQAk-/0/1766486672300?e=1782345600&v=beta&t=rx71OC-n_2gM5o-qielzdEEcSSxAj-_JmeWRUc3MaA0", linkedin: "https://www.linkedin.com/in/stefano-confalone/" },
   { name: "Domenico Lotito", photo: "https://media.licdn.com/dms/image/v2/D4E03AQEJbvMki0M64g/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1666698320194?e=1782345600&v=beta&t=-3p8JocevLO8uuT936jaXuD2fxLaY8D8f3m7wU7M92g", linkedin: "https://www.linkedin.com/in/domenico-lotito-329860254/" },
@@ -116,44 +109,6 @@ function ChiSiamo() {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* FUTURO E CRESCITA */}
-      <section className="container-x py-24">
-        <Reveal>
-          <div className="max-w-2xl mb-16">
-            <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Futuro e crescita</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-bold">
-              Motori di <span className="text-gradient">crescita.</span>
-            </h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed">
-              La nostra visione si fonda sull'innovazione e sulla continua ricerca di nuove opportunità. Collaborare con noi significa affrontare sfide stimolanti e trasformarle in crescita condivisa.
-            </p>
-          </div>
-        </Reveal>
-
-        <div className="relative grid md:grid-cols-2 gap-6">
-          {ROADMAP.map((r, i) => (
-            <Reveal key={r.title} delay={i * 120}>
-              <div className="card-lift relative h-full p-8 rounded-2xl bg-card border border-border overflow-hidden">
-                <div className="absolute top-4 right-6 text-6xl font-bold font-[var(--font-display)] text-primary/10">0{i + 1}</div>
-                <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary grid place-items-center"><r.icon size={22} /></div>
-                <h3 className="mt-5 text-2xl font-bold">{r.title}</h3>
-                <p className="mt-2 text-muted-foreground">{r.desc}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal>
-          <div className="mt-16 p-12 rounded-3xl surface-navy text-center relative overflow-hidden">
-            <div className="absolute inset-0 opacity-40" style={{ backgroundImage: "var(--gradient-glow)" }} />
-            <div className="relative">
-              <h3 className="text-3xl md:text-4xl font-bold">Costruiamo insieme il prossimo capitolo.</h3>
-              <Link to="/contatti" className="btn-hero mt-8">Parla con noi <ArrowRight size={18} /></Link>
-            </div>
-          </div>
-        </Reveal>
       </section>
 
       {/* TEAM */}
