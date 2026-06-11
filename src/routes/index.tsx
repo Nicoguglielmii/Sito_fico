@@ -93,37 +93,38 @@ function Index() {
       </section>
 
       {/* FUTURO E CRESCITA */}
-      <section className="container-x py-24">
-        <Reveal>
-          <div className="max-w-2xl mb-16">
-            <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Futuro e crescita</span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-bold">
-              Motori di <span className="text-gradient">crescita.</span>
-            </h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed">
-              La nostra visione si fonda sull'innovazione e sulla continua ricerca di nuove opportunità. Collaborare con noi significa affrontare sfide stimolanti e trasformarle in crescita condivisa.
-            </p>
-          </div>
-        </Reveal>
-        
+      <section className="surface-navy relative overflow-hidden py-24">
+        <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "var(--gradient-glow)" }} />
+        <div className="container-x relative">
+          <Reveal>
+            <div className="max-w-2xl mb-16">
+              <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Futuro e crescita</span>
+              <h2 className="mt-3 text-4xl md:text-5xl font-bold text-white">
+                Motori di <span className="text-gradient">crescita.</span>
+              </h2>
+              <p className="mt-4 text-white/80 leading-relaxed">
+                La nostra visione si fonda sull'innovazione e sulla continua ricerca di nuove opportunità. Collaborare con noi significa affrontare sfide stimolanti e trasformarle in crescita condivisa.
+              </p>
+            </div>
+          </Reveal>
+        </div>
 
-        <div className="relative grid md:grid-cols-2 gap-6">
+        <div className="container-x relative grid md:grid-cols-2 gap-6">
           {ROADMAP.map((r, i) => (
             <Reveal key={r.title} delay={i * 120}>
-              <div className="card-lift relative h-full p-8 rounded-2xl bg-card border border-border overflow-hidden">
+              <div className="card-lift relative h-full p-8 rounded-2xl bg-card border border-border overflow-hidden text-foreground">
                 <div className="absolute top-4 right-6 text-6xl font-bold font-[var(--font-display)] text-primary/10">0{i + 1}</div>
                 <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary grid place-items-center"><r.icon size={22} /></div>
-                <h3 className="mt-5 text-2xl font-bold">{r.title}</h3>
+                <h3 className="mt-5 text-2xl font-bold text-foreground">{r.title}</h3>
                 <p className="mt-2 text-muted-foreground">{r.desc}</p>
               </div>
             </Reveal>
           ))}
         </div>
+      </section>
 
       {/* PROCESS TIMELINE */}
       <ProcessTimeline />
-
-      </section>
 
       {/* ITALY MAP */}
       <ItalyMap />
@@ -193,7 +194,7 @@ function Index() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="container-x pb-24">
+      <section className="container-x pt-24 pb-24">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl surface-navy p-12 md:p-20 text-center">
             <div className="absolute inset-0 opacity-40" style={{ backgroundImage: "var(--gradient-glow)" }} />

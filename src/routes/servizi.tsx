@@ -102,7 +102,6 @@ function Servizi() {
           </div>
         </Reveal>
       </section>
-ito
     </>
   );
 }
