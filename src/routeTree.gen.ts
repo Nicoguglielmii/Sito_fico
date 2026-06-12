@@ -11,9 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServiziRouteImport } from './routes/servizi'
-import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as ContattiRouteImport } from './routes/contatti'
 import { Route as ChiSiamoRouteImport } from './routes/chi-siamo'
+import { Route as BrandingRouteImport } from './routes/branding'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -26,11 +26,6 @@ const ServiziRoute = ServiziRouteImport.update({
   path: '/servizi',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PortfolioRoute = PortfolioRouteImport.update({
-  id: '/portfolio',
-  path: '/portfolio',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ContattiRoute = ContattiRouteImport.update({
   id: '/contatti',
   path: '/contatti',
@@ -41,6 +36,11 @@ const ChiSiamoRoute = ChiSiamoRouteImport.update({
   path: '/chi-siamo',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BrandingRoute = BrandingRouteImport.update({
+  id: '/branding',
+  path: '/branding',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -49,26 +49,26 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/branding': typeof BrandingRoute
   '/chi-siamo': typeof ChiSiamoRoute
   '/contatti': typeof ContattiRoute
-  '/portfolio': typeof PortfolioRoute
   '/servizi': typeof ServiziRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/branding': typeof BrandingRoute
   '/chi-siamo': typeof ChiSiamoRoute
   '/contatti': typeof ContattiRoute
-  '/portfolio': typeof PortfolioRoute
   '/servizi': typeof ServiziRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/branding': typeof BrandingRoute
   '/chi-siamo': typeof ChiSiamoRoute
   '/contatti': typeof ContattiRoute
-  '/portfolio': typeof PortfolioRoute
   '/servizi': typeof ServiziRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
@@ -76,34 +76,34 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/branding'
     | '/chi-siamo'
     | '/contatti'
-    | '/portfolio'
     | '/servizi'
     | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/branding'
     | '/chi-siamo'
     | '/contatti'
-    | '/portfolio'
     | '/servizi'
     | '/sitemap.xml'
   id:
     | '__root__'
     | '/'
+    | '/branding'
     | '/chi-siamo'
     | '/contatti'
-    | '/portfolio'
     | '/servizi'
     | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BrandingRoute: typeof BrandingRoute
   ChiSiamoRoute: typeof ChiSiamoRoute
   ContattiRoute: typeof ContattiRoute
-  PortfolioRoute: typeof PortfolioRoute
   ServiziRoute: typeof ServiziRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
@@ -124,13 +124,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiziRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/portfolio': {
-      id: '/portfolio'
-      path: '/portfolio'
-      fullPath: '/portfolio'
-      preLoaderRoute: typeof PortfolioRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/contatti': {
       id: '/contatti'
       path: '/contatti'
@@ -145,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChiSiamoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/branding': {
+      id: '/branding'
+      path: '/branding'
+      fullPath: '/branding'
+      preLoaderRoute: typeof BrandingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -157,9 +157,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BrandingRoute: BrandingRoute,
   ChiSiamoRoute: ChiSiamoRoute,
   ContattiRoute: ContattiRoute,
-  PortfolioRoute: PortfolioRoute,
   ServiziRoute: ServiziRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }

@@ -95,42 +95,6 @@ function Index() {
       {/* ITALY MAP */}
       <ItalyMap />
 
-      {/* PORTFOLIO PREVIEW */}
-      <section className="container-x py-24 md:py-32">
-        <Reveal>
-          <div className="flex flex-col md:flex-row justify-between md:items-end mb-16 gap-6">
-            <div>
-              <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Portfolio</span>
-              <h2 className="mt-3 text-4xl md:text-5xl font-bold">Progetti e Collaborazioni</h2>
-            </div>
-            <Link to="/portfolio" className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">
-              Vedi tutti <ArrowRight size={16} />
-            </Link>
-          </div>
-        </Reveal>
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { img: projFiber, sector: "Fibra Ottica", title: "Fiber Network Development", desc: "Progettazione e deployment di infrastruttura di rete." },
-            { img: projPermit, sector: "Permitting", title: "Permitting Management", desc: "Coordinamento con pubbliche amministrazioni." },
-            { img: projIt, sector: "Servizi IT", title: "Enterprise IT Services", desc: "Supporto e attività di manutenzione." },
-          ].map((p, i) => (
-            <Reveal key={p.title} delay={i * 120}>
-              <article className="card-lift group overflow-hidden rounded-2xl bg-card border border-border h-full">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img src={p.img} alt={p.title} loading="lazy" width={1280} height={800} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#081A33]/90 via-transparent to-transparent" />
-                  <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-accent/90 text-[#003B5C] text-xs font-semibold uppercase tracking-wider">{p.sector}</span>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold">{p.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{p.desc}</p>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
             {/* WHY CHOOSE US */}
       <section className="bg-secondary py-24">
         <div className="container-x">

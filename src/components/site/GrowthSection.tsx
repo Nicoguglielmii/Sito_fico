@@ -149,14 +149,6 @@ function GrowthCard({ index, item: r, position }: GrowthCardProps) {
             {r.desc}
           </p>
 
-          {/* CTA Link */}
-          <a
-            href="#"
-            onClick={(e) => e.preventDefault()}
-            className="inline-flex items-center gap-2 text-white/70 font-semibold pt-2 transition-all duration-300 group-hover:text-white hover:gap-3"
-          >
-            Scopri <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-          </a>
         </div>
 
         {/* Animated border glow */}

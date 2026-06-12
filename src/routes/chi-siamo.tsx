@@ -46,7 +46,7 @@ function ChiSiamo() {
               Una storia di <span className="text-gradient">competenza e visione.</span>
             </h1>
             <p className="mt-6 text-lg text-white/75 max-w-2xl">
-              FI.CO. SRL nasce dall'iniziativa di giovani professionisti specializzati nel settore delle telecomunicazioni, uniti dalla volontà di offrire le proprie competenze nel settore delle telecomunicazioni a servizio di enti pubblici e operatori privati.
+             FI.CO SRL nasce dall’iniziativa di giovani professionisti specializzati nelle telecomunicazioni, uniti dalla volontà di offrire competenze tecniche solide e un approccio moderno alla progettazione e gestione delle infrastrutture. Nel tempo l’azienda ha ampliato la propria visione: oggi FI.CO non opera più soltanto nel settore TLC, ma evolve costantemente per offrire un ventaglio sempre più ampio di servizi tecnici, digitali e operativi. La nostra crescita è guidata da innovazione, affidabilità e capacità di adattarci alle nuove esigenze del mercato, con l’obiettivo di diventare un partner versatile e orientato al futuro.
             </p>
           </Reveal>
         </div>
