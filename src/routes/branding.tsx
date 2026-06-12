@@ -3,9 +3,8 @@ import { Reveal, Tilt } from "@/components/site/Reveal";
 import { HeroParticles } from "@/components/site/Interactive";
 import { ArrowRight, Shapes } from "lucide-react";
 import brandHero from "@/assets/hero-fiber.jpg";
-import logoMain from "@/assets/copilot-logo.jpg";
-import logoPittogramma from "@/assets/copilot-pittogramma.jpg";
-import logoVariations from "@/assets/connessioni.png";
+import logoPittogramma from "@/assets/fico-pittogramma.png";
+import logoWordmark from "@/assets/fico-wordmark.png";
 
 export const Route = createFileRoute("/branding")({
   head: () => ({
@@ -56,7 +55,11 @@ function BrandingPage() {
 
         <div className="grid lg:grid-cols-2 gap-16 mt-16 items-center">
           <Reveal>
-            <img src={logoMain} alt="Logo FI.CO." className="w-full rounded-xl shadow-lg" />
+            <img
+              src={logoWordmark}
+              alt="FI.CO. wordmark"
+              className="mx-auto h-24 w-auto"
+            />
           </Reveal>
 
           <Reveal delay={150}>
@@ -88,7 +91,13 @@ function BrandingPage() {
           </Reveal>
 
           <Reveal>
-            <img src={logoPittogramma} alt="Pittogramma FI.CO." className="mx-auto w-full max-w-3xl rounded-xl shadow-xl" />
+            <div className="flex justify-center">
+              <img
+                src={logoPittogramma}
+                alt="Pittogramma Fidelino"
+                className="w-64 h-auto"
+              />
+            </div>
           </Reveal>
 
           <Reveal delay={150}>
@@ -106,52 +115,39 @@ function BrandingPage() {
         <Reveal>
           <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Sistema Grafico</span>
           <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
-            Un’identità <span className="text-gradient">generativa</span>
+            Un'identità <span className="text-gradient">generativa</span>
           </h2>
+          <p className="mt-4 text-muted-foreground text-lg max-w-2xl">
+            Il sistema visivo permette di spostare i nodi, creare nuove connessioni e generare
+            varianti coerenti: ogni curva racconta un valore, ogni punto un attore della rete.
+          </p>
         </Reveal>
 
-        <div className="grid lg:grid-cols-2 gap-16 mt-16 items-center">
-          <Reveal>
-            <img src={logoVariations} alt="Variazioni Logo FI.CO." className="w-full rounded-xl shadow-lg" />
-          </Reveal>
-
-          <Reveal delay={150}>
-            <div className="space-y-5 text-muted-foreground text-lg leading-relaxed">
-              <p>
-                Il sistema visivo permette di spostare i nodi, creare nuove connessioni e generare  
-                varianti coerenti per ogni area aziendale: Informatica, Commerciale, Consulting.
-              </p>
-              <p>
-                Una palette colori dedicata permette di distinguere i settori mantenendo  
-                un’identità unitaria e riconoscibile.
-              </p>
-            </div>
-          </Reveal>
-        </div>
+        <div className="mt-16 h-px bg-border max-w-4xl mx-auto" />
       </section>
 
-    {/* CTA FINALE */}
-<section className="container-x pt-24 pb-24">
-  <Reveal>
-    <div className="relative overflow-hidden rounded-3xl surface-navy p-12 md:p-20 text-center">
-      <div className="absolute inset-0 opacity-40" style={{ backgroundImage: "var(--gradient-glow)" }} />
-      <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-accent/20 blur-3xl animate-pulse-glow" />
+      {/* CTA FINALE */}
+      <section className="container-x pt-24 pb-24">
+        <Reveal>
+          <div className="relative overflow-hidden rounded-3xl surface-navy p-12 md:p-20 text-center">
+            <div className="absolute inset-0 opacity-40" style={{ backgroundImage: "var(--gradient-glow)" }} />
+            <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-accent/20 blur-3xl animate-pulse-glow" />
 
-      <div className="relative">
-        <Shapes className="mx-auto text-accent" size={40} />
-        <h2 className="mt-6 text-4xl md:text-6xl font-bold max-w-3xl mx-auto leading-tight">
-          Un’identità che parla di <span className="text-gradient">connessioni.</span>
-        </h2>
-        <p className="mt-6 text-lg text-white/75 max-w-2xl mx-auto">
-          Vuoi approfondire il nostro processo creativo o sviluppare un’identità per il tuo progetto?
-        </p>
-        <a href="/contatti" className="btn-hero mt-10 inline-flex items-center gap-2">
-          Contattaci <ArrowRight size={18} />
-        </a>
-      </div>
-    </div>
-  </Reveal>
-</section>
+            <div className="relative">
+              <Shapes className="mx-auto text-accent" size={40} />
+              <h2 className="mt-6 text-4xl md:text-6xl font-bold max-w-3xl mx-auto leading-tight">
+                Un'identità che parla di <span className="text-gradient">connessioni.</span>
+              </h2>
+              <p className="mt-6 text-lg text-white/75 max-w-2xl mx-auto">
+                Vuoi approfondire il nostro processo creativo o sviluppare un'identità per il tuo progetto?
+              </p>
+              <a href="/contatti" className="btn-hero mt-10 inline-flex items-center gap-2">
+                Contattaci <ArrowRight size={18} />
+              </a>
+            </div>
+          </div>
+        </Reveal>
+      </section>
     </>
   );
 }
