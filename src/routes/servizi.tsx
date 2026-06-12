@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Cable, FileCheck2, Server, X, ArrowRight, ClipboardCheck, ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
-import { LogoAnimation } from "@/routes/LogoAnimation";
+import { LogoAnimation } from "@/components/site/LogoAnimation";
 
 export const Route = createFileRoute("/servizi")({
   head: () => ({
