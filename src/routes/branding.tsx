@@ -4,8 +4,8 @@ import { HeroParticles } from "@/components/site/Interactive";
 import { ArrowRight, Shapes } from "lucide-react";
 import brandHero from "@/assets/hero-fiber.jpg";
 import logoMain from "@/assets/logo-scritto.jpg";
-import logoPittogramma from "@/assets/PITTOGRAMMA.jpg";
-import logoVariations from "@/assets/PITTOGRAMMA.jpg";
+import logoPittogramma from "@/assets/pittogramma.jpg";
+import logoVariations from "@/assets/pittogramma.jpg";
 
 export const Route = createFileRoute("/branding")({
   head: () => ({
