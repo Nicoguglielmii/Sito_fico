@@ -3,9 +3,9 @@ import { Reveal, Tilt } from "@/components/site/Reveal";
 import { HeroParticles } from "@/components/site/Interactive";
 import { ArrowRight, Shapes } from "lucide-react";
 import brandHero from "@/assets/hero-fiber.jpg";
-import logoMain from "@/assets/logo-scritto.jpg";
-import logoPittogramma from "@/assets/pittogramma.jpg";
-import logoVariations from "@/assets/pittogramma.jpg";
+import logoMain from "@/assets/copilot-logo.jpg";
+import logoPittogramma from "@/assets/copilot-pittogramma.jpg";
+import logoVariations from "@/assets/connessioni.png";
 
 export const Route = createFileRoute("/branding")({
   head: () => ({
