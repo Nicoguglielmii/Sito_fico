@@ -1,11 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Cable, FileCheck2, Server, Sparkles, ShieldCheck, Zap, Award, Network, Building2 } from "lucide-react";
-import { Rocket, TrendingUp, Handshake, Globe2} from "lucide-react"
+import { ArrowRight, Sparkles, ShieldCheck, Zap, Award, Network } from "lucide-react";
 import heroImg from "@/assets/hero-fiber.jpg";
-import projFiber from "@/assets/project-fiber.jpg";
-import projPermit from "@/assets/project-permit.jpg";
-import projIt from "@/assets/project-it.jpg";
-import { Reveal, Counter, Tilt } from "@/components/site/Reveal";
+import { Reveal } from "@/components/site/Reveal";
 import { HeroParticles, ProcessTimeline, ItalyMap, Magnetic } from "@/components/site/Interactive";
 import { GrowthSection } from "@/components/site/GrowthSection";
 
@@ -39,51 +35,52 @@ function Index() {
         <div className="absolute top-[30%] left-[15%] w-3 h-3 rounded-full bg-accent animate-float shadow-[0_0_20px_var(--accent)]" />
         <div className="absolute bottom-[35%] right-[25%] w-2 h-2 rounded-full bg-primary animate-float shadow-[0_0_15px_var(--primary)]" style={{ animationDelay: "2s" }} />
 
-        <div className="container-x relative z-10 pt-32 pb-20">
-          <Reveal delay={100}>
-            <h1 className="font-[var(--font-display)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight max-w-5xl">
-              Creiamo il futuro,<br />
-              <span className="text-gradient">insieme.</span>
-            </h1>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="mt-8 text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed">
-              Connettiamo idee, persone e infrastrutture per costruire il futuro digitale.
-            </p>
-          </Reveal>
-          <Reveal delay={300}>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Magnetic>
-                <Link to="/servizi" className="btn-hero">
-                  Scopri i nostri servizi <ArrowRight size={18} />
-                </Link>
-              </Magnetic>
+        <div className="container-x relative z-10 pt-32 pb-24 md:pb-32">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-end">
+            <div>
+              <Reveal delay={100}>
+                <h1 className="font-[var(--font-display)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight">
+                  Creiamo il futuro,<br />
+                  <span className="text-gradient">insieme</span>
+                </h1>
+              </Reveal>
+              <Reveal delay={200}>
+                <p className="mt-8 text-lg md:text-xl text-white/75 max-w-xl leading-relaxed">
+                  Connettiamo idee, persone e infrastrutture per costruire il futuro digitale.
+                </p>
+              </Reveal>
+              <Reveal delay={300}>
+                <div className="mt-10 flex flex-wrap gap-4">
+                  <Magnetic>
+                    <Link to="/servizi" className="btn-hero">
+                      Scopri i nostri servizi <ArrowRight size={18} />
+                    </Link>
+                  </Magnetic>
+                </div>
+              </Reveal>
             </div>
-          </Reveal>
+
+            <div className="border-t lg:border-t-0 lg:border-l border-white/10 pt-12 lg:pt-0 lg:pl-16">
+              <Reveal delay={200}>
+                <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">Il nostro ruolo</span>
+                <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white">
+                  Siamo il punto di <span className="text-gradient">connessione</span>
+                </h2>
+              </Reveal>
+              <Reveal delay={300}>
+                <div className="mt-6 space-y-4 text-white/70 text-base md:text-lg leading-relaxed">
+                  <p>FI.CO nasce per semplificare ciò che spesso appare complesso. Ogni progetto infrastrutturale coinvolge operatori, imprese, amministrazioni pubbliche e professionisti. Il nostro ruolo è creare dialogo, coordinare attività e trasformare ogni esigenza in una soluzione concreta.</p>
+                  <p>Siamo il collegamento tra chi immagina la rete e chi la realizza.</p>
+                  <Link to="/chi-siamo" className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all pt-2">
+                    Scopri la nostra storia <ArrowRight size={16} />
+                  </Link>
+                </div>
+              </Reveal>
+            </div>
+          </div>
         </div>
 
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40 text-xs tracking-widest uppercase animate-pulse">scroll</div>
-      </section>
-
-      {/* ABOUT PREVIEW */}
-      <section className="container-x py-24 md:py-32">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <Reveal>
-            <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Il nostro ruolo</span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
-              Siamo il punto di <br /><span className="text-gradient">connessione.</span>
-            </h2>
-          </Reveal>
-          <Reveal delay={150}>
-            <div className="space-y-5 text-muted-foreground text-lg leading-relaxed">
-              <p>FI.CO nasce per semplificare ciò che spesso appare complesso. Ogni progetto infrastrutturale coinvolge operatori, imprese, amministrazioni pubbliche e professionisti. Il nostro ruolo è creare dialogo, coordinare attività e trasformare ogni esigenza in una soluzione concreta.</p>
-              <p>Siamo il collegamento tra chi immagina la rete e chi la realizza</p>
-              <Link to="/chi-siamo" className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all pt-2">
-                Scopri la nostra storia <ArrowRight size={16} />
-              </Link>
-            </div>
-          </Reveal>
-        </div>
       </section>
 
       {/* FUTURO E CRESCITA */}
@@ -92,10 +89,7 @@ function Index() {
       {/* PROCESS TIMELINE */}
       <ProcessTimeline />
 
-      {/* ITALY MAP */}
-      <ItalyMap />
-
-            {/* WHY CHOOSE US */}
+      {/* WHY CHOOSE US */}
       <section className="bg-secondary py-24">
         <div className="container-x">
           <Reveal>
@@ -123,6 +117,9 @@ function Index() {
         </div>
       </section>
 
+      {/* ITALY MAP */}
+      <ItalyMap />
+
       {/* FINAL CTA */}
       <section className="container-x pt-24 pb-24">
         <Reveal>
@@ -132,7 +129,7 @@ function Index() {
             <div className="relative">
               <Network className="mx-auto text-accent" size={40} />
               <h2 className="mt-6 text-4xl md:text-6xl font-bold max-w-3xl mx-auto leading-tight">
-                Trasformiamo le idee in <span className="text-gradient">risultati concreti.</span>
+                Trasformiamo le idee in <span className="text-gradient">risultati concreti</span>
               </h2>
               <p className="mt-6 text-lg text-white/75 max-w-2xl mx-auto">
               Parlaci del tuo progetto. Noi ci occuperemo di creare il collegamento giusto tra idee, persone e opportunità.

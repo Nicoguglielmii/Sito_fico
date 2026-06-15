@@ -169,7 +169,7 @@ export function ProcessTimeline() {
       `}</style>
       <div className="max-w-3xl mb-16">
         <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Il nostro processo</span>
-        <h2 className="mt-3 text-4xl md:text-5xl font-bold leading-tight">Dalla prima idea al <span className="text-gradient">go-live.</span></h2>
+        <h2 className="mt-3 text-4xl md:text-5xl font-bold leading-tight">Dalla prima idea al <span className="text-gradient">go-live</span></h2>
       </div>
       <div className="relative">
         <div aria-hidden className="hidden lg:block absolute inset-x-0 top-[24%] h-32 pointer-events-none overflow-visible">
@@ -322,7 +322,7 @@ export function ItalyMap() {
 
           <h2 className="mt-3 text-4xl md:text-5xl font-bold text-white">
             Presenza consolidata in tutta{" "}
-            <span className="text-gradient">Italia.</span>
+            <span className="text-gradient">Italia</span>
           </h2>
         </div>
 

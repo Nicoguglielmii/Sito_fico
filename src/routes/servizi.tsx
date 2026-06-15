@@ -340,7 +340,7 @@ function Servizi() {
             </span>
             <h1 className="mt-4 text-5xl md:text-7xl font-bold leading-[0.95] max-w-4xl">
               Soluzioni complete per{" "}
-              <span className="text-gradient">infrastrutture critiche.</span>
+              <span className="text-gradient">infrastrutture critiche</span>
             </h1>
             <p className="mt-6 text-lg text-white/75 max-w-2xl">
               Dal design alla messa in esercizio, dalla pratica autorizzativa al

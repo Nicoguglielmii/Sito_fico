@@ -1,13 +1,15 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { Linkedin, ClipboardCheck, PencilRuler, KanbanSquare, MapPinned, Rocket, TrendingUp, Handshake, Globe2, ArrowRight } from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
+import { Linkedin, ClipboardCheck, PencilRuler, KanbanSquare, MapPinned } from "lucide-react";
 import aboutImg from "@/assets/about-team.jpg";
+import logoPittogramma from "@/assets/fico-pittogramma.png";
+import logoWordmark from "@/assets/fico-wordmark.png";
 import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/chi-siamo")({
   head: () => ({
     meta: [
       { title: "Chi siamo — FI.CO. SRL" },
-      { name: "description", content: "La storia, la mission e l'approccio professionale di FI.CO. SRL." },
+      { name: "description", content: "La storia, la mission, l'identità visiva e l'approccio professionale di FI.CO. SRL." },
       { property: "og:title", content: "Chi siamo — FI.CO. SRL" },
       { property: "og:description", content: "Giovani professionisti delle telecomunicazioni con eccellenza tecnica." },
       { property: "og:url", content: "/chi-siamo" },
@@ -43,7 +45,7 @@ function ChiSiamo() {
           <Reveal>
             <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">Chi siamo</span>
             <h1 className="mt-4 text-5xl md:text-7xl font-bold leading-[0.95] max-w-4xl">
-              Una storia di <span className="text-gradient">competenza e visione.</span>
+              Una storia di <span className="text-gradient">competenza e visione</span>
             </h1>
             <p className="mt-6 text-lg text-white/75 max-w-2xl">
              FI.CO SRL nasce dall’iniziativa di giovani professionisti specializzati nelle telecomunicazioni, uniti dalla volontà di offrire competenze tecniche solide e un approccio moderno alla progettazione e gestione delle infrastrutture. Nel tempo l’azienda ha ampliato la propria visione: oggi FI.CO non opera più soltanto nel settore TLC, ma evolve costantemente per offrire un ventaglio sempre più ampio di servizi tecnici, digitali e operativi. La nostra crescita è guidata da innovazione, affidabilità e capacità di adattarci alle nuove esigenze del mercato, con l’obiettivo di diventare un partner versatile e orientato al futuro.
@@ -108,6 +110,71 @@ function ChiSiamo() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* BRANDING — IDENTITÀ VISIVA */}
+      <section id="identita" className="container-x py-24 md:py-32">
+        <Reveal>
+          <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Identità visiva</span>
+          <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
+            Il logo <span className="text-gradient">FI.CO</span>
+          </h2>
+        </Reveal>
+
+        <div className="grid lg:grid-cols-2 gap-16 mt-16 items-center">
+          <Reveal>
+            <img
+              src={logoWordmark}
+              alt="FI.CO. wordmark"
+              className="mx-auto h-24 w-auto"
+            />
+          </Reveal>
+
+          <Reveal delay={150}>
+            <div className="space-y-5 text-muted-foreground text-lg leading-relaxed">
+              <p>
+                Il logotipo nasce dalla fusione tra tipografia, nodi e connessioni.
+                Ogni elemento è stato progettato per comunicare affidabilità, dinamismo e relazione.
+              </p>
+              <p>
+                Le curve richiamano la fibra ottica, mentre i punti rappresentano gli attori della rete:
+                fornitori, FI.CO., clienti.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-secondary py-24">
+        <div className="container-x">
+          <Reveal>
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Pittogramma</span>
+              <h2 className="mt-3 text-4xl md:text-5xl font-bold">Fidelino</h2>
+              <p className="mt-4 text-muted-foreground text-lg">
+                Il simbolo generativo che rappresenta connessione, fiducia e dinamismo.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <div className="flex justify-center">
+              <img
+                src={logoPittogramma}
+                alt="Pittogramma Fidelino"
+                className="w-64 h-auto"
+              />
+            </div>
+          </Reveal>
+
+          <Reveal delay={150}>
+            <p className="mt-10 max-w-3xl mx-auto text-center text-lg text-muted-foreground leading-relaxed">
+              Il pittogramma nasce isolando i tre punti del logotipo e collegandoli con linee curve.
+              È un sistema aperto, flessibile, capace di adattarsi a contesti diversi e di rappresentare
+              la nostra missione: creare connessioni.
+            </p>
+          </Reveal>
         </div>
       </section>
 
