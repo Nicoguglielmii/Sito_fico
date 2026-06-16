@@ -10,7 +10,7 @@ type CollabNode = {
   label: string;
   icon: LucideIcon;
   description: string;
-  x: number; // position on a 0–100 square, center = 50,50
+  x: number;
   y: number;
 };
 
@@ -55,6 +55,28 @@ const NODES: CollabNode[] = [
 
 const CENTER = { x: 50, y: 50 };
 
+/**
+ * Calcola un punto di controllo quadratico che curva la linea
+ * perpendicolarmente rispetto alla direzione centro→nodo.
+ */
+function getQuadraticControlPoint(
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  curvature = 18
+) {
+  const mx = (x1 + x2) / 2;
+  const my = (y1 + y2) / 2;
+  // vettore perpendicolare normalizzato
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const len = Math.sqrt(dx * dx + dy * dy) || 1;
+  const nx = -dy / len;
+  const ny = dx / len;
+  return { cx: mx + nx * curvature, cy: my + ny * curvature };
+}
+
 export function CollaborationNetwork() {
   const [activeId, setActiveId] = useState<NodeId>("operatori");
   const active = NODES.find((n) => n.id === activeId) ?? NODES[0];
@@ -83,19 +105,28 @@ export function CollaborationNetwork() {
               <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full" style={{ overflow: "visible" }}>
                 {NODES.map((node, i) => {
                   const isActive = node.id === activeId;
+                  const { cx, cy } = getQuadraticControlPoint(
+                    CENTER.x,
+                    CENTER.y,
+                    node.x,
+                    node.y,
+                    // alterna la direzione della curva per varietà visiva
+                    i % 2 === 0 ? 14 : -14
+                  );
+                  const curvePath = `M${CENTER.x},${CENTER.y} Q${cx},${cy} ${node.x},${node.y}`;
+
                   return (
                     <g key={node.id}>
-                      <line
-                        x1={CENTER.x}
-                        y1={CENTER.y}
-                        x2={node.x}
-                        y2={node.y}
+                      {/* linea curva */}
+                      <path
+                        d={curvePath}
+                        fill="none"
                         stroke="currentColor"
                         strokeWidth={isActive ? 0.7 : 0.35}
                         strokeLinecap="round"
                         className={`transition-all duration-300 ${isActive ? "text-accent" : "text-border"}`}
                       />
-                      {/* traveling pulse of light, like a signal moving through fiber */}
+                      {/* pallino che viaggia lungo la curva */}
                       <circle
                         r={isActive ? 1.3 : 0.9}
                         fill="currentColor"
@@ -105,10 +136,11 @@ export function CollaborationNetwork() {
                           dur="3.2s"
                           begin={`${i * 0.5}s`}
                           repeatCount="indefinite"
-                          calcMode="linear"
+                          calcMode="spline"
+                          keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"
                           keyPoints="0;1;0"
                           keyTimes="0;0.5;1"
-                          path={`M${CENTER.x},${CENTER.y} L${node.x},${node.y}`}
+                          path={curvePath}
                         />
                       </circle>
                     </g>
