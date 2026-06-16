@@ -284,8 +284,8 @@ const REGIONS = [
   },
   {
     id: "Basilicata",
-    x: 74,
-    y: 66,
+    x: 76,
+    y: 63,
   },
   {
     id: "Puglia",
