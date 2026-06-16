@@ -138,6 +138,8 @@ export function CollaborationNetwork() {
                     key={node.id}
                     type="button"
                     aria-pressed={isActive}
+                    onMouseEnter={() => setActiveId(node.id)}
+                    onFocus={() => setActiveId(node.id)}
                     onClick={() => setActiveId(node.id)}
                     style={{ left: `${node.x}%`, top: `${node.y}%` }}
                     className={`absolute -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center gap-1 px-2 py-2.5 w-[92px] sm:w-[104px] rounded-2xl border transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
