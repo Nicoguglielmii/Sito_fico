@@ -234,7 +234,7 @@ export function ProcessTimeline() {
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-4 pt-8">
           {STEPS.map((s, i) => (
             <div key={s.title} className="relative group">
-              <div className="relative w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-primary to-accent text-white grid place-items-center shadow-lg group-hover:scale-110 transition-transform">
+              <div className="relative w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-primary to-accent text-white grid place-items-center shadow-lg group-hover:scale-110 transition-transform">
                 <s.icon size={28} />
                 <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-background border-2 border-primary text-primary text-xs font-bold grid place-items-center">{i + 1}</span>
               </div>

@@ -71,19 +71,22 @@ export function GrowthSection() {
               type="button"
               onClick={advance}
               aria-label={`Motore ${activeStep + 1}: ${current.title}. Clicca per il prossimo.`}
-              className="growth-card group relative w-full max-w-xl aspect-square rounded-3xl p-8 md:p-12 transition-all duration-500 overflow-hidden cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+              className="growth-card group relative w-full max-w-xl aspect-square rounded-full p-8 md:p-12 transition-all duration-500 overflow-hidden cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
               style={{ "--accent-color": current.accentColor } as CSSProperties}
             >
-              <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-lg border border-white/10 transition-all duration-500 group-hover:bg-white/[0.08] group-hover:border-white/30" />
+              {/* BACKGROUND LAYER */}
+              <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-lg border border-white/10 rounded-full transition-all duration-500 group-hover:bg-white/[0.08] group-hover:border-white/30" />
 
+              {/* RADIAL GLOW */}
               <div
-                className="absolute inset-0 opacity-20 transition-opacity duration-500 group-hover:opacity-30 pointer-events-none"
+                className="absolute inset-0 opacity-20 transition-opacity duration-500 group-hover:opacity-30 pointer-events-none rounded-full"
                 style={{
                   background: `radial-gradient(circle at 30% 30%, var(--accent-color) 0%, transparent 60%)`,
                 }}
               />
 
-              <div className="relative z-10 h-full flex flex-col justify-between">
+              {/* CONTENT */}
+              <div className="relative z-10 h-full flex flex-col items-center justify-center text-center gap-6 px-4">
                 <div className="flex items-start justify-between">
                   <span
                     key={activeStep}
@@ -107,6 +110,7 @@ export function GrowthSection() {
               </div>
             </button>
 
+            {/* STEP BUTTONS */}
             <div className="flex items-center gap-3">
               {ROADMAP.map((item, i) => (
                 <button
