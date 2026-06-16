@@ -4,6 +4,7 @@ import heroImg from "@/assets/hero-fiber.jpg";
 import { Reveal } from "@/components/site/Reveal";
 import { HeroParticles, ProcessTimeline, ItalyMap, Magnetic } from "@/components/site/Interactive";
 import { GrowthSection } from "@/components/site/GrowthSection";
+import { CollaborationNetwork } from "@/components/CollaborationNetwork";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -119,6 +120,9 @@ function Index() {
 
       {/* ITALY MAP */}
       <ItalyMap />
+
+      {/* COLLABORAZIONI */}
+      <CollaborationNetwork />
 
       {/* FINAL CTA */}
       <section className="container-x pt-24 pb-24">
