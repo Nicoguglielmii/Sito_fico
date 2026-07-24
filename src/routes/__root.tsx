@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Preloader } from "../components/site/Preloader";
 import {
   Outlet,
   Link,
@@ -130,6 +131,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      {/* ECCO IL PRELOADER */}
+      <Preloader />
+      
       <ScrollProgress />
       <Navbar />
       <main className="min-h-screen">
