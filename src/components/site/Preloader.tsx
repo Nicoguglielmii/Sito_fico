@@ -8,73 +8,83 @@ export function Preloader() {
   useGSAP(() => {
     const tl = gsap.timeline();
 
-    // 1. Stato iniziale: Piktogramma e Testo sono invisibili e centrati
-    // Impostiamo il piktogramma al centro e il testo a destra, nascosto
-    gsap.set(".piktogramma-dot, .piktogramma-path", { opacity: 0, scale: 0 });
-    gsap.set(".testo-container", { opacity: 0, x: 200 }); // Posizionato a dx e nascosto
+    // 1. SETUP INIZIALE
+    // Il testo è centrato, completamente trasparente e posizionato DIETRO il simbolo
+    gsap.set(".testo-container", { opacity: 0, x: 0 });
+    // I pallini sono rimpiccioliti a 0
+    gsap.set(".piktogramma-dot", { opacity: 0, scale: 0, transformOrigin: "center" });
+    // Prepariamo le linee per l'effetto "disegno"
+    gsap.set(".piktogramma-path", { opacity: 0, strokeDasharray: 400, strokeDashoffset: 400 });
 
-    // 2. Animazione Piktogramma al centro: nodi e archi appaiono e si assemblano
-    tl.to(".piktogramma-dot, .piktogramma-path", {
+    // 2. FORMAZIONE DEL SIMBOLO AL CENTRO
+    // Fanno "pop" i pallini gialli
+    tl.to(".piktogramma-dot", {
       opacity: 1,
       scale: 1,
-      duration: 1.5,
-      ease: "power3.out",
-      stagger: {
-        each: 0.1,
-        from: "random", // Assemblaggio casuale come richiesto
-      },
+      duration: 0.6,
+      ease: "back.out(1.7)",
+      stagger: 0.2, // Appaiono uno alla volta
     })
-    // 3. Scorrimento Piktogramma a sinistra
-    .to(".piktogramma-container", {
-      x: -150, // Spostamento a sinistra
-      duration: 1,
-      ease: "power2.inOut",
-    })
-    // 4. Apparizione Testo e scorrimento a destra
-    // Il testo svanisce da "dietro" (iniziando a dx) e si sposta verso destra
-    .to(".testo-container", {
-      x: 100, // Spostamento a destra
+    // Subito dopo, si disegnano gli archi azzurri
+    .to(".piktogramma-path", {
       opacity: 1,
+      strokeDashoffset: 0,
       duration: 1,
       ease: "power2.inOut",
-    }, "-=0.8") // Inizia poco prima che il piktogramma finisca di scorrere
-    // 5. Fine e Dissolvenza Preloader (Codice esistente)
+    }, "-=0.4") // Questo fa sovrapporre l'animazione precedente
+
+    // 3. LO SCORRIMENTO MAGICO (Simbolo a sx, Testo a dx)
+    .to(".piktogramma-container", {
+      x: -120, // Il simbolo scorre a sinistra
+      duration: 1.2,
+      ease: "power3.inOut",
+    }, "+=0.2") // Piccola pausa per far ammirare il simbolo
+    .to(".testo-container", {
+      x: 30, // Il testo scorre a destra...
+      opacity: 1, // ...e contemporaneamente diventa visibile!
+      duration: 1.2,
+      ease: "power3.inOut",
+    }, "<") // IMPORTANTE: Il simbolo "<" dice a GSAP di far partire questa animazione ESATTAMENTE insieme a quella sopra
+
+    // 4. FINE E SCOMPARSA DEL PRELOADER
     .to(container.current, {
       y: "-100%",
       duration: 1,
       ease: "power4.inOut",
-      delay: 0.5,
+      delay: 0.8,
     });
 
   }, { scope: container });
 
   return (
-    // Codice JSX del componente con l'SVG aggiornato
     <div 
       ref={container} 
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#011C27]"
     >
-      {/* 
-        Nuovo SVG combinato: contiene sia il piktogramma che il testo,
-        affiancati per permettere lo scorrimento.
-      */}
-      <svg viewBox="0 0 1000 300" className="w-full max-w-4xl h-auto">
-        {/* Piktogramma (Nodi e Archi) */}
-        <g className="piktogramma-container" transform="translate(500, 150)"> {/* Centrato inizialmente */}
-          {/* Archi (Path) - Uso dei path vettoriali approssimativi basati sull'immagine */}
-          <path className="piktogramma-path" d="M100,50 C100,-20 200,-20 200,50 C200,120 100,120 100,50" stroke="#0e7490" stroke-width="20" fill="none" opacity="0"/> {/* Scuru */}
-          <path className="piktogramma-path" d="M100,50 C100,-20 200,-20 200,50 C200,120 100,120 100,50" stroke="#38bdf8" stroke-width="15" fill="none" opacity="0"/> {/* Chiaro - dietro */}
-
-          {/* Nodi (Circle) */}
-          <circle className="piktogramma-dot" cx="100" cy="50" r="15" fill="#facc15" opacity="0"/> {/* Alto sx */}
-          <circle className="piktogramma-dot" cx="150" cy="120" r="15" fill="#facc15" opacity="0"/> {/* Centro-basso */}
-          <circle className="piktogramma-dot" cx="200" cy="50" r="15" fill="#facc15" opacity="0"/> {/* Basso dx */}
+      <svg viewBox="0 0 600 200" className="w-full max-w-lg h-auto">
+        
+        {/* 
+          TESTO: Deve essere scritto PRIMA del simbolo nel codice, 
+          così il browser lo renderizza "sul fondo" (dietro).
+        */}
+        <g className="testo-container" transform="translate(300, 120)">
+          <text fontSize="80" fontWeight="bold" fill="white" textAnchor="start">fi.co</text>
         </g>
 
-        {/* Testo fi.co */}
-        <g className="testo-container" transform="translate(700, 150)"> {/* Posizionato a dx */}
-          <text className="logo-text" x="0" y="20" fontSize="120" fontWeight="bold" fill="white" opacity="0">fi.co</text>
+        {/* 
+          SIMBOLO (Piktogramma): Scritto DOPO, così copre il testo inizialmente.
+        */}
+        <g className="piktogramma-container" transform="translate(250, 60)">
+          {/* Archi (Paths) - I colori sono quelli scuri/chiari del sito */}
+          <path className="piktogramma-path" d="M0,40 C0,-30 100,-30 100,40 C100,110 0,110 0,40" stroke="#0e7490" strokeWidth="18" fill="none" strokeLinecap="round" />
+          <path className="piktogramma-path" d="M0,40 C0,-30 100,-30 100,40 C100,110 0,110 0,40" stroke="#38bdf8" strokeWidth="10" fill="none" strokeLinecap="round" />
+
+          {/* Nodi (Pallini gialli) */}
+          <circle className="piktogramma-dot" cx="0" cy="40" r="14" fill="#facc15" />
+          <circle className="piktogramma-dot" cx="50" cy="100" r="14" fill="#facc15" />
+          <circle className="piktogramma-dot" cx="100" cy="40" r="14" fill="#facc15" />
         </g>
+
       </svg>
     </div>
   );
