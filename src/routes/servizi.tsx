@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Cable, FileCheck2, Server, X, ArrowRight, ClipboardCheck, ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { LogoAnimation } from "@/components/site/LogoAnimation";
-
+import { ServiziStory } from "@/components/site/ServiziStory";
 export const Route = createFileRoute("/servizi")({
   head: () => ({
     meta: [
@@ -350,18 +350,9 @@ function Servizi() {
         </div>
       </section>
 
-      {/* Pittogramma animato */}
-      <section className="container-x py-16">
-        <Reveal>
-          <p className="text-center text-sm text-muted-foreground mb-8 tracking-wide uppercase">
-            Clicca un nodo per scoprire il servizio
-          </p>
-        </Reveal>
-        <LogoAnimation
-          className="max-w-6xl mx-auto"
-          onDotClick={(dotIndex) => setOpenService(DOT_TO_SERVICE[dotIndex])}
-          dotLabels={DOT_LABELS}
-        />
+      {/* Animazione Fibra Ottica allo scroll */}
+      <section className="container-x py-16 w-full">
+        <ServiziStory />
       </section>
 
       {/* Modal servizio */}
