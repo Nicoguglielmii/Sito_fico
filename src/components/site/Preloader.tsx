@@ -1,57 +1,57 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+// Importiamo il wordmark del marchio per l'animazione iniziale
+import wordmarkImg from "../../assets/fico-wordmark.png";
 
 export function Preloader() {
+  // Contenitore principale della schermata di preloader
   const container = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     const tl = gsap.timeline();
 
-    // 1. SETUP INIZIALE
-    // Il testo è centrato, completamente trasparente e posizionato DIETRO il simbolo
-    gsap.set(".testo-container", { opacity: 0, x: 0 });
-    // I pallini sono rimpiccioliti a 0
-    gsap.set(".piktogramma-dot", { opacity: 0, scale: 0, transformOrigin: "center" });
-    // Prepariamo le linee per l'effetto "disegno"
-    gsap.set(".piktogramma-path", { opacity: 0, strokeDasharray: 400, strokeDashoffset: 400 });
-
-    // 2. FORMAZIONE DEL SIMBOLO AL CENTRO
-    // Fanno "pop" i pallini gialli
+    // Inizia con il testo spostato a sinistra, pronto per entrare in scena
+    gsap.set(".testo-container", { x: -30 }); 
+    
+    // 1. APPARIZIONE DEI PALLINI
+    // I punti del pittogramma emergono uno dopo l'altro con un movimento morbido
     tl.to(".piktogramma-dot", {
-      opacity: 1,
-      scale: 1,
-      duration: 0.6,
-      ease: "back.out(1.7)",
-      stagger: 0.2, // Appaiono uno alla volta
+      attr: { r: 10 }, 
+      duration: 1.1,
+      ease: "back.out(1.5)", 
+      stagger: 0.35,
     })
-    // Subito dopo, si disegnano gli archi azzurri
-    .to(".piktogramma-path", {
-      opacity: 1,
-      strokeDashoffset: 0,
-      duration: 1,
-      ease: "power2.inOut",
-    }, "-=0.4") // Questo fa sovrapporre l'animazione precedente
+    
+    // 2. DISEGNO DEGLI ARCHI
+    // Le linee del simbolo vengono tracciate con un effetto di inchiostro progressivo
+    .set(".piktogramma-path", { opacity: 1 }, "-=0.3")
+    .to(".piktogramma-path", { 
+        strokeDashoffset: 0, 
+        duration: 2.0,
+        ease: "power2.inOut",
+    }, "<")
 
-    // 3. LO SCORRIMENTO MAGICO (Simbolo a sx, Testo a dx)
+    // 3. SCORRIMENTO E APPARIZIONE DEL WORDMARK
+    // Il simbolo si sposta a sinistra mentre il testo del logo entra da destra
     .to(".piktogramma-container", {
-      x: -120, // Il simbolo scorre a sinistra
-      duration: 1.2,
+      x: -55,
+      duration: 1.6,
       ease: "power3.inOut",
-    }, "+=0.2") // Piccola pausa per far ammirare il simbolo
+    }, "+=0.4")
     .to(".testo-container", {
-      x: 30, // Il testo scorre a destra...
-      opacity: 1, // ...e contemporaneamente diventa visibile!
-      duration: 1.2,
+      x: 85,
+      opacity: 1,
+      duration: 1.8,
       ease: "power3.inOut",
-    }, "<") // IMPORTANTE: Il simbolo "<" dice a GSAP di far partire questa animazione ESATTAMENTE insieme a quella sopra
+    }, "<") 
 
-    // 4. FINE E SCOMPARSA DEL PRELOADER
+    // 4. USCITA DEL PRELOADER
     .to(container.current, {
       y: "-100%",
-      duration: 1,
+      duration: 1.3,
       ease: "power4.inOut",
-      delay: 0.8,
+      delay: 1.5,
     });
 
   }, { scope: container });
@@ -61,28 +61,53 @@ export function Preloader() {
       ref={container} 
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#011C27]"
     >
-      <svg viewBox="0 0 600 200" className="w-full max-w-lg h-auto">
+      <svg viewBox="0 0 500 150" className="w-full max-w-md h-auto overflow-visible">
         
-        {/* 
-          TESTO: Deve essere scritto PRIMA del simbolo nel codice, 
-          così il browser lo renderizza "sul fondo" (dietro).
-        */}
-        <g className="testo-container" transform="translate(300, 120)">
-          <text fontSize="80" fontWeight="bold" fill="white" textAnchor="start">fi.co</text>
+        {/* Logo wordmark: compare dopo il tracciamento del pittogramma */}
+        <g className="testo-container" transform="translate(190, 10)" opacity="0">
+          <image 
+            href={wordmarkImg} 
+            width="180" 
+            height="100" 
+            preserveAspectRatio="xMidYMid meet" 
+          />
         </g>
 
-        {/* 
-          SIMBOLO (Piktogramma): Scritto DOPO, così copre il testo inizialmente.
-        */}
-        <g className="piktogramma-container" transform="translate(250, 60)">
-          {/* Archi (Paths) - I colori sono quelli scuri/chiari del sito */}
-          <path className="piktogramma-path" d="M0,40 C0,-30 100,-30 100,40 C100,110 0,110 0,40" stroke="#0e7490" strokeWidth="18" fill="none" strokeLinecap="round" />
-          <path className="piktogramma-path" d="M0,40 C0,-30 100,-30 100,40 C100,110 0,110 0,40" stroke="#38bdf8" strokeWidth="10" fill="none" strokeLinecap="round" />
+        {/* Simbolo grafico che viene disegnato in sequenza */}
+        <g className="piktogramma-container" transform="translate(195, 0)">
+          
+          <path 
+            className="piktogramma-path" 
+            pathLength="100"
+            d="M 20,70 C 50,0 100,0 120,115" 
+            stroke="#38bdf8" 
+            strokeWidth="11" 
+            fill="none" 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            strokeDasharray="100"
+            strokeDashoffset="100"
+            opacity="0" 
+          />
+          
+          <path 
+            className="piktogramma-path" 
+            pathLength="100"
+            d="M 20,70 C 25,-10 45,0 45,115 C 70,70 100,70 120,115" 
+            stroke="#0e7490" 
+            strokeWidth="11" 
+            fill="none" 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            strokeDasharray="100"
+            strokeDashoffset="100"
+            opacity="0" 
+          />
 
-          {/* Nodi (Pallini gialli) */}
-          <circle className="piktogramma-dot" cx="0" cy="40" r="14" fill="#facc15" />
-          <circle className="piktogramma-dot" cx="50" cy="100" r="14" fill="#facc15" />
-          <circle className="piktogramma-dot" cx="100" cy="40" r="14" fill="#facc15" />
+          {/* Punti del pittogramma che emergono durante l'animazione */}
+          <circle className="piktogramma-dot" cx="20" cy="70" r="0" fill="#facc15" />   
+          <circle className="piktogramma-dot" cx="45" cy="115" r="0" fill="#facc15" />  
+          <circle className="piktogramma-dot" cx="120" cy="115" r="0" fill="#facc15" /> 
         </g>
 
       </svg>

@@ -17,6 +17,7 @@ import { Footer } from "../components/site/Footer";
 import { BackToTop, ScrollProgress } from "../components/site/Reveal";
 import { WhatsAppFab, CookieBanner } from "../components/site/Interactive";
 
+// Componente fallback per rotte non trovate (404)
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -39,6 +40,7 @@ function NotFoundComponent() {
   );
 }
 
+// Componente di errore globale per la root route: mostra fallback e registra l'errore
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
@@ -77,6 +79,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+// Definisce la root route principale dell'app con contesto condiviso e configurazione head
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -112,6 +115,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
+// Shell HTML che avvolge l'applicazione e include Head/Scripts necessari
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
@@ -131,9 +135,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* ECCO IL PRELOADER */}
+      {/* Preloader globale mostrato durante il caricamento iniziale dell'app */}
       <Preloader />
-      
+
+      {/* UI globale che accompagna ogni pagina */}
       <ScrollProgress />
       <Navbar />
       <main className="min-h-screen">

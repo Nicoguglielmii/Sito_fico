@@ -83,15 +83,21 @@ export function CollaborationNetwork() {
   const ActiveIcon = active.icon;
 
   return (
-    <section className="py-24 overflow-hidden">
+    <section className="py-24 overflow-hidden bg-transparent">
       <div className="container-x">
         <Reveal>
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">
               Le nostre collaborazioni
             </span>
-            <h2 className="mt-3 text-4xl md:text-5xl font-bold">Connessioni che generano valore</h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed">
+            
+            {/* MODIFICATO: Inserito gradiente al titolo */}
+            <h2 className="mt-3 text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#38bdf8] to-[#facc15] bg-clip-text text-transparent">
+              Connessioni che generano valore
+            </h2>
+            
+            {/* Cambiato text-muted-foreground in text-slate-300 */}
+            <p className="mt-4 text-slate-300 leading-relaxed">
               FI.CO è il punto in cui operatori, pubblica amministrazione, imprese e professionisti
               si incontrano per costruire, insieme, le infrastrutture di domani.
             </p>
@@ -117,14 +123,14 @@ export function CollaborationNetwork() {
 
                   return (
                     <g key={node.id}>
-                      {/* linea curva */}
+                      {/* linea curva - Cambiato text-border in text-white/20 per tema scuro */}
                       <path
                         d={curvePath}
                         fill="none"
                         stroke="currentColor"
                         strokeWidth={isActive ? 0.7 : 0.35}
                         strokeLinecap="round"
-                        className={`transition-all duration-300 ${isActive ? "text-accent" : "text-border"}`}
+                        className={`transition-all duration-300 ${isActive ? "text-accent" : "text-white/20"}`}
                       />
                       {/* pallino che viaggia lungo la curva */}
                       <circle
@@ -161,7 +167,7 @@ export function CollaborationNetwork() {
                 </div>
               </div>
 
-              {/* satellite nodes */}
+              {/* satellite nodes - Resi scuri */}
               {NODES.map((node) => {
                 const isActive = node.id === activeId;
                 const Icon = node.icon;
@@ -176,14 +182,16 @@ export function CollaborationNetwork() {
                     style={{ left: `${node.x}%`, top: `${node.y}%` }}
                     className={`absolute -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center gap-1 px-2 py-2.5 w-[92px] sm:w-[104px] rounded-2xl border transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                       isActive
-                        ? "bg-card border-primary shadow-lg scale-105"
-                        : "bg-card/70 border-border hover:border-primary/50 hover:scale-105"
+                        ? "bg-[#0a2e4d] border-primary shadow-lg scale-105"
+                        : "bg-[#0a2e4d]/70 border-white/10 hover:border-primary/50 hover:scale-105"
                     }`}
                   >
-                    <Icon className={isActive ? "text-primary" : "text-muted-foreground"} size={20} />
+                    {/* Icona chiara se inattiva */}
+                    <Icon className={isActive ? "text-primary" : "text-slate-400"} size={20} />
+                    {/* Testo chiaro */}
                     <span
                       className={`text-[10px] sm:text-[11px] font-semibold leading-tight text-center ${
-                        isActive ? "text-foreground" : "text-muted-foreground"
+                        isActive ? "text-white" : "text-slate-400"
                       }`}
                     >
                       {node.label}
@@ -194,16 +202,18 @@ export function CollaborationNetwork() {
             </div>
           </Reveal>
 
-          {/* INFO PANEL */}
+          {/* INFO PANEL - Convertito in scuro */}
           <Reveal delay={200}>
-            <div className="card-lift bg-card border border-border rounded-2xl p-8 md:p-10">
+            <div className="card-lift bg-[#0a2e4d] border border-white/10 shadow-lg rounded-2xl p-8 md:p-10">
               <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-primary/20 flex items-center justify-center shrink-0">
                   <ActiveIcon className="text-primary" size={22} />
                 </div>
-                <h3 className="text-xl font-bold">{active.label}</h3>
+                {/* Titolo bianco */}
+                <h3 className="text-xl font-bold text-white">{active.label}</h3>
               </div>
-              <p className="mt-5 text-muted-foreground leading-relaxed">{active.description}</p>
+              {/* Testo grigio chiaro */}
+              <p className="mt-5 text-slate-300 leading-relaxed">{active.description}</p>
               <div className="mt-7 flex gap-2">
                 {NODES.map((node) => (
                   <button
@@ -213,7 +223,7 @@ export function CollaborationNetwork() {
                     aria-label={`Mostra ${node.label}`}
                     aria-pressed={node.id === activeId}
                     className={`h-1.5 rounded-full transition-all duration-300 ${
-                      node.id === activeId ? "w-8 bg-primary" : "w-4 bg-border hover:bg-primary/40"
+                      node.id === activeId ? "w-8 bg-primary" : "w-4 bg-white/20 hover:bg-primary/40"
                     }`}
                   />
                 ))}

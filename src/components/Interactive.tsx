@@ -167,7 +167,7 @@ export function CookieBanner() {
 
 /* ----------------------------- Process timeline --------------------------- */
 const STEPS = [
-  { icon: Search, title: "Survey & rilievi", desc: "" },
+  { icon: Search, title: "Sondaggi & rilievi", desc: "" },
   { icon: Compass, title: "Progettazione", desc: "" },
   { icon: FileCheck2, title: "Permitting", desc: "" },
   { icon: HardHat, title: "Realizzazione", desc: "" },

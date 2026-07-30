@@ -1,4 +1,4 @@
-@import "tailwindcss" source(none);
+@import "tailwindcss";
 @source "../src";
 @import "tw-animate-css";
 
@@ -220,10 +220,8 @@
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
+    /* Sostituisci con il codice HEX esatto del tuo blu scuro */
+    @apply bg-[#031f38] text-slate-100; 
   }
   h1, h2, h3, h4, h5 {
     font-family: var(--font-display);

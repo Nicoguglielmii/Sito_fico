@@ -38,8 +38,9 @@ export function GrowthSection() {
   };
 
   return (
-    <section className="growth-section relative overflow-hidden py-32 md:py-40">
-      <div className="absolute inset-0 bg-gradient-to-b from-navy-deep via-navy to-navy-deep" />
+    /* Modificato: rimosso bg-gradient per ereditare lo sfondo globale scuro */
+    <section className="growth-section relative overflow-hidden py-32 md:py-40 bg-transparent">
+      {/* Rimosso il div con from-navy-deep per evitare stacchi di colore */}
       <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "var(--gradient-glow)" }} />
 
       <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-primary/10 blur-3xl animate-pulse-glow" />
@@ -55,9 +56,8 @@ export function GrowthSection() {
               <div className="h-1 w-12 bg-gradient-to-r from-primary to-accent rounded-full" />
               <span className="text-xs uppercase tracking-[0.3em] text-cyan-accent font-semibold">Futuro e crescita</span>
             </div>
-            <h2 className="text-6xl md:text-7xl font-black font-display text-white leading-[0.95] mb-6">
-              Motori di<br />
-              <span className="bg-gradient-to-r from-cyan-accent via-primary to-accent bg-clip-text text-transparent">crescita</span>
+            <h2 className="text-6xl md:text-7xl font-black font-display leading-[0.95] mb-6 bg-gradient-to-r from-cyan-accent via-primary to-accent bg-clip-text text-transparent">
+              Motori di<br />crescita
             </h2>
             <p className="text-lg text-white/70 leading-relaxed max-w-2xl">
               La nostra visione si fonda sull'innovazione e sulla continua ricerca di nuove opportunità. Collaborare con noi significa affrontare sfide stimolanti e trasformarle in crescita condivisa.

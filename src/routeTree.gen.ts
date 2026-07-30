@@ -11,7 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServiziRouteImport } from './routes/servizi'
+import { Route as RicercaInnovazioneRouteImport } from './routes/ricerca-innovazione'
+import { Route as ProgettazioneFibraRouteImport } from './routes/progettazione-fibra'
 import { Route as ContattiRouteImport } from './routes/contatti'
+import { Route as ConsulenzaImpreseRouteImport } from './routes/consulenza-imprese'
 import { Route as ChiSiamoRouteImport } from './routes/chi-siamo'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -25,9 +28,24 @@ const ServiziRoute = ServiziRouteImport.update({
   path: '/servizi',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RicercaInnovazioneRoute = RicercaInnovazioneRouteImport.update({
+  id: '/ricerca-innovazione',
+  path: '/ricerca-innovazione',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgettazioneFibraRoute = ProgettazioneFibraRouteImport.update({
+  id: '/progettazione-fibra',
+  path: '/progettazione-fibra',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContattiRoute = ContattiRouteImport.update({
   id: '/contatti',
   path: '/contatti',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConsulenzaImpreseRoute = ConsulenzaImpreseRouteImport.update({
+  id: '/consulenza-imprese',
+  path: '/consulenza-imprese',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChiSiamoRoute = ChiSiamoRouteImport.update({
@@ -44,14 +62,20 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/chi-siamo': typeof ChiSiamoRoute
+  '/consulenza-imprese': typeof ConsulenzaImpreseRoute
   '/contatti': typeof ContattiRoute
+  '/progettazione-fibra': typeof ProgettazioneFibraRoute
+  '/ricerca-innovazione': typeof RicercaInnovazioneRoute
   '/servizi': typeof ServiziRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/chi-siamo': typeof ChiSiamoRoute
+  '/consulenza-imprese': typeof ConsulenzaImpreseRoute
   '/contatti': typeof ContattiRoute
+  '/progettazione-fibra': typeof ProgettazioneFibraRoute
+  '/ricerca-innovazione': typeof RicercaInnovazioneRoute
   '/servizi': typeof ServiziRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
@@ -59,20 +83,42 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/chi-siamo': typeof ChiSiamoRoute
+  '/consulenza-imprese': typeof ConsulenzaImpreseRoute
   '/contatti': typeof ContattiRoute
+  '/progettazione-fibra': typeof ProgettazioneFibraRoute
+  '/ricerca-innovazione': typeof RicercaInnovazioneRoute
   '/servizi': typeof ServiziRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/chi-siamo' | '/contatti' | '/servizi' | '/sitemap.xml'
+  fullPaths:
+    | '/'
+    | '/chi-siamo'
+    | '/consulenza-imprese'
+    | '/contatti'
+    | '/progettazione-fibra'
+    | '/ricerca-innovazione'
+    | '/servizi'
+    | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/chi-siamo' | '/contatti' | '/servizi' | '/sitemap.xml'
+  to:
+    | '/'
+    | '/chi-siamo'
+    | '/consulenza-imprese'
+    | '/contatti'
+    | '/progettazione-fibra'
+    | '/ricerca-innovazione'
+    | '/servizi'
+    | '/sitemap.xml'
   id:
     | '__root__'
     | '/'
     | '/chi-siamo'
+    | '/consulenza-imprese'
     | '/contatti'
+    | '/progettazione-fibra'
+    | '/ricerca-innovazione'
     | '/servizi'
     | '/sitemap.xml'
   fileRoutesById: FileRoutesById
@@ -80,7 +126,10 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ChiSiamoRoute: typeof ChiSiamoRoute
+  ConsulenzaImpreseRoute: typeof ConsulenzaImpreseRoute
   ContattiRoute: typeof ContattiRoute
+  ProgettazioneFibraRoute: typeof ProgettazioneFibraRoute
+  RicercaInnovazioneRoute: typeof RicercaInnovazioneRoute
   ServiziRoute: typeof ServiziRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
@@ -101,11 +150,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiziRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ricerca-innovazione': {
+      id: '/ricerca-innovazione'
+      path: '/ricerca-innovazione'
+      fullPath: '/ricerca-innovazione'
+      preLoaderRoute: typeof RicercaInnovazioneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/progettazione-fibra': {
+      id: '/progettazione-fibra'
+      path: '/progettazione-fibra'
+      fullPath: '/progettazione-fibra'
+      preLoaderRoute: typeof ProgettazioneFibraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contatti': {
       id: '/contatti'
       path: '/contatti'
       fullPath: '/contatti'
       preLoaderRoute: typeof ContattiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/consulenza-imprese': {
+      id: '/consulenza-imprese'
+      path: '/consulenza-imprese'
+      fullPath: '/consulenza-imprese'
+      preLoaderRoute: typeof ConsulenzaImpreseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/chi-siamo': {
@@ -128,7 +198,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ChiSiamoRoute: ChiSiamoRoute,
+  ConsulenzaImpreseRoute: ConsulenzaImpreseRoute,
   ContattiRoute: ContattiRoute,
+  ProgettazioneFibraRoute: ProgettazioneFibraRoute,
+  RicercaInnovazioneRoute: RicercaInnovazioneRoute,
   ServiziRoute: ServiziRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }

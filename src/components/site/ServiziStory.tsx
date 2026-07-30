@@ -41,7 +41,8 @@ export function ServiziStory() {
   }, { scope: container });
 
   return (
-    <div ref={container} className="relative w-full max-w-3xl mx-auto py-20 flex flex-col items-center">
+    // Ridotto il padding verticale da py-20 a py-10 per compattare la sezione
+    <div ref={container} className="relative w-full max-w-3xl mx-auto py-10 flex flex-col items-center">
       
       {/* Cavo in fibra ottica centrale (Linea SVG) */}
       <svg className="absolute top-0 bottom-0 h-full w-2" viewBox="0 0 10 1000" preserveAspectRatio="none">
@@ -51,31 +52,40 @@ export function ServiziStory() {
         <line className="fibra-line" x1="5" y1="0" x2="5" y2="1000" stroke="#38bdf8" strokeWidth="4" />
       </svg>
 
-      {/* Nodi dei servizi */}
-      <div className="relative z-10 w-full flex flex-col gap-32 my-10">
+      {/* Nodi dei servizi: GAP ridotto da 32 a 16 per avvicinare i punti */}
+      <div className="relative z-10 w-full flex flex-col gap-16 my-10">
         
-        {/* Servizio 1 */}
-        <div className="flex items-center justify-between w-full pr-1/2">
-          <div className="w-1/2 pr-12 text-right">
-            <h3 className="text-2xl font-bold text-cyan-600">Sopralluoghi</h3>
-            <p className="text-gray-400">Analisi sul campo per la fattibilità.</p>
+        {/* Servizio 1 - Sinistra */}
+        <div className="flex items-center justify-between w-full">
+          <div className="w-1/2 pr-8 md:pr-12 text-right">
+            <h3 className="text-2xl font-bold text-cyan-400">Sopralluoghi</h3>
+            <p className="text-slate-300 mt-1">Analisi sul campo per la fattibilità.</p>
           </div>
           {/* Il Pallino (Nodo) */}
           <div className="nodo-servizio w-6 h-6 rounded-full bg-cyan-900 border-4 border-[#011C27] absolute left-1/2 transform -translate-x-1/2"></div>
           <div className="w-1/2"></div>
         </div>
 
-        {/* Servizio 2 */}
-        <div className="flex items-center justify-between w-full pl-1/2">
+        {/* Servizio 2 - Destra */}
+        <div className="flex items-center justify-between w-full">
           <div className="w-1/2"></div>
           <div className="nodo-servizio w-6 h-6 rounded-full bg-cyan-900 border-4 border-[#011C27] absolute left-1/2 transform -translate-x-1/2"></div>
-          <div className="w-1/2 pl-12 text-left">
-            <h3 className="text-2xl font-bold text-cyan-600">Progettazione</h3>
-            <p className="text-gray-400">Creazione dell'infrastruttura di rete.</p>
+          <div className="w-1/2 pl-8 md:pl-12 text-left">
+            <h3 className="text-2xl font-bold text-cyan-400">Progettazione</h3>
+            <p className="text-slate-300 mt-1">Creazione dell'infrastruttura di rete.</p>
           </div>
         </div>
 
-        {/* Puoi aggiungere altri nodi copiando i blocchi qui sopra alternando destra/sinistra */}
+        {/* Servizio 3 - Sinistra */}
+        <div className="flex items-center justify-between w-full">
+          <div className="w-1/2 pr-8 md:pr-12 text-right">
+            <h3 className="text-2xl font-bold text-cyan-400">Implementazione</h3>
+            <p className="text-slate-300 mt-1">Installazione materiale e messa in opera dell'infrastruttura in fibra ottica.</p>
+          </div>
+          {/* Il Pallino (Nodo) */}
+          <div className="nodo-servizio w-6 h-6 rounded-full bg-cyan-900 border-4 border-[#011C27] absolute left-1/2 transform -translate-x-1/2"></div>
+          <div className="w-1/2"></div>
+        </div>
 
       </div>
     </div>
