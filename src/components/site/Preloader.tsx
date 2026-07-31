@@ -11,11 +11,14 @@ export function Preloader() {
   useGSAP(() => {
     const tl = gsap.timeline();
 
-    // Inizia con il testo spostato a sinistra, pronto per entrare in scena
-    gsap.set(".testo-container", { x: -30 }); 
+    // SETUP INIZIALE TRAMITE GSAP (evita conflitti con gli attributi SVG)
+    // 180 è la coordinata esatta per avere il pittogramma perfettamente al centro iniziale
+    gsap.set(".piktogramma-container", { x: 180, y: 0 });
+    // Il testo parte spostato a destra e invisibile
+    gsap.set(".testo-container", { x: 260, y: 15, opacity: 0 }); 
     
     // 1. APPARIZIONE DEI PALLINI
-    // I punti del pittogramma emergono uno dopo l'altro con un movimento morbido
+    // I punti del pittogramma emergono uno dopo l'altro dal centro dello schermo
     tl.to(".piktogramma-dot", {
       attr: { r: 10 }, 
       duration: 1.1,
@@ -24,7 +27,7 @@ export function Preloader() {
     })
     
     // 2. DISEGNO DEGLI ARCHI
-    // Le linee del simbolo vengono tracciate con un effetto di inchiostro progressivo
+    // Le linee del simbolo vengono tracciate
     .set(".piktogramma-path", { opacity: 1 }, "-=0.3")
     .to(".piktogramma-path", { 
         strokeDashoffset: 0, 
@@ -33,14 +36,16 @@ export function Preloader() {
     }, "<")
 
     // 3. SCORRIMENTO E APPARIZIONE DEL WORDMARK
-    // Il simbolo si sposta a sinistra mentre il testo del logo entra da destra
+    // Il pittogramma si sposta a x: 70
+    // Il testo si sposta a x: 230 (lasciando un distacco netto e pulito)
+    // L'ingombro totale del blocco ora è perfettamente centrato nella Viewbox di 500px!
     .to(".piktogramma-container", {
-      x: -55,
+      x: 70,
       duration: 1.6,
       ease: "power3.inOut",
     }, "+=0.4")
     .to(".testo-container", {
-      x: 85,
+      x: 230,
       opacity: 1,
       duration: 1.8,
       ease: "power3.inOut",
@@ -63,8 +68,8 @@ export function Preloader() {
     >
       <svg viewBox="0 0 500 150" className="w-full max-w-md h-auto overflow-visible">
         
-        {/* Logo wordmark: compare dopo il tracciamento del pittogramma */}
-        <g className="testo-container" transform="translate(190, 10)" opacity="0">
+        {/* Logo wordmark: rimosso il transform SVG, gestito da GSAP */}
+        <g className="testo-container" style={{ opacity: 0 }}>
           <image 
             href={wordmarkImg} 
             width="180" 
@@ -73,8 +78,8 @@ export function Preloader() {
           />
         </g>
 
-        {/* Simbolo grafico che viene disegnato in sequenza */}
-        <g className="piktogramma-container" transform="translate(195, 0)">
+        {/* Simbolo grafico: rimosso il transform SVG, gestito da GSAP */}
+        <g className="piktogramma-container">
           
           <path 
             className="piktogramma-path" 
