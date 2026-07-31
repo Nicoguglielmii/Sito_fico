@@ -161,7 +161,7 @@ export function CookieBanner() {
   };
 
   return (
-    <div className="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-[99999] w-[calc(100vw-2rem)] md:w-[700px] p-5 md:p-6 rounded-2xl bg-[#0a2e4d] border border-[#0e7490]/40 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.9)] backdrop-blur-xl animate-fade-in flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+    <div className="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-[99999] w-[calc(100vw-2rem)] md:w-[700px] p-5 md:p-6 rounded-2xl bg-[#011C27] border border-[#0e7490]/50 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.9)] flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
       
       {/* Testo del banner */}
       <div className="flex-1">
@@ -186,13 +186,13 @@ export function CookieBanner() {
       <div className="flex items-center gap-3 justify-end shrink-0 mt-2 md:mt-0">
         <button 
           onClick={reject} 
-          className="px-4 py-2.5 text-[14px] font-semibold rounded-xl bg-white/10 text-white hover:bg-white/20 border border-white/5 transition-colors"
+          className="px-4 py-2.5 text-[14px] font-semibold rounded-xl bg-transparent text-slate-300 hover:text-white hover:bg-white/10 border border-slate-500 transition-colors"
         >
           Rifiuta
         </button>
         <button 
           onClick={accept} 
-          className="px-5 py-2.5 text-[14px] font-bold rounded-xl bg-[#38bdf8] text-[#011C27] hover:bg-[#0284c7] hover:text-white transition-all shadow-[0_0_15px_rgba(56,189,248,0.4)]"
+          className="px-5 py-2.5 text-[14px] font-bold rounded-xl bg-[#38bdf8] text-[#011C27] hover:bg-[#0ea5e9] hover:text-white transition-all shadow-[0_0_15px_rgba(56,189,248,0.3)]"
         >
           Accetta tutti
         </button>
@@ -206,7 +206,6 @@ export function CookieBanner() {
           <X size={22} />
         </button>
       </div>
-
     </div>
   );
 }
