@@ -6,7 +6,11 @@ export const Route = createFileRoute("/progettazione-fibra")({
   head: () => ({
     meta: [
       { title: "Progettazione e Implementazione Fibra — FI.CO. SRL" },
-      { name: "description", content: "Dalla progettazione alla posa in opera: soluzioni complete per infrastrutture in fibra ottica." },
+      {
+        name: "description",
+        content:
+          "Dalla progettazione alla posa in opera: soluzioni complete per infrastrutture in fibra ottica.",
+      },
     ],
   }),
   component: ProgettazioneFibra,
@@ -31,7 +35,9 @@ function ProgettazioneFibra() {
               Implementazione Fibra
             </h1>
             <p className="mt-6 text-lg text-slate-300 max-w-2xl leading-relaxed">
-              Realizziamo le arterie del futuro digitale. Curiamo ogni aspetto del processo: dai sopralluoghi iniziali fino all'accensione della rete, assicurando standard qualitativi eccellenti e tempistiche certe.
+              Realizziamo le arterie del futuro digitale. Curiamo ogni aspetto del processo: dai
+              sopralluoghi iniziali fino all'accensione della rete, assicurando standard qualitativi
+              eccellenti e tempistiche certe.
             </p>
           </Reveal>
         </div>
@@ -51,23 +57,23 @@ function ProgettazioneFibra() {
               {
                 icon: HardHat,
                 title: "Sopralluoghi e Rilievi",
-                desc: "I nostri tecnici verificano sul campo la fattibilità, individuando i percorsi ottimali e le infrastrutture esistenti sfruttabili."
+                desc: "I nostri tecnici verificano sul campo la fattibilità, individuando i percorsi ottimali e le infrastrutture esistenti sfruttabili.",
               },
               {
                 icon: Cable,
                 title: "Ingegneria di Rete",
-                desc: "Sviluppiamo progetti esecutivi dettagliati, curando il dimensionamento ottico, la topologia della rete e i percorsi di scavo."
+                desc: "Sviluppiamo progetti esecutivi dettagliati, curando il dimensionamento ottico, la topologia della rete e i percorsi di scavo.",
               },
               {
                 icon: Router,
                 title: "Posa e Giunzione",
-                desc: "Gestiamo la posa dei cavi, la soffiatura e le giunzioni ottiche con strumentazione all'avanguardia per garantire attenuazioni minime."
+                desc: "Gestiamo la posa dei cavi, la soffiatura e le giunzioni ottiche con strumentazione all'avanguardia per garantire attenuazioni minime.",
               },
               {
                 icon: Zap,
                 title: "Collaudo e Attivazione",
-                desc: "Effettuiamo test riflettometrici (OTDR) e certificazioni finali prima della messa in esercizio della rete."
-              }
+                desc: "Effettuiamo test riflettometrici (OTDR) e certificazioni finali prima della messa in esercizio della rete.",
+              },
             ].map((feature, i) => (
               <Reveal key={i} delay={i * 100}>
                 <div className="bg-[#0a2e4d] p-8 rounded-2xl border border-white/5 shadow-lg h-full hover:border-[#38bdf8]/30 transition-colors">
@@ -93,13 +99,16 @@ function ProgettazioneFibra() {
                   Precisione millimetrica, su vasta scala.
                 </h2>
                 <p className="text-slate-300 text-lg mb-8 leading-relaxed">
-                  Sappiamo che un'infrastruttura di successo si basa sull'affidabilità. Per questo motivo adottiamo materiali di primissima scelta e metodologie di lavoro certificate, minimizzando l'impatto ambientale e garantendo reti "future-proof" pronte per le tecnologie di domani.
+                  Sappiamo che un'infrastruttura di successo si basa sull'affidabilità. Per questo
+                  motivo adottiamo materiali di primissima scelta e metodologie di lavoro
+                  certificate, minimizzando l'impatto ambientale e garantendo reti "future-proof"
+                  pronte per le tecnologie di domani.
                 </p>
                 <ul className="space-y-4">
                   {[
                     "Utilizzo di minitrincee a basso impatto ambientale",
                     "Certificazione e documentazione OTDR completa",
-                    "Coordinamento diretto con Enti e amministrazioni"
+                    "Coordinamento diretto con Enti e amministrazioni",
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-slate-200">
                       <CheckCircle2 className="text-[#38bdf8] shrink-0" size={20} />
@@ -114,8 +123,8 @@ function ProgettazioneFibra() {
               <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
                 {/* Segnaposto immagine, da sostituire con foto reale dei vostri cantieri */}
                 <div className="w-full h-[400px] bg-gradient-to-br from-[#002D4A] to-[#011C27] flex items-center justify-center relative">
-                    <div className="absolute inset-0 bg-[#001E35] opacity-50"></div>
-                    <Cable size={80} className="text-[#38bdf8] opacity-50" />
+                  <div className="absolute inset-0 bg-[#001E35] opacity-50"></div>
+                  <Cable size={80} className="text-[#38bdf8] opacity-50" />
                 </div>
               </div>
             </Reveal>
@@ -132,7 +141,8 @@ function ProgettazioneFibra() {
               Hai un'infrastruttura da sviluppare?
             </h3>
             <p className="mt-4 text-slate-300 max-w-xl mx-auto relative z-10">
-              Siamo pronti a mettere in campo le nostre competenze per connettere il tuo progetto al resto del mondo.
+              Siamo pronti a mettere in campo le nostre competenze per connettere il tuo progetto al
+              resto del mondo.
             </p>
             <Link to="/contatti" className="btn-hero mt-8 relative z-10 inline-flex">
               Parla con il nostro team <ArrowRight size={18} />

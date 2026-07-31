@@ -1,5 +1,20 @@
 import { useEffect, useRef, useState, type ReactNode, type MouseEvent } from "react";
-import { MessageCircle, X, Sun, Moon, Send, ChevronLeft, ChevronRight, Quote, Search, Compass, FileCheck2, HardHat, ShieldCheck, ChevronDown } from "lucide-react";
+import {
+  MessageCircle,
+  X,
+  Sun,
+  Moon,
+  Send,
+  ChevronLeft,
+  ChevronRight,
+  Quote,
+  Search,
+  Compass,
+  FileCheck2,
+  HardHat,
+  ShieldCheck,
+  ChevronDown,
+} from "lucide-react";
 
 /* ------------------------- Hero particles canvas ------------------------- */
 export function HeroParticles() {
@@ -10,18 +25,23 @@ export function HeroParticles() {
     const ctx = c.getContext("2d");
     if (!ctx) return;
     let raf = 0;
-    let w = 0, h = 0;
+    let w = 0,
+      h = 0;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     type P = { x: number; y: number; vx: number; vy: number };
     let pts: P[] = [];
     const resize = () => {
-      w = c.clientWidth; h = c.clientHeight;
-      c.width = w * dpr; c.height = h * dpr;
+      w = c.clientWidth;
+      h = c.clientHeight;
+      c.width = w * dpr;
+      c.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       const count = Math.min(70, Math.floor((w * h) / 18000));
       pts = Array.from({ length: count }, () => ({
-        x: Math.random() * w, y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35,
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
       }));
     };
     resize();
@@ -29,15 +49,18 @@ export function HeroParticles() {
     const tick = () => {
       ctx.clearRect(0, 0, w, h);
       for (const p of pts) {
-        p.x += p.vx; p.y += p.vy;
+        p.x += p.vx;
+        p.y += p.vy;
         if (p.x < 0 || p.x > w) p.vx *= -1;
         if (p.y < 0 || p.y > h) p.vy *= -1;
       }
       // links — curve di Bézier quadratiche invece di linee rette
       for (let i = 0; i < pts.length; i++) {
         for (let j = i + 1; j < pts.length; j++) {
-          const a = pts[i], b = pts[j];
-          const dx = a.x - b.x, dy = a.y - b.y;
+          const a = pts[i],
+            b = pts[j];
+          const dx = a.x - b.x,
+            dy = a.y - b.y;
           const d2 = dx * dx + dy * dy;
           if (d2 < 140 * 140) {
             const dist = Math.sqrt(d2);
@@ -74,24 +97,45 @@ export function HeroParticles() {
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+    };
   }, []);
-  return <canvas ref={ref} aria-hidden className="absolute inset-0 w-full h-full pointer-events-none" />;
+  return (
+    <canvas ref={ref} aria-hidden className="absolute inset-0 w-full h-full pointer-events-none" />
+  );
 }
 
 /* ------------------------- Magnetic button wrapper ------------------------ */
-export function Magnetic({ children, className = "", strength = 0.35 }: { children: ReactNode; className?: string; strength?: number }) {
+export function Magnetic({
+  children,
+  className = "",
+  strength = 0.35,
+}: {
+  children: ReactNode;
+  className?: string;
+  strength?: number;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
   const onMove = (e: MouseEvent<HTMLSpanElement>) => {
-    const el = ref.current; if (!el) return;
+    const el = ref.current;
+    if (!el) return;
     const r = el.getBoundingClientRect();
     const x = (e.clientX - r.left - r.width / 2) * strength;
     const y = (e.clientY - r.top - r.height / 2) * strength;
     el.style.transform = `translate(${x}px, ${y}px)`;
   };
-  const reset = () => { if (ref.current) ref.current.style.transform = ""; };
+  const reset = () => {
+    if (ref.current) ref.current.style.transform = "";
+  };
   return (
-    <span ref={ref} onMouseMove={onMove} onMouseLeave={reset} className={`inline-block transition-transform duration-200 ease-out ${className}`}>
+    <span
+      ref={ref}
+      onMouseMove={onMove}
+      onMouseLeave={reset}
+      className={`inline-block transition-transform duration-200 ease-out ${className}`}
+    >
       {children}
     </span>
   );
@@ -118,7 +162,8 @@ export function ThemeToggle() {
   const [dark, setDark] = useState(false);
   useEffect(() => {
     const saved = localStorage.getItem("fico-theme");
-    const isDark = saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    const isDark =
+      saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
     setDark(isDark);
     document.documentElement.classList.toggle("dark", isDark);
   }, []);
@@ -162,45 +207,45 @@ export function CookieBanner() {
 
   return (
     <div className="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-[99999] w-[calc(100vw-2rem)] md:w-[700px] p-5 md:p-6 rounded-2xl bg-[#011C27] border border-[#0e7490]/50 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.9)] flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
-      
       {/* Testo del banner */}
       <div className="flex-1">
         <div className="flex justify-between items-start mb-2 md:mb-1">
           <h4 className="font-bold text-white text-base md:text-lg">Utilizziamo i cookie</h4>
-          
+
           {/* Tasto X visibile solo su Mobile (in alto a destra) */}
-          <button 
-            onClick={() => setShow(false)} 
-            aria-label="Chiudi" 
+          <button
+            onClick={() => setShow(false)}
+            aria-label="Chiudi"
             className="md:hidden text-slate-400 hover:text-white transition-colors"
           >
             <X size={20} />
           </button>
         </div>
         <p className="text-sm text-slate-300 leading-relaxed">
-          Utilizziamo cookie tecnici essenziali e analitici anonimi per offrirti la migliore esperienza di navigazione sul nostro sito.
+          Utilizziamo cookie tecnici essenziali e analitici anonimi per offrirti la migliore
+          esperienza di navigazione sul nostro sito.
         </p>
       </div>
 
       {/* Bottoni di azione */}
       <div className="flex items-center gap-3 justify-end shrink-0 mt-2 md:mt-0">
-        <button 
-          onClick={reject} 
+        <button
+          onClick={reject}
           className="px-4 py-2.5 text-[14px] font-semibold rounded-xl bg-transparent text-slate-300 hover:text-white hover:bg-white/10 border border-slate-500 transition-colors"
         >
           Rifiuta
         </button>
-        <button 
-          onClick={accept} 
+        <button
+          onClick={accept}
           className="px-5 py-2.5 text-[14px] font-bold rounded-xl bg-[#38bdf8] text-[#011C27] hover:bg-[#0ea5e9] hover:text-white transition-all shadow-[0_0_15px_rgba(56,189,248,0.3)]"
         >
           Accetta tutti
         </button>
-        
+
         {/* Tasto X visibile solo su PC (di fianco ai bottoni) */}
-        <button 
-          onClick={() => setShow(false)} 
-          aria-label="Chiudi" 
+        <button
+          onClick={() => setShow(false)}
+          aria-label="Chiudi"
           className="hidden md:flex items-center justify-center p-2 text-slate-400 hover:text-white transition-colors ml-1"
         >
           <X size={22} />
@@ -228,11 +273,18 @@ export function ProcessTimeline() {
         }
       `}</style>
       <div className="max-w-3xl mb-16">
-        <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Il nostro processo</span>
-        <h2 className="mt-3 text-4xl md:text-5xl font-bold leading-tight">Dalla prima idea al <span className="text-gradient">go-live</span></h2>
+        <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">
+          Il nostro processo
+        </span>
+        <h2 className="mt-3 text-4xl md:text-5xl font-bold leading-tight">
+          Dalla prima idea al <span className="text-gradient">go-live</span>
+        </h2>
       </div>
       <div className="relative">
-        <div aria-hidden className="hidden lg:block absolute inset-x-0 top-[24%] h-32 pointer-events-none overflow-visible">
+        <div
+          aria-hidden
+          className="hidden lg:block absolute inset-x-0 top-[24%] h-32 pointer-events-none overflow-visible"
+        >
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
             <defs>
               <filter id="timelineGlowFilter" x="-30%" y="-30%" width="160%" height="160%">
@@ -265,7 +317,10 @@ export function ProcessTimeline() {
               strokeLinejoin="round"
               strokeDasharray="60 220"
               filter="url(#timelineGlowFilter)"
-              style={{ animation: "lineTravel 5.5s linear infinite", animationTimingFunction: "linear" }}
+              style={{
+                animation: "lineTravel 5.5s linear infinite",
+                animationTimingFunction: "linear",
+              }}
             />
             <path
               d="M0,45 C22,25 38,80 52,42 C66,20 82,75 100,48"
@@ -276,7 +331,10 @@ export function ProcessTimeline() {
               strokeLinejoin="round"
               strokeDasharray="60 220"
               filter="url(#timelineGlowFilter)"
-              style={{ animation: "lineTravel 5s linear infinite", animationTimingFunction: "linear" }}
+              style={{
+                animation: "lineTravel 5s linear infinite",
+                animationTimingFunction: "linear",
+              }}
             />
             <path
               d="M0,18 C18,55 32,18 50,34 C68,50 82,20 100,28"
@@ -287,7 +345,10 @@ export function ProcessTimeline() {
               strokeLinejoin="round"
               strokeDasharray="80 220"
               filter="url(#timelineGlowFilter)"
-              style={{ animation: "lineTravel 6s linear infinite", animationTimingFunction: "linear" }}
+              style={{
+                animation: "lineTravel 6s linear infinite",
+                animationTimingFunction: "linear",
+              }}
             />
           </svg>
         </div>
@@ -296,7 +357,9 @@ export function ProcessTimeline() {
             <div key={s.title} className="relative group">
               <div className="relative w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-primary to-accent text-white grid place-items-center shadow-lg group-hover:scale-110 transition-transform">
                 <s.icon size={28} />
-                <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-background border-2 border-primary text-primary text-xs font-bold grid place-items-center">{i + 1}</span>
+                <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-background border-2 border-primary text-primary text-xs font-bold grid place-items-center">
+                  {i + 1}
+                </span>
               </div>
               <div className="mt-5 text-center">
                 <h3 className="font-bold text-lg">{s.title}</h3>
@@ -340,8 +403,7 @@ export function ItalyMap() {
             Presenza
           </span>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold text-white">
-            Presenza consolidata in tutta{" "}
-            <span className="text-gradient">Italia</span>
+            Presenza consolidata in tutta <span className="text-gradient">Italia</span>
           </h2>
         </div>
 
@@ -372,9 +434,7 @@ export function ItalyMap() {
                   />
                   <span
                     className={`block rounded-full bg-[#FABD18] transition-all duration-300 ${
-                      sel.id === r.id
-                        ? "w-5 h-5 shadow-[0_0_25px_rgba(250,189,24,0.9)]"
-                        : "w-3 h-3"
+                      sel.id === r.id ? "w-5 h-5 shadow-[0_0_25px_rgba(250,189,24,0.9)]" : "w-3 h-3"
                     }`}
                   />
                 </button>

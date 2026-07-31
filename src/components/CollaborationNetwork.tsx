@@ -59,13 +59,7 @@ const CENTER = { x: 50, y: 50 };
  * Calcola un punto di controllo quadratico che curva la linea
  * perpendicolarmente rispetto alla direzione centro→nodo.
  */
-function getQuadraticControlPoint(
-  x1: number,
-  y1: number,
-  x2: number,
-  y2: number,
-  curvature = 18
-) {
+function getQuadraticControlPoint(x1: number, y1: number, x2: number, y2: number, curvature = 18) {
   const mx = (x1 + x2) / 2;
   const my = (y1 + y2) / 2;
   // vettore perpendicolare normalizzato
@@ -90,12 +84,12 @@ export function CollaborationNetwork() {
             <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">
               Le nostre collaborazioni
             </span>
-            
+
             {/* MODIFICATO: Inserito gradiente al titolo */}
             <h2 className="mt-3 text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#38bdf8] to-[#facc15] bg-clip-text text-transparent">
               Connessioni che generano valore
             </h2>
-            
+
             {/* Cambiato text-muted-foreground in text-slate-300 */}
             <p className="mt-4 text-slate-300 leading-relaxed">
               FI.CO è il punto in cui operatori, pubblica amministrazione, imprese e professionisti
@@ -108,7 +102,11 @@ export function CollaborationNetwork() {
           {/* DIAGRAM */}
           <Reveal delay={100}>
             <div className="relative aspect-square w-full max-w-[520px] mx-auto">
-              <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full" style={{ overflow: "visible" }}>
+              <svg
+                viewBox="0 0 100 100"
+                className="absolute inset-0 w-full h-full"
+                style={{ overflow: "visible" }}
+              >
                 {NODES.map((node, i) => {
                   const isActive = node.id === activeId;
                   const { cx, cy } = getQuadraticControlPoint(
@@ -117,7 +115,7 @@ export function CollaborationNetwork() {
                     node.x,
                     node.y,
                     // alterna la direzione della curva per varietà visiva
-                    i % 2 === 0 ? 14 : -14
+                    i % 2 === 0 ? 14 : -14,
                   );
                   const curvePath = `M${CENTER.x},${CENTER.y} Q${cx},${cy} ${node.x},${node.y}`;
 
@@ -223,7 +221,9 @@ export function CollaborationNetwork() {
                     aria-label={`Mostra ${node.label}`}
                     aria-pressed={node.id === activeId}
                     className={`h-1.5 rounded-full transition-all duration-300 ${
-                      node.id === activeId ? "w-8 bg-primary" : "w-4 bg-white/20 hover:bg-primary/40"
+                      node.id === activeId
+                        ? "w-8 bg-primary"
+                        : "w-4 bg-white/20 hover:bg-primary/40"
                     }`}
                   />
                 ))}

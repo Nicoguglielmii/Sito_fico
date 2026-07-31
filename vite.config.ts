@@ -14,14 +14,14 @@ export default defineConfig({
     }),
     nitro(),
     react(),
-  ],  
-  resolve: {  
-    alias: {  
-      "@": "/src",  
-    },  
-  },  
-  server: {  
-    port: 3000,  
-    host: true,  
-  },  
+  ],
+  resolve: {
+    alias: {
+      "@": "/src",
+    },
+  },
+  server: {
+    port: 3000,
+    host: true,
+  },
 });

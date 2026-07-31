@@ -4,8 +4,9 @@
 
 @font-face {
   font-family: "Circular Std";
-  src: url("../circular-std/CircularStd-Book.woff2") format("woff2"),
-       url("../circular-std/CircularStd-Book.woff") format("woff");
+  src:
+    url("../circular-std/CircularStd-Book.woff2") format("woff2"),
+    url("../circular-std/CircularStd-Book.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -13,8 +14,9 @@
 
 @font-face {
   font-family: "Circular Std";
-  src: url("../circular-std/CircularStd-BookItalic.woff2") format("woff2"),
-       url("../circular-std/CircularStd-BookItalic.woff") format("woff");
+  src:
+    url("../circular-std/CircularStd-BookItalic.woff2") format("woff2"),
+    url("../circular-std/CircularStd-BookItalic.woff") format("woff");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -22,8 +24,9 @@
 
 @font-face {
   font-family: "Circular Std";
-  src: url("../circular-std/CircularStd-Medium.woff2") format("woff2"),
-       url("../circular-std/CircularStd-Medium.woff") format("woff");
+  src:
+    url("../circular-std/CircularStd-Medium.woff2") format("woff2"),
+    url("../circular-std/CircularStd-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -31,8 +34,9 @@
 
 @font-face {
   font-family: "Circular Std";
-  src: url("../circular-std/CircularStd-MediumItalic.woff2") format("woff2"),
-       url("../circular-std/CircularStd-MediumItalic.woff") format("woff");
+  src:
+    url("../circular-std/CircularStd-MediumItalic.woff2") format("woff2"),
+    url("../circular-std/CircularStd-MediumItalic.woff") format("woff");
   font-weight: 500;
   font-style: italic;
   font-display: swap;
@@ -40,8 +44,9 @@
 
 @font-face {
   font-family: "Circular Std";
-  src: url("../circular-std/CircularStd-Bold.woff2") format("woff2"),
-       url("../circular-std/CircularStd-Bold.woff") format("woff");
+  src:
+    url("../circular-std/CircularStd-Bold.woff2") format("woff2"),
+    url("../circular-std/CircularStd-Bold.woff") format("woff");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -49,8 +54,9 @@
 
 @font-face {
   font-family: "Circular Std";
-  src: url("../circular-std/CircularStd-BoldItalic.woff2") format("woff2"),
-       url("../circular-std/CircularStd-BoldItalic.woff") format("woff");
+  src:
+    url("../circular-std/CircularStd-BoldItalic.woff2") format("woff2"),
+    url("../circular-std/CircularStd-BoldItalic.woff") format("woff");
   font-weight: 700;
   font-style: italic;
   font-display: swap;
@@ -58,8 +64,9 @@
 
 @font-face {
   font-family: "Circular Std";
-  src: url("../circular-std/CircularStd-Black.woff2") format("woff2"),
-       url("../circular-std/CircularStd-Black.woff") format("woff");
+  src:
+    url("../circular-std/CircularStd-Black.woff2") format("woff2"),
+    url("../circular-std/CircularStd-Black.woff") format("woff");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -67,8 +74,9 @@
 
 @font-face {
   font-family: "Circular Std";
-  src: url("../circular-std/CircularStd-BlackItalic.woff2") format("woff2"),
-       url("../circular-std/CircularStd-BlackItalic.woff") format("woff");
+  src:
+    url("../circular-std/CircularStd-BlackItalic.woff2") format("woff2"),
+    url("../circular-std/CircularStd-BlackItalic.woff") format("woff");
   font-weight: 900;
   font-style: italic;
   font-display: swap;
@@ -132,86 +140,90 @@
 :root {
   --radius: 0.75rem;
   /* Brand - Updated */
-  --navy-deep: #001A33;
-  --navy: #003D5C;
-  --electric: #0099F2;
-  --cyan-accent: #40E0FF;
-  --primary: #0099F2;
-  --accent: #FABD18;
-  --accent-warm: #FF6B35;
-  --success: #20D9A3;
+  --navy-deep: #001a33;
+  --navy: #003d5c;
+  --electric: #0099f2;
+  --cyan-accent: #40e0ff;
+  --primary: #0099f2;
+  --accent: #fabd18;
+  --accent-warm: #ff6b35;
+  --success: #20d9a3;
 
-  --background: #F4FAFD;
+  --background: #f4fafd;
   --foreground: #002233;
-  --card: #FFFFFF;
+  --card: #ffffff;
   --card-foreground: #002233;
-  --popover: #FFFFFF;
+  --popover: #ffffff;
   --popover-foreground: #002233;
-  --primary-foreground: #FFFFFF;
-  --secondary: #E6F4F9;
+  --primary-foreground: #ffffff;
+  --secondary: #e6f4f9;
   --secondary-foreground: #002233;
-  --muted: #E6F4F9;
-  --muted-foreground: #4A6570;
-  --accent-foreground: #1A1500;
-  --destructive: #E63946;
-  --destructive-foreground: #FFFFFF;
-  --border: #C8E2ED;
-  --input: #C8E2ED;
-  --ring: #009EDA;
+  --muted: #e6f4f9;
+  --muted-foreground: #4a6570;
+  --accent-foreground: #1a1500;
+  --destructive: #e63946;
+  --destructive-foreground: #ffffff;
+  --border: #c8e2ed;
+  --input: #c8e2ed;
+  --ring: #009eda;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: #E6F4F9;
+  --sidebar: #e6f4f9;
   --sidebar-foreground: #002233;
-  --sidebar-primary: #009EDA;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #E6F4F9;
+  --sidebar-primary: #009eda;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e6f4f9;
   --sidebar-accent-foreground: #002233;
-  --sidebar-border: #C8E2ED;
-  --sidebar-ring: #009EDA;
+  --sidebar-border: #c8e2ed;
+  --sidebar-ring: #009eda;
 
-  --gradient-brand: linear-gradient(135deg, #0099F2, #FABD18);
-  --gradient-navy: linear-gradient(160deg, #001A33 0%, #003D5C 60%, #004D7C 100%);
-  --gradient-glow: radial-gradient(circle at 30% 20%, color-mix(in oklab, var(--primary) 30%, transparent), transparent 60%);
+  --gradient-brand: linear-gradient(135deg, #0099f2, #fabd18);
+  --gradient-navy: linear-gradient(160deg, #001a33 0%, #003d5c 60%, #004d7c 100%);
+  --gradient-glow: radial-gradient(
+    circle at 30% 20%,
+    color-mix(in oklab, var(--primary) 30%, transparent),
+    transparent 60%
+  );
   --shadow-elegant: 0 24px 60px -20px color-mix(in oklab, var(--primary) 35%, transparent);
   --shadow-card: 0 8px 30px -12px #00223326;
 }
 
 .dark {
   --background: #002233;
-  --foreground: #F4FAFD;
+  --foreground: #f4fafd;
   --card: #003345;
-  --card-foreground: #F4FAFD;
+  --card-foreground: #f4fafd;
   --popover: #003345;
-  --popover-foreground: #F4FAFD;
-  --primary: #0099F2;
-  --primary-foreground: #FFFFFF;
+  --popover-foreground: #f4fafd;
+  --primary: #0099f2;
+  --primary-foreground: #ffffff;
   --secondary: #004466;
-  --secondary-foreground: #F4FAFD;
+  --secondary-foreground: #f4fafd;
   --muted: #004466;
-  --muted-foreground: #8AB4C4;
-  --accent: #FABD18;
-  --accent-foreground: #1A1500;
-  --destructive: #FF6B6B;
-  --destructive-foreground: #FFFFFF;
-  --border: #1A4D66;
-  --input: #1A4D66;
-  --ring: #0099F2;
+  --muted-foreground: #8ab4c4;
+  --accent: #fabd18;
+  --accent-foreground: #1a1500;
+  --destructive: #ff6b6b;
+  --destructive-foreground: #ffffff;
+  --border: #1a4d66;
+  --input: #1a4d66;
+  --ring: #0099f2;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
   --sidebar: #003345;
-  --sidebar-foreground: #F4FAFD;
-  --sidebar-primary: #0099F2;
-  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-foreground: #f4fafd;
+  --sidebar-primary: #0099f2;
+  --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #004466;
-  --sidebar-accent-foreground: #F4FAFD;
-  --sidebar-border: #1A4D66;
-  --sidebar-ring: #0099F2;
+  --sidebar-accent-foreground: #f4fafd;
+  --sidebar-border: #1a4d66;
+  --sidebar-ring: #0099f2;
 }
 
 @layer base {
@@ -221,13 +233,19 @@
 
   body {
     /* Sostituisci con il codice HEX esatto del tuo blu scuro */
-    @apply bg-[#031f38] text-slate-100; 
+    @apply bg-[#031f38] text-slate-100;
   }
-  h1, h2, h3, h4, h5 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
   }
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 @utility container-x {
@@ -235,7 +253,9 @@
   width: 100%;
   max-width: 1280px;
   padding-inline: 1.25rem;
-  @media (min-width: 768px) { padding-inline: 2rem; }
+  @media (min-width: 768px) {
+    padding-inline: 2rem;
+  }
 }
 
 @utility text-gradient {
@@ -247,34 +267,65 @@
 
 @utility surface-navy {
   background: var(--gradient-navy);
-  color: #F4FAFD;
+  color: #f4fafd;
 }
 
 @utility glow-ring {
-  box-shadow: 0 0 0 1px color-mix(in oklab, var(--primary) 30%, transparent),
-              0 20px 60px -20px color-mix(in oklab, var(--primary) 40%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--primary) 30%, transparent),
+    0 20px 60px -20px color-mix(in oklab, var(--primary) 40%, transparent);
 }
 
 @keyframes float-y {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-18px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
 }
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 0.9; transform: scale(1.08); }
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.08);
+  }
 }
 @keyframes reveal-up {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes shine {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
-.animate-float { animation: float-y 7s ease-in-out infinite; }
-.animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
-.reveal { opacity: 0; }
-.reveal.in { animation: reveal-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+.animate-float {
+  animation: float-y 7s ease-in-out infinite;
+}
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+.reveal {
+  opacity: 0;
+}
+.reveal.in {
+  animation: reveal-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
 
 .btn-hero {
   position: relative;
@@ -287,22 +338,38 @@
   font-family: var(--font-display);
   background: var(--gradient-brand);
   color: white;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   box-shadow: var(--shadow-elegant);
 }
-.btn-hero:hover { transform: translateY(-2px); box-shadow: 0 30px 80px -20px color-mix(in oklab, var(--primary) 55%, transparent); }
+.btn-hero:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 30px 80px -20px color-mix(in oklab, var(--primary) 55%, transparent);
+}
 .btn-ghost-light {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.9rem 1.5rem; border-radius: 9999px;
-  border: 1px solid rgba(255,255,255,0.25); color: white;
-  font-family: var(--font-display); font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 500;
   transition: all 0.3s ease;
   backdrop-filter: blur(8px);
 }
-.btn-ghost-light:hover { background: rgba(255,255,255,0.08); border-color: var(--accent); }
+.btn-ghost-light:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent);
+}
 
 .card-lift {
-  transition: transform 0.4s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.4s ease, border-color 0.3s ease;
+  transition:
+    transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.4s ease,
+    border-color 0.3s ease;
 }
 .card-lift:hover {
   transform: translateY(-6px);
@@ -311,7 +378,9 @@
 }
 
 .team-card {
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
   contain: layout paint;
 }
 .team-card:hover {
@@ -331,33 +400,59 @@
 /* ═══════════════════════════════════════════════════════════════ */
 
 @keyframes spin-smooth {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes glow-pulse {
-  0%, 100% { opacity: 0.3; filter: blur(20px); }
-  50% { opacity: 0.6; filter: blur(40px); }
+  0%,
+  100% {
+    opacity: 0.3;
+    filter: blur(20px);
+  }
+  50% {
+    opacity: 0.6;
+    filter: blur(40px);
+  }
 }
 
 @keyframes border-glow {
-  0%, 100% { border-color: rgba(255, 255, 255, 0.1); }
-  50% { border-color: rgba(0, 153, 242, 0.4); }
+  0%,
+  100% {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    border-color: rgba(0, 153, 242, 0.4);
+  }
 }
 
 @keyframes float-subtle {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 @keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .growth-section {
-  background: linear-gradient(180deg, #001A33 0%, #003D5C 50%, #001A33 100%);
-  color: #F4FAFD;
+  background: linear-gradient(180deg, #001a33 0%, #003d5c 50%, #001a33 100%);
+  color: #f4fafd;
   position: relative;
 }
 
@@ -365,10 +460,10 @@
   /* Base styles */
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  
+
   /* Transition smoothing */
   will-change: transform, box-shadow, background, border-color;
-  
+
   /* Glassmorphism base */
   backdrop-filter: blur(10px);
 }
@@ -377,7 +472,7 @@
 .growth-card:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(0, 153, 242, 0.5);
-  box-shadow: 
+  box-shadow:
     0 0 60px rgba(0, 153, 242, 0.2),
     0 20px 80px rgba(0, 153, 242, 0.1),
     inset 0 1px 1px rgba(255, 255, 255, 0.2);
@@ -386,7 +481,7 @@
 
 /* Icon animation */
 .growth-card:hover svg {
-  animation: spin-smooth 2s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+  animation: spin-smooth 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 /* Number counter effect */

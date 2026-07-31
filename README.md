@@ -21,18 +21,18 @@ FI-CO S.r.l. opera nel settore delle infrastrutture per telecomunicazioni, suppo
 
 L'azienda si occupa di:
 
-* Infrastrutture in fibra ottica
-* Sviluppo reti TLC
-* Progettazione e supporto tecnico
-* Soluzioni per la connettività del futuro
+- Infrastrutture in fibra ottica
+- Sviluppo reti TLC
+- Progettazione e supporto tecnico
+- Soluzioni per la connettività del futuro
 
 ## Tecnologie del progetto
 
-* React
-* TypeScript
-* Vite
-* Tailwind CSS
-* Vercel
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Vercel
 
 ## Avvio locale
 

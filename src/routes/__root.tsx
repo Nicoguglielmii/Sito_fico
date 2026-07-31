@@ -86,15 +86,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "FI.CO. SRL — Telecomunicazioni, Fibra Ottica e Servizi IT" },
-      { name: "description", content: "FI.CO. SRL: progettazione, gestione e sviluppo di reti in fibra ottica, permitting, ingegneria e servizi IT per imprese pubbliche e private." },
+      {
+        name: "description",
+        content:
+          "FI.CO. SRL: progettazione, gestione e sviluppo di reti in fibra ottica, permitting, ingegneria e servizi IT per imprese pubbliche e private.",
+      },
       { name: "author", content: "FI.CO. SRL" },
-      { property: "og:title", content: "FI.CO. SRL — Telecomunicazioni, Fibra Ottica e Servizi IT" },
-      { property: "og:description", content: "FI.CO. SRL: progettazione, gestione e sviluppo di reti in fibra ottica, permitting, ingegneria e servizi IT per imprese pubbliche e private." },
+      {
+        property: "og:title",
+        content: "FI.CO. SRL — Telecomunicazioni, Fibra Ottica e Servizi IT",
+      },
+      {
+        property: "og:description",
+        content:
+          "FI.CO. SRL: progettazione, gestione e sviluppo di reti in fibra ottica, permitting, ingegneria e servizi IT per imprese pubbliche e private.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "" },
-      { name: "twitter:title", content: "FI.CO. SRL — Telecomunicazioni, Fibra Ottica e Servizi IT" },
-      { name: "twitter:description", content: "FI.CO. SRL: progettazione, gestione e sviluppo di reti in fibra ottica, permitting, ingegneria e servizi IT per imprese pubbliche e private." },
+      {
+        name: "twitter:title",
+        content: "FI.CO. SRL — Telecomunicazioni, Fibra Ottica e Servizi IT",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "FI.CO. SRL: progettazione, gestione e sviluppo di reti in fibra ottica, permitting, ingegneria e servizi IT per imprese pubbliche e private.",
+      },
       { property: "og:image", content: "/fico-logo.png" },
       { name: "twitter:image", content: "/fico-logo.png" },
     ],

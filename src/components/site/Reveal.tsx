@@ -1,6 +1,14 @@
 import { useEffect, useRef, type ReactNode, type MouseEvent } from "react";
 
-export function Reveal({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
+export function Reveal({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = ref.current;
@@ -14,7 +22,7 @@ export function Reveal({ children, delay = 0, className = "" }: { children: Reac
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.15 },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -26,28 +34,39 @@ export function Reveal({ children, delay = 0, className = "" }: { children: Reac
   );
 }
 
-export function Counter({ to, suffix = "", duration = 1800 }: { to: number; suffix?: string; duration?: number }) {
+export function Counter({
+  to,
+  suffix = "",
+  duration = 1800,
+}: {
+  to: number;
+  suffix?: string;
+  duration?: number;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     let started = false;
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting && !started) {
-          started = true;
-          const start = performance.now();
-          const step = (now: number) => {
-            const t = Math.min(1, (now - start) / duration);
-            const eased = 1 - Math.pow(1 - t, 3);
-            el.textContent = Math.floor(eased * to).toString() + suffix;
-            if (t < 1) requestAnimationFrame(step);
-            else el.textContent = to + suffix;
-          };
-          requestAnimationFrame(step);
-        }
-      });
-    }, { threshold: 0.4 });
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && !started) {
+            started = true;
+            const start = performance.now();
+            const step = (now: number) => {
+              const t = Math.min(1, (now - start) / duration);
+              const eased = 1 - Math.pow(1 - t, 3);
+              el.textContent = Math.floor(eased * to).toString() + suffix;
+              if (t < 1) requestAnimationFrame(step);
+              else el.textContent = to + suffix;
+            };
+            requestAnimationFrame(step);
+          }
+        });
+      },
+      { threshold: 0.4 },
+    );
     io.observe(el);
     return () => io.disconnect();
   }, [to, suffix, duration]);
@@ -82,7 +101,15 @@ export function ScrollProgress() {
   );
 }
 
-export function Tilt({ children, className = "", max = 8 }: { children: ReactNode; className?: string; max?: number }) {
+export function Tilt({
+  children,
+  className = "",
+  max = 8,
+}: {
+  children: ReactNode;
+  className?: string;
+  max?: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const onMove = (e: MouseEvent<HTMLDivElement>) => {
     const el = ref.current;

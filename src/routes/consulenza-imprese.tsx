@@ -1,12 +1,24 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BarChart3, Map, TrendingDown, FileCheck, Target, CheckCircle2 } from "lucide-react";
+import {
+  ArrowRight,
+  BarChart3,
+  Map,
+  TrendingDown,
+  FileCheck,
+  Target,
+  CheckCircle2,
+} from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 
 export const Route = createFileRoute("/consulenza-imprese")({
   head: () => ({
     meta: [
       { title: "Consulenza Imprese — FI.CO. SRL" },
-      { name: "description", content: "Consulenza strategica, progettazione GIS e studio di dimensionamento reti in fibra ottica per le imprese." },
+      {
+        name: "description",
+        content:
+          "Consulenza strategica, progettazione GIS e studio di dimensionamento reti in fibra ottica per le imprese.",
+      },
     ],
   }),
   component: ConsulenzaImprese,
@@ -30,7 +42,9 @@ function ConsulenzaImprese() {
               Consulenza Imprese
             </h1>
             <p className="mt-6 text-lg text-slate-300 max-w-2xl leading-relaxed">
-              Affianchiamo la tua azienda nello sviluppo di infrastrutture di telecomunicazione avanzate. Dallo studio di fattibilità alla progettazione esecutiva, ti garantiamo un supporto tecnico end-to-end per reti veloci, sicure e scalabili.
+              Affianchiamo la tua azienda nello sviluppo di infrastrutture di telecomunicazione
+              avanzate. Dallo studio di fattibilità alla progettazione esecutiva, ti garantiamo un
+              supporto tecnico end-to-end per reti veloci, sicure e scalabili.
             </p>
           </Reveal>
         </div>
@@ -50,23 +64,23 @@ function ConsulenzaImprese() {
               {
                 icon: Target,
                 title: "Analisi di fattibilità",
-                desc: "Valutiamo le condizioni preliminari sul campo, studiando il dimensionamento della rete ideale per le tue esigenze aziendali."
+                desc: "Valutiamo le condizioni preliminari sul campo, studiando il dimensionamento della rete ideale per le tue esigenze aziendali.",
               },
               {
                 icon: Map,
                 title: "Progettazione GIS",
-                desc: "Creiamo mappature precise e progettazioni logico-fisiche avanzate per ottimizzare i percorsi della fibra ottica."
+                desc: "Creiamo mappature precise e progettazioni logico-fisiche avanzate per ottimizzare i percorsi della fibra ottica.",
               },
               {
                 icon: TrendingDown,
                 title: "Ottimizzazione Costi",
-                desc: "Analizziamo tempi e risorse per garantirti la migliore scelta degli apparati trasmissivi, abbattendo gli sprechi."
+                desc: "Analizziamo tempi e risorse per garantirti la migliore scelta degli apparati trasmissivi, abbattendo gli sprechi.",
               },
               {
                 icon: FileCheck,
                 title: "As-Built e Documentazione",
-                desc: "Ci occupiamo dei rilievi planimetrici finali e del caricamento a sistema della documentazione (As-Built)."
-              }
+                desc: "Ci occupiamo dei rilievi planimetrici finali e del caricamento a sistema della documentazione (As-Built).",
+              },
             ].map((feature, i) => (
               <Reveal key={i} delay={i * 100}>
                 <div className="bg-[#0a2e4d] p-8 rounded-2xl border border-white/5 shadow-lg h-full hover:border-[#38bdf8]/30 transition-colors">
@@ -92,13 +106,15 @@ function ConsulenzaImprese() {
                   Il nostro metodo operativo
                 </h2>
                 <p className="text-slate-300 text-lg mb-8 leading-relaxed">
-                  Non ci limitiamo alla teoria. Il nostro team scende in campo con sopralluoghi mirati e gestisce l'acquisizione di infrastrutture verso altri operatori, garantendo un'integrazione fluida e senza imprevisti.
+                  Non ci limitiamo alla teoria. Il nostro team scende in campo con sopralluoghi
+                  mirati e gestisce l'acquisizione di infrastrutture verso altri operatori,
+                  garantendo un'integrazione fluida e senza imprevisti.
                 </p>
                 <ul className="space-y-4">
                   {[
                     "Gestione completa ordini di collegamento",
                     "Rilievi planimetrici ad alta precisione",
-                    "Aggiornamento continuo banche dati cartografiche"
+                    "Aggiornamento continuo banche dati cartografiche",
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-slate-200">
                       <CheckCircle2 className="text-[#38bdf8] shrink-0" size={20} />
@@ -112,9 +128,9 @@ function ConsulenzaImprese() {
             <Reveal delay={200}>
               <div className="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
                 {/* Immagine segnaposto: puoi sostituirla con una tua immagine reale */}
-                <img 
-                  src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1000" 
-                  alt="Ingegneri al lavoro su fibra ottica" 
+                <img
+                  src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1000"
+                  alt="Ingegneri al lavoro su fibra ottica"
                   className="w-full h-[400px] object-cover opacity-80 hover:opacity-100 transition-opacity"
                 />
               </div>
@@ -132,7 +148,8 @@ function ConsulenzaImprese() {
               Pronto a potenziare la tua rete?
             </h3>
             <p className="mt-4 text-slate-300 max-w-xl mx-auto relative z-10">
-              Contatta i nostri esperti per una consulenza preliminare e scopri come possiamo ottimizzare la tua infrastruttura aziendale.
+              Contatta i nostri esperti per una consulenza preliminare e scopri come possiamo
+              ottimizzare la tua infrastruttura aziendale.
             </p>
             <Link to="/contatti" className="btn-hero mt-8 relative z-10 inline-flex">
               Richiedi una consulenza <ArrowRight size={18} />

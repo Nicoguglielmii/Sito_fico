@@ -16,7 +16,11 @@ export const Route = createFileRoute("/ricerca-innovazione")({
   head: () => ({
     meta: [
       { title: "Ricerca e Innovazione — FI.CO. SRL" },
-      { name: "description", content: "Sviluppiamo soluzioni all'avanguardia per l'infrastruttura di rete, esplorando nuove tecnologie e metodologie." },
+      {
+        name: "description",
+        content:
+          "Sviluppiamo soluzioni all'avanguardia per l'infrastruttura di rete, esplorando nuove tecnologie e metodologie.",
+      },
     ],
   }),
   component: RicercaInnovazione,
@@ -44,7 +48,9 @@ function RicercaInnovazione() {
             </h1>
             {/* Paragrafo introduttivo: massimo due righe preferibilmente per leggibilità */}
             <p className="mt-6 text-lg text-slate-300 max-w-2xl leading-relaxed">
-              Siamo costantemente aperti a nuove visioni e pronti a trasformare idee ambiziose in progetti concreti. Anticipiamo le esigenze del mercato integrando tecnologie di ultima generazione.
+              Siamo costantemente aperti a nuove visioni e pronti a trasformare idee ambiziose in
+              progetti concreti. Anticipiamo le esigenze del mercato integrando tecnologie di ultima
+              generazione.
             </p>
           </Reveal>
         </div>
@@ -65,23 +71,23 @@ function RicercaInnovazione() {
               {
                 icon: Lightbulb,
                 title: "Soluzioni Smart City",
-                desc: "Integrazione di sensori e reti IoT per ottimizzare la gestione urbana, migliorando l'efficienza energetica e la sicurezza dei cittadini."
+                desc: "Integrazione di sensori e reti IoT per ottimizzare la gestione urbana, migliorando l'efficienza energetica e la sicurezza dei cittadini.",
               },
               {
                 icon: Network,
                 title: "Reti di nuova generazione",
-                desc: "Studio e sperimentazione su architetture di rete avanzate per supportare volumi di traffico sempre maggiori con latenze minime."
+                desc: "Studio e sperimentazione su architetture di rete avanzate per supportare volumi di traffico sempre maggiori con latenze minime.",
               },
               {
                 icon: Cpu,
                 title: "AI e sviluppo software",
-                desc: "Utilizzo di sistemi intelligenti per la creazione di siti web."
+                desc: "Utilizzo di sistemi intelligenti per la creazione di siti web.",
               },
               {
                 icon: Rocket,
                 title: "Materiali innovativi",
-                desc: "Ricerca su nuovi cavi e tecniche di posa eco-sostenibili per ridurre l'impatto ambientale dei cantieri infrastrutturali."
-              }
+                desc: "Ricerca su nuovi cavi e tecniche di posa eco-sostenibili per ridurre l'impatto ambientale dei cantieri infrastrutturali.",
+              },
             ].map((feature, i) => (
               <Reveal key={i} delay={i * 100}>
                 {/* Card: attenzione allo stato hover e contrasto per accessibilità */}
@@ -103,9 +109,7 @@ function RicercaInnovazione() {
       <section className="container-x py-24">
         <Reveal delay={100}>
           <div className="p-10 md:p-14 rounded-3xl bg-[#0a2e4d] border border-white/10 shadow-lg text-center">
-            <h3 className="text-3xl md:text-4xl font-bold text-white">
-              Hai un progetto in mente?
-            </h3>
+            <h3 className="text-3xl md:text-4xl font-bold text-white">Hai un progetto in mente?</h3>
             <p className="mt-4 text-slate-300 max-w-xl mx-auto">
               Costruiamo insieme la progettazione e la parte tecnica migliore.
             </p>

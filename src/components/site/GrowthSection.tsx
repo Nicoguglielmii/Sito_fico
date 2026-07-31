@@ -41,26 +41,41 @@ export function GrowthSection() {
     /* Modificato: rimosso bg-gradient per ereditare lo sfondo globale scuro */
     <section className="growth-section relative overflow-hidden py-32 md:py-40 bg-transparent">
       {/* Rimosso il div con from-navy-deep per evitare stacchi di colore */}
-      <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "var(--gradient-glow)" }} />
+      <div
+        className="absolute inset-0 opacity-30"
+        style={{ backgroundImage: "var(--gradient-glow)" }}
+      />
 
       <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-primary/10 blur-3xl animate-pulse-glow" />
-      <div className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-accent/5 blur-3xl animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
+      <div
+        className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-accent/5 blur-3xl animate-pulse-glow"
+        style={{ animationDelay: "1.5s" }}
+      />
 
       <div className="absolute top-1/4 right-[8%] w-2 h-2 rounded-full bg-cyan-accent animate-float shadow-[0_0_15px_var(--cyan-accent)]" />
-      <div className="absolute bottom-1/3 left-[12%] w-3 h-3 rounded-full bg-primary animate-float shadow-[0_0_20px_var(--primary)]" style={{ animationDelay: "2s" }} />
+      <div
+        className="absolute bottom-1/3 left-[12%] w-3 h-3 rounded-full bg-primary animate-float shadow-[0_0_20px_var(--primary)]"
+        style={{ animationDelay: "2s" }}
+      />
 
       <div className="container-x relative z-10">
         <Reveal delay={0}>
           <div className="max-w-3xl mb-16 md:mb-20">
             <div className="inline-flex items-center gap-2 mb-4">
               <div className="h-1 w-12 bg-gradient-to-r from-primary to-accent rounded-full" />
-              <span className="text-xs uppercase tracking-[0.3em] text-cyan-accent font-semibold">Futuro e crescita</span>
+              <span className="text-xs uppercase tracking-[0.3em] text-cyan-accent font-semibold">
+                Futuro e crescita
+              </span>
             </div>
             <h2 className="text-6xl md:text-7xl font-black font-display leading-[0.95] mb-6 bg-gradient-to-r from-cyan-accent via-primary to-accent bg-clip-text text-transparent">
-              Motori di<br />crescita
+              Motori di
+              <br />
+              crescita
             </h2>
             <p className="text-lg text-white/70 leading-relaxed max-w-2xl">
-              La nostra visione si fonda sull'innovazione e sulla continua ricerca di nuove opportunità. Collaborare con noi significa affrontare sfide stimolanti e trasformarle in crescita condivisa.
+              La nostra visione si fonda sull'innovazione e sulla continua ricerca di nuove
+              opportunità. Collaborare con noi significa affrontare sfide stimolanti e trasformarle
+              in crescita condivisa.
             </p>
           </div>
         </Reveal>
@@ -99,7 +114,10 @@ export function GrowthSection() {
                   </div>
                 </div>
 
-                <div key={`content-${activeStep}`} className="space-y-4 animate-in fade-in-0 duration-300">
+                <div
+                  key={`content-${activeStep}`}
+                  className="space-y-4 animate-in fade-in-0 duration-300"
+                >
                   <h3 className="text-2xl md:text-3xl font-bold text-white">{current.title}</h3>
                   <p className="text-white/65 md:text-lg leading-relaxed">{current.desc}</p>
                 </div>

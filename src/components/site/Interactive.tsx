@@ -1,5 +1,20 @@
 import { useEffect, useRef, useState, type ReactNode, type MouseEvent } from "react";
-import { MessageCircle, X, Sun, Moon, Send, ChevronLeft, ChevronRight, Quote, Search, Compass, FileCheck2, HardHat, ShieldCheck, ChevronDown } from "lucide-react";
+import {
+  MessageCircle,
+  X,
+  Sun,
+  Moon,
+  Send,
+  ChevronLeft,
+  ChevronRight,
+  Quote,
+  Search,
+  Compass,
+  FileCheck2,
+  HardHat,
+  ShieldCheck,
+  ChevronDown,
+} from "lucide-react";
 
 /* ------------------------- Hero particles canvas ------------------------- */
 export function HeroParticles() {
@@ -14,7 +29,8 @@ export function HeroParticles() {
     if (!ctx) return;
 
     let raf = 0;
-    let w = 0, h = 0;
+    let w = 0,
+      h = 0;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     type P = { x: number; y: number; vx: number; vy: number };
@@ -22,8 +38,10 @@ export function HeroParticles() {
 
     const resize = () => {
       // Manteniamo il canvas in dimensione reale per una resa nitida su display ad alta densità
-      w = c.clientWidth; h = c.clientHeight;
-      c.width = w * dpr; c.height = h * dpr;
+      w = c.clientWidth;
+      h = c.clientHeight;
+      c.width = w * dpr;
+      c.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       // Numero di particelle in base all'area del canvas, con un massimo fisso per preservare le prestazioni
@@ -88,11 +106,21 @@ export function HeroParticles() {
     };
   }, []);
 
-  return <canvas ref={ref} aria-hidden className="absolute inset-0 w-full h-full pointer-events-none" />;
+  return (
+    <canvas ref={ref} aria-hidden className="absolute inset-0 w-full h-full pointer-events-none" />
+  );
 }
 
 /* ------------------------- Magnetic button wrapper ------------------------ */
-export function Magnetic({ children, className = "", strength = 0.35 }: { children: ReactNode; className?: string; strength?: number }) {
+export function Magnetic({
+  children,
+  className = "",
+  strength = 0.35,
+}: {
+  children: ReactNode;
+  className?: string;
+  strength?: number;
+}) {
   const ref = useRef<HTMLSpanElement>(null);
 
   const onMove = (e: MouseEvent<HTMLSpanElement>) => {
@@ -146,7 +174,8 @@ export function ThemeToggle() {
   useEffect(() => {
     // Legge la preferenza salvata oppure usa quella del sistema se non esiste
     const saved = localStorage.getItem("fico-theme");
-    const isDark = saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    const isDark =
+      saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
     setDark(isDark);
     document.documentElement.classList.toggle("dark", isDark);
   }, []);
@@ -195,13 +224,32 @@ export function CookieBanner() {
       <div className="flex items-start gap-3">
         <div className="flex-1">
           <h4 className="font-bold text-sm">Utilizziamo i cookie</h4>
-          <p className="mt-1 text-xs text-muted-foreground">Cookie tecnici essenziali e analitici anonimi per migliorare l'esperienza di navigazione.</p>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Cookie tecnici essenziali e analitici anonimi per migliorare l'esperienza di
+            navigazione.
+          </p>
         </div>
-        <button onClick={() => setShow(false)} aria-label="Chiudi" className="text-muted-foreground hover:text-foreground"><X size={16} /></button>
+        <button
+          onClick={() => setShow(false)}
+          aria-label="Chiudi"
+          className="text-muted-foreground hover:text-foreground"
+        >
+          <X size={16} />
+        </button>
       </div>
       <div className="mt-4 flex gap-2 justify-end">
-        <button onClick={reject} className="px-4 py-2 text-xs font-semibold rounded-full bg-secondary hover:bg-secondary/70 transition">Rifiuta</button>
-        <button onClick={accept} className="px-4 py-2 text-xs font-semibold rounded-full bg-gradient-to-r from-primary to-accent text-white hover:opacity-90 transition">Accetta tutti</button>
+        <button
+          onClick={reject}
+          className="px-4 py-2 text-xs font-semibold rounded-full bg-secondary hover:bg-secondary/70 transition"
+        >
+          Rifiuta
+        </button>
+        <button
+          onClick={accept}
+          className="px-4 py-2 text-xs font-semibold rounded-full bg-gradient-to-r from-primary to-accent text-white hover:opacity-90 transition"
+        >
+          Accetta tutti
+        </button>
       </div>
     </div>
   );
@@ -227,13 +275,18 @@ export function ProcessTimeline() {
         }
       `}</style>
       <div className="max-w-3xl mb-16">
-        <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">Il nostro processo</span>
+        <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">
+          Il nostro processo
+        </span>
         <h2 className="mt-3 text-4xl md:text-5xl font-bold leading-tight text-gradient">
           Dalla prima idea al go-live
         </h2>
       </div>
       <div className="relative">
-        <div aria-hidden className="hidden lg:block absolute inset-x-0 top-[24%] h-32 pointer-events-none overflow-visible">
+        <div
+          aria-hidden
+          className="hidden lg:block absolute inset-x-0 top-[24%] h-32 pointer-events-none overflow-visible"
+        >
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
             <defs>
               <filter id="timelineGlowFilter" x="-30%" y="-30%" width="160%" height="160%">
@@ -266,7 +319,10 @@ export function ProcessTimeline() {
               strokeLinejoin="round"
               strokeDasharray="60 220"
               filter="url(#timelineGlowFilter)"
-              style={{ animation: "lineTravel 5.5s linear infinite", animationTimingFunction: "linear" }}
+              style={{
+                animation: "lineTravel 5.5s linear infinite",
+                animationTimingFunction: "linear",
+              }}
             />
             <path
               d="M0,45 C22,25 38,80 52,42 C66,20 82,75 100,48"
@@ -277,7 +333,10 @@ export function ProcessTimeline() {
               strokeLinejoin="round"
               strokeDasharray="60 220"
               filter="url(#timelineGlowFilter)"
-              style={{ animation: "lineTravel 5s linear infinite", animationTimingFunction: "linear" }}
+              style={{
+                animation: "lineTravel 5s linear infinite",
+                animationTimingFunction: "linear",
+              }}
             />
             <path
               d="M0,18 C18,55 32,18 50,34 C68,50 82,20 100,28"
@@ -288,24 +347,29 @@ export function ProcessTimeline() {
               strokeLinejoin="round"
               strokeDasharray="80 220"
               filter="url(#timelineGlowFilter)"
-              style={{ animation: "lineTravel 6s linear infinite", animationTimingFunction: "linear" }}
+              style={{
+                animation: "lineTravel 6s linear infinite",
+                animationTimingFunction: "linear",
+              }}
             />
           </svg>
         </div>
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-4 pt-8">
-        {STEPS.map((s, i) => (
-          <div key={s.title} className="relative group">
-            <div className="relative w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-primary to-accent text-white grid place-items-center shadow-lg group-hover:scale-110 transition-transform">
-              <s.icon size={28} />
-              <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-background border-2 border-primary text-primary text-xs font-bold grid place-items-center">{i + 1}</span>
+          {STEPS.map((s, i) => (
+            <div key={s.title} className="relative group">
+              <div className="relative w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-primary to-accent text-white grid place-items-center shadow-lg group-hover:scale-110 transition-transform">
+                <s.icon size={28} />
+                <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-background border-2 border-primary text-primary text-xs font-bold grid place-items-center">
+                  {i + 1}
+                </span>
+              </div>
+              <div className="mt-5 text-center">
+                <h3 className="font-bold text-lg">{s.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
+              </div>
             </div>
-            <div className="mt-5 text-center">
-              <h3 className="font-bold text-lg">{s.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -352,12 +416,12 @@ export function ItalyMap() {
           {/* MAPPA */}
           <div className="lg:col-span-3">
             <div className="relative max-w-lg mx-auto">
-            <img
-              src="/cartina-italia.png"
-              alt="Mappa Italia"
-              className="w-full h-auto select-none mix-blend-lighten"
-              draggable={false}
-            />
+              <img
+                src="/cartina-italia.png"
+                alt="Mappa Italia"
+                className="w-full h-auto select-none mix-blend-lighten"
+                draggable={false}
+              />
 
               {REGIONS.map((r) => (
                 <button
@@ -382,9 +446,7 @@ export function ItalyMap() {
                   />
                   <span
                     className={`relative z-10 rounded-full bg-[#FABD18] transition-all duration-300 ${
-                      sel.id === r.id
-                        ? "w-5 h-5 shadow-[0_0_25px_rgba(250,189,24,0.9)]"
-                        : "w-3 h-3"
+                      sel.id === r.id ? "w-5 h-5 shadow-[0_0_25px_rgba(250,189,24,0.9)]" : "w-3 h-3"
                     }`}
                   />
                 </button>
