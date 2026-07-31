@@ -144,11 +144,6 @@ export function CookieBanner() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    // ⚠️ RIGA MAGICA PER I TEST: Questa riga cancella la memoria del browser.
-    // Il banner apparirà SEMPRE. Quando hai finito di testare i colori e metti 
-    // il sito online per i clienti, CANCELLA o METTI UN COMMENTO a questa riga!
-    localStorage.removeItem("fico-cookies"); 
-
     // Mostra il banner solo se l'utente non ha già confermato una preferenza
     if (!localStorage.getItem("fico-cookies")) setShow(true);
   }, []);

@@ -174,59 +174,34 @@ export function CookieBanner() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem("fico-cookies");
-      if (!saved) setShow(true);
-    } catch {
-      setShow(true);
-    }
+    // Mostra il banner solo se l'utente non ha già confermato una preferenza
+    if (!localStorage.getItem("fico-cookies")) setShow(true);
   }, []);
 
   if (!show) return null;
 
   const accept = () => {
-    window.localStorage.setItem("fico-cookies", "accepted");
+    localStorage.setItem("fico-cookies", "accepted");
     setShow(false);
   };
 
   const reject = () => {
-    window.localStorage.setItem("fico-cookies", "rejected");
+    localStorage.setItem("fico-cookies", "rejected");
     setShow(false);
   };
 
   return (
-    <div className="fixed bottom-3 left-1/2 z-[99999] w-[calc(100vw-1rem)] max-w-[700px] -translate-x-1/2 rounded-2xl border border-[#0e7490]/40 bg-[#011C27]/95 p-4 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.9)] backdrop-blur-xl sm:bottom-4 sm:p-5">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-4">
+    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[min(640px,calc(100vw-2rem))] p-5 rounded-2xl bg-card border border-border shadow-2xl backdrop-blur-xl animate-fade-in">
+      <div className="flex items-start gap-3">
         <div className="flex-1">
-          <div className="flex items-start justify-between gap-3">
-            <h4 className="text-base font-bold text-white">Utilizziamo i cookie</h4>
-            <button
-              onClick={() => setShow(false)}
-              aria-label="Chiudi"
-              className="text-slate-400 transition-colors hover:text-white sm:hidden"
-            >
-              <X size={18} />
-            </button>
-          </div>
-          <p className="mt-1 text-sm leading-relaxed text-slate-300">
-            Utilizziamo cookie tecnici essenziali e analitici anonimi per offrirti la migliore esperienza di navigazione sul nostro sito.
-          </p>
+          <h4 className="font-bold text-sm">Utilizziamo i cookie</h4>
+          <p className="mt-1 text-xs text-muted-foreground">Cookie tecnici essenziali e analitici anonimi per migliorare l'esperienza di navigazione.</p>
         </div>
-
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-end">
-          <button
-            onClick={reject}
-            className="rounded-xl border border-slate-500 bg-transparent px-4 py-2.5 text-[14px] font-semibold text-slate-300 transition-colors hover:bg-white/10 hover:text-white"
-          >
-            Rifiuta
-          </button>
-          <button
-            onClick={accept}
-            className="rounded-xl bg-[#38bdf8] px-5 py-2.5 text-[14px] font-bold text-[#011C27] shadow-[0_0_15px_rgba(56,189,248,0.3)] transition-all hover:bg-[#0ea5e9] hover:text-white"
-          >
-            Accetta tutti
-          </button>
-        </div>
+        <button onClick={() => setShow(false)} aria-label="Chiudi" className="text-muted-foreground hover:text-foreground"><X size={16} /></button>
+      </div>
+      <div className="mt-4 flex gap-2 justify-end">
+        <button onClick={reject} className="px-4 py-2 text-xs font-semibold rounded-full bg-secondary hover:bg-secondary/70 transition">Rifiuta</button>
+        <button onClick={accept} className="px-4 py-2 text-xs font-semibold rounded-full bg-gradient-to-r from-primary to-accent text-white hover:opacity-90 transition">Accetta tutti</button>
       </div>
     </div>
   );
