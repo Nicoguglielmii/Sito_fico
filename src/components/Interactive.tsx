@@ -142,25 +142,71 @@ export function ThemeToggle() {
 /* ------------------------------ Cookie banner ----------------------------- */
 export function CookieBanner() {
   const [show, setShow] = useState(false);
+
   useEffect(() => {
+    // Mostra il banner solo se l'utente non ha già confermato una preferenza
     if (!localStorage.getItem("fico-cookies")) setShow(true);
   }, []);
+
   if (!show) return null;
-  const accept = () => { localStorage.setItem("fico-cookies", "accepted"); setShow(false); };
-  const reject = () => { localStorage.setItem("fico-cookies", "rejected"); setShow(false); };
+
+  const accept = () => {
+    localStorage.setItem("fico-cookies", "accepted");
+    setShow(false);
+  };
+
+  const reject = () => {
+    localStorage.setItem("fico-cookies", "rejected");
+    setShow(false);
+  };
+
   return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[min(640px,calc(100vw-2rem))] p-5 rounded-2xl bg-card border border-border shadow-2xl backdrop-blur-xl animate-fade-in">
-      <div className="flex items-start gap-3">
-        <div className="flex-1">
-          <h4 className="font-bold text-sm">Utilizziamo i cookie</h4>
-          <p className="mt-1 text-xs text-muted-foreground">Cookie tecnici essenziali e analitici anonimi per migliorare l'esperienza di navigazione.</p>
+    <div className="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-[99999] w-[calc(100vw-2rem)] md:w-[700px] p-5 md:p-6 rounded-2xl bg-[#0a2e4d] border border-[#0e7490]/40 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.9)] backdrop-blur-xl animate-fade-in flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+      
+      {/* Testo del banner */}
+      <div className="flex-1">
+        <div className="flex justify-between items-start mb-2 md:mb-1">
+          <h4 className="font-bold text-white text-base md:text-lg">Utilizziamo i cookie</h4>
+          
+          {/* Tasto X visibile solo su Mobile (in alto a destra) */}
+          <button 
+            onClick={() => setShow(false)} 
+            aria-label="Chiudi" 
+            className="md:hidden text-slate-400 hover:text-white transition-colors"
+          >
+            <X size={20} />
+          </button>
         </div>
-        <button onClick={() => setShow(false)} aria-label="Chiudi" className="text-muted-foreground hover:text-foreground"><X size={16} /></button>
+        <p className="text-sm text-slate-300 leading-relaxed">
+          Utilizziamo cookie tecnici essenziali e analitici anonimi per offrirti la migliore esperienza di navigazione sul nostro sito.
+        </p>
       </div>
-      <div className="mt-4 flex gap-2 justify-end">
-        <button onClick={reject} className="px-4 py-2 text-xs font-semibold rounded-full bg-secondary hover:bg-secondary/70 transition">Rifiuta</button>
-        <button onClick={accept} className="px-4 py-2 text-xs font-semibold rounded-full bg-gradient-to-r from-primary to-accent text-white hover:opacity-90 transition">Accetta tutti</button>
+
+      {/* Bottoni di azione */}
+      <div className="flex items-center gap-3 justify-end shrink-0 mt-2 md:mt-0">
+        <button 
+          onClick={reject} 
+          className="px-4 py-2.5 text-[14px] font-semibold rounded-xl bg-white/10 text-white hover:bg-white/20 border border-white/5 transition-colors"
+        >
+          Rifiuta
+        </button>
+        <button 
+          onClick={accept} 
+          className="px-5 py-2.5 text-[14px] font-bold rounded-xl bg-[#38bdf8] text-[#011C27] hover:bg-[#0284c7] hover:text-white transition-all shadow-[0_0_15px_rgba(56,189,248,0.4)]"
+        >
+          Accetta tutti
+        </button>
+        
+        {/* Tasto X visibile solo su PC (di fianco ai bottoni) */}
+        <button 
+          onClick={() => setShow(false)} 
+          aria-label="Chiudi" 
+          className="hidden md:flex items-center justify-center p-2 text-slate-400 hover:text-white transition-colors ml-1"
+        >
+          <X size={22} />
+        </button>
       </div>
+
     </div>
   );
 }
