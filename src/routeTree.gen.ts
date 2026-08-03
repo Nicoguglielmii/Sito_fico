@@ -13,7 +13,9 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServiziItRouteImport } from './routes/servizi-it'
 import { Route as ServiziRouteImport } from './routes/servizi'
 import { Route as RicercaInnovazioneRouteImport } from './routes/ricerca-innovazione'
+import { Route as RapportiEntiRouteImport } from './routes/rapporti-enti'
 import { Route as ProgettazioneFibraRouteImport } from './routes/progettazione-fibra'
+import { Route as NetworkingCablaggioRouteImport } from './routes/networking-cablaggio'
 import { Route as ContattiRouteImport } from './routes/contatti'
 import { Route as ConsulenzaImpreseRouteImport } from './routes/consulenza-imprese'
 import { Route as ChiSiamoRouteImport } from './routes/chi-siamo'
@@ -39,9 +41,19 @@ const RicercaInnovazioneRoute = RicercaInnovazioneRouteImport.update({
   path: '/ricerca-innovazione',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RapportiEntiRoute = RapportiEntiRouteImport.update({
+  id: '/rapporti-enti',
+  path: '/rapporti-enti',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProgettazioneFibraRoute = ProgettazioneFibraRouteImport.update({
   id: '/progettazione-fibra',
   path: '/progettazione-fibra',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NetworkingCablaggioRoute = NetworkingCablaggioRouteImport.update({
+  id: '/networking-cablaggio',
+  path: '/networking-cablaggio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContattiRoute = ContattiRouteImport.update({
@@ -70,7 +82,9 @@ export interface FileRoutesByFullPath {
   '/chi-siamo': typeof ChiSiamoRoute
   '/consulenza-imprese': typeof ConsulenzaImpreseRoute
   '/contatti': typeof ContattiRoute
+  '/networking-cablaggio': typeof NetworkingCablaggioRoute
   '/progettazione-fibra': typeof ProgettazioneFibraRoute
+  '/rapporti-enti': typeof RapportiEntiRoute
   '/ricerca-innovazione': typeof RicercaInnovazioneRoute
   '/servizi': typeof ServiziRoute
   '/servizi-it': typeof ServiziItRoute
@@ -81,7 +95,9 @@ export interface FileRoutesByTo {
   '/chi-siamo': typeof ChiSiamoRoute
   '/consulenza-imprese': typeof ConsulenzaImpreseRoute
   '/contatti': typeof ContattiRoute
+  '/networking-cablaggio': typeof NetworkingCablaggioRoute
   '/progettazione-fibra': typeof ProgettazioneFibraRoute
+  '/rapporti-enti': typeof RapportiEntiRoute
   '/ricerca-innovazione': typeof RicercaInnovazioneRoute
   '/servizi': typeof ServiziRoute
   '/servizi-it': typeof ServiziItRoute
@@ -93,7 +109,9 @@ export interface FileRoutesById {
   '/chi-siamo': typeof ChiSiamoRoute
   '/consulenza-imprese': typeof ConsulenzaImpreseRoute
   '/contatti': typeof ContattiRoute
+  '/networking-cablaggio': typeof NetworkingCablaggioRoute
   '/progettazione-fibra': typeof ProgettazioneFibraRoute
+  '/rapporti-enti': typeof RapportiEntiRoute
   '/ricerca-innovazione': typeof RicercaInnovazioneRoute
   '/servizi': typeof ServiziRoute
   '/servizi-it': typeof ServiziItRoute
@@ -106,7 +124,9 @@ export interface FileRouteTypes {
     | '/chi-siamo'
     | '/consulenza-imprese'
     | '/contatti'
+    | '/networking-cablaggio'
     | '/progettazione-fibra'
+    | '/rapporti-enti'
     | '/ricerca-innovazione'
     | '/servizi'
     | '/servizi-it'
@@ -117,7 +137,9 @@ export interface FileRouteTypes {
     | '/chi-siamo'
     | '/consulenza-imprese'
     | '/contatti'
+    | '/networking-cablaggio'
     | '/progettazione-fibra'
+    | '/rapporti-enti'
     | '/ricerca-innovazione'
     | '/servizi'
     | '/servizi-it'
@@ -128,7 +150,9 @@ export interface FileRouteTypes {
     | '/chi-siamo'
     | '/consulenza-imprese'
     | '/contatti'
+    | '/networking-cablaggio'
     | '/progettazione-fibra'
+    | '/rapporti-enti'
     | '/ricerca-innovazione'
     | '/servizi'
     | '/servizi-it'
@@ -140,7 +164,9 @@ export interface RootRouteChildren {
   ChiSiamoRoute: typeof ChiSiamoRoute
   ConsulenzaImpreseRoute: typeof ConsulenzaImpreseRoute
   ContattiRoute: typeof ContattiRoute
+  NetworkingCablaggioRoute: typeof NetworkingCablaggioRoute
   ProgettazioneFibraRoute: typeof ProgettazioneFibraRoute
+  RapportiEntiRoute: typeof RapportiEntiRoute
   RicercaInnovazioneRoute: typeof RicercaInnovazioneRoute
   ServiziRoute: typeof ServiziRoute
   ServiziItRoute: typeof ServiziItRoute
@@ -177,11 +203,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RicercaInnovazioneRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rapporti-enti': {
+      id: '/rapporti-enti'
+      path: '/rapporti-enti'
+      fullPath: '/rapporti-enti'
+      preLoaderRoute: typeof RapportiEntiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/progettazione-fibra': {
       id: '/progettazione-fibra'
       path: '/progettazione-fibra'
       fullPath: '/progettazione-fibra'
       preLoaderRoute: typeof ProgettazioneFibraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/networking-cablaggio': {
+      id: '/networking-cablaggio'
+      path: '/networking-cablaggio'
+      fullPath: '/networking-cablaggio'
+      preLoaderRoute: typeof NetworkingCablaggioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contatti': {
@@ -220,7 +260,9 @@ const rootRouteChildren: RootRouteChildren = {
   ChiSiamoRoute: ChiSiamoRoute,
   ConsulenzaImpreseRoute: ConsulenzaImpreseRoute,
   ContattiRoute: ContattiRoute,
+  NetworkingCablaggioRoute: NetworkingCablaggioRoute,
   ProgettazioneFibraRoute: ProgettazioneFibraRoute,
+  RapportiEntiRoute: RapportiEntiRoute,
   RicercaInnovazioneRoute: RicercaInnovazioneRoute,
   ServiziRoute: ServiziRoute,
   ServiziItRoute: ServiziItRoute,
