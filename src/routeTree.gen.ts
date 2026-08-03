@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ServiziItRouteImport } from './routes/servizi-it'
 import { Route as ServiziRouteImport } from './routes/servizi'
 import { Route as RicercaInnovazioneRouteImport } from './routes/ricerca-innovazione'
 import { Route as ProgettazioneFibraRouteImport } from './routes/progettazione-fibra'
@@ -21,6 +22,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServiziItRoute = ServiziItRouteImport.update({
+  id: '/servizi-it',
+  path: '/servizi-it',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServiziRoute = ServiziRouteImport.update({
@@ -67,6 +73,7 @@ export interface FileRoutesByFullPath {
   '/progettazione-fibra': typeof ProgettazioneFibraRoute
   '/ricerca-innovazione': typeof RicercaInnovazioneRoute
   '/servizi': typeof ServiziRoute
+  '/servizi-it': typeof ServiziItRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
@@ -77,6 +84,7 @@ export interface FileRoutesByTo {
   '/progettazione-fibra': typeof ProgettazioneFibraRoute
   '/ricerca-innovazione': typeof RicercaInnovazioneRoute
   '/servizi': typeof ServiziRoute
+  '/servizi-it': typeof ServiziItRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
@@ -88,6 +96,7 @@ export interface FileRoutesById {
   '/progettazione-fibra': typeof ProgettazioneFibraRoute
   '/ricerca-innovazione': typeof RicercaInnovazioneRoute
   '/servizi': typeof ServiziRoute
+  '/servizi-it': typeof ServiziItRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
@@ -100,6 +109,7 @@ export interface FileRouteTypes {
     | '/progettazione-fibra'
     | '/ricerca-innovazione'
     | '/servizi'
+    | '/servizi-it'
     | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -110,6 +120,7 @@ export interface FileRouteTypes {
     | '/progettazione-fibra'
     | '/ricerca-innovazione'
     | '/servizi'
+    | '/servizi-it'
     | '/sitemap.xml'
   id:
     | '__root__'
@@ -120,6 +131,7 @@ export interface FileRouteTypes {
     | '/progettazione-fibra'
     | '/ricerca-innovazione'
     | '/servizi'
+    | '/servizi-it'
     | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
@@ -131,6 +143,7 @@ export interface RootRouteChildren {
   ProgettazioneFibraRoute: typeof ProgettazioneFibraRoute
   RicercaInnovazioneRoute: typeof RicercaInnovazioneRoute
   ServiziRoute: typeof ServiziRoute
+  ServiziItRoute: typeof ServiziItRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
@@ -141,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/servizi-it': {
+      id: '/servizi-it'
+      path: '/servizi-it'
+      fullPath: '/servizi-it'
+      preLoaderRoute: typeof ServiziItRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/servizi': {
@@ -203,6 +223,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProgettazioneFibraRoute: ProgettazioneFibraRoute,
   RicercaInnovazioneRoute: RicercaInnovazioneRoute,
   ServiziRoute: ServiziRoute,
+  ServiziItRoute: ServiziItRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport

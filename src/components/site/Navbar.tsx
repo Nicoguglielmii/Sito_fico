@@ -12,11 +12,11 @@ export function Navbar() {
     { name: "L'azienda", path: "/chi-siamo", icon: Building2 },
   ];
 
-  // Sottomenù dei servizi
+  // Sottomenù dei servizi (Aggiornato con la rotta /servizi-it)
   const serviceItems = [
     { name: "Consulenza Imprese", path: "/consulenza-imprese" },
     { name: "Rapporti e Gestione Enti", path: "/servizi" }, // Temporaneo
-    { name: "Servizi IT", path: "/servizi" }, // Temporaneo
+    { name: "Servizi IT", path: "/servizi-it" }, // AGGIORNATO
     { name: "Networking & Cablaggio", path: "/servizi" }, // Temporaneo
     { name: "Ricerca e innovazione", path: "/ricerca-innovazione" },
     { name: "Realizzazioni siti web", path: "/servizi" }, // Temporaneo
@@ -145,6 +145,7 @@ export function Navbar() {
         </div>
 
         <div className="flex flex-col p-6 space-y-6">
+          {/* Loop voci principali */}
           {menuItems.map((item) => {
             const Icon = item.icon;
             return (
@@ -160,14 +161,30 @@ export function Navbar() {
             );
           })}
 
-          {/* Voci Servizi fisse nella sidebar */}
-          <Link
-            to="/servizi"
-            onClick={() => setIsOpen(false)}
-            className="text-xl font-medium text-gray-300 hover:text-[#38bdf8] transition-colors duration-150 pl-2 border-l-2 border-transparent hover:border-[#38bdf8] flex items-center gap-3"
-          >
-            <FileText size={22} /> Servizi
-          </Link>
+          {/* Voci Servizi nella sidebar con i relativi sottomenù per il mobile */}
+          <div className="flex flex-col">
+            <Link
+              to="/servizi"
+              onClick={() => setIsOpen(false)}
+              className="text-xl font-medium text-gray-300 hover:text-[#38bdf8] transition-colors duration-150 pl-2 border-l-2 border-transparent hover:border-[#38bdf8] flex items-center gap-3 mb-4"
+            >
+              <FileText size={22} /> Servizi
+            </Link>
+            
+            {/* Lista dei sottomenù indentata */}
+            <div className="flex flex-col gap-3 pl-11 border-l border-[#0e7490]/30 ml-3">
+              {serviceItems.map((subItem) => (
+                <Link
+                  key={subItem.name}
+                  to={subItem.path}
+                  onClick={() => setIsOpen(false)}
+                  className="text-[15px] text-gray-400 hover:text-white transition-colors"
+                >
+                  {subItem.name}
+                </Link>
+              ))}
+            </div>
+          </div>
 
           <Link
             to="/contatti"
