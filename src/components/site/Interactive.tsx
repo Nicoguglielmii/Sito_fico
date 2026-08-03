@@ -1,3 +1,7 @@
+// src/components/site/Interactive.tsx
+// Questo file raggruppa componenti UI usati globalmente nel sito.
+// Ho aggiunto commenti esplicativi e di contesto senza modificare la logica.
+
 import { useEffect, useRef, useState, type ReactNode, type MouseEvent } from "react";
 import {
   MessageCircle,
@@ -17,6 +21,11 @@ import {
 } from "lucide-react";
 
 /* ------------------------- Hero particles canvas ------------------------- */
+// HeroParticles: canvas che disegna particelle animate e linee di collegamento.
+// - Inizializza dimensione e devicePixelRatio per avere un rendering nitido
+// - Genera un insieme di punti con velocità casuale
+// - Ciclo `tick` aggiorna le posizioni, disegna linee tra punti vicini e i punti stessi
+// - Pulizia: cancella RAF e rimuove l'event listener di resize
 export function HeroParticles() {
   const ref = useRef<HTMLCanvasElement>(null);
 
@@ -112,6 +121,8 @@ export function HeroParticles() {
 }
 
 /* ------------------------- Magnetic button wrapper ------------------------ */
+// Magnetic: wrapper che applica una piccola traduzione all'elemento quando il mouse
+// si muove sopra, per un effetto di 'attrazione'.
 export function Magnetic({
   children,
   className = "",
@@ -151,6 +162,7 @@ export function Magnetic({
 }
 
 /* --------------------------- WhatsApp floating --------------------------- */
+// WhatsAppFab: link flottante per aprire una chat precompilata su WhatsApp.
 export function WhatsAppFab() {
   return (
     <a
@@ -168,6 +180,7 @@ export function WhatsAppFab() {
 }
 
 /* ------------------------------- Dark mode ------------------------------- */
+// ThemeToggle: gestisce il tema scuro/chiaro e lo salva in localStorage.
 export function ThemeToggle() {
   const [dark, setDark] = useState(false);
 
@@ -199,6 +212,7 @@ export function ThemeToggle() {
 }
 
 /* ------------------------------ Cookie banner ----------------------------- */
+// CookieBanner: banner di consenso con salvataggio su localStorage.
 export function CookieBanner() {
   const [show, setShow] = useState(false);
 
