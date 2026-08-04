@@ -10,60 +10,41 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ServiziItRouteImport } from './routes/servizi-it'
-import { Route as ServiziRouteImport } from './routes/servizi'
-import { Route as RicercaInnovazioneRouteImport } from './routes/ricerca-innovazione'
-import { Route as RapportiEntiRouteImport } from './routes/rapporti-enti'
-import { Route as ProgettazioneFibraRouteImport } from './routes/progettazione-fibra'
-import { Route as NetworkingCablaggioRouteImport } from './routes/networking-cablaggio'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
 import { Route as ContattiRouteImport } from './routes/contatti'
-import { Route as ConsulenzaImpreseRouteImport } from './routes/consulenza-imprese'
 import { Route as ChiSiamoRouteImport } from './routes/chi-siamo'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BusinessIndexRouteImport } from './routes/business/index'
+import { Route as BusinessUnitIndexRouteImport } from './routes/business/unit/index'
+import { Route as BusinessDevelopmentIndexRouteImport } from './routes/business/development/index'
+import { Route as BusinessUnitPaPrivatiRouteImport } from './routes/business/unit/pa-privati'
+import { Route as BusinessUnitFibraMobileRouteImport } from './routes/business/unit/fibra-mobile'
+import { Route as BusinessUnitEnergiaRouteImport } from './routes/business/unit/energia'
+import { Route as BusinessDevelopmentPartnershipRouteImport } from './routes/business/development/partnership'
+import { Route as BusinessDevelopmentMarketingRouteImport } from './routes/business/development/marketing'
+import { Route as BusinessDevelopmentInnovazioneRouteImport } from './routes/business/development/innovazione'
+import { Route as BusinessDevelopmentGareRouteImport } from './routes/business/development/gare'
+import { Route as BusinessDevelopmentCommercialeRouteImport } from './routes/business/development/commerciale'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServiziItRoute = ServiziItRouteImport.update({
-  id: '/servizi-it',
-  path: '/servizi-it',
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServiziRoute = ServiziRouteImport.update({
-  id: '/servizi',
-  path: '/servizi',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RicercaInnovazioneRoute = RicercaInnovazioneRouteImport.update({
-  id: '/ricerca-innovazione',
-  path: '/ricerca-innovazione',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RapportiEntiRoute = RapportiEntiRouteImport.update({
-  id: '/rapporti-enti',
-  path: '/rapporti-enti',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProgettazioneFibraRoute = ProgettazioneFibraRouteImport.update({
-  id: '/progettazione-fibra',
-  path: '/progettazione-fibra',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NetworkingCablaggioRoute = NetworkingCablaggioRouteImport.update({
-  id: '/networking-cablaggio',
-  path: '/networking-cablaggio',
+const CookiePolicyRoute = CookiePolicyRouteImport.update({
+  id: '/cookie-policy',
+  path: '/cookie-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContattiRoute = ContattiRouteImport.update({
   id: '/contatti',
   path: '/contatti',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConsulenzaImpreseRoute = ConsulenzaImpreseRouteImport.update({
-  id: '/consulenza-imprese',
-  path: '/consulenza-imprese',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ChiSiamoRoute = ChiSiamoRouteImport.update({
@@ -76,101 +57,203 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BusinessIndexRoute = BusinessIndexRouteImport.update({
+  id: '/business/',
+  path: '/business/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessUnitIndexRoute = BusinessUnitIndexRouteImport.update({
+  id: '/business/unit/',
+  path: '/business/unit/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessDevelopmentIndexRoute =
+  BusinessDevelopmentIndexRouteImport.update({
+    id: '/business/development/',
+    path: '/business/development/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const BusinessUnitPaPrivatiRoute = BusinessUnitPaPrivatiRouteImport.update({
+  id: '/business/unit/pa-privati',
+  path: '/business/unit/pa-privati',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessUnitFibraMobileRoute = BusinessUnitFibraMobileRouteImport.update({
+  id: '/business/unit/fibra-mobile',
+  path: '/business/unit/fibra-mobile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessUnitEnergiaRoute = BusinessUnitEnergiaRouteImport.update({
+  id: '/business/unit/energia',
+  path: '/business/unit/energia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessDevelopmentPartnershipRoute =
+  BusinessDevelopmentPartnershipRouteImport.update({
+    id: '/business/development/partnership',
+    path: '/business/development/partnership',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const BusinessDevelopmentMarketingRoute =
+  BusinessDevelopmentMarketingRouteImport.update({
+    id: '/business/development/marketing',
+    path: '/business/development/marketing',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const BusinessDevelopmentInnovazioneRoute =
+  BusinessDevelopmentInnovazioneRouteImport.update({
+    id: '/business/development/innovazione',
+    path: '/business/development/innovazione',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const BusinessDevelopmentGareRoute = BusinessDevelopmentGareRouteImport.update({
+  id: '/business/development/gare',
+  path: '/business/development/gare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BusinessDevelopmentCommercialeRoute =
+  BusinessDevelopmentCommercialeRouteImport.update({
+    id: '/business/development/commerciale',
+    path: '/business/development/commerciale',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/chi-siamo': typeof ChiSiamoRoute
-  '/consulenza-imprese': typeof ConsulenzaImpreseRoute
   '/contatti': typeof ContattiRoute
-  '/networking-cablaggio': typeof NetworkingCablaggioRoute
-  '/progettazione-fibra': typeof ProgettazioneFibraRoute
-  '/rapporti-enti': typeof RapportiEntiRoute
-  '/ricerca-innovazione': typeof RicercaInnovazioneRoute
-  '/servizi': typeof ServiziRoute
-  '/servizi-it': typeof ServiziItRoute
+  '/cookie-policy': typeof CookiePolicyRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/business/': typeof BusinessIndexRoute
+  '/business/development/commerciale': typeof BusinessDevelopmentCommercialeRoute
+  '/business/development/gare': typeof BusinessDevelopmentGareRoute
+  '/business/development/innovazione': typeof BusinessDevelopmentInnovazioneRoute
+  '/business/development/marketing': typeof BusinessDevelopmentMarketingRoute
+  '/business/development/partnership': typeof BusinessDevelopmentPartnershipRoute
+  '/business/unit/energia': typeof BusinessUnitEnergiaRoute
+  '/business/unit/fibra-mobile': typeof BusinessUnitFibraMobileRoute
+  '/business/unit/pa-privati': typeof BusinessUnitPaPrivatiRoute
+  '/business/development/': typeof BusinessDevelopmentIndexRoute
+  '/business/unit/': typeof BusinessUnitIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/chi-siamo': typeof ChiSiamoRoute
-  '/consulenza-imprese': typeof ConsulenzaImpreseRoute
   '/contatti': typeof ContattiRoute
-  '/networking-cablaggio': typeof NetworkingCablaggioRoute
-  '/progettazione-fibra': typeof ProgettazioneFibraRoute
-  '/rapporti-enti': typeof RapportiEntiRoute
-  '/ricerca-innovazione': typeof RicercaInnovazioneRoute
-  '/servizi': typeof ServiziRoute
-  '/servizi-it': typeof ServiziItRoute
+  '/cookie-policy': typeof CookiePolicyRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/business': typeof BusinessIndexRoute
+  '/business/development/commerciale': typeof BusinessDevelopmentCommercialeRoute
+  '/business/development/gare': typeof BusinessDevelopmentGareRoute
+  '/business/development/innovazione': typeof BusinessDevelopmentInnovazioneRoute
+  '/business/development/marketing': typeof BusinessDevelopmentMarketingRoute
+  '/business/development/partnership': typeof BusinessDevelopmentPartnershipRoute
+  '/business/unit/energia': typeof BusinessUnitEnergiaRoute
+  '/business/unit/fibra-mobile': typeof BusinessUnitFibraMobileRoute
+  '/business/unit/pa-privati': typeof BusinessUnitPaPrivatiRoute
+  '/business/development': typeof BusinessDevelopmentIndexRoute
+  '/business/unit': typeof BusinessUnitIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/chi-siamo': typeof ChiSiamoRoute
-  '/consulenza-imprese': typeof ConsulenzaImpreseRoute
   '/contatti': typeof ContattiRoute
-  '/networking-cablaggio': typeof NetworkingCablaggioRoute
-  '/progettazione-fibra': typeof ProgettazioneFibraRoute
-  '/rapporti-enti': typeof RapportiEntiRoute
-  '/ricerca-innovazione': typeof RicercaInnovazioneRoute
-  '/servizi': typeof ServiziRoute
-  '/servizi-it': typeof ServiziItRoute
+  '/cookie-policy': typeof CookiePolicyRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/business/': typeof BusinessIndexRoute
+  '/business/development/commerciale': typeof BusinessDevelopmentCommercialeRoute
+  '/business/development/gare': typeof BusinessDevelopmentGareRoute
+  '/business/development/innovazione': typeof BusinessDevelopmentInnovazioneRoute
+  '/business/development/marketing': typeof BusinessDevelopmentMarketingRoute
+  '/business/development/partnership': typeof BusinessDevelopmentPartnershipRoute
+  '/business/unit/energia': typeof BusinessUnitEnergiaRoute
+  '/business/unit/fibra-mobile': typeof BusinessUnitFibraMobileRoute
+  '/business/unit/pa-privati': typeof BusinessUnitPaPrivatiRoute
+  '/business/development/': typeof BusinessDevelopmentIndexRoute
+  '/business/unit/': typeof BusinessUnitIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/chi-siamo'
-    | '/consulenza-imprese'
     | '/contatti'
-    | '/networking-cablaggio'
-    | '/progettazione-fibra'
-    | '/rapporti-enti'
-    | '/ricerca-innovazione'
-    | '/servizi'
-    | '/servizi-it'
+    | '/cookie-policy'
+    | '/privacy-policy'
     | '/sitemap.xml'
+    | '/business/'
+    | '/business/development/commerciale'
+    | '/business/development/gare'
+    | '/business/development/innovazione'
+    | '/business/development/marketing'
+    | '/business/development/partnership'
+    | '/business/unit/energia'
+    | '/business/unit/fibra-mobile'
+    | '/business/unit/pa-privati'
+    | '/business/development/'
+    | '/business/unit/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/chi-siamo'
-    | '/consulenza-imprese'
     | '/contatti'
-    | '/networking-cablaggio'
-    | '/progettazione-fibra'
-    | '/rapporti-enti'
-    | '/ricerca-innovazione'
-    | '/servizi'
-    | '/servizi-it'
+    | '/cookie-policy'
+    | '/privacy-policy'
     | '/sitemap.xml'
+    | '/business'
+    | '/business/development/commerciale'
+    | '/business/development/gare'
+    | '/business/development/innovazione'
+    | '/business/development/marketing'
+    | '/business/development/partnership'
+    | '/business/unit/energia'
+    | '/business/unit/fibra-mobile'
+    | '/business/unit/pa-privati'
+    | '/business/development'
+    | '/business/unit'
   id:
     | '__root__'
     | '/'
     | '/chi-siamo'
-    | '/consulenza-imprese'
     | '/contatti'
-    | '/networking-cablaggio'
-    | '/progettazione-fibra'
-    | '/rapporti-enti'
-    | '/ricerca-innovazione'
-    | '/servizi'
-    | '/servizi-it'
+    | '/cookie-policy'
+    | '/privacy-policy'
     | '/sitemap.xml'
+    | '/business/'
+    | '/business/development/commerciale'
+    | '/business/development/gare'
+    | '/business/development/innovazione'
+    | '/business/development/marketing'
+    | '/business/development/partnership'
+    | '/business/unit/energia'
+    | '/business/unit/fibra-mobile'
+    | '/business/unit/pa-privati'
+    | '/business/development/'
+    | '/business/unit/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ChiSiamoRoute: typeof ChiSiamoRoute
-  ConsulenzaImpreseRoute: typeof ConsulenzaImpreseRoute
   ContattiRoute: typeof ContattiRoute
-  NetworkingCablaggioRoute: typeof NetworkingCablaggioRoute
-  ProgettazioneFibraRoute: typeof ProgettazioneFibraRoute
-  RapportiEntiRoute: typeof RapportiEntiRoute
-  RicercaInnovazioneRoute: typeof RicercaInnovazioneRoute
-  ServiziRoute: typeof ServiziRoute
-  ServiziItRoute: typeof ServiziItRoute
+  CookiePolicyRoute: typeof CookiePolicyRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  BusinessIndexRoute: typeof BusinessIndexRoute
+  BusinessDevelopmentCommercialeRoute: typeof BusinessDevelopmentCommercialeRoute
+  BusinessDevelopmentGareRoute: typeof BusinessDevelopmentGareRoute
+  BusinessDevelopmentInnovazioneRoute: typeof BusinessDevelopmentInnovazioneRoute
+  BusinessDevelopmentMarketingRoute: typeof BusinessDevelopmentMarketingRoute
+  BusinessDevelopmentPartnershipRoute: typeof BusinessDevelopmentPartnershipRoute
+  BusinessUnitEnergiaRoute: typeof BusinessUnitEnergiaRoute
+  BusinessUnitFibraMobileRoute: typeof BusinessUnitFibraMobileRoute
+  BusinessUnitPaPrivatiRoute: typeof BusinessUnitPaPrivatiRoute
+  BusinessDevelopmentIndexRoute: typeof BusinessDevelopmentIndexRoute
+  BusinessUnitIndexRoute: typeof BusinessUnitIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -182,46 +265,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/servizi-it': {
-      id: '/servizi-it'
-      path: '/servizi-it'
-      fullPath: '/servizi-it'
-      preLoaderRoute: typeof ServiziItRouteImport
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/servizi': {
-      id: '/servizi'
-      path: '/servizi'
-      fullPath: '/servizi'
-      preLoaderRoute: typeof ServiziRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ricerca-innovazione': {
-      id: '/ricerca-innovazione'
-      path: '/ricerca-innovazione'
-      fullPath: '/ricerca-innovazione'
-      preLoaderRoute: typeof RicercaInnovazioneRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/rapporti-enti': {
-      id: '/rapporti-enti'
-      path: '/rapporti-enti'
-      fullPath: '/rapporti-enti'
-      preLoaderRoute: typeof RapportiEntiRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/progettazione-fibra': {
-      id: '/progettazione-fibra'
-      path: '/progettazione-fibra'
-      fullPath: '/progettazione-fibra'
-      preLoaderRoute: typeof ProgettazioneFibraRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/networking-cablaggio': {
-      id: '/networking-cablaggio'
-      path: '/networking-cablaggio'
-      fullPath: '/networking-cablaggio'
-      preLoaderRoute: typeof NetworkingCablaggioRouteImport
+    '/cookie-policy': {
+      id: '/cookie-policy'
+      path: '/cookie-policy'
+      fullPath: '/cookie-policy'
+      preLoaderRoute: typeof CookiePolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contatti': {
@@ -229,13 +284,6 @@ declare module '@tanstack/react-router' {
       path: '/contatti'
       fullPath: '/contatti'
       preLoaderRoute: typeof ContattiRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/consulenza-imprese': {
-      id: '/consulenza-imprese'
-      path: '/consulenza-imprese'
-      fullPath: '/consulenza-imprese'
-      preLoaderRoute: typeof ConsulenzaImpreseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/chi-siamo': {
@@ -252,21 +300,104 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/business/': {
+      id: '/business/'
+      path: '/business'
+      fullPath: '/business/'
+      preLoaderRoute: typeof BusinessIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business/unit/': {
+      id: '/business/unit/'
+      path: '/business/unit'
+      fullPath: '/business/unit/'
+      preLoaderRoute: typeof BusinessUnitIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business/development/': {
+      id: '/business/development/'
+      path: '/business/development'
+      fullPath: '/business/development/'
+      preLoaderRoute: typeof BusinessDevelopmentIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business/unit/pa-privati': {
+      id: '/business/unit/pa-privati'
+      path: '/business/unit/pa-privati'
+      fullPath: '/business/unit/pa-privati'
+      preLoaderRoute: typeof BusinessUnitPaPrivatiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business/unit/fibra-mobile': {
+      id: '/business/unit/fibra-mobile'
+      path: '/business/unit/fibra-mobile'
+      fullPath: '/business/unit/fibra-mobile'
+      preLoaderRoute: typeof BusinessUnitFibraMobileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business/unit/energia': {
+      id: '/business/unit/energia'
+      path: '/business/unit/energia'
+      fullPath: '/business/unit/energia'
+      preLoaderRoute: typeof BusinessUnitEnergiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business/development/partnership': {
+      id: '/business/development/partnership'
+      path: '/business/development/partnership'
+      fullPath: '/business/development/partnership'
+      preLoaderRoute: typeof BusinessDevelopmentPartnershipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business/development/marketing': {
+      id: '/business/development/marketing'
+      path: '/business/development/marketing'
+      fullPath: '/business/development/marketing'
+      preLoaderRoute: typeof BusinessDevelopmentMarketingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business/development/innovazione': {
+      id: '/business/development/innovazione'
+      path: '/business/development/innovazione'
+      fullPath: '/business/development/innovazione'
+      preLoaderRoute: typeof BusinessDevelopmentInnovazioneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business/development/gare': {
+      id: '/business/development/gare'
+      path: '/business/development/gare'
+      fullPath: '/business/development/gare'
+      preLoaderRoute: typeof BusinessDevelopmentGareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/business/development/commerciale': {
+      id: '/business/development/commerciale'
+      path: '/business/development/commerciale'
+      fullPath: '/business/development/commerciale'
+      preLoaderRoute: typeof BusinessDevelopmentCommercialeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ChiSiamoRoute: ChiSiamoRoute,
-  ConsulenzaImpreseRoute: ConsulenzaImpreseRoute,
   ContattiRoute: ContattiRoute,
-  NetworkingCablaggioRoute: NetworkingCablaggioRoute,
-  ProgettazioneFibraRoute: ProgettazioneFibraRoute,
-  RapportiEntiRoute: RapportiEntiRoute,
-  RicercaInnovazioneRoute: RicercaInnovazioneRoute,
-  ServiziRoute: ServiziRoute,
-  ServiziItRoute: ServiziItRoute,
+  CookiePolicyRoute: CookiePolicyRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  BusinessIndexRoute: BusinessIndexRoute,
+  BusinessDevelopmentCommercialeRoute: BusinessDevelopmentCommercialeRoute,
+  BusinessDevelopmentGareRoute: BusinessDevelopmentGareRoute,
+  BusinessDevelopmentInnovazioneRoute: BusinessDevelopmentInnovazioneRoute,
+  BusinessDevelopmentMarketingRoute: BusinessDevelopmentMarketingRoute,
+  BusinessDevelopmentPartnershipRoute: BusinessDevelopmentPartnershipRoute,
+  BusinessUnitEnergiaRoute: BusinessUnitEnergiaRoute,
+  BusinessUnitFibraMobileRoute: BusinessUnitFibraMobileRoute,
+  BusinessUnitPaPrivatiRoute: BusinessUnitPaPrivatiRoute,
+  BusinessDevelopmentIndexRoute: BusinessDevelopmentIndexRoute,
+  BusinessUnitIndexRoute: BusinessUnitIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
