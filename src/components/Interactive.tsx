@@ -402,12 +402,13 @@ export function ItalyMap() {
       />
 
       <div className="container-x relative">
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        {/* MODIFICATO: Forzato l'allineamento a sinistra con Flexbox */}
+        <div className="w-full flex flex-col items-start justify-start text-left mb-14">
           <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">
             Presenza
           </span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-bold text-white">
-            Presenza consolidata in tutta <span className="text-gradient">Italia</span>
+          <h2 className="mt-3 text-4xl md:text-5xl font-bold text-white text-left">
+          <span className="text-gradient">  Presenza consolidata in tutta Italia</span>
           </h2>
         </div>
 

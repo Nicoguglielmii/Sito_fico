@@ -50,7 +50,7 @@ function Index() {
           è vuoto intenzionalmente per evitare che i lettori di schermo leggano testo
           ridondante; il contenuto testuale viene fornito da markup accessibile (h1, p).
       */}
-      <section className="relative min-h-[100svh] flex items-center overflow-hidden surface-navy">
+      <section className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden surface-navy">
         <div className="absolute inset-0">
           <img
             src={heroImg}
@@ -74,57 +74,58 @@ function Index() {
           style={{ animationDelay: "2s" }}
         />
 
-        <div className="container-x relative z-10 pt-32 pb-24 md:pb-32">
-          <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-end">
-            <div>
-              <Reveal delay={100}>
-                {/* MODIFICATO: Gradiente su tutto il testo */}
-                <h1 className="font-[var(--font-display)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight text-gradient">
-                  Creiamo il futuro,
-                  <br />
-                  insieme
-                </h1>
-              </Reveal>
-              <Reveal delay={200}>
-                <p className="mt-8 text-lg md:text-xl text-white/75 max-w-xl leading-relaxed">
-                  Connettiamo idee, persone e infrastrutture per costruire un futuro digitale.
-                </p>
-              </Reveal>
-              <Reveal delay={300}>
-                <div className="mt-10 flex flex-wrap gap-4"></div>
-              </Reveal>
-            </div>
-
-            <div className="border-t lg:border-t-0 lg:border-l border-white/10 pt-12 lg:pt-0 lg:pl-16">
-              <Reveal delay={200}>
-                <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">
-                  Il nostro ruolo
-                </span>
-                {/* MODIFICATO: Gradiente su tutto il testo */}
-                <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-gradient">
-                  Siamo il punto di connessione
-                </h2>
-              </Reveal>
-              <Reveal delay={300}>
-                {/* Blocco descrittivo: testo con gerarchia chiara e link semantico */}
-                <div className="mt-6 space-y-4 text-white/70 text-base md:text-lg leading-relaxed">
-                  <p>
-                    fi.co. nasce per semplificare ciò che spesso appare complesso. Ogni progetto
-                    infrastrutturale coinvolge operatori, imprese, amministrazioni pubbliche e
-                    professionisti. Il nostro ruolo è creare dialogo, coordinare attività e
-                    trasformare ogni esigenza in una soluzione concreta.
-                  </p>
-                  {/* Link interno: usa `Link` del router per evitare reload completo della pagina */}
-                  <Link
-                    to="/chi-siamo"
-                    className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all pt-2"
-                  >
-                    Scopri la nostra storia <ArrowRight size={16} />
-                  </Link>
-                </div>
-              </Reveal>
-            </div>
+        {/* MODIFICATO: Struttura a singola colonna con maggiore spazio sotto */}
+        <div className="container-x relative z-10 pt-40 pb-40 flex flex-col items-start gap-20 lg:gap-24 w-full">
+          
+          {/* PRIMO BLOCCO: Titolo principale */}
+          <div className="max-w-4xl">
+            <Reveal delay={100}>
+              <h1 className="font-[var(--font-display)] text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.95] tracking-tight text-gradient">
+                Creiamo il futuro,
+                <br />
+                insieme
+              </h1>
+            </Reveal>
+            <Reveal delay={200}>
+              <p className="mt-8 text-lg md:text-xl text-white/75 max-w-xl leading-relaxed">
+                Connettiamo idee, persone e infrastrutture per costruire un futuro digitale.
+              </p>
+            </Reveal>
+            <Reveal delay={300}>
+              <div className="mt-10 flex flex-wrap gap-4"></div>
+            </Reveal>
           </div>
+
+          {/* SECONDO BLOCCO: Il nostro ruolo (Incolonnato a sinistra) */}
+          <div className="max-w-3xl">
+            <Reveal delay={400}>
+              <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">
+                Il nostro ruolo
+              </span>
+              <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-gradient">
+                Siamo il punto di connessione
+              </h2>
+            </Reveal>
+            <Reveal delay={500}>
+              {/* Blocco descrittivo: testo con gerarchia chiara e link semantico */}
+              <div className="mt-6 space-y-4 text-white/70 text-base md:text-lg leading-relaxed">
+                <p>
+                  fi.co. nasce per semplificare ciò che spesso appare complesso. Ogni progetto
+                  infrastrutturale coinvolge operatori, imprese, amministrazioni pubbliche e
+                  professionisti. Il nostro ruolo è creare dialogo, coordinare attività e
+                  trasformare ogni esigenza in una soluzione concreta.
+                </p>
+                {/* Link interno: usa `Link` del router per evitare reload completo della pagina */}
+                <Link
+                  to="/chi-siamo"
+                  className="inline-flex items-center gap-2 text-accent font-semibold hover:gap-3 transition-all pt-2"
+                >
+                  Scopri la nostra storia <ArrowRight size={16} />
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+
         </div>
 
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40 text-xs tracking-widest uppercase animate-pulse">
@@ -153,7 +154,6 @@ function Index() {
               <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">
                 Perché sceglierci
               </span>
-              {/* MODIFICATO: Inserito gradiente per I valori che ci guidano */}
               <h2 className="mt-4 text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#38bdf8] to-[#facc15] bg-clip-text text-transparent">
                 I valori che ci guidano
               </h2>
@@ -217,7 +217,6 @@ function Index() {
             <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-accent/20 blur-3xl animate-pulse-glow" />
             <div className="relative">
               <Network className="mx-auto text-accent" size={40} />
-              {/* MODIFICATO: Gradiente su tutto il testo */}
               <h2 className="mt-6 text-4xl md:text-6xl font-bold max-w-3xl mx-auto leading-tight text-gradient">
                 Trasformiamo le idee in risultati concreti
               </h2>

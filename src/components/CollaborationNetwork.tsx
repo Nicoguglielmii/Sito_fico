@@ -80,7 +80,8 @@ export function CollaborationNetwork() {
     <section className="py-24 overflow-hidden bg-transparent">
       <div className="container-x">
         <Reveal>
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          {/* MODIFICATO: Rimosso text-center e mx-auto, aggiunto text-left */}
+          <div className="text-left max-w-2xl mb-16">
             <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">
               Le nostre collaborazioni
             </span>
