@@ -15,7 +15,7 @@ import { reportError } from "../lib/error-reporting";
 import { Navbar } from "../components/site/Navbar";
 import { Footer } from "../components/site/Footer";
 import { BackToTop, ScrollProgress } from "../components/site/Reveal";
-import { WhatsAppFab, CookieBanner } from "../components/site/Interactive";
+import { CookieBanner } from "../components/site/Interactive";
 
 // Componente fallback per rotte non trovate (404)
 function NotFoundComponent() {
@@ -164,7 +164,7 @@ function RootComponent() {
       </main>
       <Footer />
       <BackToTop />
-      <WhatsAppFab />
+      
       <CookieBanner />
     </QueryClientProvider>
   );

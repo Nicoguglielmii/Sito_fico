@@ -7,9 +7,30 @@ export const Route = createFileRoute('/business/unit/')({
 
 function BusinessUnitPage() {
   const aree = [
-    { titolo: "Fibra e Mobile", icona: Network, path: "/business/unit/fibra-mobile", desc: "Sviluppo di infrastrutture di telecomunicazione di ultima generazione." },
-    { titolo: "Energia", icona: Zap, path: "/business/unit/energia", desc: "Soluzioni per l'efficientamento e le infrastrutture energetiche." },
-    { titolo: "PA e Privati", icona: Building, path: "/business/unit/pa-privati", desc: "Realizzazioni civili e digitali per la Pubblica Amministrazione e settore enterprise." },
+    { 
+      categoria: "Telecomunicazioni", 
+      titolo: "Fibra e Mobile", 
+      descrizione: "Sviluppo di infrastrutture di telecomunicazione di ultima generazione. Progettiamo, realizziamo e manuteniamo le autostrade digitali del futuro.", 
+      icona: Network, 
+      path: "/business/unit/fibra-mobile",
+      linkColor: "text-[#38bdf8] hover:text-blue-300"
+    },
+    { 
+      categoria: "Transizione Energetica", 
+      titolo: "Energia", 
+      descrizione: "Soluzioni per l'efficientamento e le infrastrutture energetiche. Guidiamo le aziende e le pubbliche amministrazioni verso la sostenibilità.", 
+      icona: Zap, 
+      path: "/business/unit/energia",
+      linkColor: "text-[#facc15] hover:text-yellow-300"
+    },
+    { 
+      categoria: "Appalti e Imprese", 
+      titolo: "PA e Privati", 
+      descrizione: "Realizzazioni civili e digitali per la Pubblica Amministrazione e settore enterprise. Un partner unico per progetti complessi chiavi in mano.", 
+      icona: Building, 
+      path: "/business/unit/pa-privati",
+      linkColor: "text-[#38bdf8] hover:text-blue-300"
+    },
   ];
 
   return (
@@ -21,24 +42,47 @@ function BusinessUnitPage() {
             Business Unit
           </h1>
           <p className="mt-6 text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl">
-            Eroga i servizi core dell'azienda e realizza i progetti, generando valore e fatturato.
+            Eroga i servizi core dell'azienda e realizza i progetti operativi, generando valore concreto e fatturato.
           </p>
         </section>
       </div>
 
-      <div className="pt-24 pb-24 w-full max-w-screen-xl mx-auto px-6 lg:px-10">
-        <div className="grid md:grid-cols-3 gap-8">
-          {aree.map((area, i) => (
-            <div key={i} className="bg-[#001724] border border-[#0e7490]/30 p-8 rounded-2xl flex flex-col items-start hover:bg-white/5 transition-all">
-              <div className="w-12 h-12 bg-[#0e7490]/20 text-[#38bdf8] rounded-xl flex items-center justify-center mb-6"><area.icona size={24} /></div>
-              <h3 className="text-2xl font-bold mb-3">{area.titolo}</h3>
-              <p className="text-gray-400 mb-8 flex-1">{area.desc}</p>
-              <Link to={area.path} className="inline-flex items-center gap-2 font-bold text-[#facc15] hover:text-yellow-300">
-                Leggi di più <ArrowRight size={18} />
+      {/* Lista Micro-Aree (Layout verticale a cascata) */}
+      <div className="pt-24 pb-32">
+        <section className="w-full max-w-screen-xl mx-auto px-6 lg:px-10 flex flex-col gap-28">
+          {aree.map((area, index) => (
+            <div key={index} className="flex flex-col items-start text-left">
+              
+              {/* Pre-titolo con lineetta sfumata */}
+              <div className="flex items-center gap-4 mb-4">
+                <div className="h-[3px] w-12 bg-gradient-to-r from-[#38bdf8] to-[#facc15] rounded-full"></div>
+                <div className="text-sm uppercase tracking-[0.2em] text-gray-300 font-bold flex items-center gap-2.5">
+                  <area.icona size={18} className="text-[#38bdf8]" /> 
+                  {area.categoria}
+                </div>
+              </div>
+
+              {/* Titolo principale */}
+              <h2 className="text-4xl md:text-5xl lg:text-[54px] font-black text-[#38bdf8] mb-6 leading-tight">
+                {area.titolo}
+              </h2>
+
+              {/* Paragrafo descrittivo */}
+              <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-4xl mb-8">
+                {area.descrizione}
+              </p>
+              
+              {/* Link alla pagina */}
+              <Link 
+                to={area.path} 
+                className={`inline-flex items-center gap-2 font-bold ${area.linkColor} transition-colors`}
+              >
+                Esplora la divisione <ArrowRight size={20} />
               </Link>
+
             </div>
           ))}
-        </div>
+        </section>
       </div>
     </div>
   );

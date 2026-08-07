@@ -143,18 +143,8 @@ export function Magnetic({
 
 /* --------------------------- WhatsApp floating --------------------------- */
 export function WhatsAppFab() {
-  return (
-    <a
-      href="https://wa.me/393757932669?text=Salve%2C%20vorrei%20informazioni%20sui%20vostri%20servizi."
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Scrivici su WhatsApp"
-      className="fixed bottom-6 left-6 z-40 grid place-items-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-xl hover:scale-110 transition-transform"
-    >
-      <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30" />
-      <MessageCircle size={26} className="relative" />
-    </a>
-  );
+  // MODIFICA: Il componente restituisce null, quindi il pulsante verde scompare dal sito
+  return null;
 }
 
 /* ------------------------------- Dark mode ------------------------------- */
@@ -402,13 +392,12 @@ export function ItalyMap() {
       />
 
       <div className="container-x relative">
-        {/* MODIFICATO: Forzato l'allineamento a sinistra con Flexbox */}
         <div className="w-full flex flex-col items-start justify-start text-left mb-14">
           <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">
             Presenza
           </span>
           <h2 className="mt-3 text-4xl md:text-5xl font-bold text-white text-left">
-          <span className="text-gradient">  Presenza consolidata in tutta Italia</span>
+            Presenza consolidata in tutta <span className="text-gradient">Italia</span>
           </h2>
         </div>
 

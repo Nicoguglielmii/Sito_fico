@@ -95,26 +95,15 @@ function ChiSiamo() {
 
       {/*
         Sezione servizi principali:
-        - Layout a due colonne: immagine del team + lista di punti di forza.
+        - Layout a due colonne: lista di punti di forza a sinistra, immagine del team a destra.
         - L'immagine usa `loading="lazy"` per migliorare la performance
           e `alt` descrittivo per accessibilità.
       */}
       <section className="container-x py-24">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
+          
+          {/* Colonna di sinistra: Lista dei servizi */}
           <Reveal>
-            <div className="relative">
-              <img
-                src={aboutImg}
-                alt="Il team fi.co."
-                loading="lazy"
-                width={1600}
-                height={1000}
-                className="rounded-2xl shadow-xl w-full"
-              />
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl bg-gradient-to-br from-primary to-accent -z-10 blur-2xl opacity-60" />
-            </div>
-          </Reveal>
-          <Reveal delay={150}>
             <div className="space-y-10">
               {[
                 {
@@ -151,12 +140,27 @@ function ChiSiamo() {
               ))}
             </div>
           </Reveal>
+
+          {/* Colonna di destra: Immagine */}
+          <Reveal delay={150}>
+            <div className="relative">
+              <img
+                src={aboutImg}
+                alt="Il team fi.co."
+                loading="lazy"
+                width={1600}
+                height={1000}
+                className="rounded-2xl shadow-xl w-full"
+              />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl bg-gradient-to-br from-primary to-accent -z-10 blur-2xl opacity-60" />
+            </div>
+          </Reveal>
+
         </div>
       </section>
 
       {/*
         Timeline aziendale:
-        MODIFICA: Cambiato da `py-24` a `pt-24 pb-12 md:pb-16` per avvicinarlo alla sezione successiva
       */}
       <section className="bg-transparent pt-24 pb-12 md:pb-16">
         <div className="container-x">
@@ -201,7 +205,6 @@ function ChiSiamo() {
 
       {/*
         Sezione identità visiva:
-        MODIFICA: Ridotto ulteriormente il padding inferiore (pb-12) per avvicinare il pittogramma
       */}
       <section id="identita" className="container-x pt-12 md:pt-16 pb-12 md:pb-16">
         <Reveal>
@@ -213,12 +216,13 @@ function ChiSiamo() {
           </h2>
         </Reveal>
 
-        <div className="grid lg:grid-cols-2 gap-16 mt-16 items-center">
+        <div className="flex flex-col items-start gap-10 mt-16 max-w-3xl">
           <Reveal>
+            {/* RIMOSSO: brightness-0 invert per mostrare i colori originali */}
             <img
               src={logoWordmark}
               alt="FI.CO. wordmark"
-              className="mx-auto h-24 w-auto brightness-0 invert"
+              className="h-24 w-auto"
             />
           </Reveal>
 
@@ -239,14 +243,13 @@ function ChiSiamo() {
 
       {/*
         Pittogramma:
-        MODIFICA: Sostituito `py-24` con `pt-12 pb-24` per riavvicinare il titolo "Pittogramma" alla sezione precedente
       */}
       <section className="bg-transparent pt-12 md:pt-16 pb-24">
         <div className="container-x">
           <Reveal>
-            <div className="text-center max-w-2xl mx-auto mb-16">
+            <div className="text-left max-w-2xl mb-16">
               <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">
-                Pittogramma
+                IL PITTOGRAMMA
               </span>
               <h2 className="mt-3 text-4xl md:text-5xl font-bold text-gradient">Fidelino</h2>
               <p className="mt-4 text-slate-300 text-lg">
@@ -255,19 +258,19 @@ function ChiSiamo() {
             </div>
           </Reveal>
 
-          <Reveal>
-            <div className="flex justify-center">
+          <div className="flex flex-col items-start gap-10 max-w-3xl">
+            <Reveal>
               <img src={logoPittogramma} alt="Pittogramma Fidelino" className="w-64 h-auto" />
-            </div>
-          </Reveal>
+            </Reveal>
 
-          <Reveal delay={150}>
-            <p className="mt-10 max-w-3xl mx-auto text-center text-lg text-slate-300 leading-relaxed">
-              Il pittogramma nasce isolando i tre punti del logotipo e collegandoli con linee curve.
-              È un sistema aperto, flessibile, capace di adattarsi a contesti diversi e di
-              rappresentare la nostra missione: creare connessioni.
-            </p>
-          </Reveal>
+            <Reveal delay={150}>
+              <p className="text-lg text-slate-300 leading-relaxed text-left">
+                Il pittogramma nasce isolando i tre punti del logotipo e collegandoli con linee curve.
+                È un sistema aperto, flessibile, capace di adattarsi a contesti diversi e di
+                rappresentare la nostra missione: creare connessioni.
+              </p>
+            </Reveal>
+          </div>
         </div>
       </section>
     </>
