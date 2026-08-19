@@ -18,14 +18,25 @@ import {
   HardHat,
   ShieldCheck,
   ChevronDown,
+  ArrowRight,
 } from "lucide-react";
 
+// =========================================================================
+// IMPORT IMMAGINI REGIONI (Scheda mappa)
+// Sostituisci "hero-fiber.jpg" con i nomi delle tue foto reali una volta caricate in assets
+// =========================================================================
+import imgPiemonte from "@/assets/hero-fiber.jpg";
+import imgLombardia from "@/assets/hero-fiber.jpg";
+import imgVeneto from "@/assets/hero-fiber.jpg";
+import imgToscana from "@/assets/hero-fiber.jpg";
+import imgLazio from "@/assets/hero-fiber.jpg";
+import imgCampania from "@/assets/hero-fiber.jpg";
+import imgBasilicata from "@/assets/hero-fiber.jpg";
+import imgPuglia from "@/assets/hero-fiber.jpg";
+import imgCalabria from "@/assets/hero-fiber.jpg";
+import imgSicilia from "@/assets/hero-fiber.jpg";
+
 /* ------------------------- Hero particles canvas ------------------------- */
-// HeroParticles: canvas che disegna particelle animate e linee di collegamento.
-// - Inizializza dimensione e devicePixelRatio per avere un rendering nitido
-// - Genera un insieme di punti con velocità casuale
-// - Ciclo `tick` aggiorna le posizioni, disegna linee tra punti vicini e i punti stessi
-// - Pulizia: cancella RAF e rimuove l'event listener di resize
 export function HeroParticles() {
   const ref = useRef<HTMLCanvasElement>(null);
 
@@ -33,7 +44,6 @@ export function HeroParticles() {
     const c = ref.current;
     if (!c) return;
 
-    // Contesto 2D per disegnare particelle animate
     const ctx = c.getContext("2d");
     if (!ctx) return;
 
@@ -46,14 +56,12 @@ export function HeroParticles() {
     let pts: P[] = [];
 
     const resize = () => {
-      // Manteniamo il canvas in dimensione reale per una resa nitida su display ad alta densità
       w = c.clientWidth;
       h = c.clientHeight;
       c.width = w * dpr;
       c.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      // Numero di particelle in base all'area del canvas, con un massimo fisso per preservare le prestazioni
       const count = Math.min(70, Math.floor((w * h) / 18000));
       pts = Array.from({ length: count }, () => ({
         x: Math.random() * w,
@@ -69,7 +77,6 @@ export function HeroParticles() {
     const tick = () => {
       ctx.clearRect(0, 0, w, h);
 
-      // Aggiorna posizione delle particelle e rimbalza ai bordi
       for (const p of pts) {
         p.x += p.vx;
         p.y += p.vy;
@@ -77,7 +84,6 @@ export function HeroParticles() {
         if (p.y < 0 || p.y > h) p.vy *= -1;
       }
 
-      // Disegna i collegamenti tra particelle vicine
       for (let i = 0; i < pts.length; i++) {
         for (let j = i + 1; j < pts.length; j++) {
           const a = pts[i];
@@ -97,7 +103,6 @@ export function HeroParticles() {
         }
       }
 
-      // Disegna i punti delle particelle
       ctx.fillStyle = "rgba(250, 189, 24, 0.8)";
       for (const p of pts) {
         ctx.beginPath();
@@ -121,8 +126,6 @@ export function HeroParticles() {
 }
 
 /* ------------------------- Magnetic button wrapper ------------------------ */
-// Magnetic: wrapper che applica una piccola traduzione all'elemento quando il mouse
-// si muove sopra, per un effetto di 'attrazione'.
 export function Magnetic({
   children,
   className = "",
@@ -138,7 +141,6 @@ export function Magnetic({
     const el = ref.current;
     if (!el) return;
 
-    // Calcola uno spostamento relativo al centro dell'elemento per l'effetto magnetico
     const r = el.getBoundingClientRect();
     const x = (e.clientX - r.left - r.width / 2) * strength;
     const y = (e.clientY - r.top - r.height / 2) * strength;
@@ -162,7 +164,6 @@ export function Magnetic({
 }
 
 /* --------------------------- WhatsApp floating --------------------------- */
-// WhatsAppFab: link flottante per aprire una chat precompilata su WhatsApp.
 export function WhatsAppFab() {
   return (
     <a
@@ -172,7 +173,6 @@ export function WhatsAppFab() {
       aria-label="Scrivici su WhatsApp"
       className="fixed bottom-6 left-6 z-40 grid place-items-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-xl hover:scale-110 transition-transform"
     >
-      {/* Pulsante WhatsApp con effetto di ping per attirare l'attenzione */}
       <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30" />
       <MessageCircle size={26} className="relative" />
     </a>
@@ -180,12 +180,10 @@ export function WhatsAppFab() {
 }
 
 /* ------------------------------- Dark mode ------------------------------- */
-// ThemeToggle: gestisce il tema scuro/chiaro e lo salva in localStorage.
 export function ThemeToggle() {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
-    // Legge la preferenza salvata oppure usa quella del sistema se non esiste
     const saved = localStorage.getItem("fico-theme");
     const isDark =
       saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
@@ -212,12 +210,10 @@ export function ThemeToggle() {
 }
 
 /* ------------------------------ Cookie banner ----------------------------- */
-// CookieBanner: banner di consenso con salvataggio su localStorage.
 export function CookieBanner() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    // Mostra il banner solo se l'utente non ha già confermato una preferenza
     if (!localStorage.getItem("fico-cookies")) setShow(true);
   }, []);
 
@@ -236,12 +232,9 @@ export function CookieBanner() {
   return (
     <div className="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-[99999] w-[calc(100vw-2rem)] md:w-[700px] p-5 md:p-6 rounded-2xl bg-[#011C27] border border-[#0e7490]/50 shadow-2xl flex flex-col md:flex-row md:items-center gap-4 md:gap-6 animate-fade-in">
       
-      {/* Testo del banner: forzato al bianco e grigio chiaro per contrastare il blu scuro */}
       <div className="flex-1">
         <div className="flex justify-between items-start mb-2 md:mb-1">
           <h4 className="font-bold text-white text-base md:text-lg">Utilizziamo i cookie</h4>
-          
-          {/* Tasto X visibile solo su Mobile (in alto a destra) */}
           <button 
             onClick={() => setShow(false)} 
             aria-label="Chiudi" 
@@ -255,26 +248,19 @@ export function CookieBanner() {
         </p>
       </div>
 
-      {/* Bottoni di azione: stili rigidi per evitare che il browser li cambi */}
       <div className="flex items-center gap-3 justify-end shrink-0 mt-2 md:mt-0">
-        
-        {/* Pulsante Rifiuta: Trasparente con bordo grigio chiaro */}
         <button 
           onClick={reject} 
           className="px-4 py-2.5 text-[14px] font-semibold rounded-xl bg-transparent text-gray-300 hover:text-white hover:bg-white/10 border border-gray-500 transition-colors"
         >
           Rifiuta
         </button>
-        
-        {/* Pulsante Accetta: Colore azzurro principale solido */}
         <button 
           onClick={accept} 
           className="px-5 py-2.5 text-[14px] font-bold rounded-xl bg-[#38bdf8] text-[#011C27] hover:bg-[#0284c7] hover:text-white transition-all shadow-[0_0_15px_rgba(56,189,248,0.4)]"
         >
           Accetta tutti
         </button>
-        
-        {/* Tasto X visibile solo su PC (di fianco ai bottoni) */}
         <button 
           onClick={() => setShow(false)} 
           aria-label="Chiudi" 
@@ -299,7 +285,6 @@ const STEPS = [
 export function ProcessTimeline() {
   return (
     <section className="container-x py-24 md:py-32">
-      {/* Stili inline per l'animazione del tratto SVG del percorso */}
       <style>{`
         @keyframes lineTravel {
           0% { stroke-dashoffset: 0; }
@@ -409,24 +394,37 @@ export function ProcessTimeline() {
 
 /* -------------------------- Italy interactive map ------------------------- */
 const REGIONS = [
-  { id: "Piemonte", x: 22, y: 25 },
-  { id: "Lombardia", x: 33, y: 23 },
-  { id: "Veneto", x: 46, y: 22 },
-  { id: "Toscana", x: 36, y: 38 },
-  { id: "Lazio", x: 48, y: 49 },
-  { id: "Campania", x: 63, y: 58 },
-  { id: "Basilicata", x: 76, y: 63 },
-  { id: "Puglia", x: 85, y: 61 },
-  { id: "Calabria", x: 75, y: 75 },
-  { id: "Sicilia", x: 55, y: 85 },
+  { id: "Piemonte", x: 22, y: 25, image: imgPiemonte, desc: "Sviluppiamo reti ultra-veloci nei distretti industriali piemontesi e nelle aree metropolitane, supportando la transizione digitale del Nord-Ovest." },
+  { id: "Lombardia", x: 33, y: 23, image: imgLombardia, desc: "Cuore pulsante dell'economia italiana. Progettiamo infrastrutture di rete scalabili per le grandi imprese e soluzioni di connettività avanzata per l'industria 4.0." },
+  { id: "Veneto", x: 46, y: 22, image: imgVeneto, desc: "Connettiamo il tessuto produttivo del Nord-Est, offrendo servizi di permitting e realizzazione di dorsali in fibra per superare il digital divide locale." },
+  { id: "Toscana", x: 36, y: 38, image: imgToscana, desc: "Portiamo innovazione tecnologica tra arte e industria, gestendo complessi progetti di telecomunicazione nel rigoroso rispetto del patrimonio paesaggistico." },
+  { id: "Lazio", x: 48, y: 49, image: imgLazio, desc: "Interveniamo strategicamente nel Centro Italia e nella Capitale, fornendo supporto ingegneristico e reti di nuova generazione per le pubbliche amministrazioni." },
+  { id: "Campania", x: 63, y: 58, image: imgCampania, desc: "Accompagniamo la crescita digitale del Mezzogiorno con cantieri operativi e soluzioni IT mirate per enti locali e poli tecnologici emergenti." },
+  { id: "Basilicata", x: 76, y: 63, image: imgBasilicata, desc: "Superiamo le complesse sfide orografiche lucane progettando reti resilienti che garantiscono connessioni stabili e veloci su tutto il territorio." },
+  { id: "Puglia", x: 85, y: 61, image: imgPuglia, desc: "Consolidiamo la nostra presenza nel Sud Italia realizzando dorsali strategiche e collegamenti ad altissima capacità per il settore turistico e industriale." },
+  { id: "Calabria", x: 75, y: 75, image: imgCalabria, desc: "Lavoriamo attivamente sul territorio calabrese per abilitare nuovi servizi digitali, gestendo in toto le fasi di permitting e la posa di infrastrutture TLC." },
+  { id: "Sicilia", x: 55, y: 85, image: imgSicilia, desc: "Colleghiamo l'isola al futuro attraverso complessi progetti di ingegneria delle telecomunicazioni e reti in fibra ottica che supportano lo sviluppo economico locale." },
 ];
 
 export function ItalyMap() {
-  const [sel, setSel] = useState(REGIONS[2]); // Puglia selezionata di default
+  // Inizializza con `null` in modo che all'apertura non ci sia nulla selezionato
+  const [sel, setSel] = useState<typeof REGIONS[0] | null>(null);
 
   return (
     <section className="surface-navy py-24 relative overflow-hidden">
-      {/* Bagliore diffuso di sfondo per migliorare la resa grafica della sezione */}
+      
+      {/* Stili per le animazioni */}
+      <style>{`
+        @keyframes slideDownCard {
+          0% { opacity: 0; transform: translateY(-40px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-card { 
+          animation: slideDownCard 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+        }
+      `}</style>
+
+      {/* Bagliore diffuso di sfondo */}
       <div
         className="absolute inset-0 opacity-30"
         style={{ backgroundImage: "var(--gradient-glow)" }}
@@ -437,39 +435,58 @@ export function ItalyMap() {
           <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">
             Presenza
           </span>
-
-          {/* MODIFICATO: Applicato text-gradient all'intero h2 e rimosso span */}
           <h2 className="mt-3 text-4xl md:text-5xl font-bold text-gradient">
             Presenza consolidata in tutta Italia
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-10 items-center">
-          {/* MAPPA */}
-          <div className="lg:col-span-3">
+        <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-center">
+          
+          {/* MAPPA (Colonna sinistra) */}
+          <div className="lg:col-span-3 relative">
             <div className="relative max-w-lg mx-auto">
+              
+              {/* FRECCIA DINAMICA ANIMATA DALLA MAPPA ALLA SCHEDA (Mostrata solo se sel non è null) */}
+              {sel && (
+                <div 
+                  className="hidden lg:flex absolute z-0 items-center transition-all duration-[600ms] ease-in-out pointer-events-none"
+                  style={{
+                    left: `${sel.x}%`,
+                    top: `${sel.y}%`,
+                    width: `calc(120% - ${sel.x}%)`, 
+                    transform: 'translateY(-50%)'
+                  }}
+                >
+                  <div className="h-[2px] w-full bg-white opacity-80"></div>
+                  <ArrowRight size={28} strokeWidth={2} className="text-white shrink-0 -ml-[14px] opacity-80" />
+                </div>
+              )}
+
               <img
                 src="/cartina-italia.png"
                 alt="Mappa Italia"
-                className="w-full h-auto select-none mix-blend-lighten"
+                className="w-full h-auto select-none mix-blend-lighten relative z-10"
                 draggable={false}
               />
 
               {REGIONS.map((r) => (
                 <button
                   key={r.id}
-                  onMouseEnter={() => setSel(r)}
-                  onClick={() => setSel(r)}
-                  /* MODIFICATO: aggiunto flex items-center justify-center e w-12 h-12 per centrare perfettamente i cerchi */
-                  className="absolute -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-12 h-12"
+                  type="button"
+                  // L'evento click è ora l'unico modo per visualizzare la scheda, rimuovendo onMouseEnter
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setSel(r);
+                  }}
+                  className="absolute -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 z-30 touch-manipulation group"
                   style={{
                     left: `${r.x}%`,
                     top: `${r.y}%`,
                   }}
                 >
                   <span
-                    className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FABD18]/25 ${
-                      sel.id === r.id ? "animate-ping" : ""
+                    className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full transition-colors duration-300 ${
+                      sel?.id === r.id ? "bg-[#FABD18]/25 animate-ping" : "bg-transparent group-hover:bg-[#FABD18]/20"
                     }`}
                     style={{
                       width: "42px",
@@ -478,7 +495,7 @@ export function ItalyMap() {
                   />
                   <span
                     className={`relative z-10 rounded-full bg-[#FABD18] transition-all duration-300 ${
-                      sel.id === r.id ? "w-5 h-5 shadow-[0_0_25px_rgba(250,189,24,0.9)]" : "w-3 h-3"
+                      sel?.id === r.id ? "w-5 h-5 shadow-[0_0_25px_rgba(250,189,24,0.9)]" : "w-3 h-3 group-hover:w-4 group-hover:h-4 group-hover:shadow-[0_0_15px_rgba(250,189,24,0.6)]"
                     }`}
                   />
                 </button>
@@ -486,25 +503,53 @@ export function ItalyMap() {
             </div>
           </div>
 
-          {/* LISTA REGIONI */}
-          <div className="lg:col-span-2 space-y-3">
-            {REGIONS.map((r) => (
-              <button
-                key={r.id}
-                onMouseEnter={() => setSel(r)}
-                onClick={() => setSel(r)}
-                className={`w-full text-left p-4 rounded-xl border transition-all ${
-                  sel.id === r.id
-                    ? "bg-white/10 border-accent"
-                    : "bg-white/5 border-white/10 hover:bg-white/10"
-                }`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="font-bold text-white">{r.id}</span>
+          {/* SCHEDA REGIONE ANIMATA O PLACEHOLDER (Colonna destra) */}
+          <div className="lg:col-span-2 relative flex items-center justify-center min-h-[400px]">
+            
+            {sel ? (
+              // SCHEDA REGIONE (Appare solo se una regione è selezionata)
+              <div key={sel.id} className="w-full bg-[#01425f]/40 backdrop-blur-xl border border-[#0e7490]/50 rounded-3xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] animate-card relative z-20">
+                
+                <h3 className="text-4xl font-bold text-[#facc15] mb-6 tracking-wide drop-shadow-md">
+                  {sel.id}
+                </h3>
+                
+                <div className="w-full h-56 bg-[#011C27] rounded-2xl overflow-hidden relative border border-white/10 group shadow-inner">
+                  <img 
+                    src={sel.image} 
+                    alt={`Sede operativa FI.CO. in ${sel.id}`} 
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#011C27] via-[#011C27]/20 to-transparent opacity-90" />
+                  
+                  <div className="absolute bottom-4 left-5 flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-[#38bdf8] animate-pulse shadow-[0_0_10px_#38bdf8]" />
+                    <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#38bdf8]">
+                      Presenza Attiva
+                    </span>
+                  </div>
                 </div>
-              </button>
-            ))}
+                
+                <p className="mt-6 text-[17px] text-gray-200 leading-relaxed">
+                  {sel.desc}
+                </p>
+
+              </div>
+            ) : (
+              // PLACEHOLDER (Appare all'inizio, quando nulla è selezionato)
+              <div className="w-full h-[400px] flex flex-col items-center justify-center p-8 border-2 border-dashed border-[#0e7490]/50 rounded-3xl text-center bg-[#01425f]/10 animate-fade-in relative z-20">
+                <div className="w-16 h-16 rounded-full bg-[#011C27] flex items-center justify-center border border-[#0e7490]/30 mb-6 shadow-lg">
+                  <span className="w-4 h-4 rounded-full bg-[#facc15] animate-pulse shadow-[0_0_15px_rgba(250,189,24,0.8)]" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-3">Scopri il territorio</h3>
+                <p className="text-gray-400 text-[16px] max-w-[250px]">
+                  Clicca su un indicatore sulla mappa per scoprire i dettagli della nostra presenza e i progetti attivi.
+                </p>
+              </div>
+            )}
+            
           </div>
+
         </div>
       </div>
     </section>
