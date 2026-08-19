@@ -23,18 +23,18 @@ import {
 
 // =========================================================================
 // IMPORT IMMAGINI REGIONI (Scheda mappa)
-// Sostituisci "hero-fiber.jpg" con i nomi delle tue foto reali una volta caricate in assets
+// Basato sui file reali presenti nella cartella assets
 // =========================================================================
-import imgPiemonte from "@/assets/hero-fiber.jpg";
-import imgLombardia from "@/assets/hero-fiber.jpg";
-import imgVeneto from "@/assets/hero-fiber.jpg";
-import imgToscana from "@/assets/hero-fiber.jpg";
-import imgLazio from "@/assets/hero-fiber.jpg";
-import imgCampania from "@/assets/hero-fiber.jpg";
-import imgBasilicata from "@/assets/hero-fiber.jpg";
-import imgPuglia from "@/assets/hero-fiber.jpg";
-import imgCalabria from "@/assets/hero-fiber.jpg";
-import imgSicilia from "@/assets/hero-fiber.jpg";
+import imgPiemonte from "@/assets/piemonte.webp";
+import imgLombardia from "@/assets/lombardia.avif";
+import imgVeneto from "@/assets/veneto.jpg";
+import imgToscana from "@/assets/toscana.jpeg";
+import imgLazio from "@/assets/lazio.webp";
+import imgCampania from "@/assets/campania.jpg";
+import imgBasilicata from "@/assets/basilicata.jpg";
+import imgPuglia from "@/assets/puglia.webp";
+import imgCalabria from "@/assets/calabria.webp";
+import imgSicilia from "@/assets/sicilia.jpg";
 
 /* ------------------------- Hero particles canvas ------------------------- */
 export function HeroParticles() {
@@ -522,12 +522,7 @@ export function ItalyMap() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#011C27] via-[#011C27]/20 to-transparent opacity-90" />
                   
-                  <div className="absolute bottom-4 left-5 flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-[#38bdf8] animate-pulse shadow-[0_0_10px_#38bdf8]" />
-                    <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#38bdf8]">
-                      Presenza Attiva
-                    </span>
-                  </div>
+                  
                 </div>
                 
                 <p className="mt-6 text-[17px] text-gray-200 leading-relaxed">
