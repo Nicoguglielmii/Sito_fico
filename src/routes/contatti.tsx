@@ -1,237 +1,190 @@
-// Pagina Contatti
-// Questo file espone la route `/contatti` per il router e il componente
-// `Contatti` che mostra le informazioni aziendali, una mappa incorporata
-// e un form di contatto. I commenti sono informativi e non alterano la
-// logica del codice: non vengono modificati handlers, nomi o comportamenti.
+import { createFileRoute } from '@tanstack/react-router';
+import { Mail, Phone, MapPin, Send, FileText } from 'lucide-react';
 
-import { createFileRoute } from "@tanstack/react-router"; // crea route basate su file
-import { useState } from "react"; // hook React per stato locale
-// Icone utilizzate nella UI per indicare tipo di contatto
-import { Mail, Phone, MapPin, Send, CheckCircle2, Building2 } from "lucide-react";
-import { Reveal } from "@/components/site/Reveal"; // componente per animazioni/ritardi visivi
-
-// Definizione della route per il router (tanstack/react-router).
-// `head` contiene i metadata utili per SEO e Open Graph.
-export const Route = createFileRoute("/contatti")({
-  head: () => ({
-    meta: [
-      { title: "Contatti — FI.CO. SRL" },
-      {
-        name: "description",
-        content: "Contatta FI.CO. SRL ad Andria (BT) per una consulenza personalizzata.",
-      },
-      { property: "og:title", content: "Contatti — FI.CO. SRL" },
-      { property: "og:description", content: "Scrivici, chiamaci o vieni a trovarci ad Andria." },
-      { property: "og:url", content: "/contatti" },
-    ],
-    links: [{ rel: "canonical", href: "/contatti" }],
-  }),
-  component: Contatti,
+export const Route = createFileRoute('/contatti')({
+  component: ContattiPage,
 });
 
-function Contatti() {
-  // Stato locale: `sent` indica che il form è stato inviato.
-  // Notare: l'invio attualmente è solo UI (setSent(true)), non è presente
-  // una chiamata a un backend in questo file.
-  const [sent, setSent] = useState(false);
+function ContattiPage() {
   return (
-    <>
-      {/* Sezione HERO: titolo e breve descrizione della pagina */}
-      <section className="relative pt-36 pb-20 surface-navy overflow-hidden">
-        {/* Sfondo decorativo tramite variabile CSS --gradient-glow */}
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{ backgroundImage: "var(--gradient-glow)" }}
-        />
-        <div className="container-x relative">
-          <Reveal>
-            <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">
-              Contatti
-            </span>
-            <h1 className="mt-4 text-5xl md:text-7xl font-bold leading-[0.95] max-w-4xl text-gradient">
-              Parliamo del tuo prossimo progetto.
-            </h1>
-            <p className="mt-6 text-lg text-white/75 max-w-2xl">
-              Compila il form, scrivici via email o chiamaci.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+    <div className="min-h-screen bg-[#011C27] text-white">
+      
+      {/* Hero Section */}
+      <div className="w-full bg-[#01425f] pt-40 pb-28">
+        <section className="w-full max-w-screen-xl mx-auto px-6 lg:px-10 text-left animate-fade-in">
+          <span className="text-sm uppercase tracking-[0.3em] text-[#facc15] font-bold">
+            Contatti
+          </span>
+          
+          <h1 className="mt-4 text-5xl md:text-7xl font-bold leading-tight md:leading-[1.1] text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#facc15] pb-2 md:pb-4">
+            Parliamo del tuo <br className="hidden md:block" /> prossimo progetto.
+          </h1>
+          
+          <p className="mt-4 md:mt-6 text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl">
+            Compila il form, scrivici via email o chiamaci.
+          </p>
+        </section>
+      </div>
 
-      {/* Sezione principale: colonne info + form */}
-      <section className="container-x py-24">
-        <div className="grid lg:grid-cols-5 gap-10">
-          {/* COLONNA INFORMAZIONI AZIENDALI */}
-          <div className="lg:col-span-2 space-y-6">
-            <Reveal>
-              {/* Card informativa: colori scuri per il tema */}
-              <div className="p-8 rounded-2xl bg-[#0a2e4d] border border-white/10 shadow-lg text-white">
-                <h3 className="text-2xl font-bold text-white">FI.CO. SRL</h3>
-                <ul className="mt-6 space-y-5 text-sm text-slate-300">
-                  {/* Indirizzo: MapPin icona + link a Google Maps */}
-                  <li className="flex gap-4">
-                    <MapPin className="text-primary flex-shrink-0" size={20} />
-                    <a
-                      href="https://www.google.com/maps/search/?api=1&query=Corso+Cavour+9,+Andria+BT"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-primary transition-colors block"
-                    >
-                      Corso Cavour 9, Piano 2<br />
-                      76123 Andria (BT) — Italia
-                    </a>
-                  </li>
-                  {/* Telefono con link click-to-call */}
-                  <li className="flex gap-4">
-                    <Phone className="text-primary flex-shrink-0" size={20} />
-                    <a
-                      href="tel:+393757932669"
-                      className="hover:text-primary text-white transition-colors"
-                    >
-                      +39 375 793 2669
-                    </a>
-                  </li>
-                  {/* Email: due indirizzi distinti per reparto */}
-                  <li className="flex gap-4">
-                    <Mail className="text-primary flex-shrink-0 mt-0.5" size={20} />
-                    <div className="space-y-1">
-                      <a
-                        href="mailto:amministrazione@ficohub.it"
-                        className="block text-white hover:text-primary transition-colors"
-                      >
-                        amministrazione@ficohub.it{" "}
-                        <span className="text-slate-400">(Amministrazione)</span>
-                      </a>
-                      <a
-                        href="mailto:service@ficohub.it"
-                        className="block text-white hover:text-primary transition-colors"
-                      >
-                        service@ficohub.it <span className="text-slate-400">(Operativa)</span>
-                      </a>
-                    </div>
-                  </li>
-                  {/* PEC: posta elettronica certificata mostrata chiaramente */}
-                  <li className="flex gap-4">
-                    <Send className="text-primary flex-shrink-0" size={20} />
-                    <a
-                      href="mailto:fi.co.srl@pec.it"
-                      className="hover:text-primary text-white transition-colors"
-                    >
-                      PEC: fi.co.srl@pec.it
-                    </a>
-                  </li>
-                  {/* Informazioni legali: Partita IVA e Codice SDI */}
-                  <li className="flex gap-4">
-                    <Building2 className="text-primary flex-shrink-0 mt-0.5" size={20} />
-                    <div className="space-y-1 text-slate-400">
-                      <span className="block">P.IVA 08964920725</span>
-                      <span className="block">Cod. SDI: QULXG4S</span>
-                    </div>
-                  </li>
-                </ul>
+      {/* Form & Info Section */}
+      <div className="pt-16 pb-32">
+        <section className="w-full max-w-screen-xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-16">
+          
+          {/* Colonna Sinistra: Info & Mappa */}
+          <div className="flex flex-col gap-10">
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-6">FI.CO. SRL</h2>
+              <p className="text-gray-300 text-lg leading-relaxed mb-8">
+                Siamo pronti ad ascoltare le tue esigenze e a trasformarle in soluzioni concrete. Contattaci senza impegno.
+              </p>
+            </div>
+            
+            <div className="flex flex-col gap-6">
+              
+              {/* Sede */}
+              <div className="flex items-start gap-5 group">
+                <div className="w-12 h-12 rounded-xl bg-[#01425f] border border-[#0e7490]/30 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
+                  <MapPin size={22} />
+                </div>
+                <div className="pt-1">
+                  <p className="text-[17px] font-medium text-white leading-snug">
+                    Corso Cavour 9, Piano 2<br/>
+                    <span className="text-gray-300 text-[15px]">76123 Andria (BT) — Italia</span>
+                  </p>
+                </div>
               </div>
-            </Reveal>
-            <Reveal delay={150}>
-              <div className="rounded-2xl overflow-hidden border border-white/10 aspect-square shadow-lg">
-                {/* Iframe mappa: caricato in modalità lazy per performance */}
-                <iframe
-                  title="Mappa FI.CO. SRL"
-                  src="https://www.google.com/maps?q=Corso+Cavour+9,+Andria+BT,+Italy&output=embed"
-                  className="w-full h-full"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
+
+              {/* Telefono (Corretto il colore qui) */}
+              <div className="flex items-start gap-5 group">
+                <div className="w-12 h-12 rounded-xl bg-[#01425f] border border-[#0e7490]/30 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
+                  <Phone size={22} />
+                </div>
+                <div className="pt-2">
+                  <a href="tel:+393757932669" className="text-[17px] font-medium text-white hover:text-[#38bdf8] transition-colors">
+                    +39 375 793 2669
+                  </a>
+                </div>
               </div>
-            </Reveal>
+
+              {/* Email */}
+              <div className="flex items-start gap-5 group">
+                <div className="w-12 h-12 rounded-xl bg-[#01425f] border border-[#0e7490]/30 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
+                  <Mail size={22} />
+                </div>
+                <div className="pt-1 flex flex-col gap-1">
+                  <p className="text-[16px] font-medium text-white">
+                    <a href="mailto:amministrazione@ficohub.it" className="hover:text-[#38bdf8] transition-colors">amministrazione@ficohub.it</a>
+                    <span className="text-gray-400 font-normal ml-1">(Amministrazione)</span>
+                  </p>
+                  <p className="text-[16px] font-medium text-white">
+                    <a href="mailto:service@ficohub.it" className="hover:text-[#38bdf8] transition-colors">service@ficohub.it</a>
+                    <span className="text-gray-400 font-normal ml-1">(Operativa)</span>
+                  </p>
+                </div>
+              </div>
+
+              {/* PEC */}
+              <div className="flex items-start gap-5 group">
+                <div className="w-12 h-12 rounded-xl bg-[#01425f] border border-[#0e7490]/30 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
+                  <Send size={20} />
+                </div>
+                <div className="pt-2 flex items-center gap-2">
+                  <span className="text-gray-400 font-semibold text-sm">PEC:</span>
+                  <a href="mailto:fi.co.srl@pec.it" className="text-[16px] font-medium text-white hover:text-[#38bdf8] transition-colors">fi.co.srl@pec.it</a>
+                </div>
+              </div>
+
+              {/* Dati Fiscali (P.IVA e SDI) */}
+              <div className="flex items-start gap-5 group">
+                <div className="w-12 h-12 rounded-xl bg-[#01425f] border border-[#0e7490]/30 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
+                  <FileText size={22} />
+                </div>
+                <div className="pt-1">
+                  <p className="text-[15px] font-medium text-gray-300 leading-snug">
+                    P.IVA 08964920725<br/>
+                    Cod. SDI: QULXG4S
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Mappa Google Maps */}
+            <div className="w-full h-72 md:h-80 mt-4 rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+              <iframe
+                src="https://maps.google.com/maps?q=Corso%20Cavour%209%2C%20Andria%20BT%2C%20Italia&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mappa sede operativa FI.CO. SRL"
+              ></iframe>
+            </div>
           </div>
 
-          {/* COLONNA FORM: form di richiesta consulenza */}
-          <Reveal delay={200} className="lg:col-span-3">
-            {/* Card contenente il form: notare che l'invio è gestito in locale */}
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
-              className="p-8 md:p-10 rounded-2xl bg-[#0a2e4d] border border-white/10 shadow-lg space-y-5 text-white"
-            >
-              <div>
-                <h2 className="text-3xl font-bold text-white">Richiedi una consulenza</h2>
-                <p className="mt-2 text-slate-300">
+          {/* Colonna Destra: Form */}
+          <div className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-3xl shadow-2xl relative overflow-hidden h-fit">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#38bdf8]/10 to-transparent blur-3xl rounded-full pointer-events-none" />
+            
+            <form className="flex flex-col gap-6 relative z-10" onSubmit={(e) => e.preventDefault()}>
+              
+              <div className="mb-2">
+                <h3 className="text-3xl font-bold text-white mb-2">Richiedi una consulenza</h3>
+                <p className="text-gray-300 text-[15px]">
                   Raccontaci il tuo progetto: ti ricontatteremo per un confronto tecnico.
                 </p>
               </div>
-              <div className="grid sm:grid-cols-2 gap-5">
-                {/* Campi riutilizzabili tramite componente Field */}
-                <Field label="Nome e Cognome" name="name" required />
-                <Field label="Azienda" name="company" />
-                <Field label="Email" name="email" type="email" required />
-                <Field label="Telefono" name="phone" type="tel" />
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="nome" className="text-sm font-semibold text-gray-300 ml-1">Nome e Cognome *</label>
+                  <input type="text" id="nome" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all" required />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="azienda" className="text-sm font-semibold text-gray-300 ml-1">Azienda</label>
+                  <input type="text" id="azienda" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all" />
+                </div>
               </div>
-              <Field label="Oggetto" name="subject" />
-              <div>
-                <label className="block text-sm font-semibold mb-2 text-white">Messaggio *</label>
-                {/* Textarea con stile scuro per adattarsi al tema */}
-                <textarea
-                  required
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-xl bg-[#031f38] text-white border border-white/20 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition placeholder:text-slate-400"
-                  placeholder="Descrivi il tuo progetto o la tua necessità..."
-                />
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="email" className="text-sm font-semibold text-gray-300 ml-1">Email *</label>
+                  <input type="email" id="email" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all" required />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="telefono" className="text-sm font-semibold text-gray-300 ml-1">Telefono</label>
+                  <input type="tel" id="telefono" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all" />
+                </div>
               </div>
-              {/* Checkbox obbligatoria per il consenso al trattamento dati */}
-              <label className="flex items-start gap-3 text-sm text-slate-300">
-                <input type="checkbox" required className="mt-1 accent-[var(--primary)]" />
-                <span>Accetto il trattamento dei dati personali secondo la Privacy Policy.</span>
-              </label>
-              {/* Bottone di invio: indica stato inviato quando `sent` è true */}
-              <button type="submit" className="btn-hero w-full justify-center mt-2">
-                {sent ? (
-                  <>
-                    <CheckCircle2 size={18} /> Messaggio inviato
-                  </>
-                ) : (
-                  <>
-                    Invia messaggio <Send size={18} />
-                  </>
-                )}
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="oggetto" className="text-sm font-semibold text-gray-300 ml-1">Oggetto</label>
+                <input type="text" id="oggetto" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all" />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label htmlFor="messaggio" className="text-sm font-semibold text-gray-300 ml-1">Messaggio *</label>
+                <textarea id="messaggio" rows={4} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all resize-none" required></textarea>
+              </div>
+
+              <div className="flex items-start gap-3 mt-1">
+                <input type="checkbox" id="privacy" className="mt-1 w-4 h-4 rounded border-white/20 bg-[#011C27] text-[#38bdf8] focus:ring-[#38bdf8] focus:ring-offset-0" required />
+                <label htmlFor="privacy" className="text-[14px] text-gray-300 leading-snug cursor-pointer">
+                  Accetto il trattamento dei dati personali secondo la Privacy Policy.
+                </label>
+              </div>
+
+              <button type="submit" className="mt-2 flex items-center justify-center gap-2 bg-gradient-to-r from-[#38bdf8] to-[#facc15] text-[#011C27] font-bold text-lg px-8 py-4 rounded-xl hover:opacity-90 hover:scale-[1.02] transition-all shadow-lg">
+                Invia Messaggio <Send size={20} />
               </button>
             </form>
-          </Reveal>
-        </div>
-      </section>
-    </>
-  );
-}
+          </div>
 
-// Aggiornato anche il componente Field per i colori scuri
-// Componente `Field` riutilizzabile per campi di input semplici.
-// Manteniamo il markup minimo: label associata tramite `htmlFor` e input con gli
-// stessi `id`/`name` per garantire accessibilità e integrazione con form tradizionali.
-function Field({
-  label,
-  name,
-  type = "text",
-  required = false,
-}: {
-  label: string;
-  name: string;
-  type?: string;
-  required?: boolean;
-}) {
-  return (
-    <div>
-      <label htmlFor={name} className="block text-sm font-semibold mb-2 text-white">
-        {label}
-        {required && " *"}
-      </label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        required={required}
-        className="w-full px-4 py-3 rounded-xl bg-[#031f38] text-white border border-white/20 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"
-      />
+        </section>
+      </div>
+
     </div>
   );
 }
