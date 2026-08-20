@@ -9,11 +9,15 @@ import imgPartnership from "@/assets/connessioni.png";
 import imgGare from "@/assets/logo-scritto.jpg";
 import imgInnovazione from "@/assets/copilot-logo.jpg";
 
+// Route della pagina che raccoglie tutte le aree del Business Development.
 export const Route = createFileRoute('/business/development/')({
   component: BusinessDevelopmentPage,
 });
 
 function BusinessDevelopmentPage() {
+  // Dati condivisi dalle card della pagina.
+  // Ogni elemento contiene contenuto editoriale, destinazione del link,
+  // icona e immagine necessari per costruire una sezione completa.
   const aree = [
     { 
       categoria: "Sviluppo Rete", 
@@ -52,7 +56,7 @@ function BusinessDevelopmentPage() {
       immagine: imgGare
     },
     { 
-      categoria: "R&D", 
+      categoria: "R & D", 
       titolo: "Innovazione e Nuovi Servizi", 
       descrizione: "Ricerca e sviluppo per anticipare le esigenze del domani. Sperimentiamo tecnologie e metodologie inedite per mantenere l'offerta aziendale sempre all'avanguardia.", 
       icona: Lightbulb, 
@@ -62,14 +66,17 @@ function BusinessDevelopmentPage() {
     },
   ];
 
+  // La pagina è organizzata in una hero introduttiva e in una lista di aree
+  // disposte a scacchiera, con testo e immagine alternati sui desktop.
   return (
     <div className="min-h-screen bg-[#011C27] text-white">
       
-      {/* Hero Section con particelle */}
+      {/* Hero introduttiva: presenta il dipartimento e usa particelle decorative sullo sfondo. */}
       <div className="relative w-full bg-[#01425f] pt-40 pb-28 overflow-hidden">
-        {/* SFONDO ANIMATO INSERITO QUI */}
+        {/* Il componente grafico è decorativo e resta dietro al contenuto grazie al posizionamento. */}
         <HeroParticles />
         
+        {/* Il contenuto hero è limitato in larghezza per mantenere leggibilità su schermi grandi. */}
         <section className="relative z-10 w-full max-w-screen-xl mx-auto px-6 lg:px-10 text-left animate-fade-in">
           <span className="text-sm uppercase tracking-[0.3em] text-[#facc15] font-bold">
             Crescita Strategica
@@ -83,25 +90,30 @@ function BusinessDevelopmentPage() {
         </section>
       </div>
 
-      {/* Lista Micro-Aree (Layout a scacchiera Immagine/Testo) */}
+      {/* Lista delle micro-aree: ogni blocco combina descrizione, link e immagine rappresentativa. */}
       <div className="pt-24 pb-32">
+        {/* La spaziatura ampia separa visivamente le aree durante lo scorrimento della pagina. */}
         <section className="w-full max-w-screen-xl mx-auto px-6 lg:px-10 flex flex-col gap-28 lg:gap-40">
           {aree.map((area, index) => {
+            // Gli elementi con indice dispari invertono l'ordine delle colonne
+            // solo sui layout larghi; su mobile il flusso resta verticale.
             const isReversed = index % 2 !== 0;
 
             return (
               <div key={index} className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 
-                {/* Colonna Testo */}
+                {/* Colonna testo: categoria, titolo, descrizione e link all'area dedicata. */}
                 <div className={`flex flex-col items-start text-left ${isReversed ? 'lg:order-2' : 'lg:order-1'}`}>
+                  {/* Linea decorativa e categoria aiutano a identificare il contesto della card. */}
                   <div className="flex items-center gap-4 mb-4">
                     <div className="h-[3px] w-12 bg-gradient-to-r from-[#38bdf8] to-[#facc15] rounded-full"></div>
-                    <div className="text-sm uppercase tracking-[0.2em] text-gray-300 font-bold flex items-center gap-2.5">
+                    <div className="text-sm uppercase tracking-[0.2em] text-[#facc15] font-bold flex items-center gap-2.5">
                       <area.icona size={18} className="text-[#38bdf8]" /> 
                       {area.categoria}
                     </div>
                   </div>
 
+                  {/* Il titolo è il punto focale della singola area di business. */}
                   <h2 className="text-4xl md:text-5xl lg:text-[54px] font-black text-[#38bdf8] mb-6 leading-tight">
                     {area.titolo}
                   </h2>
@@ -110,6 +122,7 @@ function BusinessDevelopmentPage() {
                     {area.descrizione}
                   </p>
                   
+                  {/* Il link usa il path definito nei dati per mantenere allineati testo e destinazione. */}
                   <Link 
                     to={area.path} 
                     className={`inline-flex items-center gap-2 font-bold ${area.linkColor} transition-colors`}
@@ -118,13 +131,15 @@ function BusinessDevelopmentPage() {
                   </Link>
                 </div>
 
-                {/* Colonna Immagine */}
+                {/* Colonna immagine: l'ordine cambia insieme alla colonna testo sui desktop. */}
                 <div className={`relative w-full ${isReversed ? 'lg:order-1' : 'lg:order-2'}`}>
+                  {/* L'immagine mantiene un rapporto video stabile e un testo alternativo coerente col titolo. */}
                   <img 
                     src={area.immagine} 
                     alt={area.titolo} 
                     className="rounded-2xl shadow-2xl w-full h-auto object-cover aspect-video border border-white/5"
                   />
+                  {/* Bagliore decorativo posizionato dietro l'immagine per aggiungere profondità. */}
                   <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl bg-gradient-to-br from-[#38bdf8] to-[#facc15] -z-10 blur-3xl opacity-30" />
                 </div>
 

@@ -19,7 +19,7 @@ function BusinessUnitPage() {
       descrizione: "Sviluppo di infrastrutture di telecomunicazione di ultima generazione. Progettiamo, realizziamo e manuteniamo le autostrade digitali del futuro.", 
       icona: Network, 
       path: "/business/unit/fibra-mobile",
-      linkColor: "text-[#38bdf8] hover:text-blue-300",
+      linkColor: "text-[#facc15] hover:text-yellow-300",
       immagine: imgFiber
     },
     { 
@@ -37,7 +37,7 @@ function BusinessUnitPage() {
       descrizione: "Realizzazioni civili e digitali per la Pubblica Amministrazione e settore enterprise. Un partner unico per progetti complessi chiavi in mano.", 
       icona: Building, 
       path: "/business/unit/pa-privati",
-      linkColor: "text-[#38bdf8] hover:text-blue-300",
+      linkColor: "text-[#facc15] hover:text-yellow-300",
       immagine: imgPa
     },
   ];
@@ -76,7 +76,7 @@ function BusinessUnitPage() {
                   {/* Pre-titolo con lineetta sfumata */}
                   <div className="flex items-center gap-4 mb-4">
                     <div className="h-[3px] w-12 bg-gradient-to-r from-[#38bdf8] to-[#facc15] rounded-full"></div>
-                    <div className="text-sm uppercase tracking-[0.2em] text-gray-300 font-bold flex items-center gap-2.5">
+                    <div className="text-sm uppercase tracking-[0.2em] text-[#facc15] font-bold flex items-center gap-2.5">
                       <area.icona size={18} className="text-[#38bdf8]" /> 
                       {area.categoria}
                     </div>
