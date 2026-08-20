@@ -325,7 +325,7 @@ export function ProcessTimeline() {
         }
       `}</style>
       <div className="max-w-3xl mb-16">
-        <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">
+        <span className="text-xs uppercase tracking-[0.3em] text-[#fde047] font-semibold">
           Il nostro processo
         </span>
         <h2 className="mt-3 text-4xl md:text-5xl font-bold leading-tight text-gradient">

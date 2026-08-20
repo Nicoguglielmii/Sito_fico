@@ -141,7 +141,7 @@ function ChiSiamo() {
         <div className="container-x">
           <Reveal>
             <div className="max-w-2xl mb-16">
-              <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">
+              <span className="text-xs uppercase tracking-[0.3em] text-[#fde047] font-semibold">
                 Il nostro percorso
               </span>
               <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#38bdf8] to-[#facc15] bg-clip-text text-transparent mb-10">
@@ -179,7 +179,7 @@ function ChiSiamo() {
       {/* Sezione identità visiva */}
       <section id="identita" className="container-x pt-12 md:pt-16 pb-12 md:pb-16">
         <Reveal>
-          <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">
+          <span className="text-xs uppercase tracking-[0.3em] text-[#fde047] font-semibold">
             Identità visiva
           </span>
           <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight text-gradient">
@@ -216,7 +216,7 @@ function ChiSiamo() {
         <div className="container-x">
           <Reveal>
             <div className="text-left max-w-2xl mb-16">
-              <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">
+              <span className="text-xs uppercase tracking-[0.3em] text-[#fde047] font-semibold">
                 IL PITTOGRAMMA
               </span>
               <h2 className="mt-3 text-4xl md:text-5xl font-bold text-gradient">Fidelino</h2>

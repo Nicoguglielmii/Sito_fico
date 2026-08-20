@@ -21,7 +21,7 @@ function BusinessDevelopmentPage() {
       descrizione: "Acquisizione di nuovi clienti e presidio dei mercati di riferimento. Costruiamo relazioni solide e durature per garantire una crescita costante del portafoglio aziendale.", 
       icona: Briefcase, 
       path: "/business/development/commerciale",
-      linkColor: "text-[#38bdf8] hover:text-blue-300",
+      linkColor: "text-[#facc15] hover:text-yellow-300",
       immagine: imgCommerciale
     },
     { 
@@ -39,7 +39,7 @@ function BusinessDevelopmentPage() {
       descrizione: "Creazione di ecosistemi di valore e alleanze condivise. Lavoriamo fianco a fianco con i principali player di settore per moltiplicare le opportunità di successo.", 
       icona: Handshake, 
       path: "/business/development/partnership",
-      linkColor: "text-[#38bdf8] hover:text-blue-300",
+      linkColor: "text-[#facc15] hover:text-yellow-300",
       immagine: imgPartnership
     },
     { 
@@ -57,7 +57,7 @@ function BusinessDevelopmentPage() {
       descrizione: "Ricerca e sviluppo per anticipare le esigenze del domani. Sperimentiamo tecnologie e metodologie inedite per mantenere l'offerta aziendale sempre all'avanguardia.", 
       icona: Lightbulb, 
       path: "/business/development/innovazione",
-      linkColor: "text-[#38bdf8] hover:text-blue-300",
+      linkColor: "text-[#facc15] hover:text-yellow-300",
       immagine: imgInnovazione
     },
   ];

@@ -82,7 +82,7 @@ export function CollaborationNetwork() {
         <Reveal>
           {/* MODIFICATO: Rimosso text-center e mx-auto, aggiunto text-left */}
           <div className="text-left max-w-2xl mb-16">
-            <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">
+            <span className="text-xs uppercase tracking-[0.3em] text-[#fde047] font-semibold">
               Le nostre collaborazioni
             </span>
 

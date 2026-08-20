@@ -151,7 +151,7 @@ function Index() {
         <div className="container-x">
           <Reveal>
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <span className="text-xs uppercase tracking-[0.3em] text-primary font-semibold">
+              <span className="text-xs uppercase tracking-[0.3em] text-[#fde047] font-semibold">
                 Perché sceglierci
               </span>
               <h2 className="mt-4 text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#38bdf8] to-[#facc15] bg-clip-text text-transparent">

@@ -63,7 +63,7 @@ export function GrowthSection() {
           <div className="max-w-3xl mb-16 md:mb-20">
             <div className="inline-flex items-center gap-2 mb-4">
               <div className="h-1 w-12 bg-gradient-to-r from-primary to-accent rounded-full" />
-              <span className="text-xs uppercase tracking-[0.3em] text-cyan-accent font-semibold">
+              <span className="text-xs uppercase tracking-[0.3em] text-[#fde047] font-semibold">
                 Futuro e crescita
               </span>
             </div>

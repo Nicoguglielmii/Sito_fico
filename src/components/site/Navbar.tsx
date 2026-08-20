@@ -56,7 +56,7 @@ export function Navbar() {
         
         {/* BLOCCO SINISTRO */}
         <div className="flex items-center gap-4 md:gap-5 shrink-0">
-          <button onClick={() => setIsOpen(true)} className="text-gray-300 hover:text-white transition-colors shrink-0">
+          <button onClick={() => setIsOpen(true)} className="text-[#fde047] hover:text-yellow-200 transition-colors shrink-0">
             <Menu size={28} />
           </button>
           <Link to="/" onClick={closeAllMenus} className="flex items-center group">
@@ -67,7 +67,7 @@ export function Navbar() {
         {/* BLOCCO CENTRALE (Desktop) */}
         <div className="hidden md:flex flex-1 items-center justify-center gap-6 lg:gap-8 h-full">
           {menuItems.map((item) => (
-            <Link key={item.name} to={item.path} onClick={closeAllMenus} className="text-[14.5px] lg:text-[15px] font-semibold text-gray-300 hover:text-white flex items-center gap-1.5 shrink-0" activeProps={{ className: "text-white border-b-2 border-[#38bdf8] pb-1" }} activeOptions={{ exact: item.path === "/" }}>
+            <Link key={item.name} to={item.path} onClick={closeAllMenus} className="text-[14.5px] lg:text-[15px] font-semibold text-[#fde047] hover:text-yellow-200 flex items-center gap-1.5 shrink-0" activeProps={{ className: "text-[#fde047] border-b-2 border-[#fde047] pb-1" }} activeOptions={{ exact: item.path === "/" }}>
               <item.icon size={18} /> {item.name}
             </Link>
           ))}
@@ -84,8 +84,8 @@ export function Navbar() {
               <Link 
                 to="/business" 
                 onClick={closeAllMenus}
-                className="text-[14.5px] lg:text-[15px] font-semibold text-gray-300 hover:text-white flex items-center gap-1.5" 
-                activeProps={{ className: "text-white border-b-2 border-[#38bdf8] pb-1" }}
+                className="text-[14.5px] lg:text-[15px] font-semibold text-[#fde047] hover:text-yellow-200 flex items-center gap-1.5" 
+                activeProps={{ className: "text-[#fde047] border-b-2 border-[#fde047] pb-1" }}
               >
                 <Briefcase size={18} /> Business 
               </Link>
@@ -96,7 +96,7 @@ export function Navbar() {
                   e.stopPropagation();
                   setIsDesktopBusinessOpen(!isDesktopBusinessOpen);
                 }}
-                className="flex items-center justify-center p-1 text-gray-400 group-hover:text-white outline-none"
+                className="flex items-center justify-center p-1 text-[#fde047] group-hover:text-yellow-200 outline-none"
                 aria-label="Toggle sottomenu Business"
               >
                 <ChevronDown size={16} className={`transition-transform duration-300 ${isDesktopBusinessOpen ? "rotate-180" : ""}`} />
@@ -114,7 +114,7 @@ export function Navbar() {
                   <Link 
                     to="/business/unit" 
                     onClick={closeAllMenus}
-                    className="text-[#facc15] font-bold text-sm tracking-wider uppercase block mb-4 hover:text-yellow-300 transition-colors"
+                    className="sticky top-0 z-20 bg-[#011C27] text-[#fde047] font-bold text-sm tracking-wider uppercase block mb-4 pt-1 pb-2 hover:text-yellow-200 transition-colors"
                   >
                     Business Unit
                   </Link>
@@ -124,10 +124,10 @@ export function Navbar() {
                         key={item.name} 
                         to={item.path} 
                         onClick={closeAllMenus}
-                        className={`group/card block p-3 -ml-3 rounded-xl hover:bg-white/5 transition-all duration-500 ease-out ${isDesktopBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3 group-hover:opacity-100 group-hover:translate-y-0"}`}
+                        className="group/card block p-3 -ml-3 rounded-xl hover:bg-white/5 transition-all duration-500 ease-out"
                         style={{ transitionDelay: `${100 + index * 100}ms` }}
                       >
-                        <span className="text-[15px] font-bold text-gray-200 group-hover/card:text-[#38bdf8] transition-colors block mb-2">
+                          <span className="text-[15px] font-bold text-white group-hover/card:text-gray-200 transition-colors block mb-2">
                           {item.name}
                         </span>
                         <div className="w-full h-28 rounded-lg overflow-hidden relative border border-white/10 group-hover/card:border-[#38bdf8]/50 transition-colors">
@@ -144,7 +144,7 @@ export function Navbar() {
                   <Link 
                     to="/business/development" 
                     onClick={closeAllMenus}
-                    className="text-[#facc15] font-bold text-sm tracking-wider uppercase block mb-4 hover:text-yellow-300 transition-colors"
+                    className="sticky top-0 z-20 bg-[#011C27] text-[#fde047] font-bold text-sm tracking-wider uppercase block mb-4 pt-1 pb-2 hover:text-yellow-200 transition-colors"
                   >
                     Business Development
                   </Link>
@@ -154,10 +154,10 @@ export function Navbar() {
                         key={item.name} 
                         to={item.path} 
                         onClick={closeAllMenus}
-                        className={`group/card block p-3 -ml-3 rounded-xl hover:bg-white/5 transition-all duration-500 ease-out ${isDesktopBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3 group-hover:opacity-100 group-hover:translate-y-0"}`}
+                        className="group/card block p-3 -ml-3 rounded-xl hover:bg-white/5 transition-all duration-500 ease-out"
                         style={{ transitionDelay: `${200 + index * 100}ms` }}
                       >
-                        <span className="text-[15px] font-bold text-gray-200 group-hover/card:text-[#38bdf8] transition-colors block mb-2 truncate">
+                        <span className="text-[15px] font-bold text-white group-hover/card:text-gray-200 transition-colors block mb-2 truncate">
                           {item.name}
                         </span>
                         <div className="w-full h-28 rounded-lg overflow-hidden relative border border-white/10 group-hover/card:border-[#38bdf8]/50 transition-colors">
@@ -173,7 +173,7 @@ export function Navbar() {
             </div>
           </div>
 
-          <Link to="/contatti" onClick={closeAllMenus} className="text-[14.5px] lg:text-[15px] font-semibold text-gray-300 hover:text-white flex items-center gap-1.5 shrink-0" activeProps={{ className: "text-white border-b-2 border-[#38bdf8] pb-1" }}>
+          <Link to="/contatti" onClick={closeAllMenus} className="text-[14.5px] lg:text-[15px] font-semibold text-[#fde047] hover:text-yellow-200 flex items-center gap-1.5 shrink-0" activeProps={{ className: "text-[#fde047] border-b-2 border-[#fde047] pb-1" }}>
             <Phone size={18} /> Contatti
           </Link>
         </div>
@@ -187,12 +187,12 @@ export function Navbar() {
       <div className={`fixed top-0 left-0 bottom-0 w-[260px] bg-[#011C27] z-[10000] transform transition-transform duration-300 border-r border-[#0e7490]/20 flex flex-col overflow-y-auto no-scrollbar ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
         <div className="flex justify-between items-center p-6 border-b border-[#0e7490]/20">
           <span className="text-lg font-bold tracking-widest text-[#38bdf8]">MENU</span>
-          <button onClick={closeAllMenus} className="text-gray-400 hover:text-white"><X size={26} /></button>
+          <button onClick={closeAllMenus} className="text-[#fde047] hover:text-yellow-200"><X size={26} /></button>
         </div>
         <div className="flex flex-col p-6 space-y-6">
           
           {menuItems.map((item) => (
-            <Link key={item.name} to={item.path} onClick={closeAllMenus} className="text-xl font-medium text-gray-300 hover:text-[#38bdf8] flex items-center gap-3">
+            <Link key={item.name} to={item.path} onClick={closeAllMenus} className="text-xl font-medium text-[#fde047] hover:text-yellow-200 flex items-center gap-3">
               <item.icon size={22} /> {item.name}
             </Link>
           ))}
@@ -202,13 +202,13 @@ export function Navbar() {
               <Link 
                 to="/business" 
                 onClick={closeAllMenus} 
-                className="text-xl font-medium text-gray-300 hover:text-[#38bdf8] flex items-center gap-3 py-2 flex-1"
+                className="text-xl font-medium text-[#fde047] hover:text-yellow-200 flex items-center gap-3 py-2 flex-1"
               >
                 <Briefcase size={22} /> Business
               </Link>
               <button 
                 onClick={() => setIsMobileBusinessOpen(!isMobileBusinessOpen)}
-                className="p-2 text-gray-300 hover:text-white rounded-lg bg-white/5 border border-white/10 transition-colors"
+                className="p-2 text-[#fde047] hover:text-yellow-200 rounded-lg bg-white/5 border border-white/10 transition-colors"
                 aria-label="Apri sottomenu Business"
               >
                 <ChevronDown size={22} className={`transition-transform duration-300 ${isMobileBusinessOpen ? "rotate-180" : ""}`} />
@@ -219,7 +219,7 @@ export function Navbar() {
               <div className="overflow-hidden flex flex-col">
                 
                 <span 
-                  className={`text-xs font-bold text-[#facc15] uppercase tracking-wider ml-8 mb-2 mt-3 block transition-all duration-700 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
+                  className={`text-xs font-bold text-[#fde047] uppercase tracking-wider ml-8 mb-2 mt-3 block transition-all duration-700 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
                   style={{ transitionDelay: isMobileBusinessOpen ? '150ms' : '0ms' }}
                 >
                   Business Unit
@@ -230,7 +230,7 @@ export function Navbar() {
                       key={item.name} 
                       to={item.path} 
                       onClick={closeAllMenus} 
-                      className={`text-[15px] text-gray-400 hover:text-white block transition-all duration-700 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
+                      className={`text-[15px] text-white hover:text-gray-200 block transition-all duration-700 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
                       style={{ transitionDelay: isMobileBusinessOpen ? `${300 + index * 150}ms` : '0ms' }}
                     >
                       {item.name}
@@ -239,7 +239,7 @@ export function Navbar() {
                 </div>
 
                 <span 
-                  className={`text-xs font-bold text-[#facc15] uppercase tracking-wider ml-8 mb-2 block transition-all duration-700 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
+                  className={`text-xs font-bold text-[#fde047] uppercase tracking-wider ml-8 mb-2 block transition-all duration-700 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
                   style={{ transitionDelay: isMobileBusinessOpen ? '150ms' : '0ms' }}
                 >
                   Business Dev.
@@ -250,7 +250,7 @@ export function Navbar() {
                       key={item.name} 
                       to={item.path} 
                       onClick={closeAllMenus} 
-                      className={`text-[15px] text-gray-400 hover:text-white block transition-all duration-700 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
+                      className={`text-[15px] text-white hover:text-gray-200 block transition-all duration-700 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
                       style={{ transitionDelay: isMobileBusinessOpen ? `${300 + index * 150}ms` : '0ms' }}
                     >
                       {item.name}
@@ -265,7 +265,7 @@ export function Navbar() {
           <Link 
             to="/contatti" 
             onClick={closeAllMenus} 
-            className="text-xl font-medium text-gray-300 hover:text-[#38bdf8] flex items-center gap-3"
+            className="text-xl font-medium text-[#fde047] hover:text-yellow-200 flex items-center gap-3"
           >
             <Phone size={22} /> Contatti
           </Link>

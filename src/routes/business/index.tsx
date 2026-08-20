@@ -18,7 +18,7 @@ function BusinessPage() {
       descrizione: "Eroga i servizi core dell'azienda e realizza i progetti operativi, generando valore concreto e fatturato. La divisione che trasforma la progettazione in realtà tangibile.", 
       icona: Layers, 
       path: "/business/unit",
-      linkColor: "text-[#38bdf8] hover:text-blue-300",
+      linkColor: "text-[#facc15] hover:text-yellow-300",
       immagine: imgUnit
     },
     { 
