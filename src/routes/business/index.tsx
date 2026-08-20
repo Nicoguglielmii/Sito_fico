@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { Layers, TrendingUp, ArrowRight } from "lucide-react";
+import { HeroParticles } from "@/components/site/Interactive"; // <-- IMPORTATO SFONDO ANIMATO
 
 // Importiamo le ultime due immagini rimaste libere nella cartella assets!
 import imgUnit from "@/assets/hero-fiber.jpg";
@@ -34,9 +35,12 @@ function BusinessPage() {
   return (
     <div className="min-h-screen bg-[#011C27] text-white">
       
-      {/* Hero Section */}
-      <div className="w-full bg-[#01425f] pt-40 pb-28">
-        <section className="w-full max-w-screen-xl mx-auto px-6 lg:px-10 text-left animate-fade-in">
+      {/* Hero Section con particelle */}
+      <div className="relative w-full bg-[#01425f] pt-40 pb-28 overflow-hidden">
+        {/* SFONDO ANIMATO INSERITO QUI */}
+        <HeroParticles />
+        
+        <section className="relative z-10 w-full max-w-screen-xl mx-auto px-6 lg:px-10 text-left animate-fade-in">
           <span className="text-sm uppercase tracking-[0.3em] text-[#facc15] font-bold">
             Il nostro approccio
           </span>

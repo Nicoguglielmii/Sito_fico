@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { Mail, Phone, MapPin, Send, FileText } from 'lucide-react';
+import { HeroParticles } from "@/components/site/Interactive"; // <-- IMPORTATO SFONDO ANIMATO
 
 export const Route = createFileRoute('/contatti')({
   component: ContattiPage,
@@ -9,9 +10,12 @@ function ContattiPage() {
   return (
     <div className="min-h-screen bg-[#011C27] text-white">
       
-      {/* Hero Section */}
-      <div className="w-full bg-[#01425f] pt-40 pb-28">
-        <section className="w-full max-w-screen-xl mx-auto px-6 lg:px-10 text-left animate-fade-in">
+      {/* Hero Section con particelle */}
+      <div className="relative w-full bg-[#01425f] pt-40 pb-28 overflow-hidden">
+        {/* SFONDO ANIMATO INSERITO QUI */}
+        <HeroParticles />
+        
+        <section className="relative z-10 w-full max-w-screen-xl mx-auto px-6 lg:px-10 text-left animate-fade-in">
           <span className="text-sm uppercase tracking-[0.3em] text-[#facc15] font-bold">
             Contatti
           </span>
@@ -54,7 +58,7 @@ function ContattiPage() {
                 </div>
               </div>
 
-              {/* Telefono (Corretto il colore qui) */}
+              {/* Telefono */}
               <div className="flex items-start gap-5 group">
                 <div className="w-12 h-12 rounded-xl bg-[#01425f] border border-[#0e7490]/30 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
                   <Phone size={22} />
