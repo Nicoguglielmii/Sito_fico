@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X, ChevronDown, Home, Building2, Briefcase, Phone } from "lucide-react";
 
+// Le immagini vengono importate come moduli così Vite può gestirle, ottimizzarle
+// e risolvere correttamente il percorso finale durante il build.
 // =========================================================================
 // IMPORT NUOVE IMMAGINI PER IL MEGA MENU
 // =========================================================================
@@ -18,6 +20,9 @@ import imgDev4 from "@/assets/opportunita.jpg";
 import imgDev5 from "@/assets/innovazione.jpg";
 
 export function Navbar() {
+  // La navbar resta montata durante la navigazione: questi stati descrivono
+  // quali pannelli devono essere visibili in ciascun momento.
+
   // Controlla l'apertura della sidebar usata sui dispositivi mobili.
   const [isOpen, setIsOpen] = useState(false);
 
@@ -27,6 +32,8 @@ export function Navbar() {
   // Controlla l'apertura esplicita del mega-menu Business su desktop.
   const [isDesktopBusinessOpen, setIsDesktopBusinessOpen] = useState(false);
 
+  // Le voci comuni non hanno bisogno di un sottomenu: vengono riutilizzate
+  // sia nella barra desktop sia nella sidebar mobile.
   // Voci principali mostrate direttamente nella barra desktop e nella sidebar mobile.
   // L'icona viene mantenuta nei dati così il markup può essere generato con map().
   const menuItems = [
@@ -42,6 +49,8 @@ export function Navbar() {
     { name: "PA e Privati", path: "/business/unit/pa-privati", image: imgUnit3 },
   ];
 
+  // Le immagini delle card desktop appartengono alle singole pagine, non al
+  // contenitore Business: per questo ogni record conserva il proprio path.
   // Link della colonna Business Development del mega-menu.
   // Le immagini vengono usate nelle card desktop e non sono mostrate nella sidebar mobile.
   const businessDevelopment = [
@@ -55,6 +64,8 @@ export function Navbar() {
   // Chiude ogni pannello aperto quando l'utente cambia pagina o clicca su un link.
   // Centralizzare questa operazione evita che una vista rimanga visibile sopra la successiva.
   const closeAllMenus = () => {
+    // Chiudiamo tutti i livelli insieme per evitare stati incoerenti, ad esempio
+    // una sidebar mobile ancora aperta dopo aver seguito un link.
     setIsOpen(false);
     setIsMobileBusinessOpen(false);
     setIsDesktopBusinessOpen(false);
@@ -73,6 +84,8 @@ export function Navbar() {
         
         {/* Area sinistra: pulsante per la sidebar e logo con link alla home. */}
         <div className="flex items-center gap-4 md:gap-5 shrink-0">
+          {/* Il pulsante è disponibile a tutte le larghezze; su desktop offre
+              un accesso compatto alla stessa navigazione della sidebar. */}
           {/* Su mobile apre la navigazione laterale; su desktop resta disponibile come comando compatto. */}
           <button onClick={() => setIsOpen(true)} className="text-[#fde047] hover:text-yellow-200 transition-colors shrink-0">
             <Menu size={28} />
@@ -84,6 +97,8 @@ export function Navbar() {
 
         {/* Area centrale visibile da breakpoint md in poi. */}
         <div className="hidden md:flex flex-1 items-center justify-center gap-6 lg:gap-8 h-full">
+          {/* Il contenitore centrale viene nascosto sotto md per lasciare spazio
+              alla versione laterale pensata per gli schermi stretti. */}
           {/* Le prime voci vengono generate dall'array menuItems per evitare markup duplicato. */}
           {menuItems.map((item) => (
             <Link key={item.name} to={item.path} onClick={closeAllMenus} className="text-[14.5px] lg:text-[15px] font-semibold text-[#fde047] hover:text-yellow-200 flex items-center gap-1.5 shrink-0" activeProps={{ className: "text-[#fde047] border-b-2 border-[#fde047] pb-1" }} activeOptions={{ exact: item.path === "/" }}>
@@ -93,6 +108,8 @@ export function Navbar() {
 
           {/* Mega-menu Business: il contenitore group abilita anche l'apertura al passaggio del mouse. */}
           <div className="relative group shrink-0 flex items-center h-full">
+            {/* group-hover permette l'apertura rapida con il mouse, mentre lo
+              stato React serve a mantenere il pannello aperto dopo un click. */}
             
             {/* Overlay dietro il pannello: oscura la pagina e consente di chiudere il menu con un click. */}
             <div 
@@ -114,6 +131,8 @@ export function Navbar() {
               {/* Il pulsante apre o chiude esplicitamente il mega-menu senza seguire il link principale. */}
               <button 
                 onClick={(e) => {
+                  // Il controllo freccia non deve attivare anche il Link Business
+                  // né propagare il click al contenitore del menu.
                   e.preventDefault();
                   e.stopPropagation();
                   setIsDesktopBusinessOpen(!isDesktopBusinessOpen);
@@ -130,6 +149,8 @@ export function Navbar() {
               
               {/* MODIFICA EFFETTUATA QUI: Aggiunto "max-h-[calc(100vh-100px)] overflow-y-auto no-scrollbar" per evitare il taglio */}
               <div className="bg-[#011C27] border border-[#0e7490]/30 rounded-2xl shadow-2xl p-10 flex gap-12 max-h-[calc(100vh-100px)] overflow-y-auto no-scrollbar">
+                {/* Il pannello usa due colonne indipendenti: la prima contiene
+                  le unit operative, la seconda le attività di sviluppo. */}
                 
                 {/* Colonna Business Unit: intestazione dorata seguita da tre card con immagini. */}
                 <div className="w-1/3">
@@ -143,6 +164,7 @@ export function Navbar() {
                   {/* Le card sono sempre presenti quando il pannello è aperto, così tutte le sottovoci restano visibili. */}
                   <div className="flex flex-col gap-4">
                     {businessUnit.map((item, index) => (
+                      // Il ritardo crescente crea una comparsa sequenziale delle card.
                       <Link 
                         key={item.name} 
                         to={item.path} 
@@ -175,6 +197,8 @@ export function Navbar() {
                   {/* La griglia consente di distribuire le sottovoci su due colonne come nel layout desktop. */}
                   <div className="grid grid-cols-2 gap-x-10 gap-y-4 pb-2">
                     {businessDevelopment.map((item, index) => (
+                      // Anche qui il delay lega l'ordine dell'animazione all'ordine
+                      // naturale delle voci nell'array.
                       <Link 
                         key={item.name} 
                         to={item.path} 
@@ -208,8 +232,12 @@ export function Navbar() {
       </nav>
 
       {/* Sidebar mobile: overlay, pannello laterale e sottomenu Business espandibile. */}
+        {/* L'overlay intercetta i click esterni e usa lo stesso reset dei pulsanti
+          interni, così l'utente ha un modo prevedibile per uscire dal menu. */}
       {isOpen && <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] transition-opacity" onClick={closeAllMenus} />}
       
+        {/* Il pannello viene spostato fuori dallo schermo invece di essere smontato:
+          questo consente alla transizione CSS di animare apertura e chiusura. */}
       <div className={`fixed top-0 left-0 bottom-0 w-[260px] bg-[#011C27] z-[10000] transform transition-transform duration-300 border-r border-[#0e7490]/20 flex flex-col overflow-y-auto no-scrollbar ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
         {/* Intestazione della sidebar con titolo e pulsante di chiusura. */}
         <div className="flex justify-between items-center p-6 border-b border-[#0e7490]/20">
@@ -237,6 +265,8 @@ export function Navbar() {
                 <Briefcase size={22} /> Business
               </Link>
               <button 
+                // Il link e il pulsante hanno responsabilità separate: il primo
+                // naviga alla pagina Business, il secondo espande le sottovoci.
                 onClick={() => setIsMobileBusinessOpen(!isMobileBusinessOpen)}
                 className="p-2 text-[#fde047] hover:text-yellow-200 rounded-lg bg-white/5 border border-white/10 transition-colors"
                 aria-label="Apri sottomenu Business"
@@ -247,6 +277,8 @@ export function Navbar() {
             
             {/* La griglia anima l'altezza del sottomenu senza rimuoverlo dal DOM. */}
             <div className={`grid transition-all duration-500 ease-in-out ${isMobileBusinessOpen ? "grid-rows-[1fr] mb-4" : "grid-rows-[0fr]"}`}>
+              {/* grid-rows-[0fr] comprime il contenitore chiuso; overflow-hidden
+                  impedisce al contenuto di fuoriuscire durante la transizione. */}
               <div className="overflow-hidden flex flex-col">
                 
                 {/* Prima sezione del sottomenu mobile: Business Unit. */}

@@ -66,7 +66,7 @@ function BusinessPage() {
                 <div className={`flex flex-col items-start text-left ${isReversed ? 'lg:order-2' : 'lg:order-1'}`}>
                   <div className="flex items-center gap-4 mb-4">
                     <div className="h-[3px] w-12 bg-gradient-to-r from-[#38bdf8] to-[#facc15] rounded-full"></div>
-                    <div className="text-sm uppercase tracking-[0.2em] text-gray-300 font-bold flex items-center gap-2.5">
+                    <div className="text-sm uppercase tracking-[0.2em] text-[#facc15] font-bold flex items-center gap-2.5">
                       <area.icona size={18} className="text-[#38bdf8]" /> 
                       {area.categoria}
                     </div>

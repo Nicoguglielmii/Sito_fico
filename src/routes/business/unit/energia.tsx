@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { Zap, Sun, BatteryCharging, Lightbulb, ArrowRight } from "lucide-react";
+import { HeroParticles } from "@/components/site/Interactive";
 
 export const Route = createFileRoute('/business/unit/energia')({
   component: Energia,
@@ -15,8 +16,9 @@ function Energia() {
 
   return (
     <div className="min-h-screen bg-[#011C27] text-white">
-      <div className="w-full bg-[#01425f] pt-40 pb-28">
-        <section className="w-full max-w-screen-xl mx-auto px-6 lg:px-10 text-left animate-fade-in">
+      <div className="relative w-full bg-[#01425f] pt-40 pb-28 overflow-hidden">
+        <HeroParticles />
+        <section className="relative z-10 w-full max-w-screen-xl mx-auto px-6 lg:px-10 text-left animate-fade-in">
           <span className="text-sm uppercase tracking-[0.3em] text-[#facc15] font-bold">Business Unit</span>
           <h1 className="mt-4 text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#facc15]">
             Energia
@@ -31,7 +33,7 @@ function Energia() {
             <div key={index} className="flex flex-col items-start text-left">
               <div className="flex items-center gap-4 mb-4">
                 <div className="h-[3px] w-12 bg-gradient-to-r from-[#38bdf8] to-[#facc15] rounded-full"></div>
-                <div className="text-sm uppercase tracking-[0.2em] text-gray-300 font-bold flex items-center gap-2.5">
+                <div className="text-sm uppercase tracking-[0.2em] text-[#facc15] font-bold flex items-center gap-2.5">
                   <servizio.icona size={18} className="text-[#38bdf8]" /> {servizio.categoria}
                 </div>
               </div>
