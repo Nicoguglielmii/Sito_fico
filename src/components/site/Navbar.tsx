@@ -80,7 +80,8 @@ export function Navbar() {
       {/* Nasconde la scrollbar mantenendo comunque lo scorrimento nei pannelli lunghi. */}
       <style>{`.no-scrollbar::-webkit-scrollbar { display: none; } .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }`}</style>
 
-      <nav className="fixed top-0 left-0 right-0 z-40 bg-[#011C27] border-b border-[#0e7490]/20 h-20 flex items-center justify-between px-4 md:px-6 lg:px-10">
+      {/* MODIFICA EFFETTUATA QUI: Altezza (h) ingrandita su md e lg */}
+      <nav className="fixed top-0 left-0 right-0 z-40 bg-[#011C27] border-b border-[#0e7490]/20 h-20 md:h-24 lg:h-[100px] flex items-center justify-between px-4 md:px-6 lg:px-12">
         
         {/* Area sinistra: pulsante per la sidebar e logo con link alla home. */}
         <div className="flex items-center gap-4 md:gap-5 shrink-0">
@@ -88,21 +89,31 @@ export function Navbar() {
               un accesso compatto alla stessa navigazione della sidebar. */}
           {/* Su mobile apre la navigazione laterale; su desktop resta disponibile come comando compatto. */}
           <button onClick={() => setIsOpen(true)} className="text-[#fde047] hover:text-yellow-200 transition-colors shrink-0">
-            <Menu size={28} />
+            {/* MODIFICA EFFETTUATA QUI: Icona Menu più grande */}
+            <Menu size={32} />
           </button>
           <Link to="/" onClick={closeAllMenus} className="flex items-center group">
-            <img src="/fico-logo.png" alt="FI.CO. SRL" className="h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105" />
+            {/* MODIFICA EFFETTUATA QUI: Logo ingrandito */}
+            <img src="/fico-logo.png" alt="FI.CO. SRL" className="h-10 md:h-12 lg:h-[52px] w-auto object-contain transition-transform group-hover:scale-105" />
           </Link>
         </div>
 
         {/* Area centrale visibile da breakpoint md in poi. */}
-        <div className="hidden md:flex flex-1 items-center justify-center gap-6 lg:gap-8 h-full">
+        <div className="hidden md:flex flex-1 items-center justify-center gap-6 lg:gap-10 h-full">
           {/* Il contenitore centrale viene nascosto sotto md per lasciare spazio
               alla versione laterale pensata per gli schermi stretti. */}
           {/* Le prime voci vengono generate dall'array menuItems per evitare markup duplicato. */}
           {menuItems.map((item) => (
-            <Link key={item.name} to={item.path} onClick={closeAllMenus} className="text-[14.5px] lg:text-[15px] font-semibold text-[#fde047] hover:text-yellow-200 flex items-center gap-1.5 shrink-0" activeProps={{ className: "text-[#fde047] border-b-2 border-[#fde047] pb-1" }} activeOptions={{ exact: item.path === "/" }}>
-              <item.icon size={18} /> {item.name}
+            <Link 
+              key={item.name} 
+              to={item.path} 
+              onClick={closeAllMenus} 
+              // MODIFICA EFFETTUATA QUI: Testo e icone ingranditi
+              className="text-[16px] lg:text-[18px] font-semibold text-[#fde047] hover:text-yellow-200 flex items-center gap-2 shrink-0" 
+              activeProps={{ className: "text-[#fde047] border-b-2 border-[#fde047] pb-1" }} 
+              activeOptions={{ exact: item.path === "/" }}
+            >
+              <item.icon size={20} /> {item.name}
             </Link>
           ))}
 
@@ -112,8 +123,9 @@ export function Navbar() {
               stato React serve a mantenere il pannello aperto dopo un click. */}
             
             {/* Overlay dietro il pannello: oscura la pagina e consente di chiudere il menu con un click. */}
+            {/* MODIFICA EFFETTUATA QUI: Adattato il "top" del backdrop alla nuova altezza della navbar */}
             <div 
-              className={`fixed top-20 inset-x-0 bottom-0 bg-black/60 backdrop-blur-sm transition-opacity duration-500 -z-10 ${isDesktopBusinessOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none group-hover:opacity-100"}`} 
+              className={`fixed top-20 md:top-24 lg:top-[100px] inset-x-0 bottom-0 bg-black/60 backdrop-blur-sm transition-opacity duration-500 -z-10 ${isDesktopBusinessOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none group-hover:opacity-100"}`} 
               onClick={() => setIsDesktopBusinessOpen(false)}
             />
 
@@ -122,10 +134,11 @@ export function Navbar() {
               <Link 
                 to="/business" 
                 onClick={closeAllMenus}
-                className="text-[14.5px] lg:text-[15px] font-semibold text-[#fde047] hover:text-yellow-200 flex items-center gap-1.5" 
+                // MODIFICA EFFETTUATA QUI: Testo e icone ingranditi
+                className="text-[16px] lg:text-[18px] font-semibold text-[#fde047] hover:text-yellow-200 flex items-center gap-2" 
                 activeProps={{ className: "text-[#fde047] border-b-2 border-[#fde047] pb-1" }}
               >
-                <Briefcase size={18} /> Business 
+                <Briefcase size={20} /> Business 
               </Link>
               
               {/* Il pulsante apre o chiude esplicitamente il mega-menu senza seguire il link principale. */}
@@ -140,15 +153,14 @@ export function Navbar() {
                 className="flex items-center justify-center p-1 text-[#fde047] group-hover:text-yellow-200 outline-none"
                 aria-label="Toggle sottomenu Business"
               >
-                <ChevronDown size={16} className={`transition-transform duration-300 ${isDesktopBusinessOpen ? "rotate-180" : ""}`} />
+                <ChevronDown size={18} className={`transition-transform duration-300 ${isDesktopBusinessOpen ? "rotate-180" : ""}`} />
               </button>
             </div>
 
             {/* Pannello desktop con altezza limitata e scorrimento interno quando necessario. */}
             <div className={`absolute top-[70%] left-1/2 -translate-x-1/2 w-[1050px] pt-4 transition-all duration-500 z-[999] ${isDesktopBusinessOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto"}`}>
               
-              {/* MODIFICA EFFETTUATA QUI: Aggiunto "max-h-[calc(100vh-100px)] overflow-y-auto no-scrollbar" per evitare il taglio */}
-              <div className="bg-[#011C27] border border-[#0e7490]/30 rounded-2xl shadow-2xl p-10 flex gap-12 max-h-[calc(100vh-100px)] overflow-y-auto no-scrollbar">
+              <div className="bg-[#011C27] border border-[#0e7490]/30 rounded-2xl shadow-2xl p-10 flex gap-12 max-h-[calc(100vh-120px)] overflow-y-auto no-scrollbar">
                 {/* Il pannello usa due colonne indipendenti: la prima contiene
                   le unit operative, la seconda le attività di sviluppo. */}
                 
@@ -223,8 +235,14 @@ export function Navbar() {
             </div>
           </div>
 
-          <Link to="/contatti" onClick={closeAllMenus} className="text-[14.5px] lg:text-[15px] font-semibold text-[#fde047] hover:text-yellow-200 flex items-center gap-1.5 shrink-0" activeProps={{ className: "text-[#fde047] border-b-2 border-[#fde047] pb-1" }}>
-            <Phone size={18} /> Contatti
+          <Link 
+            to="/contatti" 
+            onClick={closeAllMenus} 
+            // MODIFICA EFFETTUATA QUI: Testo e icone ingranditi
+            className="text-[16px] lg:text-[18px] font-semibold text-[#fde047] hover:text-yellow-200 flex items-center gap-2 shrink-0" 
+            activeProps={{ className: "text-[#fde047] border-b-2 border-[#fde047] pb-1" }}
+          >
+            <Phone size={20} /> Contatti
           </Link>
         </div>
         
