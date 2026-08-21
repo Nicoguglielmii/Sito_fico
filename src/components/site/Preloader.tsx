@@ -59,7 +59,12 @@ export function Preloader() {
       ref={container} 
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#011C27]"
     >
-      <svg viewBox="0 0 500 150" className="w-full max-w-md h-auto overflow-visible">
+      {/* 
+        MODIFICATO: 
+        - Mobile: w-full max-w-md (Esattamente com'era in origine)
+        - Desktop: md:max-w-3xl lg:max-w-4xl (Si ingrandisce solo su schermi larghi)
+      */}
+      <svg viewBox="0 0 500 150" className="w-full max-w-md md:max-w-3xl lg:max-w-4xl h-auto overflow-visible">
         
         {/* Logo wordmark */}
         <g className="testo-container" style={{ opacity: 0 }}>
