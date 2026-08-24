@@ -1,21 +1,32 @@
+// Il ref identifica il contenitore che GSAP farà scorrere fuori dallo schermo.
 import { useRef } from "react";
+
+// GSAP gestisce la sequenza temporizzata delle animazioni del logo.
 import gsap from "gsap";
+
+// Hook React-compatibile che limita le selezioni GSAP al componente corrente.
 import { useGSAP } from "@gsap/react";
-// Importiamo il wordmark del marchio per l'animazione iniziale
+
+// Wordmark rasterizzato mostrato accanto al pittogramma nella fase centrale.
 import wordmarkImg from "../../assets/fico-wordmark.png";
 
 export function Preloader() {
-  // Contenitore principale della schermata di preloader
+  // Contenitore principale della schermata iniziale. Il riferimento viene
+  // passato come scope a useGSAP per isolare selettori e animazioni.
   const container = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
+    // La timeline mantiene in ordine le quattro fasi dell'introduzione e rende
+    // possibile sincronizzare elementi SVG e wordmark con la stessa sequenza.
     const tl = gsap.timeline();
 
-    // SETUP INIZIALE TRAMITE GSAP
+    // Posizione di partenza: il pittogramma viene collocato al centro visivo,
+    // mentre il testo parte più a destra e completamente trasparente.
     gsap.set(".piktogramma-container", { x: 170, y: 0 });
     gsap.set(".testo-container", { x: 270, y: 15, opacity: 0 }); 
     
-    // 1. APPARIZIONE DEI PALLINI
+    // Prima fase: i tre nodi del pittogramma aumentano progressivamente di
+    // raggio, con un ritardo tra loro per simulare un'accensione sequenziale.
     tl.to(".piktogramma-dot", {
       attr: { r: 10 }, 
       duration: 1.4, 
@@ -23,15 +34,17 @@ export function Preloader() {
       stagger: 0.45, 
     })
     
-    // 2. DISEGNO DEGLI ARCHI (Accelerato notevolmente)
+    // Seconda fase: gli archi diventano visibili e vengono disegnati tramite
+    // strokeDashoffset, sfruttando pathLength per normalizzare la misura del tratto.
     .set(".piktogramma-path", { opacity: 1 }, "-=0.2")
     .to(".piktogramma-path", { 
         strokeDashoffset: 0, 
-        duration: 1.6, // Abbassato da 2.6 a 1.6 per velocizzare il collegamento
+      duration: 1.6,
         ease: "power2.inOut",
     }, "<")
 
-    // 3. SCORRIMENTO E APPARIZIONE DEL WORDMARK
+    // Terza fase: il pittogramma scorre verso sinistra mentre il wordmark entra
+    // in scena nello stesso momento, creando un unico movimento di composizione.
     .to(".piktogramma-container", {
       x: 50,
       duration: 1.6, 
@@ -44,7 +57,8 @@ export function Preloader() {
       ease: "power3.inOut",
     }, "<") 
 
-    // 4. USCITA DEL PRELOADER
+    // Quarta fase: l'intero preloader risale oltre il bordo superiore della
+    // viewport, rivelando il contenuto dell'applicazione sottostante.
     .to(container.current, {
       y: "-100%",
       duration: 1.4, 
@@ -55,18 +69,22 @@ export function Preloader() {
   }, { scope: container });
 
   return (
+    // Overlay fisso a pieno schermo. Il valore z-index elevato lo mantiene sopra
+    // ogni altra superficie durante l'avvio e l'uscita dell'animazione.
     <div 
       ref={container} 
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#011C27]"
     >
-      {/* 
-        MODIFICATO: 
-        - Mobile: w-full max-w-md (Esattamente com'era in origine)
-        - Desktop: md:max-w-3xl lg:max-w-4xl (Si ingrandisce solo su schermi larghi)
+      {/*
+        ViewBox indipendente dalle dimensioni fisiche: l'SVG conserva le stesse
+        coordinate interne mentre la larghezza cresce sui breakpoint desktop.
       */}
       <svg viewBox="0 0 500 150" className="w-full max-w-md md:max-w-3xl lg:max-w-4xl h-auto overflow-visible">
         
-        {/* Logo wordmark */}
+        {/*
+          Wordmark del marchio. L'opacità iniziale è controllata dalla timeline,
+          così il testo può apparire insieme allo spostamento del pittogramma.
+        */}
         <g className="testo-container" style={{ opacity: 0 }}>
           <image 
             href={wordmarkImg} 
@@ -76,10 +94,10 @@ export function Preloader() {
           />
         </g>
 
-        {/* Simbolo grafico (Pittogramma) */}
+        {/* Gruppo del simbolo grafico, trasformato come un'unità durante l'animazione. */}
         <g className="piktogramma-container">
           
-          {/* Arco Azzurro */}
+          {/* Arco principale azzurro: il tratto viene rivelato progressivamente da GSAP. */}
           <path 
             className="piktogramma-path" 
             pathLength="100"
@@ -94,7 +112,7 @@ export function Preloader() {
             opacity="0" 
           />
           
-          {/* Arco Blu Scuro */}
+          {/* Arco secondario blu scuro, sovrapposto per completare il pittogramma. */}
           <path 
             className="piktogramma-path" 
             pathLength="100"
@@ -109,7 +127,10 @@ export function Preloader() {
             opacity="0" 
           />
 
-          {/* Punti del pittogramma */}
+          {/*
+            Nodi di giunzione del simbolo. Partono con raggio zero e aumentano
+            in sequenza prima che inizi il disegno degli archi.
+          */}
           <circle className="piktogramma-dot" cx="20" cy="70" r="0" fill="#facc15" />   
           <circle className="piktogramma-dot" cx="55" cy="115" r="0" fill="#facc15" />  
           <circle className="piktogramma-dot" cx="150" cy="115" r="0" fill="#facc15" /> 
