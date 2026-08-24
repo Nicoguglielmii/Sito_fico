@@ -290,20 +290,21 @@ export function Navbar() {
                   impedisce al contenuto di fuoriuscire durante la transizione. */}
               <div className="overflow-hidden flex flex-col">
                 
-                {/* Prima sezione del sottomenu mobile: Business Unit. */}
-                <span 
+                {/* Prima sezione del sottomenu mobile: Business Unit. Trasformata in Link senza hover effect */}
+                <Link 
+                  to="/business/unit"
+                  onClick={closeAllMenus}
                   className={`text-xs font-bold text-[#fde047] uppercase tracking-wider ml-8 mb-2 mt-3 block transition-all duration-700 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
                   style={{ transitionDelay: isMobileBusinessOpen ? '150ms' : '0ms' }}
                 >
                   Business Unit
-                </span>
+                </Link>
                 <div className="flex flex-col gap-3 pl-8 border-l border-[#0e7490]/30 ml-3 mb-4">
                   {businessUnit.map((item, index) => (
                     <Link 
                       key={item.name} 
                       to={item.path} 
                       onClick={closeAllMenus} 
-                      /* MODIFICA QUI: hover:text-[#fde047] e hover:translate-x-2 */
                       className={`text-[15px] text-gray-200 hover:text-[#fde047] hover:translate-x-2 block transition-all duration-500 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
                       style={{ transitionDelay: isMobileBusinessOpen ? `${300 + index * 150}ms` : '0ms' }}
                     >
@@ -312,20 +313,21 @@ export function Navbar() {
                   ))}
                 </div>
 
-                {/* Seconda sezione del sottomenu mobile: Business Development. */}
-                <span 
+                {/* Seconda sezione del sottomenu mobile: Business Development. Trasformata in Link senza hover effect */}
+                <Link 
+                  to="/business/development"
+                  onClick={closeAllMenus}
                   className={`text-xs font-bold text-[#fde047] uppercase tracking-wider ml-8 mb-2 block transition-all duration-700 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
                   style={{ transitionDelay: isMobileBusinessOpen ? '150ms' : '0ms' }}
                 >
                   Business Dev.
-                </span>
+                </Link>
                 <div className="flex flex-col gap-3 pl-8 border-l border-[#0e7490]/30 ml-3 pb-2">
                   {businessDevelopment.map((item, index) => (
                     <Link 
                       key={item.name} 
                       to={item.path} 
                       onClick={closeAllMenus} 
-                      /* MODIFICA QUI: hover:text-[#fde047] e hover:translate-x-2 */
                       className={`text-[15px] text-gray-200 hover:text-[#fde047] hover:translate-x-2 block transition-all duration-500 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
                       style={{ transitionDelay: isMobileBusinessOpen ? `${300 + index * 150}ms` : '0ms' }}
                     >
