@@ -42,7 +42,7 @@ function CommercialePage() {
         </section>
         <section className="w-full max-w-screen-xl mx-auto px-6 lg:px-10 mt-32">
           <div className="bg-gradient-to-br from-[#0e7490]/40 to-[#001724] border border-[#0e7490]/60 rounded-3xl p-10 md:p-16 shadow-2xl relative overflow-hidden flex flex-col items-start text-left">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 relative z-10 text-white leading-tight">Vuoi esplorare nuove <span className="text-[#38bdf8]">opportunità</span>?</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 relative z-10 text-white leading-tight"> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#facc15]">Vuoi esplorare nuove opportunità?</span></h2>
             <p className="text-gray-300 mb-10 max-w-2xl relative z-10 text-lg">Fissa un incontro con la nostra divisione commerciale per discutere come le nostre soluzioni possono supportare la tua azienda.</p>
             <Link to="/contatti" className="relative z-10 inline-flex items-center gap-2 px-8 py-4 font-bold rounded-xl bg-[#facc15] text-[#001724] hover:bg-yellow-300 hover:scale-105 transition-all">
               Contatta la direzione <ArrowRight size={20} />

@@ -303,7 +303,8 @@ export function Navbar() {
                       key={item.name} 
                       to={item.path} 
                       onClick={closeAllMenus} 
-                      className={`text-[15px] text-white hover:text-gray-200 block transition-all duration-700 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
+                      /* MODIFICA QUI: hover:text-[#fde047] e hover:translate-x-2 */
+                      className={`text-[15px] text-gray-200 hover:text-[#fde047] hover:translate-x-2 block transition-all duration-500 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
                       style={{ transitionDelay: isMobileBusinessOpen ? `${300 + index * 150}ms` : '0ms' }}
                     >
                       {item.name}
@@ -324,7 +325,8 @@ export function Navbar() {
                       key={item.name} 
                       to={item.path} 
                       onClick={closeAllMenus} 
-                      className={`text-[15px] text-white hover:text-gray-200 block transition-all duration-700 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
+                      /* MODIFICA QUI: hover:text-[#fde047] e hover:translate-x-2 */
+                      className={`text-[15px] text-gray-200 hover:text-[#fde047] hover:translate-x-2 block transition-all duration-500 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
                       style={{ transitionDelay: isMobileBusinessOpen ? `${300 + index * 150}ms` : '0ms' }}
                     >
                       {item.name}

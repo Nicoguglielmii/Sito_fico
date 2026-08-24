@@ -38,40 +38,30 @@ import imgSicilia from "@/assets/sicilia.jpg";
 
 /* ------------------------- Hero particles canvas ------------------------- */
 export function HeroParticles() {
-  // Il ref collega il canvas React al nodo DOM reale dopo il render.
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // Tutta l'animazione viene configurata solo lato browser, dopo il mount.
     const c = ref.current;
     if (!c) return;
 
-    // Il contesto 2D fornisce le primitive necessarie per disegnare linee e punti.
     const ctx = c.getContext("2d");
     if (!ctx) return;
 
-    // raf conserva l'identificativo dell'ultimo frame per poterlo cancellare in cleanup.
     let raf = 0;
-    // w e h rappresentano le dimensioni CSS del canvas, non quelle moltiplicate per il DPR.
     let w = 0,
       h = 0;
-    // Limitare il device-pixel ratio evita costi eccessivi sui display ad alta densità.
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    // Ogni particella ha una posizione e una velocità indipendente sugli assi cartesiani.
     type P = { x: number; y: number; vx: number; vy: number };
     let pts: P[] = [];
 
     const resize = () => {
-      // Le dimensioni vengono ricalcolate per mantenere l'animazione aderente al contenitore.
       w = c.clientWidth;
       h = c.clientHeight;
       c.width = w * dpr;
       c.height = h * dpr;
-      // Il transform consente di disegnare usando coordinate CSS anche su schermi retina.
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      // Il numero di particelle cresce con l'area, ma non supera il limite prestabilito.
       const count = Math.min(70, Math.floor((w * h) / 18000));
       pts = Array.from({ length: count }, () => ({
         x: Math.random() * w,
@@ -85,10 +75,8 @@ export function HeroParticles() {
     window.addEventListener("resize", resize);
 
     const tick = () => {
-      // Ogni frame ripulisce il disegno precedente prima di ridisegnare lo stato aggiornato.
       ctx.clearRect(0, 0, w, h);
 
-      // Aggiorna le posizioni e inverte la velocità quando una particella raggiunge un bordo.
       for (const p of pts) {
         p.x += p.vx;
         p.y += p.vy;
@@ -96,7 +84,6 @@ export function HeroParticles() {
         if (p.y < 0 || p.y > h) p.vy *= -1;
       }
 
-      // Confronta ogni coppia una sola volta per tracciare i collegamenti tra punti vicini.
       for (let i = 0; i < pts.length; i++) {
         for (let j = i + 1; j < pts.length; j++) {
           const a = pts[i];
@@ -105,7 +92,6 @@ export function HeroParticles() {
           const dy = a.y - b.y;
           const d2 = dx * dx + dy * dy;
           if (d2 < 140 * 140) {
-            // La linea diventa più trasparente all'aumentare della distanza tra i punti.
             const o = 1 - Math.sqrt(d2) / 140;
             ctx.strokeStyle = `rgba(64, 224, 255, ${o * 0.35})`;
             ctx.lineWidth = 1;
@@ -117,7 +103,6 @@ export function HeroParticles() {
         }
       }
 
-      // I punti vengono disegnati sopra le connessioni per mantenere leggibile la rete.
       ctx.fillStyle = "rgba(250, 189, 24, 0.8)";
       for (const p of pts) {
         ctx.beginPath();
@@ -128,10 +113,8 @@ export function HeroParticles() {
       raf = requestAnimationFrame(tick);
     };
 
-    // Avvia il loop sincronizzato con il refresh del browser.
     raf = requestAnimationFrame(tick);
     return () => {
-      // Arresta il loop e rimuove il listener quando il componente viene smontato.
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
     };
@@ -152,15 +135,12 @@ export function Magnetic({
   className?: string;
   strength?: number;
 }) {
-  // Il wrapper viene trasformato direttamente per lasciare invariato il contenuto figlio.
   const ref = useRef<HTMLSpanElement>(null);
 
   const onMove = (e: MouseEvent<HTMLSpanElement>) => {
-    // Se il nodo non è ancora disponibile, l'evento non può produrre alcun movimento.
     const el = ref.current;
     if (!el) return;
 
-    // Il rettangolo del nodo permette di calcolare la distanza del cursore dal suo centro.
     const r = el.getBoundingClientRect();
     const x = (e.clientX - r.left - r.width / 2) * strength;
     const y = (e.clientY - r.top - r.height / 2) * strength;
@@ -168,7 +148,6 @@ export function Magnetic({
   };
 
   const reset = () => {
-    // All'uscita del cursore la trasformazione viene rimossa e l'elemento torna nella posizione originale.
     if (ref.current) ref.current.style.transform = "";
   };
 
@@ -186,7 +165,6 @@ export function Magnetic({
 
 /* --------------------------- WhatsApp floating --------------------------- */
 export function WhatsAppFab() {
-  // Il link apre una conversazione WhatsApp con un messaggio già compilato.
   return (
     <a
       href="https://wa.me/393757932669?text=Salve%2C%20vorrei%20informazioni%20sui%20vostri%20servizi."
@@ -203,21 +181,17 @@ export function WhatsAppFab() {
 
 /* ------------------------------- Dark mode ------------------------------- */
 export function ThemeToggle() {
-  // Lo stato locale determina l'icona mostrata e il prossimo tema da applicare.
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
-    // Prima viene rispettata la preferenza salvata; in sua assenza si usa quella del sistema operativo.
     const saved = localStorage.getItem("fico-theme");
     const isDark =
       saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    // La classe sul nodo root permette agli stili globali di reagire al cambio tema.
     setDark(isDark);
     document.documentElement.classList.toggle("dark", isDark);
   }, []);
 
   const toggle = () => {
-    // Il nuovo valore viene applicato sia allo stato React sia alla persistenza del browser.
     const next = !dark;
     setDark(next);
     document.documentElement.classList.toggle("dark", next);
@@ -237,24 +211,20 @@ export function ThemeToggle() {
 
 /* ------------------------------ Cookie banner ----------------------------- */
 export function CookieBanner() {
-  // Il banner parte nascosto e viene mostrato solo se manca una scelta precedente.
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    // La verifica avviene dopo il mount per poter accedere a localStorage in sicurezza.
     if (!localStorage.getItem("fico-cookies")) setShow(true);
   }, []);
 
   if (!show) return null;
 
   const accept = () => {
-    // La scelta viene ricordata e il banner viene rimosso dalla pagina.
     localStorage.setItem("fico-cookies", "accepted");
     setShow(false);
   };
 
   const reject = () => {
-    // Anche il rifiuto viene memorizzato, così il banner non ricompare alla visita successiva.
     localStorage.setItem("fico-cookies", "rejected");
     setShow(false);
   };
@@ -305,7 +275,6 @@ export function CookieBanner() {
 
 /* ----------------------------- Process timeline --------------------------- */
 const STEPS = [
-  // Ogni elemento associa un'icona a una fase del percorso operativo.
   { icon: Search, title: "Sondaggi e rilievi", desc: "" },
   { icon: Compass, title: "Progettazione", desc: "" },
   { icon: FileCheck2, title: "Permitting", desc: "" },
@@ -314,10 +283,8 @@ const STEPS = [
 ];
 
 export function ProcessTimeline() {
-  // La timeline è presentata come sezione autonoma e si adatta al layout responsive.
   return (
     <section className="container-x py-24 md:py-32">
-      {/* Le linee SVG usano questa animazione per simulare un flusso continuo nel processo. */}
       <style>{`
         @keyframes lineTravel {
           0% { stroke-dashoffset: 0; }
@@ -405,7 +372,6 @@ export function ProcessTimeline() {
           </svg>
         </div>
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-4 pt-8">
-          {/* Le fasi vengono generate dall'array per mantenere markup e contenuti sincronizzati. */}
           {STEPS.map((s, i) => (
             <div key={s.title} className="relative group">
               <div className="relative w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-primary to-accent text-white grid place-items-center shadow-lg group-hover:scale-110 transition-transform">
@@ -428,7 +394,6 @@ export function ProcessTimeline() {
 
 /* -------------------------- Italy interactive map ------------------------- */
 const REGIONS = [
-  // Coordinate percentuali e contenuti sono usati dai marker posizionati sopra la mappa.
   { id: "Piemonte", x: 22, y: 25, image: imgPiemonte, desc: "Sviluppiamo reti ultra-veloci nei distretti industriali piemontesi e nelle aree metropolitane, supportando la transizione digitale del Nord-Ovest." },
   { id: "Lombardia", x: 33, y: 23, image: imgLombardia, desc: "Cuore pulsante dell'economia italiana. Progettiamo infrastrutture di rete scalabili per le grandi imprese e soluzioni di connettività avanzata per l'industria 4.0." },
   { id: "Veneto", x: 46, y: 22, image: imgVeneto, desc: "Connettiamo il tessuto produttivo del Nord-Est, offrendo servizi di permitting e realizzazione di dorsali in fibra per superare il digital divide locale." },
@@ -442,14 +407,12 @@ const REGIONS = [
 ];
 
 export function ItalyMap() {
-  // La regione selezionata controlla contemporaneamente marker, collegamento e scheda informativa.
-  // Inizializza con `null` in modo che all'apertura non ci sia nulla selezionato
   const [sel, setSel] = useState<typeof REGIONS[0] | null>(null);
 
   return (
-    <section className="surface-navy py-24 relative overflow-hidden">
+    // MODIFICA: pt-24 e pb-4 o lg:pb-0 per togliere totalmente l'eccesso in basso
+    <section className="surface-navy pt-24 pb-8 lg:pb-4 relative overflow-hidden">
       
-      {/* Stili locali per l'ingresso della scheda quando cambia la regione selezionata. */}
       <style>{`
         @keyframes slideDownCard {
           0% { opacity: 0; transform: translateY(-40px); }
@@ -460,7 +423,6 @@ export function ItalyMap() {
         }
       `}</style>
 
-      {/* Bagliore diffuso di sfondo, puramente decorativo e senza contenuto interattivo. */}
       <div
         className="absolute inset-0 opacity-30"
         style={{ backgroundImage: "var(--gradient-glow)" }}
@@ -478,12 +440,9 @@ export function ItalyMap() {
 
         <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-center">
           
-          {/* MAPPA (Colonna sinistra) */}
           <div className="lg:col-span-3 relative">
             <div className="relative max-w-lg mx-auto">
               
-              {/* FRECCIA DINAMICA ANIMATA DALLA MAPPA ALLA SCHEDA (Mostrata solo se sel non è null) */}
-              {/* Il collegamento compare solo dopo una selezione e parte dal marker attivo. */}
               {sel && (
                 <div 
                   className="hidden lg:flex absolute z-0 items-center transition-all duration-[600ms] ease-in-out pointer-events-none"
@@ -506,12 +465,10 @@ export function ItalyMap() {
                 draggable={false}
               />
 
-              {/* Ogni pulsante rende cliccabile la posizione geografica della regione. */}
               {REGIONS.map((r) => (
                 <button
                   key={r.id}
                   type="button"
-                  // Il click è l'unico evento che aggiorna la selezione e apre la scheda.
                   onClick={(e) => {
                     e.preventDefault();
                     setSel(r);
@@ -541,12 +498,9 @@ export function ItalyMap() {
             </div>
           </div>
 
-          {/* SCHEDA REGIONE ANIMATA O PLACEHOLDER (Colonna destra) */}
           <div className="lg:col-span-2 relative flex items-center justify-center min-h-[400px]">
             
-            {/* La colonna destra alterna tra contenuto della regione e stato iniziale vuoto. */}
             {sel ? (
-              // SCHEDA REGIONE (Appare solo se una regione è selezionata)
               <div key={sel.id} className="w-full bg-[#01425f]/40 backdrop-blur-xl border border-[#0e7490]/50 rounded-3xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] animate-card relative z-20">
                 
                 <h3 className="text-4xl font-bold text-[#facc15] mb-6 tracking-wide drop-shadow-md">
@@ -561,7 +515,6 @@ export function ItalyMap() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#011C27] via-[#011C27]/20 to-transparent opacity-90" />
                   
-                  
                 </div>
                 
                 <p className="mt-6 text-[17px] text-gray-200 leading-relaxed">
@@ -570,7 +523,6 @@ export function ItalyMap() {
 
               </div>
             ) : (
-              // PLACEHOLDER (Appare all'inizio, quando nulla è selezionato)
               <div className="w-full h-[400px] flex flex-col items-center justify-center p-8 border-2 border-dashed border-[#0e7490]/50 rounded-3xl text-center bg-[#01425f]/10 animate-fade-in relative z-20">
                 <div className="w-16 h-16 rounded-full bg-[#011C27] flex items-center justify-center border border-[#0e7490]/30 mb-6 shadow-lg">
                   <span className="w-4 h-4 rounded-full bg-[#facc15] animate-pulse shadow-[0_0_15px_rgba(250,189,24,0.8)]" />

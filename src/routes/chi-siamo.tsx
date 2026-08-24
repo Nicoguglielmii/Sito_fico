@@ -163,7 +163,8 @@ function ChiSiamo() {
                       <span className="inline-block px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-semibold uppercase tracking-wider">
                         {t.year}
                       </span>
-                      <h3 className="mt-3 text-2xl font-bold text-white">{t.title}</h3>
+                      {/* MODIFICA EFFETTUATA QUI: Testo color dorato (#facc15) */}
+                      <h3 className="mt-3 text-2xl font-bold text-[#facc15]">{t.title}</h3>
                       <p className="mt-2 text-slate-300">{t.desc}</p>
                     </div>
                     <div className="hidden md:block" />

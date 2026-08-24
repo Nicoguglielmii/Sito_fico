@@ -74,7 +74,7 @@ function Index() {
           style={{ animationDelay: "2s" }}
         />
 
-        {/* MODIFICATO: Struttura a singola colonna con maggiore spazio sotto */}
+        {/* Struttura a singola colonna con maggiore spazio sotto */}
         <div className="container-x relative z-10 pt-40 pb-40 flex flex-col items-start gap-20 lg:gap-24 w-full">
           
           {/* PRIMO BLOCCO: Titolo principale */}
@@ -133,28 +133,25 @@ function Index() {
         </div>
       </section>
 
-      {/* Sezione: FUTURO E CRESCITA
-          - `GrowthSection` è un componente riutilizzabile che raggruppa
-            contenuti relativi a crescita aziendale e progetti.
-          - Separare in componenti aiuta a mantenere il file della route
-            leggibile e testabile. */}
+      {/* Sezione: FUTURO E CRESCITA */}
       <GrowthSection />
 
-      {/* Sezione: PROCESS TIMELINE
-          - `ProcessTimeline` mostra la roadmap/processo operativo.
-          - Tenere animazioni e timeline in componenti isolati riduce il
-            carico sul DOM principale e migliora la manutenibilità. */}
+      {/* Sezione: PROCESS TIMELINE */}
       <ProcessTimeline />
 
-      {/* Sezione valori aziendali: quattro card che spiegano i punti di forza */}
-      <section className="bg-transparent py-24">
+      {/* 
+        MODIFICA EFFETTUATA QUI: 
+        Aggiunto pt-0 (rimuove il padding superiore) e un margine negativo (-mt-16 md:-mt-24)
+        per tirare la sezione visivamente verso l'alto ed eliminare lo spazio morto.
+      */}
+      <section className="bg-transparent pt-0 pb-24 -mt-16 md:-mt-24">
         <div className="container-x">
           <Reveal>
             <div className="text-center max-w-2xl mx-auto mb-16">
               <span className="text-xs uppercase tracking-[0.3em] text-[#fde047] font-semibold">
                 Perché sceglierci
               </span>
-              <h2 className="mt-4 text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#38bdf8] to-[#facc15] bg-clip-text text-transparent">
+              <h2 className="mt-4 pb-2 leading-[1.2] text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#38bdf8] to-[#facc15] bg-clip-text text-transparent">
                 I valori che ci guidano
               </h2>
             </div>
@@ -194,19 +191,13 @@ function Index() {
         </div>
       </section>
 
-      {/* Sezione mappa interattiva con presenza nazionale
-          - `ItalyMap` è un componente interattivo; verifica che i dati
-        caricati siano ottimizzati (lazy, paginati) se la sorgente è grande. */}
+      {/* Sezione mappa interattiva con presenza nazionale */}
       <ItalyMap />
 
-      {/* Sezione dedicata alle collaborazioni e partner
-          - `CollaborationNetwork` visualizza partner e relazioni; mantenerlo
-        separato permette di riutilizzarlo altrove (es. pagina partner). */}
+      {/* Sezione dedicata alle collaborazioni e partner */}
       <CollaborationNetwork />
 
-      {/* Sezione finale: call-to-action (CTA)
-          - Conclude la pagina con invito all'azione verso `/contatti`.
-          - L'uso di `Link` del router previene reload completi e mantiene lo stato SPA. */}
+      {/* Sezione finale: call-to-action (CTA) */}
       <section className="container-x pt-24 pb-24">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl surface-navy p-12 md:p-20 text-center">
