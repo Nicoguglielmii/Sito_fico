@@ -20,7 +20,8 @@ function FibraMobile() {
         <HeroParticles />
         <section className="relative z-10 w-full max-w-screen-xl mx-auto px-6 lg:px-10 text-left animate-fade-in">
           <span className="text-sm uppercase tracking-[0.3em] text-[#facc15] font-bold">Business Unit</span>
-          <h1 className="mt-4 text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#facc15]">
+          {/* Titolo Hero */}
+          <h1 className="font-[var(--font-display)] mt-4 text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#facc15]">
             Fibra e Mobile
           </h1>
           <p className="mt-6 text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl">Progettiamo, realizziamo e manuteniamo le autostrade digitali del futuro.</p>
@@ -37,16 +38,19 @@ function FibraMobile() {
                   <servizio.icona size={18} className="text-[#38bdf8]" /> {servizio.categoria}
                 </div>
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-[54px] font-black text-[#38bdf8] mb-6 leading-tight">{servizio.titolo}</h2>
+              {/* MODIFICA: font-display e tracking-tight applicati ai titoli dei servizi */}
+              <h2 className="font-[var(--font-display)] text-4xl md:text-5xl lg:text-[54px] font-bold tracking-tight text-[#38bdf8] mb-6 leading-tight">
+                {servizio.titolo}
+              </h2>
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-4xl">{servizio.descrizione}</p>
             </div>
           ))}
         </section>
         <section className="w-full max-w-screen-xl mx-auto px-6 lg:px-10 mt-32">
           <div className="bg-gradient-to-br from-[#0e7490]/40 to-[#001724] border border-[#0e7490]/60 rounded-3xl p-10 md:p-16 shadow-2xl relative overflow-hidden flex flex-col items-start text-left">
-            {/* MODIFICATO QUI: Solo "infrastrutturale?" ha il colore sfumato */}
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 relative z-10 text-white leading-tight">
-               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#facc15]">Hai un progetto infrastrutturale?</span>
+            {/* MODIFICA: font-display e tracking-tight applicati al CTA */}
+            <h2 className="font-[var(--font-display)] text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6 relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#facc15] leading-tight">
+              Hai un progetto infrastrutturale?
             </h2>
             <p className="text-gray-300 mb-10 max-w-2xl relative z-10 text-lg">I nostri tecnici sono pronti a supportarti dalla progettazione al collaudo finale.</p>
             <Link to="/contatti" className="relative z-10 inline-flex items-center gap-2 px-8 py-4 font-bold rounded-xl bg-[#facc15] text-[#001724] hover:bg-yellow-300 hover:scale-105 transition-all">

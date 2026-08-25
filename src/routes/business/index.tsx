@@ -60,8 +60,12 @@ function BusinessPage() {
           <span className="text-sm uppercase tracking-[0.3em] text-[#facc15] font-bold">
             Il nostro approccio
           </span>
-          {/* Titolo principale, scalato progressivamente per i diversi breakpoint. */}
-          <h1 className="mt-4 text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#facc15]">
+          {/* 
+            MODIFICA EFFETTUATA QUI: 
+            Applicato il font-display, tracking-tight e il colore solido azzurro 
+            per renderlo identico alla foto.
+          */}
+          <h1 className="font-[var(--font-display)] mt-4 text-4xl md:text-5xl lg:text-7xl font-bold leading-tight tracking-tight text-[#38bdf8]">
             Business
           </h1>
           {/* Sintesi dei due pilastri che compongono l'architettura aziendale. */}
@@ -100,8 +104,12 @@ function BusinessPage() {
                     </div>
                   </div>
 
-                  {/* Titolo dell'area, evidenziato come punto focale della sezione. */}
-                  <h2 className="text-4xl md:text-5xl lg:text-[54px] font-black text-[#38bdf8] mb-6 leading-tight">
+                  {/* 
+                    MODIFICA EFFETTUATA QUI: 
+                    Aggiunto font-[var(--font-display)], cambiato font-black in font-bold, 
+                    e aggiunto tracking-tight per eguagliare il logo in foto.
+                  */}
+                  <h2 className="font-[var(--font-display)] text-4xl md:text-5xl lg:text-[54px] font-bold tracking-tight text-[#38bdf8] mb-6 leading-tight">
                     {area.titolo}
                   </h2>
 

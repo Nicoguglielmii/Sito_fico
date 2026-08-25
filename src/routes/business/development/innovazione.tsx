@@ -50,8 +50,8 @@ function InnovazionePage() {
           {/* Etichetta di contesto che riconduce la pagina al dipartimento principale. */}
           <span className="text-sm uppercase tracking-[0.3em] text-[#facc15] font-bold">Business Development</span>
 
-          {/* Titolo principale: identifica con chiarezza il focus della pagina. */}
-          <h1 className="mt-4 text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#facc15]">
+          {/* MODIFICA: font-display, font-bold e tracking-tight applicati al titolo principale */}
+          <h1 className="font-[var(--font-display)] mt-4 text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#facc15]">
             Innovazione e Nuovi Servizi
           </h1>
 
@@ -96,8 +96,10 @@ function InnovazionePage() {
                 </div>
               </div>
 
-              {/* Titolo dell'area, elemento dominante della gerarchia tipografica. */}
-              <h2 className="text-4xl md:text-5xl lg:text-[54px] font-black text-[#38bdf8] mb-6 leading-tight">{servizio.titolo}</h2>
+              {/* MODIFICA: font-display, font-bold (rimosso font-black) e tracking-tight */}
+              <h2 className="font-[var(--font-display)] text-4xl md:text-5xl lg:text-[54px] font-bold tracking-tight text-[#38bdf8] mb-6 leading-tight">
+                {servizio.titolo}
+              </h2>
 
               {/*
                 Descrizione editoriale dell'attività. Il limite di larghezza evita

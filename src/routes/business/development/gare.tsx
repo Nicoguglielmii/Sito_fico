@@ -57,8 +57,8 @@ function GarePage() {
           {/* Etichetta di contesto che identifica il dipartimento proprietario del servizio. */}
           <span className="text-sm uppercase tracking-[0.3em] text-[#facc15] font-bold">Business Development</span>
 
-          {/* Titolo principale della pagina, più grande della gerarchia sottostante. */}
-          <h1 className="mt-4 text-4xl md:text-5xl lg:text-7xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#facc15]">
+          {/* MODIFICA: font-display, font-bold e tracking-tight applicati al titolo principale */}
+          <h1 className="font-[var(--font-display)] mt-4 text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#facc15]">
             Gare e Opportunità
           </h1>
 
@@ -89,8 +89,10 @@ function GarePage() {
                 </div>
               </div>
 
-              {/* Titolo specifico della voce, con dimensioni responsive. */}
-              <h2 className="text-4xl md:text-5xl lg:text-[54px] font-black text-[#38bdf8] mb-6 leading-tight">{servizio.titolo}</h2>
+              {/* MODIFICA: font-display, font-bold (rimosso font-black) e tracking-tight */}
+              <h2 className="font-[var(--font-display)] text-4xl md:text-5xl lg:text-[54px] font-bold tracking-tight text-[#38bdf8] mb-6 leading-tight">
+                {servizio.titolo}
+              </h2>
 
               {/* Descrizione editoriale del servizio, contenuta per evitare righe troppo lunghe. */}
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-4xl">{servizio.descrizione}</p>
