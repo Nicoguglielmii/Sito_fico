@@ -102,14 +102,17 @@ function Index() {
 
         </div>
 
-       
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40 text-xs tracking-widest uppercase animate-pulse">
+          scroll
+        </div>
       </section>
 
       <GrowthSection />
 
       <ProcessTimeline />
 
-      <section className="bg-transparent pt-0 pb-20 -mt-24 md:-mt-36 relative z-20">
+      {/* MODIFICA EFFETTUATA QUI: Rimosso il margine negativo per evitare la sovrapposizione con la timeline e impostato pt-12 md:pt-16 */}
+      <section className="bg-transparent pt-12 md:pt-16 pb-20 relative z-20">
         <div className="container-x">
           <Reveal>
             <div className="text-center max-w-2xl mx-auto mb-16">
@@ -158,12 +161,10 @@ function Index() {
 
       <ItalyMap />
 
-      {/* MODIFICA EFFETTUATA QUI: Rimosso il margine negativo per non far sovrapporre "Le nostre collaborazioni" con la Mappa */}
       <div className="relative z-20 pt-16 md:pt-24">
         <CollaborationNetwork />
       </div>
 
-      {/* MODIFICA EFFETTUATA QUI: Rimosso il margine negativo per dare spazio ai "nodi" superiori di non essere tagliati */}
       <section className="container-x pt-16 md:pt-24 pb-24 relative z-30">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl surface-navy p-12 md:p-20 text-center">
