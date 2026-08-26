@@ -87,12 +87,19 @@ export function GrowthSection() {
                 Futuro e crescita
               </span>
             </div>
-            {/* Titolo principale, mantenuto su due righe per accentuare il messaggio. */}
-            <h2 className="text-6xl md:text-7xl font-black font-display leading-[0.95] mb-6 bg-gradient-to-r from-cyan-accent via-primary to-accent bg-clip-text text-transparent">
+            
+            {/* 
+              MODIFICA: 
+              - font-[var(--font-display)]
+              - tracking-tight
+              - Gradiente azzurro/giallo (from-[#38bdf8] to-[#facc15])
+            */}
+            <h2 className="font-[var(--font-display)] text-6xl md:text-7xl font-bold tracking-tight leading-[0.95] mb-6 bg-gradient-to-r from-[#38bdf8] to-[#facc15] bg-clip-text text-transparent">
               Motori di
               <br />
               crescita
             </h2>
+
             {/* Testo di contesto che spiega il significato della crescita condivisa. */}
             <p className="text-lg text-white/70 leading-relaxed max-w-2xl">
               La nostra visione si fonda sull'innovazione e sulla continua ricerca di nuove
@@ -133,7 +140,7 @@ export function GrowthSection() {
                 <div className="flex items-start justify-between">
                   <span
                     key={activeStep}
-                    className="text-[clamp(5rem,18vw,9rem)] font-black font-display text-white/25 leading-none animate-in fade-in-0 duration-300"
+                    className="text-[clamp(5rem,18vw,9rem)] font-black font-[var(--font-display)] text-white/25 leading-none animate-in fade-in-0 duration-300"
                   >
                     {activeStep + 1}
                   </span>
