@@ -180,7 +180,8 @@ function ContattiPage() {
                 </label>
               </div>
 
-              <button type="submit" className="mt-2 flex items-center justify-center gap-2 bg-gradient-to-r from-[#38bdf8] to-[#facc15] text-[#011C27] font-bold text-lg px-8 py-4 rounded-xl hover:opacity-90 hover:scale-[1.02] transition-all shadow-lg">
+              {/* MODIFICA EFFETTUATA QUI: Pulsante dorato solido con testo scuro ed effetto scale */}
+              <button type="submit" className="mt-2 flex items-center justify-center gap-2 bg-[#facc15] text-[#001724] font-bold text-lg px-8 py-4 rounded-xl hover:bg-yellow-300 hover:scale-105 transition-all shadow-lg">
                 Invia Messaggio <Send size={20} />
               </button>
             </form>
