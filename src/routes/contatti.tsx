@@ -8,7 +8,8 @@ export const Route = createFileRoute('/contatti')({
 
 function ContattiPage() {
   return (
-    <div className="min-h-screen bg-[#011C27] text-white">
+    // MODIFICA: Aggiunto overflow-x-hidden per impedire lo scroll orizzontale su mobile
+    <div className="min-h-screen bg-[#011C27] text-white overflow-x-hidden">
       
       {/* Hero Section con particelle */}
       <div className="relative w-full bg-[#01425f] pt-40 pb-28 overflow-hidden">
@@ -71,30 +72,32 @@ function ContattiPage() {
               </div>
 
               {/* Email */}
-              <div className="flex items-start gap-5 group">
+              <div className="flex items-start gap-5 group w-full">
                 <div className="w-12 h-12 rounded-xl bg-[#01425f] border border-[#0e7490]/30 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
                   <Mail size={22} />
                 </div>
-                <div className="pt-1 flex flex-col gap-1">
-                  <p className="text-[16px] font-medium text-white">
-                    <a href="mailto:amministrazione@ficohub.it" className="hover:text-[#38bdf8] transition-colors">amministrazione@ficohub.it</a>
-                    <span className="text-gray-400 font-normal ml-1">(Amministrazione)</span>
+                {/* MODIFICA: min-w-0 e break-all per evitare che la mail allarghi lo schermo su mobile */}
+                <div className="pt-1 flex flex-col gap-1 min-w-0 flex-1">
+                  <p className="text-[16px] font-medium text-white break-words">
+                    <a href="mailto:amministrazione@ficohub.it" className="hover:text-[#38bdf8] transition-colors break-all md:break-normal">amministrazione@ficohub.it</a>
+                    <span className="text-gray-400 font-normal ml-1 inline-block">(Amministrazione)</span>
                   </p>
-                  <p className="text-[16px] font-medium text-white">
-                    <a href="mailto:service@ficohub.it" className="hover:text-[#38bdf8] transition-colors">service@ficohub.it</a>
-                    <span className="text-gray-400 font-normal ml-1">(Operativa)</span>
+                  <p className="text-[16px] font-medium text-white break-words">
+                    <a href="mailto:service@ficohub.it" className="hover:text-[#38bdf8] transition-colors break-all md:break-normal">service@ficohub.it</a>
+                    <span className="text-gray-400 font-normal ml-1 inline-block">(Operativa)</span>
                   </p>
                 </div>
               </div>
 
               {/* PEC */}
-              <div className="flex items-start gap-5 group">
+              <div className="flex items-start gap-5 group w-full">
                 <div className="w-12 h-12 rounded-xl bg-[#01425f] border border-[#0e7490]/30 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
                   <Send size={20} />
                 </div>
-                <div className="pt-2 flex items-center gap-2">
+                {/* MODIFICA: min-w-0 per sicurezza */}
+                <div className="pt-2 flex flex-wrap items-center gap-2 min-w-0 flex-1">
                   <span className="text-gray-400 font-semibold text-sm">PEC:</span>
-                  <a href="mailto:fi.co.srl@pec.it" className="text-[16px] font-medium text-white hover:text-[#38bdf8] transition-colors">fi.co.srl@pec.it</a>
+                  <a href="mailto:fi.co.srl@pec.it" className="text-[16px] font-medium text-white hover:text-[#38bdf8] transition-colors break-all md:break-normal">fi.co.srl@pec.it</a>
                 </div>
               </div>
 
@@ -144,44 +147,43 @@ function ContattiPage() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
                   <label htmlFor="nome" className="text-sm font-semibold text-gray-300 ml-1">Nome e Cognome *</label>
-                  <input type="text" id="nome" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all" required />
+                  <input type="text" id="nome" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full" required />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label htmlFor="azienda" className="text-sm font-semibold text-gray-300 ml-1">Azienda</label>
-                  <input type="text" id="azienda" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all" />
+                  <input type="text" id="azienda" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full" />
                 </div>
               </div>
               
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
                   <label htmlFor="email" className="text-sm font-semibold text-gray-300 ml-1">Email *</label>
-                  <input type="email" id="email" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all" required />
+                  <input type="email" id="email" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full" required />
                 </div>
                 <div className="flex flex-col gap-2">
                   <label htmlFor="telefono" className="text-sm font-semibold text-gray-300 ml-1">Telefono</label>
-                  <input type="tel" id="telefono" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all" />
+                  <input type="tel" id="telefono" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full" />
                 </div>
               </div>
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="oggetto" className="text-sm font-semibold text-gray-300 ml-1">Oggetto</label>
-                <input type="text" id="oggetto" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all" />
+                <input type="text" id="oggetto" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full" />
               </div>
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="messaggio" className="text-sm font-semibold text-gray-300 ml-1">Messaggio *</label>
-                <textarea id="messaggio" rows={4} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all resize-none" required></textarea>
+                <textarea id="messaggio" rows={4} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all resize-none w-full" required></textarea>
               </div>
 
               <div className="flex items-start gap-3 mt-1">
-                <input type="checkbox" id="privacy" className="mt-1 w-4 h-4 rounded border-white/20 bg-[#011C27] text-[#38bdf8] focus:ring-[#38bdf8] focus:ring-offset-0" required />
+                <input type="checkbox" id="privacy" className="mt-1 shrink-0 w-4 h-4 rounded border-white/20 bg-[#011C27] text-[#38bdf8] focus:ring-[#38bdf8] focus:ring-offset-0" required />
                 <label htmlFor="privacy" className="text-[14px] text-gray-300 leading-snug cursor-pointer">
                   Accetto il trattamento dei dati personali secondo la Privacy Policy.
                 </label>
               </div>
 
-              {/* MODIFICA EFFETTUATA QUI: Pulsante dorato solido con testo scuro ed effetto scale */}
-              <button type="submit" className="mt-2 flex items-center justify-center gap-2 bg-[#facc15] text-[#001724] font-bold text-lg px-8 py-4 rounded-xl hover:bg-yellow-300 hover:scale-105 transition-all shadow-lg">
+              <button type="submit" className="mt-2 w-full flex items-center justify-center gap-2 bg-[#facc15] text-[#001724] font-bold text-lg px-8 py-4 rounded-xl hover:bg-yellow-300 hover:scale-[1.02] transition-all shadow-lg">
                 Invia Messaggio <Send size={20} />
               </button>
             </form>
