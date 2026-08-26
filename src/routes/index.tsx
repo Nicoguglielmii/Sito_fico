@@ -102,9 +102,7 @@ function Index() {
 
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40 text-xs tracking-widest uppercase animate-pulse">
-          scroll
-        </div>
+       
       </section>
 
       <GrowthSection />
@@ -160,11 +158,13 @@ function Index() {
 
       <ItalyMap />
 
-      <div className="-mt-12 md:-mt-24 relative z-20">
+      {/* MODIFICA EFFETTUATA QUI: Rimosso il margine negativo per non far sovrapporre "Le nostre collaborazioni" con la Mappa */}
+      <div className="relative z-20 pt-16 md:pt-24">
         <CollaborationNetwork />
       </div>
 
-      <section className="container-x pt-0 pb-24 -mt-16 md:-mt-32 relative z-30">
+      {/* MODIFICA EFFETTUATA QUI: Rimosso il margine negativo per dare spazio ai "nodi" superiori di non essere tagliati */}
+      <section className="container-x pt-16 md:pt-24 pb-24 relative z-30">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl surface-navy p-12 md:p-20 text-center">
             <div
@@ -181,7 +181,6 @@ function Index() {
                 Parlaci del tuo progetto. Noi ci occuperemo di creare il collegamento giusto tra
                 idee, persone e opportunità.
               </p>
-              {/* MODIFICA: Rimosso btn-hero, aggiunto lo stile giallo/dorato con testo scuro */}
               <Link to="/contatti" className="relative z-10 inline-flex items-center gap-2 px-8 py-4 mt-10 font-bold rounded-xl bg-[#facc15] text-[#001724] hover:bg-yellow-300 hover:scale-105 transition-all">
                 Contattaci <ArrowRight size={20} />
               </Link>
