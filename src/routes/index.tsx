@@ -101,10 +101,6 @@ function Index() {
           </div>
 
         </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40 text-xs tracking-widest uppercase animate-pulse">
-          scroll
-        </div>
       </section>
 
       <GrowthSection />
