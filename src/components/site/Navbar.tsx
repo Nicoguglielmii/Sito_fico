@@ -192,10 +192,11 @@ export function Navbar() {
                   riconoscibile a colpo d'occhio.
                 */}
                 <div className="w-1/3">
+                  {/* MODIFICA: text-lg invece di text-sm */}
                   <Link
                     to="/business/unit"
                     onClick={closeAllMenus}
-                    className="text-[#fde047] font-bold text-sm tracking-wider uppercase block mb-4 hover:text-yellow-200 transition-colors"
+                    className="text-[#fde047] font-bold text-lg tracking-wider uppercase block mb-4 hover:text-yellow-200 transition-colors"
                   >
                     Business Unit
                   </Link>
@@ -233,10 +234,11 @@ export function Navbar() {
                   opportunità commerciali.
                 */}
                 <div className="w-2/3 border-l border-[#0e7490]/30 pl-12">
+                  {/* MODIFICA: text-lg invece di text-sm */}
                   <Link
                     to="/business/development"
                     onClick={closeAllMenus}
-                    className="text-[#fde047] font-bold text-sm tracking-wider uppercase block mb-4 hover:text-yellow-200 transition-colors"
+                    className="text-[#fde047] font-bold text-lg tracking-wider uppercase block mb-4 hover:text-yellow-200 transition-colors"
                   >
                     Business Development
                   </Link>
@@ -360,10 +362,11 @@ export function Navbar() {
                  * l'apertura del menu appare naturale senza fare un mount/unmount
                  * improvviso del contenuto.
                  */}
+                {/* MODIFICA: text-base invece di text-xs */}
                 <Link
                   to="/business/unit"
                   onClick={closeAllMenus}
-                  className={`text-xs font-bold text-[#fde047] uppercase tracking-wider ml-8 mb-2 mt-3 block transition-all duration-700 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
+                  className={`text-base font-bold text-[#fde047] uppercase tracking-wider ml-8 mb-2 mt-3 block transition-all duration-700 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
                   style={{ transitionDelay: isMobileBusinessOpen ? "150ms" : "0ms" }}
                 >
                   Business Unit
@@ -389,10 +392,11 @@ export function Navbar() {
                  * sezione precedente, tanto per mantenere la navigazione coerente e
                  * leggibile su schermi piccoli.
                  */}
+                {/* MODIFICA: text-base invece di text-xs */}
                 <Link
                   to="/business/development"
                   onClick={closeAllMenus}
-                  className={`text-xs font-bold text-[#fde047] uppercase tracking-wider ml-8 mb-2 block transition-all duration-700 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
+                  className={`text-base font-bold text-[#fde047] uppercase tracking-wider ml-8 mb-2 block transition-all duration-700 ease-out ${isMobileBusinessOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"}`}
                   style={{ transitionDelay: isMobileBusinessOpen ? "150ms" : "0ms" }}
                 >
                   Business Dev.
