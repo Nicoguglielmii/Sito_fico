@@ -1,9 +1,10 @@
-// QueryClient e relativo provider rendono disponibile la cache delle query a
-// tutte le route, mentre Preloader gestisce l'ingresso iniziale dell'applicazione.
+// Root route shell: qui si costruisce il layout globale del sito, il document head
+// condiviso e i provider applicativi che devono essere disponibili a tutte le route.
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Preloader } from "../components/site/Preloader";
 
-// Primitive TanStack Router per contenuto, head, script e navigazione interna.
+// TanStack Router: tutti gli elementi fondamentali per il rendering delle route,
+// la gestione del document head e l'inserimento degli script necessari all'app.
 import {
   Outlet,
   Link,
@@ -13,25 +14,25 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 
-// ReactNode tipizza i figli dello shell; useEffect registra gli errori una sola
-// volta per ogni errore ricevuto dall'error boundary.
+// React utilities: ReactNode serve al shell HTML, mentre useEffect ci permette di
+// registrare gli errori una sola volta per ogni boundary che li cattura.
 import { useEffect, type ReactNode } from "react";
 
-// Foglio di stile globale inserito nell'head attraverso il metadato della route.
+// CSS globale applicato all'intera applicazione: lo importiamo come asset URL per
+// farlo passare correttamente nel document head della route root.
 import appCss from "../styles.css?url";
 
-// Servizi e componenti condivisi presenti in tutte le pagine dell'applicazione.
+// Servizi e componenti globali che devono essere presenti in tutte le pagine del sito.
 import { reportError } from "../lib/error-reporting";
 import { Navbar } from "../components/site/Navbar";
 import { Footer } from "../components/site/Footer";
 import { BackToTop } from "../components/site/Reveal";
 import { CookieBanner } from "../components/site/Interactive";
 
-// Fallback mostrato quando nessuna route corrisponde all'URL richiesto.
+// Fallback visivo per le URL che non corrispondono a nessuna route. Serve a dare
+// un'esperienza coerente anche quando l'utente arriva su una pagina non trovata.
 function NotFoundComponent() {
   return (
-    // Layout centrato e minimale per comunicare l'errore senza dipendere dal
-    // contenuto della pagina che non è stato possibile trovare.
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
@@ -39,7 +40,7 @@ function NotFoundComponent() {
         <p className="mt-2 text-sm text-muted-foreground">
           The page you're looking for doesn't exist or has been moved.
         </p>
-        {/* Collegamento interno che riporta alla homepage usando il router. */}
+
         <div className="mt-6">
           <Link
             to="/"
@@ -53,20 +54,21 @@ function NotFoundComponent() {
   );
 }
 
-// Error boundary globale della root route. Mostra un fallback comprensibile e
-// invia l'errore al sistema di reporting senza interrompere il render dell'app.
+// Error boundary della root route: cattura i problemi all'interno del rendering
+// e mostra un fallback più umano, senza bloccare l'intera applicazione.
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
-  // Mantiene la traccia diagnostica nella console durante lo sviluppo.
+  // Log diagnostico per lo sviluppo: aiuta a localizzare rapidamente il punto in cui
+  // si è verificato il problema durante il debug in locale.
   console.error(error);
   const router = useRouter();
 
-  // Registra l'errore quando cambia, identificando il boundary che lo ha gestito.
+  // Ogni nuovo errore viene riportato al sistema di monitoraggio, così da poterlo
+  // identificare correttamente nel contesto del boundary che lo ha intercettato.
   useEffect(() => {
     reportError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
 
   return (
-    // Presentazione di recupero con due percorsi: nuovo tentativo o ritorno alla home.
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
@@ -75,11 +77,12 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <p className="mt-2 text-sm text-muted-foreground">
           Something went wrong on our end. You can try refreshing or head back home.
         </p>
-        {/* I comandi restano affiancati quando possibile e vanno a capo su spazi stretti. */}
+
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => {
-              // Invalida i dati caricati e azzera lo stato dell'errore per ritentare il render.
+              // L'operazione di retry invalida lo stato cache e ripristina il render,
+              // in modo da provare nuovamente a preparare la vista danneggiata.
               router.invalidate();
               reset();
             }}
@@ -99,8 +102,8 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-// Route radice dell'applicazione. Il contesto espone il QueryClient alle route
-// figlie e `head` centralizza SEO, Open Graph, favicon e foglio di stile globale.
+// Route radice dell'applicazione: qui si definisce il contesto globale condiviso,
+// la configurazione del document head e i componenti di fallback per i casi limite.
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -154,51 +157,43 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
-// Shell HTML completo che avvolge l'albero React. HeadContent trasferisce i
-// metadati della route nel document head, mentre Scripts inserisce gli script
-// necessari al corretto avvio e alla navigazione dell'applicazione.
+// Shell HTML della root route: crea il documento base con html/head/body e rende
+// disponibili i metadati della route e gli script necessari alla navigazione.
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    // La lingua del documento viene dichiarata sul nodo html per accessibilità e SEO.
     <html lang="en">
       <head>
-        {/* Renderizza nel documento i meta tag e i link restituiti da `head`. */}
         <HeadContent />
       </head>
       <body>
         {children}
-        {/* Script del router collocati dopo il contenuto principale del documento. */}
         <Scripts />
       </body>
     </html>
   );
 }
 
+// Componente radice dell'applicazione: qui si incapsula il provider del QueryClient
+// e si costruisce il layout persistente con navbar, contenuto delle route, footer e
+// componenti globali come il banner cookie o il pulsante per tornare in cima.
 function RootComponent() {
-  // Recupera dal contesto il client condiviso configurato all'avvio dell'app.
+  // Il QueryClient viene recuperato dal contesto della route e condiviso tra tutte
+  // le pagine, così da evitare duplicazioni di cache e mantenerlo coerente durante
+  // la navigazione interna dell'app.
   const { queryClient } = Route.useRouteContext();
 
   return (
-    // Il provider avvolge tutto l'albero per consentire a ogni pagina di usare
-    // query e cache senza creare client separati durante la navigazione.
     <QueryClientProvider client={queryClient}>
-      {/* Preloader globale mostrato durante il caricamento iniziale dell'app. */}
       <Preloader />
 
-      {/* Elementi di navigazione e struttura che restano presenti tra le route. */}
       <Navbar />
-      {/*
-        Outlet viene sostituito dal contenuto della route corrente; min-h-screen
-        mantiene il corpo esteso anche quando una pagina ha poco contenuto.
-      */}
+
       <main className="min-h-screen">
         <Outlet />
       </main>
-      {/* Footer e strumenti persistenti completano l'esperienza globale. */}
+
       <Footer />
       <BackToTop />
-      
-      {/* Banner che registra la scelta cookie dell'utente a livello applicativo. */}
       <CookieBanner />
     </QueryClientProvider>
   );

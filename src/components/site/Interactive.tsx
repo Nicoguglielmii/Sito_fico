@@ -478,23 +478,57 @@ export function ItalyMap() {
         <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-center">
           <div className="lg:col-span-3 relative">
             <div className="relative max-w-lg mx-auto">
+              
               {/*
-                Quando esiste una selezione, una linea collega il punto della
-                regione al pannello informativo; su mobile viene nascosta per
-                evitare sovrapposizioni in un layout disposto in colonna.
+                MODIFICA: 
+                L'attributo key={sel.id} costringe React a DISTRUGGERE e RICREARE
+                il contenitore della freccia ogni volta che si cambia regione.
+                Abbiamo rimosso "transition-all" dai segmenti e aggiunto
+                "animate-in fade-in duration-500" al contenitore per un morbido effetto di apparizione.
               */}
               {sel && (
-                <div 
-                  className="hidden lg:flex absolute z-0 items-center transition-all duration-[600ms] ease-in-out pointer-events-none"
-                  style={{
-                    left: `${sel.x}%`,
-                    top: `${sel.y}%`,
-                    width: `calc(120% - ${sel.x}%)`, 
-                    transform: 'translateY(-50%)'
-                  }}
-                >
-                  <div className="h-[2px] w-full bg-white opacity-80"></div>
-                  <ArrowRight size={28} strokeWidth={2} className="text-white shrink-0 -ml-[14px] opacity-80" />
+                <div key={sel.id} className="hidden lg:block absolute inset-0 z-0 pointer-events-none animate-in fade-in duration-500">
+                  {/* Segmento 1: Orizzontale, dal marker verso destra fino al bordo della mappa */}
+                  <div
+                    className="absolute bg-white opacity-80"
+                    style={{
+                      top: `calc(${sel.y}% - 1px)`,
+                      left: `${sel.x}%`,
+                      width: `calc(100% - ${sel.x}%)`,
+                      height: '2px',
+                    }}
+                  />
+                  {/* Segmento 2: Verticale, scende o sale per portare la linea a metà altezza */}
+                  <div
+                    className="absolute bg-white opacity-80"
+                    style={{
+                      left: `calc(100% - 1px)`,
+                      top: `calc(${Math.min(sel.y, 50)}% - 1px)`,
+                      height: `calc(${Math.abs(sel.y - 50)}% + 2px)`,
+                      width: '2px',
+                    }}
+                  />
+                  {/* Segmento 3: Orizzontale, entra esattamente al centro della card */}
+                  <div
+                    className="absolute bg-white opacity-80"
+                    style={{
+                      top: `calc(50% - 1px)`,
+                      left: `calc(100% - 1px)`,
+                      width: `15%`,
+                      height: '2px',
+                    }}
+                  />
+                  {/* Punta della freccia, posizionata esattamente alla fine del Segmento 3 */}
+                  <ArrowRight 
+                    size={28} 
+                    strokeWidth={2} 
+                    className="absolute text-white opacity-80" 
+                    style={{
+                      top: `50%`,
+                      left: `calc(115% - 12px)`, 
+                      transform: 'translateY(-50%)'
+                    }} 
+                  />
                 </div>
               )}
 
