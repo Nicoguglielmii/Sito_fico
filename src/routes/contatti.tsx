@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { Mail, Phone, MapPin, Send, FileText } from 'lucide-react';
-import { HeroParticles } from "@/components/site/Interactive"; // <-- IMPORTATO SFONDO ANIMATO
+import { HeroParticles } from "@/components/site/Interactive";
 
 export const Route = createFileRoute('/contatti')({
   component: ContattiPage,
@@ -8,15 +8,17 @@ export const Route = createFileRoute('/contatti')({
 
 function ContattiPage() {
   return (
-    // MODIFICA: Aggiunto overflow-x-hidden per impedire lo scroll orizzontale su mobile
-    <div className="min-h-screen bg-[#011C27] text-white overflow-x-hidden">
+    /* Sfondo unico scuro e continuo per tutta la pagina */
+    <div className="bg-[#011C27] w-full min-h-screen overflow-x-hidden pb-12">
       
-      {/* Hero Section con particelle */}
-      <div className="relative w-full bg-[#01425f] pt-40 pb-28 overflow-hidden">
+      {/* =========================================
+          01 — HERO
+      ========================================= */}
+      <section className="relative pt-24 pb-12 overflow-hidden">
         {/* SFONDO ANIMATO INSERITO QUI */}
         <HeroParticles />
         
-        <section className="relative z-10 w-full max-w-screen-xl mx-auto px-6 lg:px-10 text-left animate-fade-in">
+        <div className="container-x relative z-10 text-left animate-fade-in">
           <span className="text-sm uppercase tracking-[0.3em] text-[#facc15] font-bold">
             Contatti
           </span>
@@ -28,12 +30,14 @@ function ContattiPage() {
           <p className="mt-4 md:mt-6 text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl">
             Compila il form, scrivici via email o chiamaci.
           </p>
-        </section>
-      </div>
+        </div>
+      </section>
 
-      {/* Form & Info Section */}
-      <div className="pt-16 pb-32">
-        <section className="w-full max-w-screen-xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-16">
+      {/* =========================================
+          02 — FORM & INFO SECTION
+      ========================================= */}
+      <section className="py-6 relative z-20">
+        <div className="container-x grid lg:grid-cols-2 gap-8">
           
           {/* Colonna Sinistra: Info & Mappa */}
           <div className="flex flex-col gap-10">
@@ -48,7 +52,7 @@ function ContattiPage() {
               
               {/* Sede */}
               <div className="flex items-start gap-5 group">
-                <div className="w-12 h-12 rounded-xl bg-[#01425f] border border-[#0e7490]/30 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
+                <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
                   <MapPin size={22} />
                 </div>
                 <div className="pt-1">
@@ -61,7 +65,7 @@ function ContattiPage() {
 
               {/* Telefono */}
               <div className="flex items-start gap-5 group">
-                <div className="w-12 h-12 rounded-xl bg-[#01425f] border border-[#0e7490]/30 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
+                <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
                   <Phone size={22} />
                 </div>
                 <div className="pt-2">
@@ -73,10 +77,9 @@ function ContattiPage() {
 
               {/* Email */}
               <div className="flex items-start gap-5 group w-full">
-                <div className="w-12 h-12 rounded-xl bg-[#01425f] border border-[#0e7490]/30 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
+                <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
                   <Mail size={22} />
                 </div>
-                {/* MODIFICA: min-w-0 e break-all per evitare che la mail allarghi lo schermo su mobile */}
                 <div className="pt-1 flex flex-col gap-1 min-w-0 flex-1">
                   <p className="text-[16px] font-medium text-white break-words">
                     <a href="mailto:amministrazione@ficohub.it" className="hover:text-[#38bdf8] transition-colors break-all md:break-normal">amministrazione@ficohub.it</a>
@@ -91,10 +94,9 @@ function ContattiPage() {
 
               {/* PEC */}
               <div className="flex items-start gap-5 group w-full">
-                <div className="w-12 h-12 rounded-xl bg-[#01425f] border border-[#0e7490]/30 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
+                <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
                   <Send size={20} />
                 </div>
-                {/* MODIFICA: min-w-0 per sicurezza */}
                 <div className="pt-2 flex flex-wrap items-center gap-2 min-w-0 flex-1">
                   <span className="text-gray-400 font-semibold text-sm">PEC:</span>
                   <a href="mailto:fi.co.srl@pec.it" className="text-[16px] font-medium text-white hover:text-[#38bdf8] transition-colors break-all md:break-normal">fi.co.srl@pec.it</a>
@@ -103,7 +105,7 @@ function ContattiPage() {
 
               {/* Dati Fiscali (P.IVA e SDI) */}
               <div className="flex items-start gap-5 group">
-                <div className="w-12 h-12 rounded-xl bg-[#01425f] border border-[#0e7490]/30 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
+                <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
                   <FileText size={22} />
                 </div>
                 <div className="pt-1">
@@ -117,7 +119,7 @@ function ContattiPage() {
             </div>
 
             {/* Mappa Google Maps */}
-            <div className="w-full h-72 md:h-80 mt-4 rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+            <div className="w-full h-72 md:h-80 mt-4 rounded-3xl overflow-hidden shadow-2xl border border-[#0e7490]/30">
               <iframe
                 src="https://maps.google.com/maps?q=Corso%20Cavour%209%2C%20Andria%20BT%2C%20Italia&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 width="100%"
@@ -132,7 +134,7 @@ function ContattiPage() {
           </div>
 
           {/* Colonna Destra: Form */}
-          <div className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-3xl shadow-2xl relative overflow-hidden h-fit">
+          <div className="bg-[#01425f]/10 border border-[#0e7490]/30 p-8 md:p-10 rounded-3xl shadow-2xl relative overflow-hidden h-fit">
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#38bdf8]/10 to-transparent blur-3xl rounded-full pointer-events-none" />
             
             <form className="flex flex-col gap-6 relative z-10" onSubmit={(e) => e.preventDefault()}>
@@ -189,9 +191,8 @@ function ContattiPage() {
             </form>
           </div>
 
-        </section>
-      </div>
-
+        </div>
+      </section>
     </div>
   );
 }

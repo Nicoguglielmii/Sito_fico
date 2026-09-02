@@ -2,6 +2,15 @@ import { Link } from '@tanstack/react-router';
 import { MapPin, Phone, Mail, Linkedin, Home, Building2, Briefcase } from 'lucide-react';
 
 export function Footer() {
+
+  // MODIFICA: Scroll fluido verso l'alto senza preloader
+  const handleFooterClick = (e: React.MouseEvent, path: string) => {
+    if (window.location.pathname === path) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="bg-[#001724] border-t border-[#0e7490]/20 pt-16 pb-8 text-gray-300">
       <div className="w-full max-w-screen-xl mx-auto px-6 lg:px-10">
@@ -9,7 +18,7 @@ export function Footer() {
           
           {/* Colonna 1: Brand e Info */}
           <div className="flex flex-col items-start">
-            <Link to="/" className="mb-6">
+            <Link to="/" onClick={(e) => handleFooterClick(e, "/")} className="mb-6">
               <img src="/fico-logo.png" alt="FI.CO. SRL" className="h-10 w-auto object-contain" />
             </Link>
             <p className="text-[15px] leading-relaxed mb-8">
@@ -29,30 +38,30 @@ export function Footer() {
           <div>
             <h3 className="text-[#facc15] font-bold tracking-widest uppercase mb-6 text-sm">Navigazione</h3>
             <div className="flex flex-col gap-4">
-              <Link to="/" className="flex items-center gap-3 text-[15px] hover:text-white transition-colors group">
+              <Link to="/" onClick={(e) => handleFooterClick(e, "/")} className="flex items-center gap-3 text-[15px] hover:text-white transition-colors group">
                 <Home size={18} className="text-gray-400 group-hover:text-white transition-colors" /> Home
               </Link>
-              <Link to="/chi-siamo" className="flex items-center gap-3 text-[15px] hover:text-white transition-colors group">
+              <Link to="/chi-siamo" onClick={(e) => handleFooterClick(e, "/chi-siamo")} className="flex items-center gap-3 text-[15px] hover:text-white transition-colors group">
                 <Building2 size={18} className="text-gray-400 group-hover:text-white transition-colors" /> L'azienda
               </Link>
-              <Link to="/business" className="flex items-center gap-3 text-[15px] hover:text-white transition-colors group">
-                <Briefcase size={18} className="text-gray-400 group-hover:text-white transition-colors" /> Business
+              <Link to="/servizi" onClick={(e) => handleFooterClick(e, "/servizi")} className="flex items-center gap-3 text-[15px] hover:text-white transition-colors group">
+                <Briefcase size={18} className="text-gray-400 group-hover:text-white transition-colors" /> Servizi
               </Link>
-              <Link to="/contatti" className="flex items-center gap-3 text-[15px] hover:text-white transition-colors group">
+              <Link to="/contatti" onClick={(e) => handleFooterClick(e, "/contatti")} className="flex items-center gap-3 text-[15px] hover:text-white transition-colors group">
                 <Phone size={18} className="text-gray-400 group-hover:text-white transition-colors" /> Contatti
               </Link>
             </div>
           </div>
 
-          {/* Colonna 3: Business (Semplificata) */}
+          {/* Colonna 3: Servizi */}
           <div>
-            <h3 className="text-[#facc15] font-bold tracking-widest uppercase mb-6 text-sm">Business</h3>
+            <h3 className="text-[#facc15] font-bold tracking-widest uppercase mb-6 text-sm">I Nostri Servizi</h3>
             <div className="flex flex-col gap-4">
-              <Link to="/business/unit" className="text-[15px] text-gray-300 hover:text-white transition-colors">
-                Business Unit
+              <Link to="/servizi/fibra-mobile" onClick={(e) => handleFooterClick(e, "/servizi/fibra-mobile")} className="text-[15px] text-gray-300 hover:text-white transition-colors">
+                Fibra & Mobile
               </Link>
-              <Link to="/business/development" className="text-[15px] text-gray-300 hover:text-white transition-colors">
-                Business Development
+              <Link to="/servizi/it-software" onClick={(e) => handleFooterClick(e, "/servizi/it-software")} className="text-[15px] text-gray-300 hover:text-white transition-colors">
+                IT, Networking & Software
               </Link>
             </div>
           </div>
@@ -82,8 +91,8 @@ export function Footer() {
         <div className="border-t border-[#0e7490]/20 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
           <p>© {new Date().getFullYear()} FI.CO. SRL. Tutti i diritti riservati.</p>
           <div className="flex gap-6">
-            <Link to="/privacy-policy" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
-            <Link to="/cookie-policy" className="hover:text-gray-300 transition-colors">Cookie Policy</Link>
+            <Link to="/privacy-policy" onClick={(e) => handleFooterClick(e, "/privacy-policy")} className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
+            <Link to="/cookie-policy" onClick={(e) => handleFooterClick(e, "/cookie-policy")} className="hover:text-gray-300 transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>
