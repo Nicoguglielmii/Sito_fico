@@ -91,7 +91,7 @@ function InteractiveHeroLogo() {
       </svg>
 
       <div className="mt-12 text-sm font-bold tracking-[0.3em] uppercase text-white/40 group-hover:text-[#facc15] transition-colors duration-1000">
-        Passa il mouse per connettere
+        Passa il mouse o tocca lo schermo per connettere
       </div>
     </div>
   );
