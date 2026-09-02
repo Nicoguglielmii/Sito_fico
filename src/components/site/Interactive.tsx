@@ -1,23 +1,15 @@
 // Raccolta di componenti interattivi riutilizzati in più pagine del sito.
-// Il file contiene effetti grafici, controlli di preferenza, messaggistica,
+// Il file contiene effetti grafici, messaggistica,
 // una timeline di processo e la mappa interattiva delle aree operative.
 
-import { useEffect, useRef, useState, type ReactNode, type MouseEvent } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
-  MessageCircle,
   X,
-  Sun,
-  Moon,
-  Send,
-  ChevronLeft,
-  ChevronRight,
-  Quote,
   Search,
   Compass,
   FileCheck2,
   HardHat,
   ShieldCheck,
-  ChevronDown,
   ArrowRight,
 } from "lucide-react";
 
@@ -131,99 +123,6 @@ export function HeroParticles() {
 
   return (
     <canvas ref={ref} aria-hidden className="absolute inset-0 w-full h-full pointer-events-none" />
-  );
-}
-
-/* Wrapper che applica un movimento magnetico al contenuto al passaggio del mouse. */
-export function Magnetic({
-  children,
-  className = "",
-  strength = 0.35,
-}: {
-  children: ReactNode;
-  className?: string;
-  strength?: number;
-}) {
-  // Il nodo viene trasformato direttamente per mantenere l'effetto fluido senza
-  // introdurre aggiornamenti di stato a ogni movimento del puntatore.
-  const ref = useRef<HTMLSpanElement>(null);
-
-  // Calcola lo spostamento rispetto al centro dell'elemento e lo modula con la
-  // forza configurata dal chiamante.
-  const onMove = (e: MouseEvent<HTMLSpanElement>) => {
-    const el = ref.current;
-    if (!el) return;
-
-    const r = el.getBoundingClientRect();
-    const x = (e.clientX - r.left - r.width / 2) * strength;
-    const y = (e.clientY - r.top - r.height / 2) * strength;
-    el.style.transform = `translate(${x}px, ${y}px)`;
-  };
-
-  // Riporta il wrapper alla posizione iniziale quando il puntatore esce.
-  const reset = () => {
-    if (ref.current) ref.current.style.transform = "";
-  };
-
-  return (
-    <span
-      ref={ref}
-      onMouseMove={onMove}
-      onMouseLeave={reset}
-      className={`inline-block transition-transform duration-200 ease-out ${className}`}
-    >
-      {children}
-    </span>
-  );
-}
-
-/* Pulsante fluttuante per aprire una conversazione WhatsApp in una nuova scheda. */
-export function WhatsAppFab() {
-  return (
-    <a
-      href="https://wa.me/393757932669?text=Salve%2C%20vorrei%20informazioni%20sui%20vostri%20servizi."
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Scrivici su WhatsApp"
-      className="fixed bottom-6 left-6 z-40 grid place-items-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-xl hover:scale-110 transition-transform"
-    >
-      {/* Alone animato che richiama l'attenzione senza modificare l'area cliccabile. */}
-      <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30" />
-      <MessageCircle size={26} className="relative" />
-    </a>
-  );
-}
-
-/* Controllo che sincronizza il tema visuale con preferenza locale e sistema operativo. */
-export function ThemeToggle() {
-  const [dark, setDark] = useState(false);
-
-  // La preferenza salvata ha priorità; in sua assenza viene usata la preferenza
-  // del sistema. La classe `dark` viene applicata all'elemento HTML radice.
-  useEffect(() => {
-    const saved = localStorage.getItem("fico-theme");
-    const isDark =
-      saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    setDark(isDark);
-    document.documentElement.classList.toggle("dark", isDark);
-  }, []);
-
-  // Aggiorna simultaneamente stato React, classe globale e localStorage.
-  const toggle = () => {
-    const next = !dark;
-    setDark(next);
-    document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("fico-theme", next ? "dark" : "light");
-  };
-
-  return (
-    <button
-      onClick={toggle}
-      aria-label="Cambia tema"
-      className="grid place-items-center w-10 h-10 rounded-full hover:bg-secondary transition-colors text-foreground"
-    >
-      {dark ? <Sun size={18} /> : <Moon size={18} />}
-    </button>
   );
 }
 
@@ -443,9 +342,7 @@ export function ItalyMap() {
   const [sel, setSel] = useState<typeof REGIONS[0] | null>(null);
 
   return (
-    // Sezione della mappa con fondo dedicato, spaziatura responsiva e overflow
-    // contenuto per proteggere gli elementi decorativi laterali.
-    <section className="surface-navy pt-24 pb-8 lg:pb-4 relative overflow-hidden">
+    <section className="bg-[#011C27] pt-24 pb-8 lg:pb-4 relative overflow-hidden">
       {/* Animazione di ingresso della scheda regionale selezionata. */}
       <style>{`
         @keyframes slideDownCard {
@@ -466,10 +363,10 @@ export function ItalyMap() {
       <div className="container-x relative">
         {/* Titolo centrato che introduce la copertura geografica dell'azienda. */}
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">
+          <span className="text-xs uppercase tracking-[0.3em] text-[#facc15] font-semibold">
             Presenza
           </span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-bold text-gradient">
+          <h2 className="mt-3 text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#38bdf8] to-[#facc15] bg-clip-text text-transparent pb-2">
             Presenza consolidata in tutta Italia
           </h2>
         </div>
@@ -479,13 +376,6 @@ export function ItalyMap() {
           <div className="lg:col-span-3 relative">
             <div className="relative max-w-lg mx-auto">
               
-              {/*
-                MODIFICA: 
-                L'attributo key={sel.id} costringe React a DISTRUGGERE e RICREARE
-                il contenitore della freccia ogni volta che si cambia regione.
-                Abbiamo rimosso "transition-all" dai segmenti e aggiunto
-                "animate-in fade-in duration-500" al contenitore per un morbido effetto di apparizione.
-              */}
               {sel && (
                 <div key={sel.id} className="hidden lg:block absolute inset-0 z-0 pointer-events-none animate-in fade-in duration-500">
                   {/* Segmento 1: Orizzontale, dal marker verso destra fino al bordo della mappa */}
@@ -540,10 +430,6 @@ export function ItalyMap() {
                 draggable={false}
               />
 
-              {/*
-                I marker sono veri pulsanti, quindi possono ricevere focus e input
-                tattile oltre al semplice click del mouse.
-              */}
               {REGIONS.map((r) => (
                 <button
                   key={r.id}
@@ -590,10 +476,6 @@ export function ItalyMap() {
                   {sel.id}
                 </h3>
                 
-                {/*
-                  Immagine della regione con overlay sfumato: conserva leggibilità
-                  e profondità visiva senza interferire con il testo descrittivo.
-                */}
                 <div className="w-full h-56 bg-[#011C27] rounded-2xl overflow-hidden relative border border-white/10 group shadow-inner">
                   <img 
                     src={sel.image} 
@@ -605,7 +487,7 @@ export function ItalyMap() {
                 </div>
                 
                 {/* Descrizione associata esclusivamente alla regione corrente. */}
-                <p className="mt-6 text-[17px] text-gray-200 leading-relaxed">
+                <p className="mt-6 text-[17px] text-gray-200 leading-relaxed text-justify">
                   {sel.desc}
                 </p>
 

@@ -5,6 +5,7 @@ import { Menu, X, ChevronDown, Home, Building2, Briefcase, Phone, Linkedin } fro
 // Importazione delle immagini per i servizi nel menu
 import fibraMobileImg from "@/assets/fibraotticaemobile.jpg";
 import networkingImg from "@/assets/networking.jpg";
+import energiaImg from "@/assets/Energia.jpg";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,9 +32,11 @@ export function Navbar() {
     { name: "L'azienda", path: "/chi-siamo", icon: Building2 },
   ];
 
+  // Aggiunto campo "active" per distinguere le pagine pronte da quelle in sviluppo
   const serviziMenu = [
-    { name: "Fibra & Mobile", path: "/servizi/fibra-mobile", image: fibraMobileImg },
-    { name: "IT & Software", path: "/servizi/it-software", image: networkingImg },
+    { name: "Fibra & Mobile", path: "/servizi/fibra-mobile", image: fibraMobileImg, active: true },
+    { name: "IT & Software", path: "/servizi/it-software", image: networkingImg, active: true },
+    { name: "Energia", path: "#", image: energiaImg, active: false },
   ];
 
   return (
@@ -71,19 +74,32 @@ export function Navbar() {
               </button>
             </div>
 
-            {/* Tendina Desktop - Layout a Griglia per immagini grandi */}
-            <div className={`absolute top-[80%] left-1/2 -translate-x-1/2 w-[540px] pt-4 transition-all duration-500 z-[999] ${isDesktopServiziOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}>
-              <div className="bg-[#011C27] border border-[#0e7490]/30 rounded-2xl shadow-2xl p-5 grid grid-cols-2 gap-4">
-                {serviziMenu.map((item) => (
-                  <Link key={item.name} to={item.path} onClick={(e) => handleNavClick(e, item.path)} className="flex flex-col gap-3 p-3 rounded-xl hover:bg-[#0e7490]/20 text-white group transition-all">
-                    {/* Immagine larga a tutto riquadro */}
-                    <div className="w-full aspect-video rounded-lg overflow-hidden border border-[#0e7490]/30 shadow-md">
-                      <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            {/* Tendina Desktop - Allargata e trasformata in griglia a 3 colonne */}
+            <div className={`absolute top-[80%] left-1/2 -translate-x-1/2 w-[760px] pt-4 transition-all duration-500 z-[999] ${isDesktopServiziOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}>
+              <div className="bg-[#011C27] border border-[#0e7490]/30 rounded-2xl shadow-2xl p-5 grid grid-cols-3 gap-4">
+                {serviziMenu.map((item) => 
+                  item.active ? (
+                    <Link key={item.name} to={item.path} onClick={(e) => handleNavClick(e, item.path)} className="flex flex-col gap-3 p-3 rounded-xl hover:bg-[#0e7490]/20 text-white group transition-all">
+                      <div className="w-full aspect-video rounded-lg overflow-hidden border border-[#0e7490]/30 shadow-md">
+                        <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                      </div>
+                      <span className="font-semibold text-base group-hover:text-[#fde047] transition-colors">{item.name}</span>
+                    </Link>
+                  ) : (
+                    // Elemento disabilitato (Energia)
+                    <div key={item.name} className="flex flex-col gap-3 p-3 rounded-xl text-white/40 cursor-not-allowed">
+                      <div className="w-full aspect-video rounded-lg overflow-hidden border border-white/5 shadow-md relative">
+                        <img src={item.image} alt={item.name} className="w-full h-full object-cover opacity-40 grayscale-[50%]" />
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="font-semibold text-base">{item.name}</span>
+                        <span className="bg-[#facc15] text-[#011C27] text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                          In Sviluppo
+                        </span>
+                      </div>
                     </div>
-                    {/* Testo sotto l'immagine */}
-                    <span className="font-semibold text-base group-hover:text-[#fde047] transition-colors">{item.name}</span>
-                  </Link>
-                ))}
+                  )
+                )}
               </div>
             </div>
           </div>
@@ -125,19 +141,31 @@ export function Navbar() {
                 <ChevronDown size={22} className={`transition-transform duration-300 ${isMobileServiziOpen ? "rotate-180" : ""}`} />
               </button>
             </div>
-            {/* Altezza max aumentata notevolmente (max-h-[500px]) per le immagini impilate */}
-            <div className={`overflow-hidden transition-all duration-300 ${isMobileServiziOpen ? "max-h-[500px]" : "max-h-0"}`}>
+            {/* Altezza aumentata a max-h-[800px] per ospitare le tre card immagini */}
+            <div className={`overflow-hidden transition-all duration-300 ${isMobileServiziOpen ? "max-h-[800px]" : "max-h-0"}`}>
               <div className="flex flex-col gap-6 pl-4 border-l border-[#0e7490]/30 ml-3 py-3">
-                {serviziMenu.map((item) => (
-                  <Link key={item.name} to={item.path} onClick={(e) => handleNavClick(e, item.path)} className="flex flex-col gap-2 text-base text-gray-200 group">
-                    {/* Immagine a larghezza intera anche su mobile */}
-                    <div className="w-full aspect-video shrink-0 rounded-lg overflow-hidden border border-[#0e7490]/30 shadow-sm">
-                      <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                {serviziMenu.map((item) => 
+                  item.active ? (
+                    <Link key={item.name} to={item.path} onClick={(e) => handleNavClick(e, item.path)} className="flex flex-col gap-2 text-base text-gray-200 group">
+                      <div className="w-full aspect-video shrink-0 rounded-lg overflow-hidden border border-[#0e7490]/30 shadow-sm">
+                        <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                      </div>
+                      <span className="font-medium group-hover:text-[#fde047] transition-colors">{item.name}</span>
+                    </Link>
+                  ) : (
+                    <div key={item.name} className="flex flex-col gap-2 text-base text-gray-500 cursor-not-allowed">
+                      <div className="w-full aspect-video shrink-0 rounded-lg overflow-hidden border border-white/5 shadow-sm">
+                        <img src={item.image} alt={item.name} className="w-full h-full object-cover opacity-40 grayscale-[50%]" />
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="font-medium">{item.name}</span>
+                        <span className="bg-[#facc15] text-[#011C27] text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                          In Sviluppo
+                        </span>
+                      </div>
                     </div>
-                    {/* Testo sotto l'immagine */}
-                    <span className="font-medium group-hover:text-[#fde047] transition-colors">{item.name}</span>
-                  </Link>
-                ))}
+                  )
+                )}
               </div>
             </div>
           </div>

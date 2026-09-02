@@ -24,7 +24,7 @@ function ServiziIndex() {
       {/* =========================================
           01 — HERO
       ========================================= */}
-      <section className="relative pt-36 pb-20 overflow-hidden">
+      <section className="relative pt-36 pb-4 overflow-hidden">
         <HeroParticles />
         <div className="container-x relative z-10 text-left">
           <Reveal>
