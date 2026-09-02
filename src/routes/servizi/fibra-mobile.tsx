@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Map, Network, FileSignature, Briefcase, Database, Wrench } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { HeroParticles } from "@/components/site/Interactive";
 
@@ -21,7 +20,6 @@ function FibraMobilePage() {
       title: "Survey & Rilievi",
       subtitle: "Dal territorio al dato.",
       desc: "Raccogliamo e organizziamo le informazioni necessarie per leggere correttamente il contesto e impostare il progetto su basi affidabili.",
-      icon: Map,
       image: surveyImg,
       activities: ["Sopralluoghi e rilievi planimetrici", "Raccolta delle informazioni di campo", "Verifica delle infrastrutture esistenti", "Attività di walk-in e walk-out"]
     },
@@ -29,7 +27,6 @@ function FibraMobilePage() {
       title: "Network Design",
       subtitle: "Dal dato al progetto.",
       desc: "Trasformiamo i dati raccolti in una rete dimensionata, documentata e pronta per le successive fasi autorizzative e operative.",
-      icon: Network,
       image: netdesignImg,
       activities: ["Studio e dimensionamento della rete", "Progettazione logica dei circuiti", "Progettazione delle infrastrutture", "Progettazione e gestione su sistemi GIS", "Scelta degli apparati trasmissivi", "Revisione e aggiornamento banche dati"]
     },
@@ -37,7 +34,6 @@ function FibraMobilePage() {
       title: "Permitting & Rapporti Enti",
       subtitle: "Dal progetto alle autorizzazioni.",
       desc: "Gestiamo l'iter autorizzativo e i rapporti con pubbliche amministrazioni ed enti coinvolti nella realizzazione degli interventi.",
-      icon: FileSignature,
       image: entiImg,
       activities: ["Analisi vincoli urbanistici e paesaggistici", "Predisposizione istanze ed elaborati", "Acquisizione pareri tecnici", "Trasmissione pratiche e monitoraggio", "Gestione silenzio-assenso e conferenze"]
     },
@@ -45,7 +41,6 @@ function FibraMobilePage() {
       title: "Implementazione & PM",
       subtitle: "Dal progetto all'implementazione.",
       desc: "Coordiniamo le attività e gli interlocutori necessari a trasformare il progetto in un percorso operativo governato.",
-      icon: Briefcase,
       image: projectImg,
       activities: ["Gestione degli ordini di collegamento", "Analisi di tempi e costi", "Coordinamento fasi operative", "Supporto all'implementazione", "Monitoraggio dell'avanzamento", "Consuntivazione"]
     },
@@ -53,7 +48,6 @@ function FibraMobilePage() {
       title: "As-Built & Data Management",
       subtitle: "Il progetto diventa dato.",
       desc: "Documentiamo il realizzato perché ogni informazione resti tracciabile, aggiornabile e utile nel tempo.",
-      icon: Database,
       image: dataImg,
       activities: ["Redazione e caricamento As-Built", "Aggiornamento banche dati", "Gestione cartografia e dati alfanumerici", "Documentazione sui sistemi informatici"]
     },
@@ -61,23 +55,21 @@ function FibraMobilePage() {
       title: "Manutenzione & Supporto",
       subtitle: "La rete non finisce col progetto.",
       desc: "Affianchiamo i clienti anche nelle attività successive alla realizzazione, attraverso manutenzione e supporto tecnico coerenti con il perimetro del progetto.",
-      icon: Wrench,
       image: manutenzioneImg,
       activities: []
     }
   ];
 
-  // Helper function per generare il blocco di testo con classi responsive (mobile vs desktop)
+  // Helper function per generare il blocco di testo con classi responsive
   const renderTextBlock = (item: any) => (
     <div className="flex flex-col text-left w-full md:max-w-[500px]">
-      <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
-        <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#01425f]/30 border border-[#0e7490]/30 flex items-center justify-center text-[#38bdf8] shrink-0">
-          <item.icon className="w-5 h-5 md:w-6 md:h-6" />
-        </div>
-        <div>
-          <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#38bdf8] to-[#facc15] bg-clip-text text-transparent pb-1">{item.title}</h3>
-          <span className="text-xs md:text-sm font-bold text-[#facc15] uppercase tracking-wider">{item.subtitle}</span>
-        </div>
+      <div className="mb-3 md:mb-4">
+        <span className="text-xs md:text-sm font-bold text-[#facc15] uppercase tracking-wider block mb-1">
+          {item.subtitle}
+        </span>
+        <h3 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#38bdf8] to-[#facc15] bg-clip-text text-transparent pb-1">
+          {item.title}
+        </h3>
       </div>
       <p className="text-white/70 text-base md:text-lg leading-relaxed text-justify mt-2">{item.desc}</p>
       {item.activities.length > 0 && (
@@ -93,7 +85,7 @@ function FibraMobilePage() {
     </div>
   );
 
-  // Helper function per generare l'immagine con classi responsive
+  // Helper function per generare l'immagine
   const renderImageBlock = (item: any) => (
     <img 
       src={item.image} 
@@ -103,7 +95,7 @@ function FibraMobilePage() {
   );
 
   return (
-    <div className="bg-[#011C27] w-full min-h-screen pb-16 overflow-x-hidden selection:bg-[#facc15] selection:text-[#011C27]">
+    <div className="bg-[#011C27] w-full min-h-screen pb-14 overflow-x-hidden selection:bg-[#facc15] selection:text-[#011C27]">
       <style>{`
         @keyframes fm-rail-flow {
           0% { background-position: 0 0; }
@@ -129,7 +121,7 @@ function FibraMobilePage() {
       `}</style>
 
       {/* =========================================
-          HERO (ALLINEATO A SINISTRA CON PARTICELLE)
+          HERO
       ========================================= */}
       <section className="relative pt-36 pb-12 md:pb-16 border-b border-[#0e7490]/30 overflow-hidden">
         {/* Sfondo Animato */}
@@ -152,9 +144,9 @@ function FibraMobilePage() {
       </section>
 
       {/* =========================================
-          TIMELINE ALTERNATA (DESKTOP) / LINEARE (MOBILE)
+          TIMELINE ALTERNATA
       ========================================= */}
-      <section className="py-12 md:py-24 relative overflow-hidden">
+      <section className="pt-8 md:pt-12 pb-0 relative overflow-hidden">
         <div className="container-x max-w-6xl mx-auto">
           <div className="relative">
             

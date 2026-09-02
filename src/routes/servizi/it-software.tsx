@@ -4,7 +4,7 @@ import { HeroParticles } from "@/components/site/Interactive";
 
 // Importazione delle immagini reali per i servizi IT & Software
 import netwImg from "@/assets/netw.jpg";
-import itservicesImg from "@/assets/itservices.webp";
+import itservicesImg from "@/assets/itservices.jpg";
 import digitaldevelopmentImg from "@/assets/digitaldevelopment.webp";
 
 export const Route = createFileRoute("/servizi/it-software")({
@@ -49,7 +49,7 @@ function ItSoftwarePage() {
   ];
 
   return (
-    <div className="bg-[#011C27] w-full min-h-screen pb-16 overflow-x-hidden selection:bg-[#facc15] selection:text-[#011C27]">
+    <div className="bg-[#011C27] w-full min-h-screen pb-14 overflow-x-hidden selection:bg-[#facc15] selection:text-[#011C27]">
       
       {/* =========================================
           HERO (Allineato a sinistra)
@@ -75,7 +75,7 @@ function ItSoftwarePage() {
       {/* =========================================
           SERVIZI IT (LAYOUT ALTERNATO LINEARE SENZA DECORAZIONI EXTRA)
       ========================================= */}
-      <section className="py-16 md:py-24 relative overflow-hidden">
+      <section className="pt-8 md:pt-12 pb-0 relative overflow-hidden">
         <div className="container-x">
           <div className="flex flex-col gap-16 md:gap-24 w-full max-w-6xl mx-auto">
             

@@ -12,16 +12,16 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-[#001724] border-t border-[#0e7490]/20 pt-16 pb-8 text-gray-300">
+    <footer className="bg-[#001724] border-t border-[#0e7490]/20 pt-8 pb-4 text-gray-300">
       <div className="w-full max-w-screen-xl mx-auto px-6 lg:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
           
           {/* Colonna 1: Brand e Info */}
           <div className="flex flex-col items-start">
-            <Link to="/" onClick={(e) => handleFooterClick(e, "/")} className="mb-6">
+            <Link to="/" onClick={(e) => handleFooterClick(e, "/")} className="mb-3">
               <img src="/fico-logo.png" alt="FI.CO. SRL" className="h-10 w-auto object-contain" />
             </Link>
-            <p className="text-[15px] leading-relaxed mb-8">
+            <p className="text-[15px] leading-relaxed mb-4">
               Telecomunicazioni, reti in fibra ottica, ingegneria, permitting e servizi IT per enti pubblici e privati.
             </p>
             <a 
@@ -36,8 +36,8 @@ export function Footer() {
 
           {/* Colonna 2: Navigazione */}
           <div>
-            <h3 className="text-[#facc15] font-bold tracking-widest uppercase mb-6 text-sm">Navigazione</h3>
-            <div className="flex flex-col gap-4">
+            <h3 className="text-[#facc15] font-bold tracking-widest uppercase mb-3 text-sm">Navigazione</h3>
+            <div className="flex flex-col gap-2">
               <Link to="/" onClick={(e) => handleFooterClick(e, "/")} className="flex items-center gap-3 text-[15px] hover:text-white transition-colors group">
                 <Home size={18} className="text-gray-400 group-hover:text-white transition-colors" /> Home
               </Link>
@@ -55,8 +55,8 @@ export function Footer() {
 
           {/* Colonna 3: Servizi */}
           <div>
-            <h3 className="text-[#facc15] font-bold tracking-widest uppercase mb-6 text-sm">I Nostri Servizi</h3>
-            <div className="flex flex-col gap-4">
+            <h3 className="text-[#facc15] font-bold tracking-widest uppercase mb-3 text-sm">I Nostri Servizi</h3>
+            <div className="flex flex-col gap-2">
               <Link to="/servizi/fibra-mobile" onClick={(e) => handleFooterClick(e, "/servizi/fibra-mobile")} className="text-[15px] text-gray-300 hover:text-white transition-colors">
                 Fibra & Mobile
               </Link>
@@ -68,8 +68,8 @@ export function Footer() {
 
           {/* Colonna 4: Contatti */}
           <div>
-            <h3 className="text-[#facc15] font-bold tracking-widest uppercase mb-6 text-sm">Contatti</h3>
-            <div className="flex flex-col gap-6">
+            <h3 className="text-[#facc15] font-bold tracking-widest uppercase mb-3 text-sm">Contatti</h3>
+            <div className="flex flex-col gap-3">
               <div className="flex items-start gap-4">
                 <MapPin size={20} className="text-[#facc15] shrink-0 mt-0.5" />
                 <span className="text-[15px] leading-relaxed text-gray-300">Corso Cavour 9<br />76123 Andria (BT)</span>
@@ -88,7 +88,7 @@ export function Footer() {
         </div>
 
         {/* Copyright & Policy */}
-        <div className="border-t border-[#0e7490]/20 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+        <div className="border-t border-[#0e7490]/20 mt-6 pt-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
           <p>© {new Date().getFullYear()} FI.CO. SRL. Tutti i diritti riservati.</p>
           <div className="flex gap-6">
             <Link to="/privacy-policy" onClick={(e) => handleFooterClick(e, "/privacy-policy")} className="hover:text-gray-300 transition-colors">Privacy Policy</Link>

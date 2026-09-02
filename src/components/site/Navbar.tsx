@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X, ChevronDown, Home, Building2, Briefcase, Phone, Cable, Cpu, Linkedin } from "lucide-react";
+import { Menu, X, ChevronDown, Home, Building2, Briefcase, Phone, Linkedin } from "lucide-react";
+
+// Importazione delle immagini per i servizi nel menu
+import fibraMobileImg from "@/assets/fibraotticaemobile.jpg";
+import networkingImg from "@/assets/networking.jpg";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +17,7 @@ export function Navbar() {
     setIsDesktopServiziOpen(false);
   };
 
-  // MODIFICA: Invece di ricaricare il browser, scrolliamo in cima dolcemente
+  // Scroll in cima dolcemente se clicchiamo sulla pagina in cui siamo già
   const handleNavClick = (e: React.MouseEvent, path: string) => {
     if (window.location.pathname === path) {
       e.preventDefault();
@@ -28,8 +32,8 @@ export function Navbar() {
   ];
 
   const serviziMenu = [
-    { name: "Fibra & Mobile", path: "/servizi/fibra-mobile", icon: Cable },
-    { name: "IT & Software", path: "/servizi/it-software", icon: Cpu },
+    { name: "Fibra & Mobile", path: "/servizi/fibra-mobile", image: fibraMobileImg },
+    { name: "IT & Software", path: "/servizi/it-software", image: networkingImg },
   ];
 
   return (
@@ -67,12 +71,17 @@ export function Navbar() {
               </button>
             </div>
 
-            <div className={`absolute top-[80%] left-1/2 -translate-x-1/2 w-[280px] pt-4 transition-all duration-500 z-[999] ${isDesktopServiziOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}>
-              <div className="bg-[#011C27] border border-[#0e7490]/30 rounded-2xl shadow-2xl p-4 flex flex-col gap-2">
+            {/* Tendina Desktop - Layout a Griglia per immagini grandi */}
+            <div className={`absolute top-[80%] left-1/2 -translate-x-1/2 w-[540px] pt-4 transition-all duration-500 z-[999] ${isDesktopServiziOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}>
+              <div className="bg-[#011C27] border border-[#0e7490]/30 rounded-2xl shadow-2xl p-5 grid grid-cols-2 gap-4">
                 {serviziMenu.map((item) => (
-                  <Link key={item.name} to={item.path} onClick={(e) => handleNavClick(e, item.path)} className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 text-white hover:text-[#fde047] transition-all">
-                    <item.icon size={20} className="text-[#38bdf8]" />
-                    <span className="font-semibold">{item.name}</span>
+                  <Link key={item.name} to={item.path} onClick={(e) => handleNavClick(e, item.path)} className="flex flex-col gap-3 p-3 rounded-xl hover:bg-[#0e7490]/20 text-white group transition-all">
+                    {/* Immagine larga a tutto riquadro */}
+                    <div className="w-full aspect-video rounded-lg overflow-hidden border border-[#0e7490]/30 shadow-md">
+                      <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                    </div>
+                    {/* Testo sotto l'immagine */}
+                    <span className="font-semibold text-base group-hover:text-[#fde047] transition-colors">{item.name}</span>
                   </Link>
                 ))}
               </div>
@@ -106,7 +115,7 @@ export function Navbar() {
             </Link>
           ))}
           
-          {/* MENU A TENDINA SERVIZI */}
+          {/* MENU A TENDINA SERVIZI (Mobile) */}
           <div className="flex flex-col">
             <div className="flex items-center justify-between mb-2">
               <Link to="/servizi" onClick={(e) => handleNavClick(e, "/servizi")} className="text-xl font-medium text-[#fde047] flex items-center gap-3 py-2 flex-1">
@@ -116,11 +125,17 @@ export function Navbar() {
                 <ChevronDown size={22} className={`transition-transform duration-300 ${isMobileServiziOpen ? "rotate-180" : ""}`} />
               </button>
             </div>
-            <div className={`overflow-hidden transition-all duration-300 ${isMobileServiziOpen ? "max-h-40" : "max-h-0"}`}>
-              <div className="flex flex-col gap-3 pl-11 border-l border-[#0e7490]/30 ml-3 py-2">
+            {/* Altezza max aumentata notevolmente (max-h-[500px]) per le immagini impilate */}
+            <div className={`overflow-hidden transition-all duration-300 ${isMobileServiziOpen ? "max-h-[500px]" : "max-h-0"}`}>
+              <div className="flex flex-col gap-6 pl-4 border-l border-[#0e7490]/30 ml-3 py-3">
                 {serviziMenu.map((item) => (
-                  <Link key={item.name} to={item.path} onClick={(e) => handleNavClick(e, item.path)} className="text-base text-gray-200 hover:text-[#fde047]">
-                    {item.name}
+                  <Link key={item.name} to={item.path} onClick={(e) => handleNavClick(e, item.path)} className="flex flex-col gap-2 text-base text-gray-200 group">
+                    {/* Immagine a larghezza intera anche su mobile */}
+                    <div className="w-full aspect-video shrink-0 rounded-lg overflow-hidden border border-[#0e7490]/30 shadow-sm">
+                      <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                    </div>
+                    {/* Testo sotto l'immagine */}
+                    <span className="font-medium group-hover:text-[#fde047] transition-colors">{item.name}</span>
                   </Link>
                 ))}
               </div>
