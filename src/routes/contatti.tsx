@@ -1,12 +1,69 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { Mail, Phone, MapPin, Send, FileText } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, FileText, Loader2, CheckCircle2 } from 'lucide-react';
 import { HeroParticles } from "@/components/site/Interactive";
+import { useState } from 'react';
 
 export const Route = createFileRoute('/contatti')({
   component: ContattiPage,
 });
 
 function ContattiPage() {
+  // Stati per gestire i campi del form e l'invio
+  const [formData, setFormData] = useState({
+    nome: "",
+    azienda: "",
+    email: "",
+    telefono: "",
+    oggetto: "",
+    messaggio: "",
+    privacy: false
+  });
+
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value, type } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: type === "checkbox" ? (e.target as HTMLInputElement).checked : value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+
+    try {
+      // Invia i dati al servizio FormSubmit (Background API)
+      const response = await fetch("https://formsubmit.co/ajax/service@ficohub.it", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          Nome: formData.nome,
+          Azienda: formData.azienda || "Non specificata",
+          Email: formData.email,
+          Telefono: formData.telefono || "Non specificato",
+          Oggetto: formData.oggetto || "Richiesta da sito web",
+          Messaggio: formData.messaggio,
+          _subject: `Nuova richiesta da: ${formData.nome}`,
+          _template: "table" // Formatta l'email in una tabella leggibile
+        })
+      });
+
+      if (response.ok) {
+        setStatus("success");
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    }
+  };
+
   return (
     /* Sfondo unico scuro e continuo per tutta la pagina */
     <div className="bg-[#011C27] w-full min-h-screen overflow-x-hidden pb-12">
@@ -137,58 +194,95 @@ function ContattiPage() {
           <div className="bg-[#01425f]/10 border border-[#0e7490]/30 p-8 md:p-10 rounded-3xl shadow-2xl relative overflow-hidden h-fit">
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#38bdf8]/10 to-transparent blur-3xl rounded-full pointer-events-none" />
             
-            <form className="flex flex-col gap-6 relative z-10" onSubmit={(e) => e.preventDefault()}>
-              
-              <div className="mb-2">
-                <h3 className="text-3xl font-bold text-white mb-2">Richiedi una consulenza</h3>
-                <p className="text-gray-300 text-[15px]">
-                  Raccontaci il tuo progetto: ti ricontatteremo per un confronto tecnico.
+            {status === "success" ? (
+              // Messaggio di Successo
+              <div className="relative z-10 flex flex-col items-center justify-center py-12 text-center animate-fade-in">
+                <div className="w-20 h-20 rounded-full bg-green-500/20 border border-green-500/50 flex items-center justify-center text-green-400 mb-6">
+                  <CheckCircle2 size={40} />
+                </div>
+                <h3 className="text-3xl font-bold text-white mb-4">Messaggio inviato!</h3>
+                <p className="text-gray-300 text-lg">
+                  Grazie per averci contattato. Il nostro team elaborerà la tua richiesta e ti risponderà al più presto.
                 </p>
+                <button 
+                  onClick={() => {
+                    setStatus("idle");
+                    setFormData({nome: "", azienda: "", email: "", telefono: "", oggetto: "", messaggio: "", privacy: false});
+                  }}
+                  className="mt-8 px-6 py-3 border border-white/20 rounded-xl text-white hover:bg-white/10 transition-colors"
+                >
+                  Invia un altro messaggio
+                </button>
               </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="nome" className="text-sm font-semibold text-gray-300 ml-1">Nome e Cognome *</label>
-                  <input type="text" id="nome" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full" required />
+            ) : (
+              // Modulo di Contatto
+              <form className="flex flex-col gap-6 relative z-10 animate-fade-in" onSubmit={handleSubmit}>
+                
+                <div className="mb-2">
+                  <h3 className="text-3xl font-bold text-white mb-2">Richiedi una consulenza</h3>
+                  <p className="text-gray-300 text-[15px]">
+                    Raccontaci il tuo progetto: ti ricontatteremo per un confronto tecnico.
+                  </p>
                 </div>
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="azienda" className="text-sm font-semibold text-gray-300 ml-1">Azienda</label>
-                  <input type="text" id="azienda" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full" />
+
+                {status === "error" && (
+                  <div className="bg-red-500/10 border border-red-500/50 text-red-400 p-4 rounded-xl text-sm">
+                    Ops! Si è verificato un errore durante l'invio. Riprova più tardi o scrivici direttamente via email.
+                  </div>
+                )}
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="nome" className="text-sm font-semibold text-gray-300 ml-1">Nome e Cognome *</label>
+                    <input type="text" id="nome" value={formData.nome} onChange={handleChange} disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" required />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="azienda" className="text-sm font-semibold text-gray-300 ml-1">Azienda</label>
+                    <input type="text" id="azienda" value={formData.azienda} onChange={handleChange} disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" />
+                  </div>
                 </div>
-              </div>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="email" className="text-sm font-semibold text-gray-300 ml-1">Email *</label>
-                  <input type="email" id="email" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full" required />
+                
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="email" className="text-sm font-semibold text-gray-300 ml-1">Email *</label>
+                    <input type="email" id="email" value={formData.email} onChange={handleChange} disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" required />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="telefono" className="text-sm font-semibold text-gray-300 ml-1">Telefono</label>
+                    <input type="tel" id="telefono" value={formData.telefono} onChange={handleChange} disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" />
+                  </div>
                 </div>
+
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="telefono" className="text-sm font-semibold text-gray-300 ml-1">Telefono</label>
-                  <input type="tel" id="telefono" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full" />
+                  <label htmlFor="oggetto" className="text-sm font-semibold text-gray-300 ml-1">Oggetto</label>
+                  <input type="text" id="oggetto" value={formData.oggetto} onChange={handleChange} disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" />
                 </div>
-              </div>
 
-              <div className="flex flex-col gap-2">
-                <label htmlFor="oggetto" className="text-sm font-semibold text-gray-300 ml-1">Oggetto</label>
-                <input type="text" id="oggetto" className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full" />
-              </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="messaggio" className="text-sm font-semibold text-gray-300 ml-1">Messaggio *</label>
+                  <textarea id="messaggio" value={formData.messaggio} onChange={handleChange} disabled={status === "loading"} rows={4} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all resize-none w-full disabled:opacity-50" required></textarea>
+                </div>
 
-              <div className="flex flex-col gap-2">
-                <label htmlFor="messaggio" className="text-sm font-semibold text-gray-300 ml-1">Messaggio *</label>
-                <textarea id="messaggio" rows={4} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all resize-none w-full" required></textarea>
-              </div>
+                <div className="flex items-start gap-3 mt-1">
+                  <input type="checkbox" id="privacy" checked={formData.privacy} onChange={handleChange} disabled={status === "loading"} className="mt-1 shrink-0 w-4 h-4 rounded border-white/20 bg-[#011C27] text-[#38bdf8] focus:ring-[#38bdf8] focus:ring-offset-0 disabled:opacity-50" required />
+                  <label htmlFor="privacy" className="text-[14px] text-gray-300 leading-snug cursor-pointer">
+                    Accetto il trattamento dei dati personali secondo la Privacy Policy.
+                  </label>
+                </div>
 
-              <div className="flex items-start gap-3 mt-1">
-                <input type="checkbox" id="privacy" className="mt-1 shrink-0 w-4 h-4 rounded border-white/20 bg-[#011C27] text-[#38bdf8] focus:ring-[#38bdf8] focus:ring-offset-0" required />
-                <label htmlFor="privacy" className="text-[14px] text-gray-300 leading-snug cursor-pointer">
-                  Accetto il trattamento dei dati personali secondo la Privacy Policy.
-                </label>
-              </div>
-
-              <button type="submit" className="mt-2 w-full flex items-center justify-center gap-2 bg-[#facc15] text-[#001724] font-bold text-lg px-8 py-4 rounded-xl hover:bg-yellow-300 hover:scale-[1.02] transition-all shadow-lg">
-                Invia Messaggio <Send size={20} />
-              </button>
-            </form>
+                <button 
+                  type="submit" 
+                  disabled={status === "loading"}
+                  className="mt-2 w-full flex items-center justify-center gap-2 bg-[#facc15] text-[#001724] font-bold text-lg px-8 py-4 rounded-xl hover:bg-yellow-300 hover:scale-[1.02] transition-all shadow-lg disabled:opacity-70 disabled:hover:scale-100 disabled:cursor-not-allowed"
+                >
+                  {status === "loading" ? (
+                    <>Invio in corso... <Loader2 size={20} className="animate-spin" /></>
+                  ) : (
+                    <>Invia Messaggio <Send size={20} /></>
+                  )}
+                </button>
+              </form>
+            )}
           </div>
 
         </div>

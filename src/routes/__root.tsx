@@ -29,8 +29,7 @@ import { Footer } from "../components/site/Footer";
 import { BackToTop } from "../components/site/Reveal";
 import { CookieBanner } from "../components/site/Interactive";
 
-// Fallback visivo per le URL che non corrispondono a nessuna route. Serve a dare
-// un'esperienza coerente anche quando l'utente arriva su una pagina non trovata.
+// Fallback visivo per le URL che non corrispondono a nessuna route.
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#011C27] px-4">
@@ -54,16 +53,11 @@ function NotFoundComponent() {
   );
 }
 
-// Error boundary della root route: cattura i problemi all'interno del rendering
-// e mostra un fallback più umano, senza bloccare l'intera applicazione.
+// Error boundary della root route
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
-  // Log diagnostico per lo sviluppo: aiuta a localizzare rapidamente il punto in cui
-  // si è verificato il problema durante il debug in locale.
   console.error(error);
   const router = useRouter();
 
-  // Ogni nuovo errore viene riportato al sistema di monitoraggio, così da poterlo
-  // identificare correttamente nel contesto del boundary che lo ha intercettato.
   useEffect(() => {
     reportError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
@@ -81,8 +75,6 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <div className="mt-6 flex flex-wrap justify-center gap-4">
           <button
             onClick={() => {
-              // L'operazione di retry invalida lo stato cache e ripristina il render,
-              // in modo da provare nuovamente a preparare la vista danneggiata.
               router.invalidate();
               reset();
             }}
@@ -102,13 +94,11 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-// Route radice dell'applicazione: qui si definisce il contesto globale condiviso,
-// la configurazione del document head e i componenti di fallback per i casi limite.
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" }, // Limitiamo lo scale per evitare zoom strani su mobile
+      { name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" },
       { title: "FI.CO. SRL — Telecomunicazioni, Fibra Ottica e Servizi IT" },
       {
         name: "description",
@@ -157,15 +147,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   errorComponent: ErrorComponent,
 });
 
-// Shell HTML della root route: crea il documento base con html/head/body e rende
-// disponibili i metadati della route e gli script necessari alla navigazione.
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="it">
       <head>
         <HeadContent />
       </head>
-      {/* AGGIUNTO: overflow-x-hidden e background coerente per bloccare lo scroll fantasma */}
       <body className="overflow-x-hidden bg-[#011C27] text-white antialiased w-full h-full m-0 p-0">
         {children}
         <Scripts />
@@ -174,20 +161,22 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
-// Componente radice dell'applicazione: qui si incapsula il provider del QueryClient
-// e si costruisce il layout persistente con navbar, contenuto delle route, footer e
-// componenti globali come il banner cookie o il pulsante per tornare in cima.
 function RootComponent() {
-  // Il QueryClient viene recuperato dal contesto della route e condiviso tra tutte
-  // le pagine, così da evitare duplicazioni di cache e mantenerlo coerente durante
-  // la navigazione interna dell'app.
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+
+  // AGGIUNTA FONDAMENTALE: Forza la navigazione verso la Home al caricamento dell'app
+  useEffect(() => {
+    // Al mount iniziale (che avviene quando carichi la prima volta, quando aggiorni la pagina,
+    // o quando il browser riapre la scheda "dormiente" da mobile) reindirizziamo subito alla home (/).
+    // replace: true evita di sporcare la cronologia del tasto "Indietro" del browser.
+    router.navigate({ to: '/', replace: true });
+  }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
       <Preloader />
 
-      {/* AGGIUNTO: Wrapper assoluto per bloccare le espansioni non volute */}
       <div className="relative flex flex-col min-h-screen w-full max-w-[100vw] overflow-x-hidden">
         <Navbar />
 
@@ -199,7 +188,6 @@ function RootComponent() {
         <BackToTop />
         <CookieBanner />
       </div>
-      
     </QueryClientProvider>
   );
 }
