@@ -33,20 +33,20 @@ import { CookieBanner } from "../components/site/Interactive";
 // un'esperienza coerente anche quando l'utente arriva su una pagina non trovata.
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <div className="flex min-h-screen items-center justify-center bg-[#011C27] px-4">
+      <div className="max-w-md text-center text-white">
+        <h1 className="text-7xl font-bold">404</h1>
+        <h2 className="mt-4 text-xl font-semibold">Pagina non trovata</h2>
+        <p className="mt-2 text-sm text-white/70">
+          La pagina che stai cercando non esiste o è stata spostata.
         </p>
 
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-xl bg-[#facc15] text-[#011C27] px-6 py-3 font-bold transition-all hover:bg-yellow-300 hover:scale-105"
           >
-            Go home
+            Torna alla Home
           </Link>
         </div>
       </div>
@@ -69,16 +69,16 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+    <div className="flex min-h-screen items-center justify-center bg-[#011C27] px-4">
+      <div className="max-w-md text-center text-white">
+        <h1 className="text-xl font-semibold tracking-tight">
+          Impossibile caricare la pagina
         </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+        <p className="mt-2 text-sm text-white/70">
+          Si è verificato un errore inaspettato. Puoi riprovare a caricare la pagina o tornare alla Home.
         </p>
 
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
+        <div className="mt-6 flex flex-wrap justify-center gap-4">
           <button
             onClick={() => {
               // L'operazione di retry invalida lo stato cache e ripristina il render,
@@ -86,15 +86,15 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-xl bg-[#facc15] text-[#011C27] px-6 py-3 font-bold transition-all hover:bg-yellow-300"
           >
-            Try again
+            Riprova
           </button>
           <a
             href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+            className="inline-flex items-center justify-center rounded-xl border border-[#0e7490]/50 bg-transparent text-white px-6 py-3 font-bold transition-all hover:bg-[#0e7490]/20"
           >
-            Go home
+            Torna alla Home
           </a>
         </div>
       </div>
@@ -108,7 +108,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" }, // Limitiamo lo scale per evitare zoom strani su mobile
       { title: "FI.CO. SRL — Telecomunicazioni, Fibra Ottica e Servizi IT" },
       {
         name: "description",
@@ -161,11 +161,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 // disponibili i metadati della route e gli script necessari alla navigazione.
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="it">
       <head>
         <HeadContent />
       </head>
-      <body>
+      {/* AGGIUNTO: overflow-x-hidden e background coerente per bloccare lo scroll fantasma */}
+      <body className="overflow-x-hidden bg-[#011C27] text-white antialiased w-full h-full m-0 p-0">
         {children}
         <Scripts />
       </body>
@@ -186,15 +187,19 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <Preloader />
 
-      <Navbar />
+      {/* AGGIUNTO: Wrapper assoluto per bloccare le espansioni non volute */}
+      <div className="relative flex flex-col min-h-screen w-full max-w-[100vw] overflow-x-hidden">
+        <Navbar />
 
-      <main className="min-h-screen">
-        <Outlet />
-      </main>
+        <main className="flex-1 w-full relative">
+          <Outlet />
+        </main>
 
-      <Footer />
-      <BackToTop />
-      <CookieBanner />
+        <Footer />
+        <BackToTop />
+        <CookieBanner />
+      </div>
+      
     </QueryClientProvider>
   );
 }

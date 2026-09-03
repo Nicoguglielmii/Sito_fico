@@ -98,7 +98,7 @@ function ChiSiamo() {
       {/* =========================================
           02 — CHI SIAMO & TIMELINE
       ========================================= */}
-      <section className="py-16 md:py-28 relative z-20 border-b border-[#0e7490]/30 overflow-hidden">
+      <section className="py-10 md:py-16 relative z-20 border-b border-[#0e7490]/30 overflow-hidden">
         <div className="container-x grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
           
           <Reveal>
@@ -112,16 +112,17 @@ function ChiSiamo() {
               <div className="space-y-4 md:space-y-5 text-white/70 text-base md:text-lg leading-relaxed text-justify">
                 <p>
                   Fi.Co. nasce dall'iniziativa di professionisti che scelgono di mettere competenze tecniche e capacità progettuale al servizio delle imprese.
-                </p>
-                <p>
+                
+                
                   Il percorso comincia nelle telecomunicazioni, attraverso la progettazione e la gestione di reti in fibra ottica, insieme ad attività di manutenzione e consulenza.
-                </p>
-                <p>
+                
+                
                   Nel tempo, Fi.Co. amplia la propria struttura e organizza persone, processi e competenze attorno a nuove aree di attività.
-                </p>
-                <p className="font-semibold text-white/90">
+                
+                
                   Oggi guardiamo oltre il singolo incarico: costruiamo un'organizzazione capace di accompagnare la crescita dei progetti, dei clienti e delle persone.
                 </p>
+              
               </div>
             </div>
           </Reveal>
@@ -152,7 +153,7 @@ function ChiSiamo() {
       {/* =========================================
           03 — IDENTITÀ DEL BRAND
       ========================================= */}
-      <section className="py-16 md:py-28 bg-[#00121a] relative border-b border-[#0e7490]/30 overflow-hidden">
+      <section className="py-10 md:py-16 bg-[#00121a] relative border-b border-[#0e7490]/30 overflow-hidden">
         <div className="container-x">
           
           <Reveal>
@@ -165,8 +166,6 @@ function ChiSiamo() {
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-white/70 leading-relaxed text-justify">
                 Fi.Co. è un'identità costruita intorno a un concetto semplice: connettere. Il nome, il pittogramma e il linguaggio visivo nascono da punti, nodi e linee: elementi che raccontano il modo in cui mettiamo in relazione persone, competenze, aziende e opportunità.
-              </p>
-              <p className="mt-4 text-base sm:text-lg md:text-xl font-semibold text-white/90 text-justify">
                 Il brand non rappresenta un singolo servizio. Rappresenta la capacità di creare connessioni tra mondi differenti.
               </p>
             </div>
@@ -262,7 +261,7 @@ function ChiSiamo() {
       {/* =========================================
           04 & 05 — COSA CI DEFINISCE / ORGANIZZAZIONE
       ========================================= */}
-      <section className="py-16 md:py-28 relative border-b border-[#0e7490]/30 overflow-hidden">
+      <section className="py-4 md:py-8 relative border-b border-[#0e7490]/30 overflow-hidden">
         <div className="container-x">
           
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
@@ -274,11 +273,7 @@ function ChiSiamo() {
                 <div className="space-y-4 text-white/70 text-base md:text-lg leading-relaxed text-justify">
                   <p>
                     Fi.Co. nasce da una cultura tecnica e mantiene nella progettazione il proprio punto di forza.
-                  </p>
-                  <p>
                     A questa base affianchiamo organizzazione, capacità di gestione, conoscenza dei processi e una visione orientata all'evoluzione.
-                  </p>
-                  <p className="font-semibold text-[#38bdf8]">
                     Il risultato è una struttura capace di mettere in relazione professionalità differenti e affrontare progetti che richiedono più di una singola competenza.
                   </p>
                 </div>
@@ -302,22 +297,22 @@ function ChiSiamo() {
                   <div>
                     <h4 className="text-xs md:text-sm font-semibold text-[#38bdf8] uppercase tracking-wider mb-3">Funzioni Aziendali</h4>
                     <div className="flex flex-wrap gap-2">
-                      <span className="px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-[#0e7490]/20 border border-[#0e7490]/50 text-white text-xs md:text-sm font-medium">Amministrazione</span>
-                      <span className="px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-[#0e7490]/20 border border-[#0e7490]/50 text-white text-xs md:text-sm font-medium">Facility</span>
-                      <span className="px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-[#0e7490]/20 border border-[#0e7490]/50 text-white text-xs md:text-sm font-medium">Business Development</span>
+                      <span className="px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-[#0e7490]/20 border border-[#0e7490]/50 text-white text-xs md:text-sm font-medium hover:bg-[#0e7490]/40 transition-colors cursor-default">Amministrazione</span>
+                      <span className="px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-[#0e7490]/20 border border-[#0e7490]/50 text-white text-xs md:text-sm font-medium hover:bg-[#0e7490]/40 transition-colors cursor-default">Facility</span>
+                      <span className="px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-[#0e7490]/20 border border-[#0e7490]/50 text-white text-xs md:text-sm font-medium hover:bg-[#0e7490]/40 transition-colors cursor-default">Business Development</span>
                     </div>
                   </div>
                   <div>
                     <h4 className="text-xs md:text-sm font-semibold text-[#facc15] uppercase tracking-wider mb-3">Aree Operative</h4>
                     <div className="flex flex-wrap gap-2">
-                      <span className="px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-[#facc15]/10 border border-[#facc15]/30 text-white text-xs md:text-sm font-medium">Fibra & Mobile</span>
-                      <span className="px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-[#facc15]/10 border border-[#facc15]/30 text-white text-xs md:text-sm font-medium">IT, Networking & Software</span>
-                      <span className="px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-white/5 border border-white/10 text-white/40 text-xs md:text-sm font-medium border-dashed">Energia (in sviluppo)</span>
+                      <Link to="/servizi/fibra-mobile" className="px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-[#facc15]/10 border border-[#facc15]/30 text-white text-xs md:text-sm font-medium hover:bg-[#facc15]/20 hover:-translate-y-0.5 hover:shadow-[0_4px_10px_rgba(250,204,21,0.2)] transition-all cursor-pointer">Fibra & Mobile</Link>
+                      <Link to="/servizi/it-software" className="px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-[#facc15]/10 border border-[#facc15]/30 text-white text-xs md:text-sm font-medium hover:bg-[#facc15]/20 hover:-translate-y-0.5 hover:shadow-[0_4px_10px_rgba(250,204,21,0.2)] transition-all cursor-pointer">IT, Networking & Software</Link>
+                      <span className="px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-white/5 border border-white/10 text-white/40 text-xs md:text-sm font-medium border-dashed hover:bg-white/10 transition-colors cursor-not-allowed">Energia (in sviluppo)</span>
                     </div>
                   </div>
                   <div className="w-full h-px bg-gradient-to-r from-transparent via-[#0e7490]/50 to-transparent" />
                   <div className="text-center">
-                    <span className="inline-block px-5 py-2 rounded-full bg-gradient-to-r from-[#38bdf8]/20 to-[#facc15]/20 border border-[#38bdf8]/40 text-white text-xs md:text-sm font-bold shadow-[0_0_15px_rgba(56,189,248,0.2)]">
+                    <span className="inline-block px-5 py-2 rounded-full bg-gradient-to-r from-[#38bdf8]/20 to-[#facc15]/20 border border-[#38bdf8]/40 text-white text-xs md:text-sm font-bold shadow-[0_0_15px_rgba(56,189,248,0.2)] hover:shadow-[0_0_20px_rgba(56,189,248,0.4)] hover:scale-105 transition-all cursor-default">
                       Ricerca & Innovazione (Trasversale)
                     </span>
                   </div>
@@ -333,7 +328,7 @@ function ChiSiamo() {
       {/* =========================================
           06 — IL NOSTRO METODO & TIMELINE INTERATTIVA
       ========================================= */}
-      <section className="py-16 md:py-28 relative overflow-hidden">
+      <section className="py-10 md:py-16 relative overflow-hidden">
         <div className="container-x">
           <Reveal>
             <div className="text-left max-w-3xl mb-12 md:mb-16">
@@ -346,7 +341,7 @@ function ChiSiamo() {
             </div>
           </Reveal>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-16 md:mb-24">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-4 md:mb-8">
             {[
               { title: "Competenza", icon: Target, desc: "Conoscenze tecniche e specialistiche applicate a problemi reali." },
               { title: "Organizzazione", icon: Layers, desc: "Processi e responsabilità che trasformano le competenze in attività coordinate." },
@@ -372,7 +367,7 @@ function ChiSiamo() {
       {/* =========================================
           07 — VISIONE & MOTORI DI CRESCITA
       ========================================= */}
-      <section className="py-16 md:py-28 bg-[#00121a] border-y border-[#0e7490]/30 overflow-hidden">
+      <section className="pt-10 md:pt-16 pb-0 bg-[#00121a] border-t border-[#0e7490]/30 overflow-hidden">
         <div className="container-x">
           <Reveal>
             <div className="max-w-3xl mb-12 md:mb-16">
@@ -384,12 +379,8 @@ function ChiSiamo() {
               </h2>
               <div className="space-y-4 text-white/70 text-base md:text-lg leading-relaxed text-justify">
                 <p>
-                  La nostra visione si fonda sull'innovazione e sulla capacità di esplorare nuove opportunità.
-                </p>
-                <p>
+                  La nostra visione si fonda sull'innovazione e sulla capacità di esplorare nuove opportunità.  
                   Investiamo in competenze, processi, tecnologie e partnership che possano ampliare i contesti nei quali mettere a valore il nostro know-how.
-                </p>
-                <p className="font-semibold text-white">
                   Crediamo nella crescita condivisa: ogni sfida affrontata insieme può diventare un risultato, e ogni risultato può aprire una nuova possibilità.
                 </p>
               </div>
@@ -404,7 +395,7 @@ function ChiSiamo() {
               {[
                 { icon: Cpu, title: "Innovazione Tecnologia", desc: "Adottiamo nuove tecnologie per rendere infrastrutture, processi e servizi più intelligenti, efficienti e sostenibili." },
                 { icon: Handshake, title: "Partnership Strategiche", desc: "Costruiamo alleanze con operatori, enti e partner qualificati per ampliare competenze e capacità operativa." },
-                { icon: Scaling, title: "Scalabilità Operativa", desc: "Processi, competenze e team strutturati per governare progetti complessi e operare su scala." },
+                { icon: Scaling, title: "Scalabilità Operativa", desc: "Processi, competenze e team strutturati per governare progetti complexi e operare su scala." },
                 { icon: MapPin, title: "Espansione Territoriale", desc: "Consolidiamo la nostra presenza sul territorio attraverso competenze locali, relazioni e partnership." }
               ].map((m, i) => (
                 <div key={m.title} className="bg-[#011C27] p-6 rounded-2xl border border-[#0e7490]/20 hover:border-[#facc15]/50 transition-colors group">
@@ -416,18 +407,16 @@ function ChiSiamo() {
             </div>
           </Reveal>
         </div>
-
-        {/* I componenti interattivi originali che rappresentano perfettamente Scalabilità ed Espansione */}
-        <GrowthSection />
-        <div className="mt-12 md:mt-16">
-          <ItalyMap />
-        </div>
       </section>
+
+      {/* I componenti interattivi ESTRATTI per evitare i gap neri */}
+      <GrowthSection />
+      <ItalyMap />
 
       {/* =========================================
           08 — I NOSTRI VALORI
       ========================================= */}
-      <section className="py-16 md:py-28 relative border-b border-[#0e7490]/30 overflow-hidden">
+      <section className="py-10 md:py-16 relative border-b border-[#0e7490]/30 overflow-hidden">
         <div className="container-x">
           <Reveal>
             <div className="text-left max-w-3xl mb-12 md:mb-16">
@@ -475,7 +464,7 @@ function ChiSiamo() {
       {/* =========================================
           09 & 10 — PERSONE & QUALITÀ
       ========================================= */}
-      <section className="py-16 md:py-28 relative border-b border-[#0e7490]/30 bg-[#00121a] overflow-hidden">
+      <section className="py-4 md:py-8 relative border-b border-[#0e7490]/30 bg-[#00121a] overflow-hidden">
         <div className="container-x grid lg:grid-cols-2 gap-12 lg:gap-24">
           
           {/* Persone e Competenze */}
@@ -490,7 +479,7 @@ function ChiSiamo() {
               
               <div className="flex flex-wrap gap-2.5 sm:gap-3">
                 {["Technical Design", "Project Management", "Network Engineering", "Digital & Software", "IT & Networking", "Energy", "Administration", "Business Development"].map(skill => (
-                  <span key={skill} className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-[#011C27] border border-[#0e7490]/40 text-white/90 text-xs sm:text-sm font-medium shadow-sm">
+                  <span key={skill} className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-[#011C27] border border-[#0e7490]/40 text-white/90 text-xs sm:text-sm font-medium shadow-sm hover:bg-[#0e7490]/30 hover:border-[#38bdf8]/60 transition-colors cursor-default">
                     {skill}
                   </span>
                 ))}

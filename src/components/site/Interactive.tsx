@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 
 // Immagini associate alle regioni mostrate nella scheda informativa della mappa.
-// Gli import statici permettono al bundler di includere correttamente gli asset.
 import imgPiemonte from "@/assets/piemonte.webp";
 import imgLombardia from "@/assets/lombardia.avif";
 import imgVeneto from "@/assets/veneto.jpg";
@@ -28,31 +27,23 @@ import imgSicilia from "@/assets/sicilia.jpg";
 
 /* Sfondo canvas con particelle e connessioni per le sezioni hero. */
 export function HeroParticles() {
-  // Il ref consente di accedere al canvas senza provocare render React a ogni
-  // fotogramma dell'animazione.
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    // L'effetto parte solo quando il canvas e il suo contesto 2D sono disponibili.
     const c = ref.current;
     if (!c) return;
 
     const ctx = c.getContext("2d");
     if (!ctx) return;
 
-    // Dimensioni logiche del canvas, separate dalla risoluzione fisica usata
-    // per compensare la densità dei pixel dello schermo.
     let raf = 0;
     let w = 0,
       h = 0;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    // Ogni particella conserva posizione e velocità indipendenti sui due assi.
     type P = { x: number; y: number; vx: number; vy: number };
     let pts: P[] = [];
 
-    // Ridimensiona il canvas e ricrea le particelle in base all'area visibile.
-    // Il limite massimo mantiene il costo del disegno prevedibile sui desktop.
     const resize = () => {
       w = c.clientWidth;
       h = c.clientHeight;
@@ -72,8 +63,6 @@ export function HeroParticles() {
     resize();
     window.addEventListener("resize", resize);
 
-    // Ciclo di animazione: pulisce il frame, aggiorna le particelle, disegna le
-    // connessioni vicine e infine visualizza i punti luminosi.
     const tick = () => {
       ctx.clearRect(0, 0, w, h);
 
@@ -114,7 +103,6 @@ export function HeroParticles() {
     };
 
     raf = requestAnimationFrame(tick);
-    // Rimuove listener e frame pendente quando il componente viene smontato.
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
@@ -130,14 +118,12 @@ export function HeroParticles() {
 export function CookieBanner() {
   const [show, setShow] = useState(false);
 
-  // Il banner viene mostrato solo se non esiste ancora una scelta registrata.
   useEffect(() => {
     if (!localStorage.getItem("fico-cookies")) setShow(true);
   }, []);
 
   if (!show) return null;
 
-  // Le due azioni persistono una scelta distinta e nascondono il banner.
   const accept = () => {
     localStorage.setItem("fico-cookies", "accepted");
     setShow(false);
@@ -149,10 +135,7 @@ export function CookieBanner() {
   };
 
   return (
-    // Il banner è fissato alla viewport e si adatta da colonna a riga sui desktop.
     <div className="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-[99999] w-[calc(100vw-2rem)] md:w-[700px] p-5 md:p-6 rounded-2xl bg-[#011C27] border border-[#0e7490]/50 shadow-2xl flex flex-col md:flex-row md:items-center gap-4 md:gap-6 animate-fade-in">
-      
-      {/* Testo informativo, separato dai comandi per mantenere una gerarchia chiara. */}
       <div className="flex-1">
         <div className="flex justify-between items-start mb-2 md:mb-1">
           <h4 className="font-bold text-white text-base md:text-lg">Utilizziamo i cookie</h4>
@@ -168,8 +151,6 @@ export function CookieBanner() {
           Utilizziamo cookie tecnici essenziali e analitici anonimi per migliorare l'esperienza di navigazione.
         </p>
       </div>
-
-      {/* Azioni sempre raggruppate e allineate a destra, con chiusura dedicata per viewport. */}
       <div className="flex items-center gap-3 justify-end shrink-0 mt-2 md:mt-0">
         <button 
           onClick={reject} 
@@ -206,16 +187,13 @@ const STEPS = [
 
 export function ProcessTimeline() {
   return (
-    // Sezione centrata secondo il contenitore condiviso del sito.
     <section className="container-x py-24 md:py-32">
-      {/* Animazione delle linee SVG decorative visibile sui layout larghi. */}
       <style>{`
         @keyframes lineTravel {
           0% { stroke-dashoffset: 0; }
           100% { stroke-dashoffset: -700; }
         }
       `}</style>
-      {/* Intestazione della timeline: contesto breve, titolo e promessa del processo. */}
       <div className="max-w-3xl mb-16">
         <span className="text-xs uppercase tracking-[0.3em] text-[#fde047] font-semibold">
           Il nostro processo
@@ -225,10 +203,6 @@ export function ProcessTimeline() {
         </h2>
       </div>
       <div className="relative">
-        {/*
-          Le linee sono nascoste su mobile perché la griglia cambia struttura;
-          su desktop collegano visivamente le cinque fasi del processo.
-        */}
         <div
           aria-hidden
           className="hidden lg:block absolute inset-x-0 top-[24%] h-32 pointer-events-none overflow-visible"
@@ -300,7 +274,6 @@ export function ProcessTimeline() {
             />
           </svg>
         </div>
-        {/* Le fasi vengono generate dai dati e distribuite in cinque colonne su desktop. */}
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-4 pt-8">
           {STEPS.map((s, i) => (
             <div key={s.title} className="relative group">
@@ -337,13 +310,10 @@ const REGIONS = [
 ];
 
 export function ItalyMap() {
-  // Mantiene la regione selezionata; null rappresenta lo stato iniziale senza
-  // una scheda aperta accanto alla mappa.
   const [sel, setSel] = useState<typeof REGIONS[0] | null>(null);
 
   return (
-    <section className="bg-[#011C27] pt-24 pb-8 lg:pb-4 relative overflow-hidden">
-      {/* Animazione di ingresso della scheda regionale selezionata. */}
+    <section className="surface-navy pt-24 pb-8 lg:pb-4 relative overflow-hidden">
       <style>{`
         @keyframes slideDownCard {
           0% { opacity: 0; transform: translateY(-40px); }
@@ -354,14 +324,12 @@ export function ItalyMap() {
         }
       `}</style>
 
-      {/* Bagliore di fondo applicato tramite una variabile CSS condivisa. */}
       <div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-30 pointer-events-none"
         style={{ backgroundImage: "var(--gradient-glow)" }}
       />
 
       <div className="container-x relative">
-        {/* Titolo centrato che introduce la copertura geografica dell'azienda. */}
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="text-xs uppercase tracking-[0.3em] text-[#facc15] font-semibold">
             Presenza
@@ -371,14 +339,12 @@ export function ItalyMap() {
           </h2>
         </div>
 
-        {/* Layout principale: mappa più ampia a sinistra e pannello informativo a destra. */}
         <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-center">
           <div className="lg:col-span-3 relative">
             <div className="relative max-w-lg mx-auto">
               
               {sel && (
                 <div key={sel.id} className="hidden lg:block absolute inset-0 z-0 pointer-events-none animate-in fade-in duration-500">
-                  {/* Segmento 1: Orizzontale, dal marker verso destra fino al bordo della mappa */}
                   <div
                     className="absolute bg-white opacity-80"
                     style={{
@@ -388,7 +354,6 @@ export function ItalyMap() {
                       height: '2px',
                     }}
                   />
-                  {/* Segmento 2: Verticale, scende o sale per portare la linea a metà altezza */}
                   <div
                     className="absolute bg-white opacity-80"
                     style={{
@@ -398,7 +363,6 @@ export function ItalyMap() {
                       width: '2px',
                     }}
                   />
-                  {/* Segmento 3: Orizzontale, entra esattamente al centro della card */}
                   <div
                     className="absolute bg-white opacity-80"
                     style={{
@@ -408,7 +372,6 @@ export function ItalyMap() {
                       height: '2px',
                     }}
                   />
-                  {/* Punta della freccia, posizionata esattamente alla fine del Segmento 3 */}
                   <ArrowRight 
                     size={28} 
                     strokeWidth={2} 
@@ -422,7 +385,6 @@ export function ItalyMap() {
                 </div>
               )}
 
-              {/* Immagine di base della cartina, mantenuta non trascinabile perché interattiva tramite i marker. */}
               <img
                 src="/cartina-italia.png"
                 alt="Mappa Italia"
@@ -434,7 +396,6 @@ export function ItalyMap() {
                 <button
                   key={r.id}
                   type="button"
-                  // Previene l'azione predefinita e salva la regione appena scelta.
                   onClick={(e) => {
                     e.preventDefault();
                     setSel(r);
@@ -445,7 +406,6 @@ export function ItalyMap() {
                     top: `${r.y}%`,
                   }}
                 >
-                  {/* Anello esterno: lampeggia sulla selezione e reagisce all'hover. */}
                   <span
                     className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full transition-colors duration-300 ${
                       sel?.id === r.id ? "bg-[#FABD18]/25 animate-ping" : "bg-transparent group-hover:bg-[#FABD18]/20"
@@ -455,7 +415,6 @@ export function ItalyMap() {
                       height: "42px",
                     }}
                   />
-                  {/* Punto centrale del marker, più grande e luminoso quando è attivo. */}
                   <span
                     className={`relative z-10 rounded-full bg-[#FABD18] transition-all duration-300 ${
                       sel?.id === r.id ? "w-5 h-5 shadow-[0_0_25px_rgba(250,189,24,0.9)]" : "w-3 h-3 group-hover:w-4 group-hover:h-4 group-hover:shadow-[0_0_15px_rgba(250,189,24,0.6)]"
@@ -466,12 +425,9 @@ export function ItalyMap() {
             </div>
           </div>
 
-          {/* Pannello che alterna istruzioni iniziali e dettagli della regione selezionata. */}
           <div className="lg:col-span-2 relative flex items-center justify-center min-h-[400px]">
-            {/* Se non esiste ancora una selezione, viene mostrato un invito all'interazione. */}
             {sel ? (
               <div key={sel.id} className="w-full bg-[#01425f]/40 backdrop-blur-xl border border-[#0e7490]/50 rounded-3xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] animate-card relative z-20">
-                {/* Nome della regione attiva, usato come intestazione della scheda. */}
                 <h3 className="text-4xl font-bold text-[#facc15] mb-6 tracking-wide drop-shadow-md">
                   {sel.id}
                 </h3>
@@ -486,7 +442,6 @@ export function ItalyMap() {
                   
                 </div>
                 
-                {/* Descrizione associata esclusivamente alla regione corrente. */}
                 <p className="mt-6 text-[17px] text-gray-200 leading-relaxed text-justify">
                   {sel.desc}
                 </p>
