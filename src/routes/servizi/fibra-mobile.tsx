@@ -18,42 +18,42 @@ function FibraMobilePage() {
   const fasi = [
     {
       title: "Survey & Rilievi",
-      subtitle: "Dal territorio al dato.",
+      subtitle: "Dal territorio al dato",
       desc: "Raccogliamo e organizziamo le informazioni necessarie per leggere correttamente il contesto e impostare il progetto su basi affidabili.",
       image: surveyImg,
       activities: ["Sopralluoghi e rilievi planimetrici", "Raccolta delle informazioni di campo", "Verifica delle infrastrutture esistenti", "Attività di walk-in e walk-out"]
     },
     {
       title: "Network Design",
-      subtitle: "Dal dato al progetto.",
+      subtitle: "Dal dato al progetto",
       desc: "Trasformiamo i dati raccolti in una rete dimensionata, documentata e pronta per le successive fasi autorizzative e operative.",
       image: netdesignImg,
       activities: ["Studio e dimensionamento della rete", "Progettazione logica dei circuiti", "Progettazione delle infrastrutture", "Progettazione e gestione su sistemi GIS", "Scelta degli apparati trasmissivi", "Revisione e aggiornamento banche dati"]
     },
     {
       title: "Permitting & Rapporti Enti",
-      subtitle: "Dal progetto alle autorizzazioni.",
+      subtitle: "Dal progetto alle autorizzazioni",
       desc: "Gestiamo l'iter autorizzativo e i rapporti con pubbliche amministrazioni ed enti coinvolti nella realizzazione degli interventi.",
       image: entiImg,
       activities: ["Analisi vincoli urbanistici e paesaggistici", "Predisposizione istanze ed elaborati", "Acquisizione pareri tecnici", "Trasmissione pratiche e monitoraggio", "Gestione silenzio-assenso e conferenze"]
     },
     {
       title: "Implementazione & PM",
-      subtitle: "Dal progetto all'implementazione.",
+      subtitle: "Dal progetto all'implementazione",
       desc: "Coordiniamo le attività e gli interlocutori necessari a trasformare il progetto in un percorso operativo governato.",
       image: projectImg,
       activities: ["Gestione degli ordini di collegamento", "Analisi di tempi e costi", "Coordinamento fasi operative", "Supporto all'implementazione", "Monitoraggio dell'avanzamento", "Consuntivazione"]
     },
     {
       title: "As-Built & Data Management",
-      subtitle: "Il progetto diventa dato.",
+      subtitle: "Il progetto diventa dato",
       desc: "Documentiamo il realizzato perché ogni informazione resti tracciabile, aggiornabile e utile nel tempo.",
       image: dataImg,
       activities: ["Redazione e caricamento As-Built", "Aggiornamento banche dati", "Gestione cartografia e dati alfanumerici", "Documentazione sui sistemi informatici"]
     },
     {
       title: "Manutenzione & Supporto",
-      subtitle: "La rete non finisce col progetto.",
+      subtitle: "La rete non finisce col progetto",
       desc: "Affianchiamo i clienti anche nelle attività successive alla realizzazione, attraverso manutenzione e supporto tecnico coerenti con il perimetro del progetto.",
       image: manutenzioneImg,
       activities: []

@@ -1,98 +1,112 @@
-import { Link } from '@tanstack/react-router';
-import { MapPin, Phone, Mail, Linkedin, Home, Building2, Briefcase } from 'lucide-react';
+import { Link } from "@tanstack/react-router";
+import { MapPin, Phone, Mail, Home, Building2, Briefcase, Linkedin } from "lucide-react";
 
 export function Footer() {
-
-  // MODIFICA: Scroll fluido verso l'alto senza preloader
-  const handleFooterClick = (e: React.MouseEvent, path: string) => {
-    if (window.location.pathname === path) {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
-
   return (
-    <footer className="bg-[#001724] border-t border-[#0e7490]/20 pt-8 pb-4 text-gray-300">
-      <div className="w-full max-w-screen-xl mx-auto px-6 lg:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
+    <footer className="bg-[#011C27] border-t border-[#0e7490]/30 pt-16 pb-8 relative z-20">
+      <div className="container-x">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           
-          {/* Colonna 1: Brand e Info */}
-          <div className="flex flex-col items-start">
-            <Link to="/" onClick={(e) => handleFooterClick(e, "/")} className="mb-3">
-              <img src="/fico-logo.png" alt="FI.CO. SRL" className="h-10 w-auto object-contain" />
+          {/* 1. Brand & Info */}
+          <div className="flex flex-col gap-6">
+            <Link to="/">
+              <img src="/fico-logo.png" alt="FI.CO. SRL" className="h-10 md:h-12 w-auto object-contain" />
             </Link>
-            <p className="text-[15px] leading-relaxed mb-4">
+            <p className="text-white/80 text-[15px] leading-relaxed pr-4">
               Telecomunicazioni, reti in fibra ottica, ingegneria, permitting e servizi IT per enti pubblici e privati.
             </p>
-            <a 
-              href="https://linkedin.com" 
-              target="_blank" 
-              rel="noreferrer" 
-              className="w-10 h-10 rounded-full border border-[#0e7490]/50 flex items-center justify-center text-gray-400 hover:text-[#38bdf8] hover:border-[#38bdf8] transition-all"
-            >
-              <Linkedin size={18} />
-            </a>
-          </div>
-
-          {/* Colonna 2: Navigazione */}
-          <div>
-            <h3 className="text-[#facc15] font-bold tracking-widest uppercase mb-3 text-sm">Navigazione</h3>
-            <div className="flex flex-col gap-2">
-              <Link to="/" onClick={(e) => handleFooterClick(e, "/")} className="flex items-center gap-3 text-[15px] hover:text-white transition-colors group">
-                <Home size={18} className="text-gray-400 group-hover:text-white transition-colors" /> Home
-              </Link>
-              <Link to="/chi-siamo" onClick={(e) => handleFooterClick(e, "/chi-siamo")} className="flex items-center gap-3 text-[15px] hover:text-white transition-colors group">
-                <Building2 size={18} className="text-gray-400 group-hover:text-white transition-colors" /> L'azienda
-              </Link>
-              <Link to="/servizi" onClick={(e) => handleFooterClick(e, "/servizi")} className="flex items-center gap-3 text-[15px] hover:text-white transition-colors group">
-                <Briefcase size={18} className="text-gray-400 group-hover:text-white transition-colors" /> Servizi
-              </Link>
-              <Link to="/contatti" onClick={(e) => handleFooterClick(e, "/contatti")} className="flex items-center gap-3 text-[15px] hover:text-white transition-colors group">
-                <Phone size={18} className="text-gray-400 group-hover:text-white transition-colors" /> Contatti
-              </Link>
+            <div className="flex items-center gap-4 mt-2">
+              <a 
+                href="https://linkedin.com" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="w-10 h-10 rounded-full border border-[#0e7490]/50 flex items-center justify-center text-white/70 hover:bg-[#0e7490]/20 hover:text-[#38bdf8] transition-all hover:scale-105"
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={18} />
+              </a>
             </div>
           </div>
 
-          {/* Colonna 3: Servizi */}
-          <div>
-            <h3 className="text-[#facc15] font-bold tracking-widest uppercase mb-3 text-sm">I Nostri Servizi</h3>
-            <div className="flex flex-col gap-2">
-              <Link to="/servizi/fibra-mobile" onClick={(e) => handleFooterClick(e, "/servizi/fibra-mobile")} className="text-[15px] text-gray-300 hover:text-white transition-colors">
-                Fibra & Mobile
-              </Link>
-              <Link to="/servizi/it-software" onClick={(e) => handleFooterClick(e, "/servizi/it-software")} className="text-[15px] text-gray-300 hover:text-white transition-colors">
-                IT, Networking & Software
-              </Link>
-            </div>
+          {/* 2. Navigazione */}
+          <div className="lg:pl-8">
+            <h4 className="text-[#facc15] font-bold text-sm tracking-wider uppercase mb-6">Navigazione</h4>
+            <ul className="flex flex-col gap-4">
+              <li>
+                <Link to="/" className="text-white/80 hover:text-[#38bdf8] transition-colors flex items-center gap-3 text-[15px]">
+                  <Home size={18} className="text-white/40" /> Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/chi-siamo" className="text-white/80 hover:text-[#38bdf8] transition-colors flex items-center gap-3 text-[15px]">
+                  <Building2 size={18} className="text-white/40" /> L'azienda
+                </Link>
+              </li>
+              <li>
+                <Link to="/servizi" className="text-white/80 hover:text-[#38bdf8] transition-colors flex items-center gap-3 text-[15px]">
+                  <Briefcase size={18} className="text-white/40" /> Servizi
+                </Link>
+              </li>
+              <li>
+                <Link to="/contatti" className="text-white/80 hover:text-[#38bdf8] transition-colors flex items-center gap-3 text-[15px]">
+                  <Phone size={18} className="text-white/40" /> Contatti
+                </Link>
+              </li>
+            </ul>
           </div>
 
-          {/* Colonna 4: Contatti */}
+          {/* 3. I Nostri Servizi */}
           <div>
-            <h3 className="text-[#facc15] font-bold tracking-widest uppercase mb-3 text-sm">Contatti</h3>
-            <div className="flex flex-col gap-3">
-              <div className="flex items-start gap-4">
+            <h4 className="text-[#facc15] font-bold text-sm tracking-wider uppercase mb-6">I Nostri Servizi</h4>
+            <ul className="flex flex-col gap-4">
+              <li>
+                <Link to="/servizi/fibra-mobile" className="text-white/80 hover:text-[#38bdf8] transition-colors text-[15px] block">
+                  Fibra & Mobile
+                </Link>
+              </li>
+              <li>
+                <Link to="/servizi/it-software" className="text-white/80 hover:text-[#38bdf8] transition-colors text-[15px] block">
+                  IT, Networking & Software
+                </Link>
+              </li>
+              {/* VOCE AGGIUNTA E DISABILITATA */}
+              <li>
+                <span className="text-white/40 cursor-not-allowed text-[15px] flex items-center gap-2">
+                  Energia <span className="text-[10px] uppercase tracking-wider border border-white/10 bg-white/5 px-2 py-0.5 rounded-full">In Sviluppo</span>
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          {/* 4. Contatti */}
+          <div>
+            <h4 className="text-[#facc15] font-bold text-sm tracking-wider uppercase mb-6">Contatti</h4>
+            <ul className="flex flex-col gap-5">
+              <li className="flex items-start gap-3 text-[15px] text-white/80 leading-snug">
                 <MapPin size={20} className="text-[#facc15] shrink-0 mt-0.5" />
-                <span className="text-[15px] leading-relaxed text-gray-300">Corso Cavour 9<br />76123 Andria (BT)</span>
-              </div>
-              <div className="flex items-center gap-4">
+                <span>Corso Cavour 9<br/>76123 Andria (BT)</span>
+              </li>
+              <li className="flex items-center gap-3 text-[15px] text-white/80">
                 <Phone size={20} className="text-[#facc15] shrink-0" />
-                <a href="tel:+393757932669" className="text-[15px] text-gray-300 hover:text-white transition-colors">+39 375 793 2669</a>
-              </div>
-              <div className="flex items-center gap-4">
+                <a href="tel:+393757932669" className="hover:text-[#38bdf8] transition-colors">+39 375 793 2669</a>
+              </li>
+              <li className="flex items-center gap-3 text-[15px] text-white/80">
                 <Mail size={20} className="text-[#facc15] shrink-0" />
-                <a href="mailto:amministrazione@ficohub.it" className="text-[15px] text-gray-300 hover:text-white transition-colors">amministrazione@ficohub.it</a>
-              </div>
-            </div>
+                <a href="mailto:amministrazione@ficohub.it" className="hover:text-[#38bdf8] transition-colors break-all md:break-normal">amministrazione@ficohub.it</a>
+              </li>
+            </ul>
           </div>
-
+          
         </div>
 
-        {/* Copyright & Policy */}
-        <div className="border-t border-[#0e7490]/20 mt-6 pt-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-          <p>© {new Date().getFullYear()} FI.CO. SRL. Tutti i diritti riservati.</p>
-          <div className="flex gap-6">
-            <Link to="/privacy-policy" onClick={(e) => handleFooterClick(e, "/privacy-policy")} className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
-            <Link to="/cookie-policy" onClick={(e) => handleFooterClick(e, "/cookie-policy")} className="hover:text-gray-300 transition-colors">Cookie Policy</Link>
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-[#0e7490]/30 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-white/40 text-[13px] text-center md:text-left">
+            © {new Date().getFullYear()} FI.CO. SRL. Tutti i diritti riservati.
+          </p>
+          <div className="flex items-center gap-6 text-[13px] text-white/40">
+            <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>

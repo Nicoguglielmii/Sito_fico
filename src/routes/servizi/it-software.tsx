@@ -15,7 +15,7 @@ function ItSoftwarePage() {
   const serviziIT = [
     {
       title: "Networking & Infrastrutture IT",
-      subtitle: "CONNESSIONI SOLIDE ED EFFICIENTI.",
+      subtitle: "CONNESSIONI SOLIDE ED EFFICIENTI",
       desc: "Progettiamo, installiamo e supportiamo le infrastrutture che permettono a sistemi, persone e dati di restare connessi.",
       image: netwImg,
       activities: [
@@ -26,7 +26,7 @@ function ItSoftwarePage() {
     },
     {
       title: "IT Services",
-      subtitle: "CONTINUITÀ OPERATIVA, OGNI GIORNO.",
+      subtitle: "CONTINUITÀ OPERATIVA, OGNI GIORNO",
       desc: "Gestiamo servizi e attività di supporto IT secondo livelli e modalità concordati con il cliente.",
       image: itservicesImg,
       activities: [
@@ -37,7 +37,7 @@ function ItSoftwarePage() {
     },
     {
       title: "Software & Digital Development",
-      subtitle: "DAL CODICE ALL'APPLICAZIONE.",
+      subtitle: "DAL CODICE ALL'APPLICAZIONE",
       desc: "Sviluppiamo internamente software, piattaforme e strumenti digitali progettati per rispondere a esigenze specifiche.",
       image: digitaldevelopmentImg,
       activities: [
