@@ -1,5 +1,6 @@
 {
   "name": "tanstack_start_ts",
+  "description": "Sito istituzionale FI.CO. SRL per telecomunicazioni, reti in fibra ottica, servizi IT e sviluppo software.",
   "private": true,
   "sideEffects": false,
   "type": "module",

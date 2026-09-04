@@ -2,7 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { HeroParticles } from "@/components/site/Interactive";
 
-// Importazione delle immagini per ogni fase
+// Ogni immagine rappresenta visivamente una fase distinta del percorso progettuale.
+// Gli asset vengono importati qui per permettere al bundler di ottimizzarli e includerli
+// nel bundle finale con gli stessi riferimenti usati dal resto della pagina.
 import surveyImg from "@/assets/survey.webp";
 import netdesignImg from "@/assets/netdesign.png";
 import entiImg from "@/assets/enti.jpg";
@@ -60,7 +62,11 @@ function FibraMobilePage() {
     }
   ];
 
-  // Helper function per generare il blocco di testo con classi responsive
+  // Costruisce il contenuto testuale di una fase in un blocco riutilizzabile.
+  // La stessa struttura viene usata sia nella colonna sinistra sia nella colonna destra
+  // del layout desktop, oltre che nella sequenza verticale del layout mobile.
+  // Le classi responsive mantengono leggibilita, larghezze e spaziature coerenti
+  // indipendentemente dalla posizione occupata nella timeline.
   const renderTextBlock = (item: any) => (
     <div className="flex flex-col text-left w-full md:max-w-[500px]">
       <div className="mb-3 md:mb-4">
@@ -85,7 +91,9 @@ function FibraMobilePage() {
     </div>
   );
 
-  // Helper function per generare l'immagine
+  // Centralizza la resa delle immagini per garantire proporzioni, bordi, ombra e ritaglio
+  // identici in tutte le varianti del layout. L'alt text usa il titolo della fase per
+  // fornire una descrizione utile quando l'immagine non viene visualizzata.
   const renderImageBlock = (item: any) => (
     <img 
       src={item.image} 
@@ -120,11 +128,13 @@ function FibraMobilePage() {
         }
       `}</style>
 
-      {/* =========================================
-          HERO
-      ========================================= */}
+      {/*
+        HERO: introduce il servizio e stabilisce il tono visivo della pagina.
+        Il padding superiore lascia spazio alla navigazione globale, mentre il bordo
+        inferiore separa l'introduzione dalla timeline senza aggiungere una card.
+      */}
       <section className="relative pt-36 pb-12 md:pb-16 border-b border-[#0e7490]/30 overflow-hidden">
-        {/* Sfondo Animato */}
+        {/* Lo sfondo interattivo resta decorativo e non interferisce con il contenuto. */}
         <HeroParticles />
         
         <div className="container-x relative z-10 text-left">
@@ -143,20 +153,22 @@ function FibraMobilePage() {
         </div>
       </section>
 
-      {/* =========================================
-          TIMELINE ALTERNATA
-      ========================================= */}
+      {/*
+        TIMELINE ALTERNATA: presenta le fasi nell'ordine operativo in cui vengono
+        normalmente affrontate. La struttura cambia tra desktop e mobile per mantenere
+        sempre una lettura lineare e lasciare spazio sufficiente a testo e immagini.
+      */}
       <section className="pt-8 md:pt-12 pb-0 relative overflow-hidden">
         <div className="container-x max-w-6xl mx-auto">
           <div className="relative">
             
-            {/* Linea animata centrale (Desktop) */}
+            {/* Sul desktop la linea attraversa il centro e collega i due lati alternati. */}
             <div
               className="hidden md:block fm-rail absolute top-0 bottom-0 left-1/2 w-[3px] -translate-x-1/2 z-0"
               aria-hidden="true"
             />
             
-            {/* Linea animata a sinistra (Mobile) */}
+            {/* Sul mobile la linea si sposta a sinistra per accompagnare il flusso verticale. */}
             <div
               className="md:hidden fm-rail absolute top-0 bottom-0 left-5 w-[3px] -translate-x-1/2 z-0"
               aria-hidden="true"
@@ -170,9 +182,10 @@ function FibraMobilePage() {
                   <Reveal key={item.title} delay={100}>
                     <div className="relative flex flex-col md:flex-row md:items-center w-full">
                       
-                      {/* ==================== 
-                          NODO CON NUMERO 
-                      ==================== */}
+                      {/*
+                        Il nodo numerato e ancorato alla timeline: resta sopra la linea
+                        e rende immediatamente riconoscibile la posizione della fase.
+                      */}
                       <div className="absolute left-5 md:left-1/2 top-0 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 z-10 flex justify-center mt-3 md:mt-0">
                         <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#011C27] border-2 md:border-4 border-[#38bdf8] flex items-center justify-center shadow-[0_0_15px_rgba(56,189,248,0.6)]">
                           <span className="fm-tabular-num text-sm md:text-lg font-bold text-[#facc15]">
@@ -181,25 +194,28 @@ function FibraMobilePage() {
                         </div>
                       </div>
 
-                      {/* ==================== 
-                          LAYOUT MOBILE 
-                      ==================== */}
+                      {/*
+                        MOBILE: immagine prima, testo dopo. Il padding sinistro riserva
+                        lo spazio al nodo e alla linea senza sovrapporre il contenuto.
+                      */}
                       <div className="md:hidden flex flex-col gap-6 pl-14 pr-0 w-full pt-2 relative z-20">
                         {renderImageBlock(item)}
                         {renderTextBlock(item)}
                       </div>
 
-                      {/* ==================== 
-                          LAYOUT DESKTOP 
-                      ==================== */}
+                      {/*
+                        DESKTOP: le due colonne condividono la stessa larghezza e si
+                        alternano in base all'indice, creando il movimento laterale
+                        della timeline senza duplicare la struttura dei contenuti.
+                      */}
                       <div className="hidden md:flex w-full items-center">
                         
-                        {/* COLONNA SINISTRA */}
+                        {/* La colonna sinistra ospita testo nelle fasi pari e immagini nelle dispari. */}
                         <div className="w-1/2 pr-12 lg:pr-16 flex justify-end">
                           {isEven ? renderTextBlock(item) : renderImageBlock(item)}
                         </div>
 
-                        {/* COLONNA DESTRA */}
+                        {/* La colonna destra applica l'alternanza opposta rispetto alla colonna sinistra. */}
                         <div className="w-1/2 pl-12 lg:pl-16 flex justify-start">
                           {!isEven ? renderTextBlock(item) : renderImageBlock(item)}
                         </div>

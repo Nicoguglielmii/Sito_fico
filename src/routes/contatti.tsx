@@ -8,7 +8,9 @@ export const Route = createFileRoute('/contatti')({
 });
 
 function ContattiPage() {
-  // Stati per gestire i campi del form e l'invio
+  // Stato centralizzato per tutti i campi controllati del form.
+  // Includere anche il consenso privacy nello stesso oggetto mantiene allineati
+  // i valori visualizzati dagli input e i dati disponibili durante l'invio.
   const [formData, setFormData] = useState({
     nome: "",
     azienda: "",
@@ -34,7 +36,9 @@ function ContattiPage() {
     setStatus("loading");
 
     try {
-      // Invia i dati al servizio FormSubmit (Background API)
+      // L'invio usa l'endpoint AJAX di FormSubmit per evitare un cambio pagina.
+      // Il payload traduce i nomi interni dei campi in etichette leggibili nella
+      // richiesta ricevuta, applicando valori di fallback per i campi facoltativi.
       const response = await fetch("https://formsubmit.co/ajax/service@ficohub.it", {
         method: "POST",
         headers: {
@@ -49,7 +53,8 @@ function ContattiPage() {
           Oggetto: formData.oggetto || "Richiesta da sito web",
           Messaggio: formData.messaggio,
           _subject: `Nuova richiesta da: ${formData.nome}`,
-          _template: "table" // Formatta l'email in una tabella leggibile
+          // Il template tabellare rende i dati piu facili da consultare nella mail ricevuta.
+          _template: "table"
         })
       });
 
@@ -65,14 +70,15 @@ function ContattiPage() {
   };
 
   return (
-    /* Sfondo unico scuro e continuo per tutta la pagina */
+    /* Sfondo unico e continuo: mantiene coerenti hero, informazioni, mappa e form. */
     <div className="bg-[#011C27] w-full min-h-screen overflow-x-hidden pb-12">
       
-      {/* =========================================
-          01 — HERO
-      ========================================= */}
+      {/*
+        HERO: apre la pagina con un invito diretto al contatto e offre subito
+        le tre modalita principali: form, email e telefono.
+      */}
       <section className="relative pt-24 pb-12 overflow-hidden">
-        {/* SFONDO ANIMATO INSERITO QUI */}
+        {/* L'animazione resta decorativa e viene mantenuta dietro al testo del titolo. */}
         <HeroParticles />
         
         <div className="container-x relative z-10 text-left animate-fade-in">
@@ -90,13 +96,15 @@ function ContattiPage() {
         </div>
       </section>
 
-      {/* =========================================
-          02 — FORM & INFO SECTION
-      ========================================= */}
+      {/*
+        FORM E INFORMAZIONI: divide il contenuto in due colonne desktop.
+        La colonna informativa raccoglie i riferimenti aziendali e la mappa, mentre
+        la colonna destra gestisce la richiesta di consulenza e i relativi stati.
+      */}
       <section className="py-6 relative z-20">
         <div className="container-x grid lg:grid-cols-2 gap-8">
           
-          {/* Colonna Sinistra: Info & Mappa */}
+          {/* Colonna sinistra: identita aziendale, riferimenti diretti e sede operativa. */}
           <div className="flex flex-col gap-10">
             <div>
               <h2 className="text-3xl font-bold text-white mb-6">FI.CO. SRL</h2>
@@ -107,7 +115,7 @@ function ContattiPage() {
             
             <div className="flex flex-col gap-6">
               
-              {/* Sede */}
+              {/* Sede: indirizzo fisico mostrato accanto all'icona di localizzazione. */}
               <div className="flex items-start gap-5 group">
                 <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
                   <MapPin size={22} />
@@ -120,7 +128,7 @@ function ContattiPage() {
                 </div>
               </div>
 
-              {/* Telefono */}
+              {/* Telefono: collegamento tel per consentire la chiamata diretta da dispositivi mobili. */}
               <div className="flex items-start gap-5 group">
                 <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
                   <Phone size={22} />
@@ -132,7 +140,7 @@ function ContattiPage() {
                 </div>
               </div>
 
-              {/* Email */}
+              {/* Email: separa il riferimento amministrativo da quello operativo. */}
               <div className="flex items-start gap-5 group w-full">
                 <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
                   <Mail size={22} />
@@ -149,7 +157,7 @@ function ContattiPage() {
                 </div>
               </div>
 
-              {/* PEC */}
+              {/* PEC: canale dedicato alle comunicazioni formali dell'azienda. */}
               <div className="flex items-start gap-5 group w-full">
                 <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
                   <Send size={20} />
@@ -160,7 +168,7 @@ function ContattiPage() {
                 </div>
               </div>
 
-              {/* Dati Fiscali (P.IVA e SDI) */}
+              {/* Dati fiscali: riunisce partita IVA e codice SDI in un riferimento compatto. */}
               <div className="flex items-start gap-5 group">
                 <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
                   <FileText size={22} />
@@ -175,7 +183,7 @@ function ContattiPage() {
 
             </div>
 
-            {/* Mappa Google Maps */}
+            {/* Mappa Google Maps: mostra la sede senza richiedere una navigazione esterna. */}
             <div className="w-full h-72 md:h-80 mt-4 rounded-3xl overflow-hidden shadow-2xl border border-[#0e7490]/30">
               <iframe
                 src="https://maps.google.com/maps?q=Corso%20Cavour%209%2C%20Andria%20BT%2C%20Italia&t=&z=16&ie=UTF8&iwloc=&output=embed"
@@ -190,12 +198,12 @@ function ContattiPage() {
             </div>
           </div>
 
-          {/* Colonna Destra: Form */}
+          {/* Colonna destra: il form alterna modulo e conferma in base allo stato della richiesta. */}
           <div className="bg-[#01425f]/10 border border-[#0e7490]/30 p-8 md:p-10 rounded-3xl shadow-2xl relative overflow-hidden h-fit">
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#38bdf8]/10 to-transparent blur-3xl rounded-full pointer-events-none" />
             
             {status === "success" ? (
-              // Messaggio di Successo
+              /* Stato success: conferma l'invio e permette di aprire un nuovo form pulito. */
               <div className="relative z-10 flex flex-col items-center justify-center py-12 text-center animate-fade-in">
                 <div className="w-20 h-20 rounded-full bg-green-500/20 border border-green-500/50 flex items-center justify-center text-green-400 mb-6">
                   <CheckCircle2 size={40} />
@@ -215,7 +223,7 @@ function ContattiPage() {
                 </button>
               </div>
             ) : (
-              // Modulo di Contatto
+              /* Stato idle/loading/error: mantiene visibile il modulo durante l'intero flusso. */
               <form className="flex flex-col gap-6 relative z-10 animate-fade-in" onSubmit={handleSubmit}>
                 
                 <div className="mb-2">
@@ -225,6 +233,7 @@ function ContattiPage() {
                   </p>
                 </div>
 
+                {/* L'avviso di errore compare solo dopo una risposta non valida o un'eccezione di rete. */}
                 {status === "error" && (
                   <div className="bg-red-500/10 border border-red-500/50 text-red-400 p-4 rounded-xl text-sm">
                     Ops! Si è verificato un errore durante l'invio. Riprova più tardi o scrivici direttamente via email.

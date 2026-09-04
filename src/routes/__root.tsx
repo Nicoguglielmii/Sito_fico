@@ -1,10 +1,14 @@
 // Root route shell: qui si costruisce il layout globale del sito, il document head
 // condiviso e i provider applicativi che devono essere disponibili a tutte le route.
+// Questo file e il punto di ingresso comune: le pagine figlie vengono inserite nel
+// suo Outlet e condividono navigazione, footer, stili globali e gestione degli errori.
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Preloader } from "../components/site/Preloader";
 
 // TanStack Router: tutti gli elementi fondamentali per il rendering delle route,
 // la gestione del document head e l'inserimento degli script necessari all'app.
+// HeadContent e Scripts vengono mantenuti nella shell HTML per supportare sia il
+// rendering lato server sia l'idratazione lato client con una struttura coerente.
 import {
   Outlet,
   Link,
@@ -16,13 +20,19 @@ import {
 
 // React utilities: ReactNode serve al shell HTML, mentre useEffect ci permette di
 // registrare gli errori una sola volta per ogni boundary che li cattura.
+// L'annotazione del tipo del nodo mantiene esplicito il contratto del componente
+// che riceve e restituisce l'intero documento applicativo.
 import { useEffect, type ReactNode } from "react";
 
 // CSS globale applicato all'intera applicazione: lo importiamo come asset URL per
 // farlo passare correttamente nel document head della route root.
+// Il riferimento generato dal bundler resta valido anche quando gli asset hanno un
+// nome con hash nella build di produzione.
 import appCss from "../styles.css?url";
 
 // Servizi e componenti globali che devono essere presenti in tutte le pagine del sito.
+// Tenerli qui evita duplicazioni nelle singole route e garantisce che ogni pagina
+// parta dalla stessa cornice visiva e dagli stessi comportamenti condivisi.
 import { reportError } from "../lib/error-reporting";
 import { Navbar } from "../components/site/Navbar";
 import { Footer } from "../components/site/Footer";
@@ -30,6 +40,8 @@ import { BackToTop } from "../components/site/Reveal";
 import { CookieBanner } from "../components/site/Interactive";
 
 // Fallback visivo per le URL che non corrispondono a nessuna route.
+// Il messaggio resta volutamente breve e offre un unico percorso di recupero verso
+// la home, cosi l'utente non rimane bloccato su un indirizzo non valido.
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-[#011C27] px-4">
@@ -53,7 +65,8 @@ function NotFoundComponent() {
   );
 }
 
-// Error boundary della root route
+// Error boundary della root route: intercetta gli errori non gestiti della pagina,
+// li registra per il monitoraggio e mantiene disponibile un'interfaccia di recupero.
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
@@ -165,11 +178,14 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
 
-  // AGGIUNTA FONDAMENTALE: Forza la navigazione verso la Home al caricamento dell'app
+  // Navigazione iniziale: forza l'apertura della Home al caricamento dell'app.
+  // Questa scelta mantiene il punto di ingresso del sito coerente anche quando il
+  // browser ripristina una scheda o una sessione lasciata su un'altra URL.
   useEffect(() => {
-    // Al mount iniziale (che avviene quando carichi la prima volta, quando aggiorni la pagina,
-    // o quando il browser riapre la scheda "dormiente" da mobile) reindirizziamo subito alla home (/).
-    // replace: true evita di sporcare la cronologia del tasto "Indietro" del browser.
+    // Il redirect viene eseguito al mount iniziale, dopo un caricamento normale,
+    // un refresh o il ripristino di una scheda mobile rimasta inattiva.
+    // replace: true evita di aggiungere una voce artificiale alla cronologia del browser,
+    // quindi il pulsante Indietro non ripropone la URL di ingresso precedente.
     router.navigate({ to: '/', replace: true });
   }, [router]);
 

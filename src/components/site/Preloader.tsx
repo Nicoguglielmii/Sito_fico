@@ -13,15 +13,21 @@ import wordmarkImg from "../../assets/fico-wordmark.png";
 export function Preloader() {
   // Contenitore principale della schermata iniziale. Il riferimento viene
   // passato come scope a useGSAP per isolare selettori e animazioni.
+  // In questo modo la sequenza puo essere montata e ripulita insieme al componente
+  // senza coinvolgere elementi con gli stessi nomi presenti in altre parti del sito.
   const container = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     // La timeline mantiene in ordine le quattro fasi dell'introduzione e rende
     // possibile sincronizzare elementi SVG e wordmark con la stessa sequenza.
+    // Tutte le trasformazioni vengono applicate all'interno del preloader, che
+    // restera visibile fino alla conclusione della transizione di uscita.
     const tl = gsap.timeline();
 
     // Posizione di partenza: il pittogramma viene collocato al centro visivo,
     // mentre il testo parte più a destra e completamente trasparente.
+    // Le coordinate iniziali sono relative al viewBox SVG e vengono mantenute
+    // indipendenti dalla dimensione effettiva del logo sullo schermo.
     gsap.set(".piktogramma-container", { x: 170, y: 0 });
     gsap.set(".testo-container", { x: 270, y: 15, opacity: 0 }); 
     
@@ -71,6 +77,8 @@ export function Preloader() {
   return (
     // Overlay fisso a pieno schermo. Il valore z-index elevato lo mantiene sopra
     // ogni altra superficie durante l'avvio e l'uscita dell'animazione.
+    // Lo sfondo pieno impedisce che il contenuto sottostante venga percepito
+    // prima che il marchio abbia terminato la propria presentazione.
     <div 
       ref={container} 
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#011C27]"
@@ -94,7 +102,11 @@ export function Preloader() {
           />
         </g>
 
-        {/* Gruppo del simbolo grafico, trasformato come un'unità durante l'animazione. */}
+        {/*
+          Gruppo del simbolo grafico, trasformato come un'unita durante l'animazione.
+          Tenere archi e nodi nello stesso gruppo permette al pittogramma di spostarsi
+          verso il wordmark senza dover aggiornare separatamente ogni elemento.
+        */}
         <g className="piktogramma-container">
           
           {/* Arco principale azzurro: il tratto viene rivelato progressivamente da GSAP. */}

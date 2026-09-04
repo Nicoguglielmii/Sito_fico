@@ -3,13 +3,17 @@ import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { HeroParticles } from "@/components/site/Interactive";
 
-// Importazione delle immagini richieste per i servizi
+// Questi asset identificano le aree di servizio presentate nella prima parte della pagina.
+// Gli import espliciti permettono al bundler di gestire correttamente i percorsi e le
+// ottimizzazioni delle immagini senza affidarsi a stringhe costruite a runtime.
 import fibraMobileImg from "@/assets/fibraotticaemobile.jpg";
 import networkingImg from "@/assets/networking.jpg";
 import energiaImg from "@/assets/Energia.jpg";
 import infrastruttureImg from "@/assets/infrastrutture.jpg";
 
-// Importazione delle immagini per gli ambiti di applicazione
+// Queste immagini accompagnano i principali contesti in cui vengono applicate le competenze.
+// Sono mantenute separate dagli asset dei servizi per rendere chiara la distinzione tra
+// cio che Fi.Co. offre e i destinatari o gli scenari a cui l'offerta si rivolge.
 import operatoriImg from "@/assets/provider.avif";
 import paImg from "@/assets/pubblicaamministrazione.jpg";
 import privatiImg from "@/assets/privati.jpg";
@@ -21,9 +25,11 @@ export const Route = createFileRoute("/servizi/")({
 function ServiziIndex() {
   return (
     <div className="bg-[#011C27] w-full min-h-screen">
-      {/* =========================================
-          01 — HERO
-      ========================================= */}
+      {/*
+        HERO: introduce in modo diretto l'ampiezza dell'offerta e prepara il passaggio
+        alle sezioni successive. Lo sfondo interattivo rimane dietro al contenuto,
+        mentre il container mantiene testo e titolo allineati al resto del sito.
+      */}
       <section className="relative pt-36 pb-4 overflow-hidden">
         <HeroParticles />
         <div className="container-x relative z-10 text-left">
@@ -41,14 +47,16 @@ function ServiziIndex() {
         </div>
       </section>
 
-      {/* =========================================
-          02 — INTRODUZIONE (LAYOUT CON IMMAGINE)
-      ========================================= */}
+      {/*
+        INTRODUZIONE: collega la competenza infrastrutturale alla componente software.
+        Il layout a due colonne desktop diventa una sequenza verticale su schermi stretti,
+        così il testo resta leggibile e l'immagine conserva un ruolo narrativo chiaro.
+      */}
       <section className="py-12 md:py-16 relative z-20 border-t border-[#0e7490]/30">
         <div className="container-x">
           <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
             
-            {/* Testo a Sinistra */}
+            {/* Il testo definisce il metodo di lavoro e il collegamento tra le diverse aree. */}
             <div className="w-full lg:w-1/2 text-left">
               <Reveal>
                 <h2 className="text-3xl md:text-5xl font-bold leading-tight font-[var(--font-display)] text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#facc15] pb-2 mb-6">
@@ -60,7 +68,7 @@ function ServiziIndex() {
               </Reveal>
             </div>
 
-            {/* Immagine a Destra */}
+            {/* L'immagine completa il messaggio introduttivo senza interrompere il flusso del testo. */}
             <div className="w-full lg:w-1/2">
               <Reveal delay={150}>
                 <img 
@@ -75,9 +83,11 @@ function ServiziIndex() {
         </div>
       </section>
 
-      {/* =========================================
-          03 — LE 3 AREE PRINCIPALI (LAYOUT ALTERNATO)
-      ========================================= */}
+      {/*
+        AREE PRINCIPALI: raccoglie i tre servizi in una sequenza alternata.
+        Ogni riga combina un'immagine, una sintesi e un'azione; l'alternanza visiva
+        aiuta a distinguere le aree mantenendo una struttura unica e prevedibile.
+      */}
       <section className="py-12 relative z-20 border-t border-[#0e7490]/30">
         <div className="container-x">
           <div className="max-w-3xl mb-4 text-left">
@@ -90,10 +100,10 @@ function ServiziIndex() {
 
           <div className="flex flex-col gap-8 md:gap-12">
             
-            {/* FIBRA & MOBILE - Immagine a Sinistra */}
+            {/* FIBRA & MOBILE: primo servizio, con immagine a sinistra e accesso alla pagina dedicata. */}
             <Reveal delay={100}>
               <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 py-8 border-b border-white/10 last:border-b-0">
-                {/* Immagine cliccabile con Zoom */}
+                {/* Il link avvolge l'immagine e abilita lo zoom solo come feedback visivo dell'interazione. */}
                 <Link 
                   to="/servizi/fibra-mobile" 
                   className="block group overflow-hidden shrink-0 rounded-2xl w-full md:max-w-[400px] lg:max-w-[480px] border border-[#0e7490]/30 shadow-lg"
@@ -118,10 +128,10 @@ function ServiziIndex() {
               </div>
             </Reveal>
 
-            {/* IT & SOFTWARE - Immagine a Destra */}
+            {/* IT & SOFTWARE: secondo servizio, disposto specularmente rispetto al precedente. */}
             <Reveal delay={200}>
               <div className="flex flex-col md:flex-row-reverse md:items-center gap-8 md:gap-12 py-8 border-b border-white/10 last:border-b-0">
-                {/* Immagine cliccabile con Zoom */}
+                {/* Anche questa immagine e cliccabile e porta alla relativa scheda di approfondimento. */}
                 <Link 
                   to="/servizi/it-software" 
                   className="block group overflow-hidden shrink-0 rounded-2xl w-full md:max-w-[400px] lg:max-w-[480px] border border-[#0e7490]/30 shadow-lg"
@@ -146,10 +156,10 @@ function ServiziIndex() {
               </div>
             </Reveal>
 
-            {/* ENERGIA - Immagine a Sinistra (Statica) */}
+            {/* ENERGIA: area in sviluppo, mostrata senza link finche la pagina dedicata non e disponibile. */}
             <Reveal delay={300}>
               <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 py-8 border-b border-white/10 last:border-b-0 relative">
-                {/* Immagine Statica (In arrivo) */}
+                {/* L'immagine resta statica per comunicare che il servizio e ancora in preparazione. */}
                 <div className="overflow-hidden shrink-0 rounded-2xl w-full md:max-w-[400px] lg:max-w-[480px] border border-[#0e7490]/30 shadow-lg">
                   <img
                     src={energiaImg}
@@ -180,9 +190,11 @@ function ServiziIndex() {
         </div>
       </section>
 
-      {/* =========================================
-          04 — AMBITI DI APPLICAZIONE (LAYOUT ALTERNATO)
-      ========================================= */}
+      {/*
+        AMBITI DI APPLICAZIONE: sposta l'attenzione dai servizi ai contesti operativi.
+        Le tre righe condividono proporzioni e spaziature, ma alternano la posizione
+        dell'immagine per mantenere ritmo e riconoscibilita durante lo scorrimento.
+      */}
       <section className="pt-12 md:pt-24 pb-8 md:pb-16 relative z-20 border-t border-[#0e7490]/30">
         <div className="container-x">
           <div className="text-left max-w-[100%] mb-8 overflow-hidden">
@@ -195,7 +207,7 @@ function ServiziIndex() {
           
           <div className="flex flex-col gap-16 md:gap-24 w-full">
             
-            {/* OPERATORI - Immagine a Sinistra */}
+            {/* OPERATORI: contesto telecomunicazioni, con immagine a sinistra. */}
             <Reveal delay={100}>
               <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
                 <div className="w-full md:w-1/2">
@@ -216,7 +228,7 @@ function ServiziIndex() {
               </div>
             </Reveal>
 
-            {/* PUBBLICHE AMMINISTRAZIONI - Immagine a Destra */}
+            {/* PUBBLICHE AMMINISTRAZIONI: contesto istituzionale, con disposizione invertita. */}
             <Reveal delay={200}>
               <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
                 <div className="w-full md:w-1/2">
@@ -237,7 +249,7 @@ function ServiziIndex() {
               </div>
             </Reveal>
 
-            {/* IMPRESE E PRIVATI - Immagine a Sinistra */}
+            {/* IMPRESE E PRIVATI: contesto aziendale e consumer, nuovamente con immagine a sinistra. */}
             <Reveal delay={300}>
               <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
                 <div className="w-full md:w-1/2">

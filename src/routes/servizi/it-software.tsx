@@ -2,7 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { HeroParticles } from "@/components/site/Interactive";
 
-// Importazione delle immagini reali per i servizi IT & Software
+// Ogni asset e associato direttamente a un servizio per mantenere il contenuto visivo
+// coerente con il relativo titolo, testo descrittivo e insieme di attivita.
+// Gli import statici consentono al bundler di risolvere, ottimizzare e pubblicare le
+// immagini correttamente nell'ambiente client e durante il rendering SSR.
 import netwImg from "@/assets/netw.jpg";
 import itservicesImg from "@/assets/itservices.jpg";
 import digitaldevelopmentImg from "@/assets/digitaldevelopment.webp";
@@ -51,9 +54,12 @@ function ItSoftwarePage() {
   return (
     <div className="bg-[#011C27] w-full min-h-screen pb-14 overflow-x-hidden selection:bg-[#facc15] selection:text-[#011C27]">
       
-      {/* =========================================
-          HERO (Allineato a sinistra)
-      ========================================= */}
+      {/*
+        HERO: presenta il passaggio dalle infrastrutture IT agli ambienti digitali.
+        Il contenuto resta allineato a sinistra per mantenere continuita con la pagina
+        indice dei servizi, mentre lo sfondo interattivo aggiunge profondita senza
+        sottrarre spazio o contrasto al titolo e alla descrizione.
+      */}
       <section className="relative pt-36 pb-12 md:pb-16 border-b border-[#0e7490]/30 overflow-hidden">
         <HeroParticles />
         <div className="container-x relative z-10 text-left">
@@ -72,9 +78,12 @@ function ItSoftwarePage() {
         </div>
       </section>
 
-      {/* =========================================
-          SERVIZI IT (LAYOUT ALTERNATO LINEARE SENZA DECORAZIONI EXTRA)
-      ========================================= */}
+      {/*
+        SERVIZI IT: elenca le tre competenze in un flusso verticale ordinato.
+        Ogni elemento contiene immagine, identificativo breve, titolo, descrizione
+        e attivita operative, cosi il visitatore puo passare dalla panoramica al
+        dettaglio senza cambiare contesto o interrompere la lettura.
+      */}
       <section className="pt-8 md:pt-12 pb-0 relative overflow-hidden">
         <div className="container-x">
           <div className="flex flex-col gap-16 md:gap-24 w-full max-w-6xl mx-auto">
@@ -84,10 +93,19 @@ function ItSoftwarePage() {
 
               return (
                 <Reveal key={item.title} delay={100}>
-                  {/* Container flessibile: si inverte su desktop se dispari */}
+                  {/*
+                    Il container usa una singola struttura per tutte le voci e inverte
+                    le colonne solo sui desktop per creare un ritmo visivo alternato.
+                    Su mobile le colonne tornano naturalmente una sopra l'altra.
+                  */}
                   <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-12 lg:gap-16`}>
                     
-                    {/* Blocco Immagine PULITO */}
+                    {/*
+                      L'immagine occupa meta della riga sui desktop e tutta la larghezza
+                      disponibile sui dispositivi piccoli. Le proporzioni fisse evitano
+                      salti di layout durante il caricamento e il ritaglio preserva il
+                      carattere fotografico degli asset.
+                    */}
                     <div className="w-full md:w-1/2">
                       <img 
                         src={item.image} 
@@ -96,7 +114,11 @@ function ItSoftwarePage() {
                       />
                     </div>
 
-                    {/* Blocco Testo */}
+                    {/*
+                      Il blocco testuale completa l'immagine con una gerarchia costante:
+                      prima il sottotitolo, poi il nome del servizio, quindi la descrizione
+                      e infine l'elenco delle attivita quando sono disponibili.
+                    */}
                     <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
                       <div className="mb-4">
                         <span className="text-xs font-bold text-[#facc15] uppercase tracking-wider block mb-1">
@@ -111,6 +133,7 @@ function ItSoftwarePage() {
                         {item.desc}
                       </p>
 
+                      {/* L'elenco viene mostrato solo quando il servizio ha attivita da evidenziare. */}
                       {item.activities.length > 0 && (
                         <ul className="mt-6 space-y-3 pt-6 border-t border-white/10">
                           {item.activities.map((act, i) => (

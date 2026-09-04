@@ -44,6 +44,8 @@ export const Route = createFileRoute("/chi-siamo")({
 });
 
 const TIMELINE = [
+  // Le fasi seguono l'evoluzione dell'azienda e alimentano la timeline visuale
+  // mantenendo separati i contenuti narrativi dalla struttura del componente.
   {
     phase: "ORIGINE",
     title: "Le fondamenta",
@@ -70,9 +72,11 @@ function ChiSiamo() {
   return (
     <div className="bg-[#011C27] w-full min-h-screen overflow-x-hidden selection:bg-[#facc15] selection:text-[#011C27]">
       
-      {/* =========================================
-          01 — HERO
-      ========================================= */}
+      {/*
+        HERO: introduce identita e posizionamento dell'azienda con una gerarchia
+        editoriale semplice. Il livello decorativo resta separato dal testo per
+        preservare contrasto, leggibilita e accessibilita della prima schermata.
+      */}
       <section className="relative pt-28 sm:pt-32 md:pt-36 pb-16 md:pb-20 overflow-hidden border-b border-[#0e7490]/30">
         <div
           className="absolute inset-0 opacity-40 z-0 pointer-events-none"
@@ -95,9 +99,11 @@ function ChiSiamo() {
         </div>
       </section>
 
-      {/* =========================================
-          02 — CHI SIAMO & TIMELINE
-      ========================================= */}
+      {/*
+        CHI SIAMO E TIMELINE: il testo descrive il percorso, mentre la colonna
+        opposta lo traduce in quattro passaggi visivi. La posizione sticky del testo
+        mantiene il contesto mentre le tappe scorrono una alla volta.
+      */}
       <section className="py-10 md:py-16 relative z-20 border-b border-[#0e7490]/30 overflow-hidden">
         <div className="container-x grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
           
@@ -150,9 +156,10 @@ function ChiSiamo() {
         </div>
       </section>
 
-      {/* =========================================
-          03 — IDENTITÀ DEL BRAND
-      ========================================= */}
+      {/*
+        IDENTITA DEL BRAND: spiega il significato del nome e del pittogramma,
+        collegando il linguaggio grafico ai concetti di rete, relazione e apertura.
+      */}
       <section className="py-10 md:py-16 bg-[#00121a] relative border-b border-[#0e7490]/30 overflow-hidden">
         <div className="container-x">
           
@@ -171,7 +178,7 @@ function ChiSiamo() {
             </div>
           </Reveal>
 
-          {/* Il Simbolo & Le Connessioni */}
+          {/* Il simbolo introduce visivamente il sistema di connessioni descritto nei blocchi testuali. */}
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center mb-16 md:mb-24">
             <Reveal>
               <div className="flex flex-col items-center justify-center p-8 md:p-12 bg-gradient-to-br from-[#0e7490]/20 to-[#011C27] rounded-3xl border border-[#0e7490]/30 shadow-2xl relative overflow-hidden group">
@@ -217,7 +224,7 @@ function ChiSiamo() {
             </div>
           </div>
 
-          {/* Sistema & Identità Visiva */}
+          {/* Il sistema visivo mostra come il pittogramma possa evolvere senza perdere riconoscibilita. */}
           <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-16 md:mb-24">
             <Reveal delay={100}>
               <div className="bg-[#011C27] p-6 sm:p-8 md:p-12 rounded-3xl border border-[#0e7490]/30 h-full">
@@ -239,7 +246,7 @@ function ChiSiamo() {
             </Reveal>
           </div>
 
-          {/* Manifesto */}
+          {/* Il manifesto raccoglie in una frase unica la promessa narrativa del brand. */}
           <Reveal>
             <div className="relative py-12 sm:py-16 md:py-24 px-6 md:px-16 rounded-3xl overflow-hidden border border-[#facc15]/30 bg-gradient-to-br from-[#facc15]/10 to-[#011C27] text-center shadow-2xl">
               <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#facc15]/20 rounded-full blur-[80px]" />
@@ -258,9 +265,11 @@ function ChiSiamo() {
         </div>
       </section>
 
-      {/* =========================================
-          04 & 05 — COSA CI DEFINISCE / ORGANIZZAZIONE
-      ========================================= */}
+      {/*
+        COSA CI DEFINISCE E ORGANIZZAZIONE: mette in relazione cultura tecnica,
+        responsabilita aziendali e aree operative. I tag distinguono funzioni interne,
+        servizi attivi e attivita ancora in sviluppo.
+      */}
       <section className="py-4 md:py-8 relative border-b border-[#0e7490]/30 overflow-hidden">
         <div className="container-x">
           
@@ -292,7 +301,11 @@ function ChiSiamo() {
                   Fi.Co. è organizzata attraverso funzioni aziendali e competenze specialistiche che collaborano in modo trasversale. Le funzioni di supporto coordinano processi e risorse. Le aree operative mettono a disposizione competenze tecniche e digitali. Non una struttura rigida, ma un'organizzazione costruita attorno a responsabilità chiare.
                 </p>
                 
-                {/* Mappa dell'organizzazione a "Tag/Pillole" */}
+                {/*
+                  La mappa dell'organizzazione usa tag compatti per rendere leggibili
+                  molte competenze nello stesso spazio e differenziare i link attivi
+                  dalle voci informative non ancora navigabili.
+                */}
                 <div className="space-y-5 md:space-y-6">
                   <div>
                     <h4 className="text-xs md:text-sm font-semibold text-[#38bdf8] uppercase tracking-wider mb-3">Funzioni Aziendali</h4>
@@ -325,9 +338,11 @@ function ChiSiamo() {
         </div>
       </section>
 
-      {/* =========================================
-          06 — IL NOSTRO METODO & TIMELINE INTERATTIVA
-      ========================================= */}
+      {/*
+        IL NOSTRO METODO: riassume i principi che trasformano competenze individuali
+        in un processo coordinato. Le tre card anticipano i concetti rappresentati
+        dalla timeline interattiva sottostante.
+      */}
       <section className="py-10 md:py-16 relative overflow-hidden">
         <div className="container-x">
           <Reveal>
@@ -360,13 +375,14 @@ function ChiSiamo() {
           </div>
         </div>
 
-        {/* Mantenuta la Timeline del Metodo Interattiva per mostrare "l'organizzazione strutturata" */}
+        {/* La timeline interattiva rende visibile la sequenza del metodo e la struttura organizzativa. */}
         <ProcessTimeline />
       </section>
 
-      {/* =========================================
-          07 — VISIONE & MOTORI DI CRESCITA
-      ========================================= */}
+      {/*
+        VISIONE E MOTORI DI CRESCITA: descrive la direzione futura dell'azienda
+        attraverso innovazione, partnership, scalabilita ed espansione territoriale.
+      */}
       <section className="pt-10 md:pt-16 pb-0 bg-[#00121a] border-t border-[#0e7490]/30 overflow-hidden">
         <div className="container-x">
           <Reveal>
@@ -409,13 +425,14 @@ function ChiSiamo() {
         </div>
       </section>
 
-      {/* I componenti interattivi ESTRATTI per evitare i gap neri */}
+      {/* I moduli interattivi sono mantenuti separati per evitare spazi vuoti tra le sezioni. */}
       <GrowthSection />
       <ItalyMap />
 
-      {/* =========================================
-          08 — I NOSTRI VALORI
-      ========================================= */}
+      {/*
+        VALORI: raccoglie i quattro principi che orientano il lavoro quotidiano,
+        usando icone e descrizioni brevi per facilitare la scansione dei contenuti.
+      */}
       <section className="py-10 md:py-16 relative border-b border-[#0e7490]/30 overflow-hidden">
         <div className="container-x">
           <Reveal>
@@ -461,13 +478,14 @@ function ChiSiamo() {
         </div>
       </section>
 
-      {/* =========================================
-          09 & 10 — PERSONE & QUALITÀ
-      ========================================= */}
+      {/*
+        PERSONE E QUALITA: mostra le competenze come patrimonio umano e affianca
+        a questo tema i processi che sostengono una crescita ordinata e verificabile.
+      */}
       <section className="py-4 md:py-8 relative border-b border-[#0e7490]/30 bg-[#00121a] overflow-hidden">
         <div className="container-x grid lg:grid-cols-2 gap-12 lg:gap-24">
           
-          {/* Persone e Competenze */}
+          {/* La prima colonna evidenzia le professionalita che compongono il team. */}
           <Reveal>
             <div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
@@ -487,7 +505,7 @@ function ChiSiamo() {
             </div>
           </Reveal>
 
-          {/* Qualità e Crescita */}
+          {/* La seconda colonna traduce la crescita in pratiche e risultati controllabili. */}
           <Reveal delay={150}>
             <div className="bg-[#011C27] p-6 sm:p-8 md:p-10 rounded-3xl border border-[#facc15]/20 shadow-xl">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
@@ -511,9 +529,10 @@ function ChiSiamo() {
         </div>
       </section>
 
-      {/* =========================================
-          11 — CHIUSURA (CTA FINALE)
-      ========================================= */}
+      {/*
+        CHIUSURA: conclude il racconto con una call to action verso i servizi.
+        Il link finale accompagna l'utente dal profilo aziendale all'offerta concreta.
+      */}
       <section className="py-16 md:py-32 relative overflow-hidden">
         <div className="container-x">
           <Reveal>

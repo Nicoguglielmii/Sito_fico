@@ -25,14 +25,19 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// COMPONENTE: Pittogramma con nodi sempre visibili, si collegano all'hover
+// Pittogramma interattivo: i tre nodi restano sempre visibili, mentre i tracciati
+// vengono disegnati quando l'utente entra nell'area o la attiva su un dispositivo touch.
+// L'animazione e isolata in questo componente per non appesantire la pagina principale
+// e per mantenere locale il controllo della timeline GSAP.
 function InteractiveHeroLogo() {
   const container = useRef<HTMLDivElement>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
 
   useGSAP(() => {
+    // Stato iniziale: nasconde i tracciati e prepara l'effetto di disegno progressivo.
     gsap.set(".hero-piktogramma-path", { opacity: 0, strokeDashoffset: 100 });
 
+    // La timeline resta in pausa finche l'utente non interagisce con il pittogramma.
     tl.current = gsap.timeline({ paused: true });
     tl.current
       .set(".hero-piktogramma-path", { opacity: 1 })
@@ -99,12 +104,14 @@ function InteractiveHeroLogo() {
 
 function Index() {
   return (
-    // Assicuriamo max-w-[100vw] e overflow-x-hidden anche sul wrapper principale della pagina
+    // Il wrapper limita la larghezza alla viewport e nasconde eventuali sbordamenti
+    // generati da immagini, animazioni o sezioni con dimensioni responsive.
     <div className="bg-[#011C27] w-full max-w-[100vw] min-h-screen overflow-x-hidden flex flex-col">
       
-      {/* =========================================
-          01 — HERO
-      ========================================= */}
+      {/*
+        HERO: stabilisce il messaggio principale della home e combina immagine,
+        particelle e contenuti testuali in un'unica prima schermata orientata all'azione.
+      */}
       <section className="relative pt-24 sm:pt-32 lg:pt-48 pb-8 sm:pb-12 flex flex-col justify-center overflow-hidden w-full max-w-[100vw]">
         <div className="absolute inset-0">
           <img
@@ -120,7 +127,7 @@ function Index() {
 
         <div className="container-x relative z-10 flex flex-col items-start text-left w-full">
           <Reveal delay={100}>
-            {/* Ridotte leggermente le grandezze base per schermi molto stretti */}
+            {/* La scala tipografica parte compatta per evitare overflow sui display stretti. */}
             <h1 className="font-[var(--font-display)] text-4xl sm:text-5xl md:text-7xl lg:text-[90px] font-bold leading-[1.05] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#facc15] max-w-5xl pb-2 mt-8 sm:mt-0">
               Tutto parte da una connessione.
             </h1>
@@ -131,7 +138,7 @@ function Index() {
             </p>
           </Reveal>
           <Reveal delay={300}>
-            {/* Pulsanti forzati a w-full su mobile per evitare sbordamenti, e auto su schermi più grandi */}
+            {/* Su mobile i pulsanti occupano tutta la riga; da sm in poi tornano a larghezza naturale. */}
             <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap justify-start items-stretch sm:items-center gap-4 w-full">
               <Link to="/chi-siamo" className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 sm:py-4 font-bold rounded-xl bg-[#facc15] text-[#001724] hover:bg-yellow-300 hover:scale-105 transition-all shadow-lg w-full sm:w-auto text-center">
                 Scopri cosa facciamo
@@ -144,9 +151,10 @@ function Index() {
         </div>
       </section>
 
-      {/* =========================================
-          01.5 — PITTOGRAMMA INTERATTIVO
-      ========================================= */}
+      {/*
+        PITTOGRAMMA INTERATTIVO: estende il messaggio della hero con un elemento
+        identitario che reagisce al passaggio del mouse e al tocco dello schermo.
+      */}
       <section className="relative z-20 pb-4 w-full max-w-[100vw] overflow-hidden">
         <div className="container-x px-4">
           <Reveal delay={400}>
@@ -155,9 +163,10 @@ function Index() {
         </div>
       </section>
 
-      {/* =========================================
-          02 — INTRODUZIONE
-      ========================================= */}
+      {/*
+        INTRODUZIONE: sintetizza il ruolo di Fi.Co. e prepara il passaggio dalle
+        informazioni generali alla panoramica delle aree di attività.
+      */}
       <section className="pt-8 md:pt-12 pb-8 md:pb-12 relative z-20 w-full overflow-hidden">
         <div className="container-x">
           <div className="max-w-4xl text-left">
@@ -180,9 +189,10 @@ function Index() {
         </div>
       </section>
 
-      {/* =========================================
-          03 — LE AREE DI ATTIVITÀ
-      ========================================= */}
+      {/*
+        AREE DI ATTIVITA: presenta i tre ambiti principali con sintesi, immagine e
+        collegamento dedicato. Energia resta informativa finche la pagina non sara disponibile.
+      */}
       <section className="pt-8 md:pt-12 pb-0 relative z-20 w-full overflow-hidden">
         <div className="container-x">
           <Reveal>
@@ -197,7 +207,7 @@ function Index() {
           </Reveal>
 
           <div className="flex flex-col gap-8 md:gap-10">
-            {/* 1. FIBRA & MOBILE */}
+            {/* 1. FIBRA & MOBILE: servizio infrastrutturale con approfondimento navigabile. */}
             <Reveal delay={100}>
               <div className="flex flex-col md:flex-row md:items-start gap-5 md:gap-8 py-4 border-b border-white/10 last:border-b-0">
                 <Link 
@@ -222,7 +232,7 @@ function Index() {
               </div>
             </Reveal>
 
-            {/* 2. IT, NETWORKING & SOFTWARE */}
+            {/* 2. IT, NETWORKING & SOFTWARE: servizio digitale con approfondimento navigabile. */}
             <Reveal delay={200}>
               <div className="flex flex-col md:flex-row md:items-start gap-5 md:gap-8 py-4 border-b border-white/10 last:border-b-0">
                 <Link 
@@ -247,7 +257,7 @@ function Index() {
               </div>
             </Reveal>
 
-            {/* 3. ENERGIA */}
+            {/* 3. ENERGIA: area in sviluppo, resa volutamente non interattiva. */}
             <Reveal delay={300}>
               <div className="flex flex-col md:flex-row md:items-start gap-5 md:gap-8 py-4 border-b border-white/10 last:border-b-0 relative">
                 <div className="overflow-hidden rounded-2xl shrink-0 w-full md:max-w-[420px] border border-white/10">
@@ -283,9 +293,10 @@ function Index() {
         </div>
       </section>
 
-      {/* =========================================
-          04 — IL NOSTRO METODO
-      ========================================= */}
+      {/*
+        IL NOSTRO METODO: mostra le cinque fasi che trasformano un'esigenza in un
+        risultato verificabile, dall'analisi iniziale all'evoluzione della soluzione.
+      */}
       <section className="pt-12 md:pt-20 pb-0 md:pb-8 relative z-20 w-full overflow-hidden">
         <div className="container-x">
           <div className="max-w-3xl mb-12 md:mb-20 text-left">
@@ -327,9 +338,10 @@ function Index() {
         </div>
       </section>
 
-      {/* =========================================
-          06 — IDENTITÀ
-      ========================================= */}
+      {/*
+        IDENTITA: chiarisce i principi che collegano tecnica, responsabilita e valore
+        concreto, con un invito finale alla pagina di approfondimento aziendale.
+      */}
       <section className="pt-12 md:pt-12 pb-12 md:pb-20 relative z-20 w-full overflow-hidden">
         <div className="container-x">
           <div className="max-w-4xl text-left">
@@ -361,9 +373,10 @@ function Index() {
         </div>
       </section>
 
-      {/* =========================================
-          07 — CALL TO ACTION FINALE
-      ========================================= */}
+      {/*
+        CALL TO ACTION FINALE: chiude il percorso con un invito al contatto e porta
+        l'utente dalla panoramica della home a una conversazione sul progetto.
+      */}
       <section className="container-x pb-12 sm:pb-16 md:pb-24 relative z-30 w-full overflow-hidden">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0e7490]/40 to-[#001724] border border-[#0e7490]/60 p-6 sm:p-10 md:p-20 text-center shadow-2xl">

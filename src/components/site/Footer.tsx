@@ -7,7 +7,12 @@ export function Footer() {
       <div className="container-x">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16">
           
-          {/* 1. Brand & Info */}
+          {/*
+            BRAND E INFORMAZIONI: il primo blocco identifica FI.CO. e riassume
+            le principali competenze aziendali. Il collegamento al logo riporta
+            alla home, mentre il canale LinkedIn resta disponibile in una posizione
+            facilmente riconoscibile e accessibile tramite aria-label.
+          */}
           <div className="flex flex-col gap-6">
             <Link to="/">
               <img src="/fico-logo.png" alt="FI.CO. SRL" className="h-10 md:h-12 w-auto object-contain" />
@@ -28,7 +33,11 @@ export function Footer() {
             </div>
           </div>
 
-          {/* 2. Navigazione */}
+          {/*
+            NAVIGAZIONE: raccoglie i collegamenti principali del sito in un elenco
+            verticale. Le icone aiutano a riconoscere rapidamente ogni destinazione,
+            mantenendo lo stesso ordine su desktop e mobile.
+          */}
           <div className="lg:pl-8">
             <h4 className="text-[#facc15] font-bold text-sm tracking-wider uppercase mb-6">Navigazione</h4>
             <ul className="flex flex-col gap-4">
@@ -55,7 +64,11 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* 3. I Nostri Servizi */}
+          {/*
+            SERVIZI: offre accesso diretto alle aree operative gia disponibili.
+            La voce Energia e mantenuta visibile come anticipazione, ma non e resa
+            cliccabile finche la relativa pagina non sara pubblicata.
+          */}
           <div>
             <h4 className="text-[#facc15] font-bold text-sm tracking-wider uppercase mb-6">I Nostri Servizi</h4>
             <ul className="flex flex-col gap-4">
@@ -69,7 +82,7 @@ export function Footer() {
                   IT, Networking & Software
                 </Link>
               </li>
-              {/* VOCE AGGIUNTA E DISABILITATA */}
+              {/* Voce informativa non navigabile: segnala che il servizio e ancora in sviluppo. */}
               <li>
                 <span className="text-white/40 cursor-not-allowed text-[15px] flex items-center gap-2">
                   Energia <span className="text-[10px] uppercase tracking-wider border border-white/10 bg-white/5 px-2 py-0.5 rounded-full">In Sviluppo</span>
@@ -78,7 +91,11 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* 4. Contatti */}
+          {/*
+            CONTATTI: espone i riferimenti essenziali per raggiungere l'azienda.
+            Indirizzo, telefono ed email usano formati compatibili con i dispositivi
+            mobili, cosi le azioni di chiamata e posta possono essere avviate direttamente.
+          */}
           <div>
             <h4 className="text-[#facc15] font-bold text-sm tracking-wider uppercase mb-6">Contatti</h4>
             <ul className="flex flex-col gap-5">
@@ -99,7 +116,11 @@ export function Footer() {
           
         </div>
 
-        {/* Bottom Bar */}
+        {/*
+          BARRA FINALE: separa le informazioni legali dai contenuti principali
+          e mantiene sempre disponibili copyright, Privacy Policy e Cookie Policy.
+          Il nuovo anno viene calcolato automaticamente per evitare aggiornamenti manuali.
+        */}
         <div className="pt-8 border-t border-[#0e7490]/30 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/40 text-[13px] text-center md:text-left">
             © {new Date().getFullYear()} FI.CO. SRL. Tutti i diritti riservati.
