@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { MapPin, Phone, Mail, Home, Building2, Briefcase, Linkedin } from "lucide-react";
+import { MapPin, Phone, Mail, Home, Building2, Briefcase } from "lucide-react";
 
 export function Footer() {
   return (
@@ -10,8 +10,7 @@ export function Footer() {
           {/*
             BRAND E INFORMAZIONI: il primo blocco identifica FI.CO. e riassume
             le principali competenze aziendali. Il collegamento al logo riporta
-            alla home, mentre il canale LinkedIn resta disponibile in una posizione
-            facilmente riconoscibile e accessibile tramite aria-label.
+            alla home.
           */}
           <div className="flex flex-col gap-6">
             <Link to="/">
@@ -20,17 +19,6 @@ export function Footer() {
             <p className="text-white/80 text-[15px] leading-relaxed pr-4">
               Telecomunicazioni, reti in fibra ottica, ingegneria, permitting e servizi IT per enti pubblici e privati.
             </p>
-            <div className="flex items-center gap-4 mt-2">
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="w-10 h-10 rounded-full border border-[#0e7490]/50 flex items-center justify-center text-white/70 hover:bg-[#0e7490]/20 hover:text-[#38bdf8] transition-all hover:scale-105"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={18} />
-              </a>
-            </div>
           </div>
 
           {/*

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X, ChevronDown, Home, Building2, Briefcase, Phone, Linkedin } from "lucide-react";
+import { Menu, X, ChevronDown, Home, Building2, Briefcase, Phone } from "lucide-react";
 
 // Le immagini accompagnano le card del menu Servizi e offrono un riferimento visivo
 // immediato alle aree disponibili. Gli import statici permettono al bundler di gestire
@@ -188,14 +188,6 @@ export function Navbar() {
             <p className="text-[12px] text-gray-400 leading-relaxed mb-5">
               Telecomunicazioni, reti in fibra ottica, ingegneria, permitting e servizi IT per enti pubblici e privati.
             </p>
-            <a 
-              href="https://linkedin.com" 
-              target="_blank" 
-              rel="noreferrer" 
-              className="w-9 h-9 rounded-full border border-[#0e7490]/50 flex items-center justify-center text-gray-400 hover:text-[#38bdf8] hover:border-[#38bdf8] transition-all mb-5"
-            >
-              <Linkedin size={15} />
-            </a>
             <div className="w-full h-px bg-[#0e7490]/20 mb-4"></div>
             <p className="text-[11px] text-gray-500">
               © {new Date().getFullYear()} FI.CO. SRL. Tutti i diritti riservati.
