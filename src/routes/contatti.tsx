@@ -11,7 +11,7 @@ export const Route = createFileRoute('/contatti')({
 // ==========================================
 function ContactFormVisual() {
   // INSERISCI QUI IL LINK DEL TUO FORM ESTERNO (Tally.so, Google Forms, Typeform, ecc.)
-  const formUrl = "https://tally.so/r/tuo-form-esempio";
+  const formUrl = "https://tally.so/r/RGApB4";
 
   return (
     <div className="bg-[#01425f]/10 border border-[#0e7490]/30 p-8 md:p-10 rounded-3xl shadow-2xl relative overflow-hidden h-fit">
