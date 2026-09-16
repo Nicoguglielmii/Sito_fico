@@ -1,16 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { Mail, Phone, MapPin, Send, FileText, Loader2, CheckCircle2 } from 'lucide-react';
-import { HeroParticles } from "@/components/site/Interactive";
+// import { HeroParticles } from "@/components/site/Interactive"; // Disattivato
 import { useState } from 'react';
 
 export const Route = createFileRoute('/contatti')({
   component: ContattiPage,
 });
 
-// ==========================================
-// 1. IL NUOVO FORM "NON CONTROLLATO"
-// Nessun caricamento mentre scrivi. Crash impossibile!
-// ==========================================
 function ContactForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
@@ -18,7 +14,6 @@ function ContactForm() {
     e.preventDefault();
     setStatus("loading");
 
-    // Legge tutti i campi del form in un colpo solo al momento dell'invio
     const form = e.currentTarget;
     const formData = new FormData(form);
 
@@ -43,7 +38,7 @@ function ContactForm() {
 
       if (response.ok) {
         setStatus("success");
-        form.reset(); // Svuota i campi del form in automatico
+        form.reset(); 
       } else {
         setStatus("error");
       }
@@ -55,21 +50,15 @@ function ContactForm() {
 
   return (
     <div className="bg-[#01425f]/10 border border-[#0e7490]/30 p-8 md:p-10 rounded-3xl shadow-2xl relative overflow-hidden h-fit">
-      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#38bdf8]/10 to-transparent blur-3xl rounded-full pointer-events-none" />
       
       {status === "success" ? (
         <div className="relative z-10 flex flex-col items-center justify-center py-12 text-center animate-fade-in">
-          <div className="w-20 h-20 rounded-full bg-green-500/20 border border-green-500/50 flex items-center justify-center text-green-400 mb-6">
+          <div className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 mb-6">
             <CheckCircle2 size={40} />
           </div>
           <h3 className="text-3xl font-bold text-white mb-4">Messaggio inviato!</h3>
-          <p className="text-gray-300 text-lg">
-            Grazie per averci contattato. Il nostro team elaborerà la tua richiesta e ti risponderà al più presto.
-          </p>
-          <button 
-            onClick={() => setStatus("idle")}
-            className="mt-8 px-6 py-3 border border-white/20 rounded-xl text-white hover:bg-white/10 transition-colors"
-          >
+          <p className="text-gray-300 text-lg">Grazie per averci contattato.</p>
+          <button onClick={() => setStatus("idle")} className="mt-8 px-6 py-3 border border-white/20 rounded-xl text-white">
             Invia un altro messaggio
           </button>
         </div>
@@ -77,67 +66,40 @@ function ContactForm() {
         <form className="flex flex-col gap-6 relative z-10 animate-fade-in" onSubmit={handleSubmit}>
           
           <div className="mb-2">
-            <h3 className="text-3xl font-bold text-white mb-2">Richiedi una consulenza</h3>
-            <p className="text-gray-300 text-[15px]">
-              Raccontaci il tuo progetto: ti ricontatteremo per un confronto tecnico.
-            </p>
+            {/* SE NON VEDI LA PAROLA "TEST" SUL SITO, STIAMO GUARDANDO IL VECCHIO CODICE */}
+            <h3 className="text-3xl font-bold text-white mb-2">Richiedi una consulenza TEST</h3>
+            <p className="text-gray-300 text-[15px]">Raccontaci il tuo progetto.</p>
           </div>
-
-          {status === "error" && (
-            <div className="bg-red-500/10 border border-red-500/50 text-red-400 p-4 rounded-xl text-sm">
-              Ops! Si è verificato un errore durante l'invio. Riprova più tardi o scrivici direttamente via email.
-            </div>
-          )}
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="flex flex-col gap-2">
               <label htmlFor="nome" className="text-sm font-semibold text-gray-300 ml-1">Nome e Cognome *</label>
-              <input type="text" id="nome" name="nome" disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" required />
+              <input type="text" id="nome" name="nome" disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white w-full" required />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="azienda" className="text-sm font-semibold text-gray-300 ml-1">Azienda</label>
-              <input type="text" id="azienda" name="azienda" disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" />
+              <input type="text" id="azienda" name="azienda" disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white w-full" />
             </div>
           </div>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="flex flex-col gap-2">
               <label htmlFor="email" className="text-sm font-semibold text-gray-300 ml-1">Email *</label>
-              <input type="email" id="email" name="email" disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" required />
+              <input type="email" id="email" name="email" disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white w-full" required />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="telefono" className="text-sm font-semibold text-gray-300 ml-1">Telefono</label>
-              <input type="tel" id="telefono" name="telefono" disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" />
+              <input type="tel" id="telefono" name="telefono" disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white w-full" />
             </div>
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <label htmlFor="oggetto" className="text-sm font-semibold text-gray-300 ml-1">Oggetto</label>
-            <input type="text" id="oggetto" name="oggetto" disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" />
           </div>
 
           <div className="flex flex-col gap-2">
             <label htmlFor="messaggio" className="text-sm font-semibold text-gray-300 ml-1">Messaggio *</label>
-            <textarea id="messaggio" name="messaggio" disabled={status === "loading"} rows={4} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all resize-none w-full disabled:opacity-50" required></textarea>
+            <textarea id="messaggio" name="messaggio" disabled={status === "loading"} rows={4} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white resize-none w-full" required></textarea>
           </div>
 
-          <div className="flex items-start gap-3 mt-1">
-            <input type="checkbox" id="privacy" name="privacy" disabled={status === "loading"} className="mt-1 shrink-0 w-4 h-4 rounded border-white/20 bg-[#011C27] text-[#38bdf8] focus:ring-[#38bdf8] focus:ring-offset-0 disabled:opacity-50" required />
-            <label htmlFor="privacy" className="text-[14px] text-gray-300 leading-snug cursor-pointer">
-              Accetto il trattamento dei dati personali secondo la Privacy Policy.
-            </label>
-          </div>
-
-          <button 
-            type="submit" 
-            disabled={status === "loading"}
-            className="mt-2 w-full flex items-center justify-center gap-2 bg-[#facc15] text-[#001724] font-bold text-lg px-8 py-4 rounded-xl hover:bg-yellow-300 hover:scale-[1.02] transition-all shadow-lg disabled:opacity-70 disabled:hover:scale-100 disabled:cursor-not-allowed"
-          >
-            {status === "loading" ? (
-              <>Invio in corso... <Loader2 size={20} className="animate-spin" /></>
-            ) : (
-              <>Invia Messaggio <Send size={20} /></>
-            )}
+          <button type="submit" disabled={status === "loading"} className="mt-2 w-full flex items-center justify-center gap-2 bg-[#facc15] text-[#001724] font-bold text-lg px-8 py-4 rounded-xl">
+            {status === "loading" ? "Invio in corso..." : "Invia Messaggio"}
           </button>
         </form>
       )}
@@ -145,123 +107,38 @@ function ContactForm() {
   );
 }
 
-// ==========================================
-// 2. PAGINA PRINCIPALE
-// ==========================================
 function ContattiPage() {
   return (
     <div className="bg-[#011C27] w-full min-h-screen overflow-x-hidden pb-12">
-      
       <section className="relative pt-24 pb-12 overflow-hidden">
-        <HeroParticles />
+        {/* <HeroParticles /> DISATTIVATO PER TEST */}
         
-        <div className="container-x relative z-10 text-left animate-fade-in">
-          <span className="text-sm uppercase tracking-[0.3em] text-[#facc15] font-bold">
-            Contatti
-          </span>
-          
-          <h1 className="mt-4 text-5xl md:text-7xl font-bold leading-tight md:leading-[1.1] text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#facc15] pb-2 md:pb-4">
-            Parliamo del tuo <br className="hidden md:block" /> prossimo progetto.
-          </h1>
-          
-          <p className="mt-4 md:mt-6 text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl">
-            Compila il form, scrivici via email o chiamaci.
-          </p>
+        <div className="container-x relative z-10 text-left">
+          <span className="text-sm uppercase tracking-[0.3em] text-[#facc15] font-bold">Contatti</span>
+          <h1 className="mt-4 text-5xl font-bold text-white">Parliamo del tuo progetto.</h1>
         </div>
       </section>
 
       <section className="py-6 relative z-20">
         <div className="container-x grid lg:grid-cols-2 gap-8">
           
-          {/* Colonna Sinistra (Testi e Mappa) */}
           <div className="flex flex-col gap-10">
             <div>
               <h2 className="text-3xl font-bold text-white mb-6">FI.CO. SRL</h2>
-              <p className="text-gray-300 text-lg leading-relaxed mb-8">
-                Siamo pronti ad ascoltare le tue esigenze e a trasformarle in soluzioni concrete. Contattaci senza impegno.
-              </p>
             </div>
-            
             <div className="flex flex-col gap-6">
-              
-              <div className="flex items-start gap-5 group">
-                <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
-                  <MapPin size={22} />
-                </div>
-                <div className="pt-1">
-                  <p className="text-[17px] font-medium text-white leading-snug">
-                    Corso Cavour 9, Piano 2<br/>
-                    <span className="text-gray-300 text-[15px]">76123 Andria (BT) — Italia</span>
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-5 group">
-                <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
-                  <Phone size={22} />
-                </div>
-                <div className="pt-2">
-                  <a href="tel:+393757932669" className="text-[17px] font-medium text-white hover:text-[#38bdf8] transition-colors">
-                    +39 375 793 2669
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-5 group w-full">
-                <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
-                  <Mail size={22} />
-                </div>
-                <div className="pt-1 flex flex-col gap-1 min-w-0 flex-1">
-                  <p className="text-[16px] font-medium text-white break-words">
-                    <a href="mailto:amministrazione@ficohub.it" className="hover:text-[#38bdf8] transition-colors break-all md:break-normal">amministrazione@ficohub.it</a>
-                    <span className="text-gray-400 font-normal ml-1 inline-block">(Amministrazione)</span>
-                  </p>
-                  <p className="text-[16px] font-medium text-white break-words">
-                    <a href="mailto:service@ficohub.it" className="hover:text-[#38bdf8] transition-colors break-all md:break-normal">service@ficohub.it</a>
-                    <span className="text-gray-400 font-normal ml-1 inline-block">(Operativa)</span>
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-5 group w-full">
-                <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
-                  <Send size={20} />
-                </div>
-                <div className="pt-2 flex flex-wrap items-center gap-2 min-w-0 flex-1">
-                  <span className="text-gray-400 font-semibold text-sm">PEC:</span>
-                  <a href="mailto:fi.co.srl@pec.it" className="text-[16px] font-medium text-white hover:text-[#38bdf8] transition-colors break-all md:break-normal">fi.co.srl@pec.it</a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-5 group">
-                <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
-                  <FileText size={22} />
-                </div>
-                <div className="pt-1">
-                  <p className="text-[15px] font-medium text-gray-300 leading-snug">
-                    P.IVA 08964920725<br/>
-                    Cod. SDI: QULXG4S
-                  </p>
-                </div>
-              </div>
-
+              {/* Riferimenti aziendali visibili, mappa disattivata */}
+              <p className="text-white">Corso Cavour 9, Andria (BT)</p>
+              <p className="text-white">service@ficohub.it</p>
             </div>
 
-            <div className="w-full h-72 md:h-80 mt-4 rounded-3xl overflow-hidden shadow-2xl border border-[#0e7490]/30">
-              <iframe
-                src="https://maps.google.com/maps?q=Corso%20Cavour%209%2C%20Andria%20BT%2C%20Italia&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={true}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Mappa sede operativa FI.CO. SRL"
-              ></iframe>
-            </div>
+            {/* MAPPA DISATTIVATA PER TEST
+            <div className="w-full h-72 md:h-80 mt-4 rounded-3xl overflow-hidden shadow-2xl">
+              <iframe src="..." ></iframe>
+            </div> 
+            */}
           </div>
 
-          {/* Il Form aggiornato e sicuro */}
           <ContactForm />
 
         </div>
