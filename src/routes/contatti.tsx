@@ -8,33 +8,19 @@ export const Route = createFileRoute('/contatti')({
 });
 
 // ==========================================
-// 1. COMPONENTE ISOLATO PER IL FORM
-// (Ora digitare qui non ricaricherà la mappa!)
+// 1. IL NUOVO FORM "NON CONTROLLATO"
+// Nessun caricamento mentre scrivi. Crash impossibile!
 // ==========================================
 function ContactForm() {
-  const [formData, setFormData] = useState({
-    nome: "",
-    azienda: "",
-    email: "",
-    telefono: "",
-    oggetto: "",
-    messaggio: "",
-    privacy: false
-  });
-
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { id, value, type } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [id]: type === "checkbox" ? (e.target as HTMLInputElement).checked : value
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("loading");
+
+    // Legge tutti i campi del form in un colpo solo al momento dell'invio
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
     try {
       const response = await fetch("https://formsubmit.co/ajax/5142c30a1135dc653f89a45f77747911", {
@@ -44,19 +30,20 @@ function ContactForm() {
           Accept: "application/json"
         },
         body: JSON.stringify({
-          Nome: formData.nome,
-          Azienda: formData.azienda || "Non specificata",
-          Email: formData.email,
-          Telefono: formData.telefono || "Non specificato",
-          Oggetto: formData.oggetto || "Richiesta da sito web",
-          Messaggio: formData.messaggio,
-          _subject: `Nuova richiesta da: ${formData.nome}`,
+          Nome: formData.get("nome"),
+          Azienda: formData.get("azienda") || "Non specificata",
+          Email: formData.get("email"),
+          Telefono: formData.get("telefono") || "Non specificato",
+          Oggetto: formData.get("oggetto") || "Richiesta da sito web",
+          Messaggio: formData.get("messaggio"),
+          _subject: `Nuova richiesta da: ${formData.get("nome")}`,
           _template: "table"
         })
       });
 
       if (response.ok) {
         setStatus("success");
+        form.reset(); // Svuota i campi del form in automatico
       } else {
         setStatus("error");
       }
@@ -80,10 +67,7 @@ function ContactForm() {
             Grazie per averci contattato. Il nostro team elaborerà la tua richiesta e ti risponderà al più presto.
           </p>
           <button 
-            onClick={() => {
-              setStatus("idle");
-              setFormData({nome: "", azienda: "", email: "", telefono: "", oggetto: "", messaggio: "", privacy: false});
-            }}
+            onClick={() => setStatus("idle")}
             className="mt-8 px-6 py-3 border border-white/20 rounded-xl text-white hover:bg-white/10 transition-colors"
           >
             Invia un altro messaggio
@@ -108,37 +92,37 @@ function ContactForm() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="flex flex-col gap-2">
               <label htmlFor="nome" className="text-sm font-semibold text-gray-300 ml-1">Nome e Cognome *</label>
-              <input type="text" id="nome" value={formData.nome} onChange={handleChange} disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" required />
+              <input type="text" id="nome" name="nome" disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" required />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="azienda" className="text-sm font-semibold text-gray-300 ml-1">Azienda</label>
-              <input type="text" id="azienda" value={formData.azienda} onChange={handleChange} disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" />
+              <input type="text" id="azienda" name="azienda" disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" />
             </div>
           </div>
           
           <div className="grid md:grid-cols-2 gap-6">
             <div className="flex flex-col gap-2">
               <label htmlFor="email" className="text-sm font-semibold text-gray-300 ml-1">Email *</label>
-              <input type="email" id="email" value={formData.email} onChange={handleChange} disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" required />
+              <input type="email" id="email" name="email" disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" required />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="telefono" className="text-sm font-semibold text-gray-300 ml-1">Telefono</label>
-              <input type="tel" id="telefono" value={formData.telefono} onChange={handleChange} disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" />
+              <input type="tel" id="telefono" name="telefono" disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" />
             </div>
           </div>
 
           <div className="flex flex-col gap-2">
             <label htmlFor="oggetto" className="text-sm font-semibold text-gray-300 ml-1">Oggetto</label>
-            <input type="text" id="oggetto" value={formData.oggetto} onChange={handleChange} disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" />
+            <input type="text" id="oggetto" name="oggetto" disabled={status === "loading"} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all w-full disabled:opacity-50" />
           </div>
 
           <div className="flex flex-col gap-2">
             <label htmlFor="messaggio" className="text-sm font-semibold text-gray-300 ml-1">Messaggio *</label>
-            <textarea id="messaggio" value={formData.messaggio} onChange={handleChange} disabled={status === "loading"} rows={4} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all resize-none w-full disabled:opacity-50" required></textarea>
+            <textarea id="messaggio" name="messaggio" disabled={status === "loading"} rows={4} className="bg-[#011C27] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#38bdf8] focus:ring-1 focus:ring-[#38bdf8] transition-all resize-none w-full disabled:opacity-50" required></textarea>
           </div>
 
           <div className="flex items-start gap-3 mt-1">
-            <input type="checkbox" id="privacy" checked={formData.privacy} onChange={handleChange} disabled={status === "loading"} className="mt-1 shrink-0 w-4 h-4 rounded border-white/20 bg-[#011C27] text-[#38bdf8] focus:ring-[#38bdf8] focus:ring-offset-0 disabled:opacity-50" required />
+            <input type="checkbox" id="privacy" name="privacy" disabled={status === "loading"} className="mt-1 shrink-0 w-4 h-4 rounded border-white/20 bg-[#011C27] text-[#38bdf8] focus:ring-[#38bdf8] focus:ring-offset-0 disabled:opacity-50" required />
             <label htmlFor="privacy" className="text-[14px] text-gray-300 leading-snug cursor-pointer">
               Accetto il trattamento dei dati personali secondo la Privacy Policy.
             </label>
@@ -277,7 +261,7 @@ function ContattiPage() {
             </div>
           </div>
 
-          {/* Colonna Destra (Il nuovo componente Form isolato) */}
+          {/* Il Form aggiornato e sicuro */}
           <ContactForm />
 
         </div>
