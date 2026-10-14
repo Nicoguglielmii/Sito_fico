@@ -6,10 +6,12 @@ export const Route = createFileRoute('/privacy-policy')({
 
 function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-[#001724] text-white pt-40 pb-24 px-6 lg:px-10">
+    <div className="min-h-screen bg-white text-[#012b3a] pt-36 pb-24 px-6 lg:px-10">
       <div className="max-w-screen-xl mx-auto">
-        <h1 className="text-4xl font-bold text-[#38bdf8] mb-8">Privacy Policy</h1>
-        <p className="text-gray-300">Testo della privacy policy in aggiornamento...</p>
+        <h1 className="text-4xl font-extrabold text-[#012b3a] mb-8">
+          Privacy <span className="text-[#1da1db]">Policy</span>
+        </h1>
+        <p className="text-[#00779b]">Testo della privacy policy in aggiornamento...</p>
       </div>
     </div>
   );

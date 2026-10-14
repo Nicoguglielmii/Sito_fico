@@ -2,10 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { HeroParticles } from "@/components/site/Interactive";
 
-// Ogni asset e associato direttamente a un servizio per mantenere il contenuto visivo
-// coerente con il relativo titolo, testo descrittivo e insieme di attivita.
-// Gli import statici consentono al bundler di risolvere, ottimizzare e pubblicare le
-// immagini correttamente nell'ambiente client e durante il rendering SSR.
 import netwImg from "@/assets/netw.jpg";
 import itservicesImg from "@/assets/itservices.jpg";
 import digitaldevelopmentImg from "@/assets/digitaldevelopment.webp";
@@ -17,7 +13,8 @@ export const Route = createFileRoute("/servizi/it-software")({
 function ItSoftwarePage() {
   const serviziIT = [
     {
-      title: "Networking & Infrastrutture IT",
+      titleFirst: "Networking & ",
+      titleHighlight: "Infrastrutture IT",
       subtitle: "CONNESSIONI SOLIDE ED EFFICIENTI",
       desc: "Progettiamo, installiamo e supportiamo le infrastrutture che permettono a sistemi, persone e dati di restare connessi.",
       image: netwImg,
@@ -28,7 +25,8 @@ function ItSoftwarePage() {
       ]
     },
     {
-      title: "IT Services",
+      titleFirst: "IT ",
+      titleHighlight: "Services",
       subtitle: "CONTINUITÀ OPERATIVA, OGNI GIORNO",
       desc: "Gestiamo servizi e attività di supporto IT secondo livelli e modalità concordati con il cliente.",
       image: itservicesImg,
@@ -39,7 +37,8 @@ function ItSoftwarePage() {
       ]
     },
     {
-      title: "Software & Digital Development",
+      titleFirst: "Software & ",
+      titleHighlight: "Digital Development",
       subtitle: "DAL CODICE ALL'APPLICAZIONE",
       desc: "Sviluppiamo internamente software, piattaforme e strumenti digitali progettati per rispondere a esigenze specifiche.",
       image: digitaldevelopmentImg,
@@ -52,39 +51,31 @@ function ItSoftwarePage() {
   ];
 
   return (
-    <div className="bg-[#011C27] w-full min-h-screen pb-14 overflow-x-hidden selection:bg-[#facc15] selection:text-[#011C27]">
+    <div className="bg-white w-full min-h-screen pb-16 overflow-x-hidden selection:bg-[#facc15] selection:text-[#012b3a]">
       
-      {/*
-        HERO: presenta il passaggio dalle infrastrutture IT agli ambienti digitali.
-        Il contenuto resta allineato a sinistra per mantenere continuita con la pagina
-        indice dei servizi, mentre lo sfondo interattivo aggiunge profondita senza
-        sottrarre spazio o contrasto al titolo e alla descrizione.
-      */}
-      <section className="relative pt-36 pb-12 md:pb-16 border-b border-[#0e7490]/30 overflow-hidden">
+      {/* HERO (FICO_WEBSITE_5) */}
+      <section className="relative pt-32 md:pt-36 pb-12 md:pb-16 border-b border-[#facc15] overflow-hidden bg-white">
         <HeroParticles />
         <div className="container-x relative z-10 text-left">
           <Reveal>
-            <div className="flex items-center gap-3 mb-4 md:mb-6">
-              <span className="w-2 h-2 rounded-full bg-[#facc15]" aria-hidden="true" />
-              <span className="text-xs md:text-sm text-[#facc15] font-medium tracking-[0.2em] uppercase">IT & Software</span>
+            <div className="mb-4 md:mb-6">
+              <span className="text-xs md:text-sm text-[#00779b] font-semibold tracking-[0.22em] uppercase">
+                IT & SOFTWARE
+              </span>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[80px] font-bold leading-[1.05] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#facc15] max-w-4xl pb-2">
-              Dall'infrastruttura <br className="hidden md:block" />all'ambiente digitale.
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[80px] font-extrabold leading-[1.05] tracking-tight text-[#012b3a] max-w-4xl pb-2">
+              Dall'infrastruttura <br className="hidden md:block" />
+              all'<span className="text-[#1da1db]">ambiente</span> digitale
             </h1>
-            <p className="mt-6 md:mt-8 text-base md:text-xl text-white/75 max-w-2xl leading-relaxed text-justify">
+            <p className="mt-6 md:mt-8 text-base md:text-xl text-[#00779b] max-w-2xl leading-relaxed">
               Integriamo infrastrutture IT, servizi di assistenza e sviluppo software per costruire strumenti digitali solidi, garantendo continuità, sicurezza ed efficienza per ogni tua esigenza operativa.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/*
-        SERVIZI IT: elenca le tre competenze in un flusso verticale ordinato.
-        Ogni elemento contiene immagine, identificativo breve, titolo, descrizione
-        e attivita operative, cosi il visitatore puo passare dalla panoramica al
-        dettaglio senza cambiare contesto o interrompere la lettura.
-      */}
-      <section className="pt-8 md:pt-12 pb-0 relative overflow-hidden">
+      {/* SERVIZI IT */}
+      <section className="pt-10 md:pt-14 pb-0 relative overflow-hidden bg-white">
         <div className="container-x">
           <div className="flex flex-col gap-16 md:gap-24 w-full max-w-6xl mx-auto">
             
@@ -92,53 +83,37 @@ function ItSoftwarePage() {
               const isEven = idx % 2 === 0;
 
               return (
-                <Reveal key={item.title} delay={100}>
-                  {/*
-                    Il container usa una singola struttura per tutte le voci e inverte
-                    le colonne solo sui desktop per creare un ritmo visivo alternato.
-                    Su mobile le colonne tornano naturalmente una sopra l'altra.
-                  */}
+                <Reveal key={item.subtitle} delay={100}>
                   <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-12 lg:gap-16`}>
                     
-                    {/*
-                      L'immagine occupa meta della riga sui desktop e tutta la larghezza
-                      disponibile sui dispositivi piccoli. Le proporzioni fisse evitano
-                      salti di layout durante il caricamento e il ritaglio preserva il
-                      carattere fotografico degli asset.
-                    */}
                     <div className="w-full md:w-1/2">
                       <img 
                         src={item.image} 
-                        alt={item.title} 
-                        className="w-full aspect-[4/3] md:aspect-auto md:h-[400px] object-cover rounded-3xl border border-[#0e7490]/30 shadow-2xl relative z-10" 
+                        alt={`${item.titleFirst}${item.titleHighlight}`} 
+                        className="w-full aspect-[4/3] md:aspect-auto md:h-[400px] object-cover rounded-3xl shadow-lg relative z-10" 
                       />
                     </div>
 
-                    {/*
-                      Il blocco testuale completa l'immagine con una gerarchia costante:
-                      prima il sottotitolo, poi il nome del servizio, quindi la descrizione
-                      e infine l'elenco delle attivita quando sono disponibili.
-                    */}
                     <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
                       <div className="mb-4">
-                        <span className="text-xs font-bold text-[#facc15] uppercase tracking-wider block mb-1">
+                        <span className="text-xs md:text-sm font-semibold text-[#00779b] uppercase tracking-wider block mb-1.5">
                           {item.subtitle}
                         </span>
-                        <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#38bdf8] to-[#facc15] bg-clip-text text-transparent pb-1">
-                          {item.title}
+                        <h3 className="text-3xl md:text-4xl font-extrabold text-[#012b3a] pb-1">
+                          {item.titleFirst}
+                          <span className="text-[#0a5c75]">{item.titleHighlight}</span>
                         </h3>
                       </div>
                       
-                      <p className="text-lg text-white/70 leading-relaxed text-justify mt-2">
+                      <p className="text-lg text-[#00779b] leading-relaxed mt-2">
                         {item.desc}
                       </p>
 
-                      {/* L'elenco viene mostrato solo quando il servizio ha attivita da evidenziare. */}
                       {item.activities.length > 0 && (
-                        <ul className="mt-6 space-y-3 pt-6 border-t border-white/10">
+                        <ul className="mt-6 space-y-3 pt-6 border-t border-[#facc15]">
                           {item.activities.map((act, i) => (
-                            <li key={i} className="text-[15px] text-white/60 flex items-start gap-3">
-                              <span className="mt-[6px] w-1.5 h-1.5 rounded-full bg-[#38bdf8]/70 shrink-0" aria-hidden="true" />
+                            <li key={i} className="text-[15px] text-[#012b3a] font-medium flex items-start gap-3">
+                              <span className="mt-[7px] w-2 h-2 rounded-full bg-[#1da1db] shrink-0" aria-hidden="true" />
                               {act}
                             </li>
                           ))}

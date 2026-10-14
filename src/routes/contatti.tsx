@@ -6,74 +6,65 @@ export const Route = createFileRoute('/contatti')({
   component: ContattiPage,
 });
 
-// ==========================================
-// 1. IL FORM VISUAL (APPANNATO) CON PULSANTE
-// ==========================================
 function ContactFormVisual() {
-  // INSERISCI QUI IL LINK DEL TUO FORM ESTERNO (Tally.so, Google Forms, Typeform, ecc.)
   const formUrl = "https://tally.so/r/RGApB4";
 
   return (
-    <div className="bg-[#01425f]/10 border border-[#0e7490]/30 p-8 md:p-10 rounded-3xl shadow-2xl relative overflow-hidden h-fit">
-      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#38bdf8]/10 to-transparent blur-3xl rounded-full pointer-events-none" />
+    <div className="bg-white border-2 border-[#facc15] p-8 md:p-10 rounded-3xl shadow-xl relative overflow-hidden h-fit">
+      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#facc15]/20 to-transparent blur-3xl rounded-full pointer-events-none" />
       
       <div className="mb-6 relative z-10">
-        <h3 className="text-3xl font-bold text-white mb-2">Richiedi una consulenza</h3>
-        <p className="text-gray-300 text-[15px]">
+        <h3 className="text-3xl font-bold text-[#1da1db] mb-2">Richiedi una consulenza</h3>
+        <p className="text-[#00779b] text-[15px]">
           Raccontaci il tuo progetto: ti ricontatteremo per un confronto tecnico.
         </p>
       </div>
 
       <div className="relative z-10 mt-4">
         
-        {/* OVERLAY CON IL PULSANTE DORATO */}
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-[#011C27]/20 rounded-2xl">
+        {/* OVERLAY CON IL PULSANTE GIALLO FI.CO. */}
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-white/30 rounded-2xl">
           <a 
             href={formUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 bg-[#facc15] text-[#001724] font-bold text-lg md:text-xl px-10 py-5 rounded-xl hover:bg-yellow-300 hover:scale-[1.05] transition-all duration-300 shadow-[0_0_40px_rgba(250,204,21,0.3)] cursor-pointer"
+            className="flex items-center justify-center gap-3 bg-[#f5d000] text-[#012b3a] font-bold text-lg md:text-xl px-10 py-5 rounded-2xl hover:bg-[#eab308] hover:scale-[1.03] transition-all duration-300 shadow-lg cursor-pointer"
           >
             Compila il Form <ExternalLink size={22} />
           </a>
         </div>
 
-        {/* FINTO FORM APPANNATO (Non cliccabile) */}
-        <div className="flex flex-col gap-6 pointer-events-none select-none blur-[4px] opacity-50 transition-all duration-500">
+        {/* FINTO FORM APPANNATO (Ispirato al nuovo stile azzurro/giallo di Tally) */}
+        <div className="flex flex-col gap-5 pointer-events-none select-none blur-[3px] opacity-60 transition-all duration-500">
           
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-5">
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-semibold text-gray-300 ml-1">Nome e Cognome *</label>
-              <div className="bg-[#011C27] border border-white/10 rounded-xl h-12 w-full"></div>
+              <label className="text-sm font-bold text-[#1da1db] ml-1">Nome e cognome</label>
+              <div className="bg-[#00b4d8] border border-[#facc15] rounded-xl h-11 w-full"></div>
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-semibold text-gray-300 ml-1">Azienda</label>
-              <div className="bg-[#011C27] border border-white/10 rounded-xl h-12 w-full"></div>
+              <label className="text-sm font-bold text-[#1da1db] ml-1">Azienda</label>
+              <div className="bg-[#00b4d8] border border-[#facc15] rounded-xl h-11 w-full"></div>
             </div>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-5">
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-semibold text-gray-300 ml-1">Email *</label>
-              <div className="bg-[#011C27] border border-white/10 rounded-xl h-12 w-full"></div>
+              <label className="text-sm font-bold text-[#1da1db] ml-1">Email</label>
+              <div className="bg-[#00b4d8] border border-[#facc15] rounded-xl h-11 w-full"></div>
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-semibold text-gray-300 ml-1">Telefono</label>
-              <div className="bg-[#011C27] border border-white/10 rounded-xl h-12 w-full"></div>
+              <label className="text-sm font-bold text-[#1da1db] ml-1">Telefono</label>
+              <div className="bg-[#00b4d8] border border-[#facc15] rounded-xl h-11 w-full"></div>
             </div>
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-sm font-semibold text-gray-300 ml-1">Messaggio *</label>
-            <div className="bg-[#011C27] border border-white/10 rounded-xl h-32 w-full"></div>
+            <label className="text-sm font-bold text-[#1da1db] ml-1">Messaggio</label>
+            <div className="bg-[#00b4d8] border border-[#facc15] rounded-xl h-32 w-full"></div>
           </div>
 
-          <div className="flex items-center gap-3 mt-1">
-            <div className="w-4 h-4 rounded bg-[#011C27] border border-white/20"></div>
-            <div className="text-[14px] text-gray-300">Accetto il trattamento dei dati personali.</div>
-          </div>
-
-          <div className="mt-2 w-full h-14 rounded-xl bg-[#facc15]/50"></div>
+          <div className="mt-2 w-48 h-12 rounded-xl bg-[#00b4d8] border border-[#facc15]"></div>
         </div>
 
       </div>
@@ -81,101 +72,113 @@ function ContactFormVisual() {
   );
 }
 
-// ==========================================
-// 2. PAGINA PRINCIPALE
-// ==========================================
 function ContattiPage() {
   return (
-    <div className="bg-[#011C27] w-full min-h-screen overflow-x-hidden pb-12">
+    <div className="bg-white w-full min-h-screen overflow-x-hidden pb-12">
       
-      <section className="relative pt-24 pb-12 overflow-hidden">
-        {/* PARTICELLE RIATTIVATE */}
+      {/* HERO SECTION CON LINEA DIVISORIA GIALLA */}
+      <section className="relative pt-28 sm:pt-32 pb-12 overflow-hidden border-b border-[#facc15]">
         <HeroParticles />
         
         <div className="container-x relative z-10 text-left animate-fade-in">
-          <span className="text-sm uppercase tracking-[0.3em] text-[#facc15] font-bold">
+          <span className="text-sm uppercase tracking-[0.25em] text-[#00779b] font-semibold">
             Contatti
           </span>
           
-          <h1 className="mt-4 text-5xl md:text-7xl font-bold leading-tight md:leading-[1.1] text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#facc15] pb-2 md:pb-4">
-            Parliamo del tuo <br className="hidden md:block" /> prossimo progetto.
+          <h1 className="mt-4 text-5xl md:text-7xl font-extrabold leading-tight md:leading-[1.1] text-[#012b3a] pb-2">
+            Parliamo del tuo <br className="hidden md:block" />
+            <span className="text-[#1da1db]">prossimo progetto.</span>
           </h1>
           
-          <p className="mt-4 md:mt-6 text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl">
+          <p className="mt-4 md:mt-6 text-lg md:text-xl text-[#00779b] leading-relaxed max-w-3xl">
             Compila il form, scrivici via email o chiamaci.
           </p>
         </div>
       </section>
 
-      <section className="py-6 relative z-20">
-        <div className="container-x grid lg:grid-cols-2 gap-8">
+      {/* SEZIONE CENTRALE CON PATTERN PUNTINI GIALLI */}
+      <section 
+        className="py-12 relative z-20"
+        style={{
+          backgroundImage: 'radial-gradient(#facc15 1.2px, transparent 1.2px)',
+          backgroundSize: '24px 24px'
+        }}
+      >
+        <div className="container-x grid lg:grid-cols-2 gap-12">
           
-          {/* Colonna Sinistra (Testi e MAPPA RIATTIVATA) */}
+          {/* Colonna Sinistra: Info Aziendali e Mappa */}
           <div className="flex flex-col gap-10">
             <div>
-              <h2 className="text-3xl font-bold text-white mb-6">FI.CO. SRL</h2>
-              <p className="text-gray-300 text-lg leading-relaxed mb-8">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-[#012b3a] mb-4">
+                FI.CO. <span className="text-[#0a5c75]">SRL</span>
+              </h2>
+              <p className="text-[#00779b] text-lg leading-relaxed">
                 Siamo pronti ad ascoltare le tue esigenze e a trasformarle in soluzioni concrete. Contattaci senza impegno.
               </p>
             </div>
             
             <div className="flex flex-col gap-6">
               
+              {/* Sede */}
               <div className="flex items-start gap-5 group">
-                <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
+                <div className="w-12 h-12 rounded-full bg-[#013a52] flex items-center justify-center shrink-0 text-[#facc15] shadow-md transition-transform duration-300 group-hover:scale-105">
                   <MapPin size={22} />
                 </div>
                 <div className="pt-1">
-                  <p className="text-[17px] font-medium text-white leading-snug">
+                  <p className="text-[17px] font-bold text-[#012b3a] leading-snug">
                     Corso Cavour 9, Piano 2<br/>
-                    <span className="text-gray-300 text-[15px]">76123 Andria (BT) — Italia</span>
+                    <span className="text-[#00779b] font-normal text-[15px]">76123 Andria (BT) — Italia</span>
                   </p>
                 </div>
               </div>
 
+              {/* Telefono */}
               <div className="flex items-start gap-5 group">
-                <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
+                <div className="w-12 h-12 rounded-full bg-[#013a52] flex items-center justify-center shrink-0 text-[#facc15] shadow-md transition-transform duration-300 group-hover:scale-105">
                   <Phone size={22} />
                 </div>
                 <div className="pt-2">
-                  <a href="tel:+393757932669" className="text-[17px] font-medium text-white hover:text-[#38bdf8] transition-colors">
+                  <a href="tel:+393757932669" className="text-[17px] font-bold text-[#012b3a] hover:text-[#1da1db] transition-colors">
                     +39 375 793 2669
                   </a>
                 </div>
               </div>
 
+              {/* Email */}
               <div className="flex items-start gap-5 group w-full">
-                <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
+                <div className="w-12 h-12 rounded-full bg-[#013a52] flex items-center justify-center shrink-0 text-[#facc15] shadow-md transition-transform duration-300 group-hover:scale-105">
                   <Mail size={22} />
                 </div>
                 <div className="pt-1 flex flex-col gap-1 min-w-0 flex-1">
-                  <p className="text-[16px] font-medium text-white break-words">
-                    <a href="mailto:amministrazione@ficohub.it" className="hover:text-[#38bdf8] transition-colors break-all md:break-normal">amministrazione@ficohub.it</a>
-                    <span className="text-gray-400 font-normal ml-1 inline-block">(Amministrazione)</span>
+                  <p className="text-[16px] font-bold text-[#012b3a] break-words">
+                    <a href="mailto:amministrazione@ficohub.it" className="hover:text-[#1da1db] transition-colors break-all md:break-normal">amministrazione@ficohub.it</a>
+                    <span className="text-[#00779b] font-normal ml-1 inline-block">(Amministrazione)</span>
                   </p>
-                  <p className="text-[16px] font-medium text-white break-words">
-                    <a href="mailto:service@ficohub.it" className="hover:text-[#38bdf8] transition-colors break-all md:break-normal">service@ficohub.it</a>
-                    <span className="text-gray-400 font-normal ml-1 inline-block">(Operativa)</span>
+                  <p className="text-[16px] font-bold text-[#012b3a] break-words">
+                    <a href="mailto:service@ficohub.it" className="hover:text-[#1da1db] transition-colors break-all md:break-normal">service@ficohub.it</a>
+                    <span className="text-[#00779b] font-normal ml-1 inline-block">(Operativa)</span>
                   </p>
                 </div>
               </div>
 
+              {/* PEC */}
               <div className="flex items-start gap-5 group w-full">
-                <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
+                <div className="w-12 h-12 rounded-full bg-[#013a52] flex items-center justify-center shrink-0 text-[#facc15] shadow-md transition-transform duration-300 group-hover:scale-105">
                   <Send size={20} />
                 </div>
                 <div className="pt-2 flex flex-wrap items-center gap-2 min-w-0 flex-1">
-                  <span className="text-gray-400 font-semibold text-sm">PEC:</span>
-                  <a href="mailto:fi.co.srl@pec.it" className="text-[16px] font-medium text-white hover:text-[#38bdf8] transition-colors break-all md:break-normal">fi.co.srl@pec.it</a>
+                  <span className="text-[#00779b] font-bold text-sm">PEC:</span>
+                  <a href="mailto:fi.co.srl@pec.it" className="text-[16px] font-bold text-[#012b3a] hover:text-[#1da1db] transition-colors break-all md:break-normal">fi.co.srl@pec.it</a>
                 </div>
               </div>
 
+              {/* Dati Fiscali */}
               <div className="flex items-start gap-5 group">
-                <div className="w-12 h-12 rounded-xl bg-[#01425f]/40 border border-[#0e7490]/40 flex items-center justify-center shrink-0 text-[#38bdf8] group-hover:bg-[#38bdf8] group-hover:text-[#011C27] transition-colors duration-300">
+                <div className="w-12 h-12 rounded-full bg-[#013a52] flex items-center justify-center shrink-0 text-[#facc15] shadow-md transition-transform duration-300 group-hover:scale-105">
                   <FileText size={22} />
                 </div>
                 <div className="pt-1">
-                  <p className="text-[15px] font-medium text-gray-300 leading-snug">
+                  <p className="text-[15px] font-semibold text-[#00779b] leading-snug">
                     P.IVA 08964920725<br/>
                     Cod. SDI: QULXG4S
                   </p>
@@ -184,7 +187,8 @@ function ContattiPage() {
 
             </div>
 
-            <div className="w-full h-72 md:h-80 mt-4 rounded-3xl overflow-hidden shadow-2xl border border-[#0e7490]/30">
+            {/* Mappa Google Maps */}
+            <div className="w-full h-72 md:h-80 mt-2 rounded-3xl overflow-hidden shadow-lg border border-[#facc15]">
               <iframe
                 src="https://maps.google.com/maps?q=Corso%20Cavour%209%2C%20Andria%20BT%2C%20Italia&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 width="100%"
@@ -198,7 +202,7 @@ function ContattiPage() {
             </div>
           </div>
 
-          {/* Il nuovo Form Visual */}
+          {/* Colonna Destra: Form Visual */}
           <ContactFormVisual />
 
         </div>

@@ -1,14 +1,5 @@
-// Root route shell: qui si costruisce il layout globale del sito, il document head
-// condiviso e i provider applicativi che devono essere disponibili a tutte le route.
-// Questo file e il punto di ingresso comune: le pagine figlie vengono inserite nel
-// suo Outlet e condividono navigazione, footer, stili globali e gestione degli errori.
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Preloader } from "../components/site/Preloader";
-
-// TanStack Router: tutti gli elementi fondamentali per il rendering delle route,
-// la gestione del document head e l'inserimento degli script necessari all'app.
-// HeadContent e Scripts vengono mantenuti nella shell HTML per supportare sia il
-// rendering lato server sia l'idratazione lato client con una struttura coerente.
 import {
   Outlet,
   Link,
@@ -17,45 +8,27 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-
-// React utilities: ReactNode serve al shell HTML, mentre useEffect ci permette di
-// registrare gli errori una sola volta per ogni boundary che li cattura.
-// L'annotazione del tipo del nodo mantiene esplicito il contratto del componente
-// che riceve e restituisce l'intero documento applicativo.
 import { useEffect, type ReactNode } from "react";
-
-// CSS globale applicato all'intera applicazione: lo importiamo come asset URL per
-// farlo passare correttamente nel document head della route root.
-// Il riferimento generato dal bundler resta valido anche quando gli asset hanno un
-// nome con hash nella build di produzione.
 import appCss from "../styles.css?url";
-
-// Servizi e componenti globali che devono essere presenti in tutte le pagine del sito.
-// Tenerli qui evita duplicazioni nelle singole route e garantisce che ogni pagina
-// parta dalla stessa cornice visiva e dagli stessi comportamenti condivisi.
 import { reportError } from "../lib/error-reporting";
 import { Navbar } from "../components/site/Navbar";
 import { Footer } from "../components/site/Footer";
-
 import { CookieBanner } from "../components/site/Interactive";
 
-// Fallback visivo per le URL che non corrispondono a nessuna route.
-// Il messaggio resta volutamente breve e offre un unico percorso di recupero verso
-// la home, cosi l'utente non rimane bloccato su un indirizzo non valido.
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#011C27] px-4">
-      <div className="max-w-md text-center text-white">
-        <h1 className="text-7xl font-bold">404</h1>
-        <h2 className="mt-4 text-xl font-semibold">Pagina non trovata</h2>
-        <p className="mt-2 text-sm text-white/70">
+    <div className="flex min-h-screen items-center justify-center bg-white px-4">
+      <div className="max-w-md text-center text-[#012b3a]">
+        <h1 className="text-7xl font-extrabold text-[#1da1db]">404</h1>
+        <h2 className="mt-4 text-xl font-bold">Pagina non trovata</h2>
+        <p className="mt-2 text-sm text-[#00779b]">
           La pagina che stai cercando non esiste o è stata spostata.
         </p>
 
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-xl bg-[#facc15] text-[#011C27] px-6 py-3 font-bold transition-all hover:bg-yellow-300 hover:scale-105"
+            className="inline-flex items-center justify-center rounded-2xl bg-[#f5d000] text-[#012b3a] px-6 py-3 font-bold transition-all hover:bg-[#eab308] hover:scale-105 shadow-sm"
           >
             Torna alla Home
           </Link>
@@ -65,8 +38,6 @@ function NotFoundComponent() {
   );
 }
 
-// Error boundary della root route: intercetta gli errori non gestiti della pagina,
-// li registra per il monitoraggio e mantiene disponibile un'interfaccia di recupero.
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
@@ -76,12 +47,12 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#011C27] px-4">
-      <div className="max-w-md text-center text-white">
-        <h1 className="text-xl font-semibold tracking-tight">
+    <div className="flex min-h-screen items-center justify-center bg-white px-4">
+      <div className="max-w-md text-center text-[#012b3a]">
+        <h1 className="text-xl font-bold tracking-tight">
           Impossibile caricare la pagina
         </h1>
-        <p className="mt-2 text-sm text-white/70">
+        <p className="mt-2 text-sm text-[#00779b]">
           Si è verificato un errore inaspettato. Puoi riprovare a caricare la pagina o tornare alla Home.
         </p>
 
@@ -91,13 +62,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-xl bg-[#facc15] text-[#011C27] px-6 py-3 font-bold transition-all hover:bg-yellow-300"
+            className="inline-flex items-center justify-center rounded-2xl bg-[#f5d000] text-[#012b3a] px-6 py-3 font-bold transition-all hover:bg-[#eab308]"
           >
             Riprova
           </button>
           <a
             href="/"
-            className="inline-flex items-center justify-center rounded-xl border border-[#0e7490]/50 bg-transparent text-white px-6 py-3 font-bold transition-all hover:bg-[#0e7490]/20"
+            className="inline-flex items-center justify-center rounded-2xl border border-[#1da1db] bg-transparent text-[#012b3a] px-6 py-3 font-bold transition-all hover:bg-[#1da1db]/10"
           >
             Torna alla Home
           </a>
@@ -166,7 +137,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="overflow-x-hidden bg-[#011C27] text-white antialiased w-full h-full m-0 p-0">
+      <body className="overflow-x-hidden bg-white text-[#012b3a] antialiased w-full h-full m-0 p-0">
         {children}
         <Scripts />
       </body>
@@ -178,22 +149,15 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
 
-  // Navigazione iniziale: forza l'apertura della Home al caricamento dell'app.
-  // Questa scelta mantiene il punto di ingresso del sito coerente anche quando il
-  // browser ripristina una scheda o una sessione lasciata su un'altra URL.
   useEffect(() => {
-    // Il redirect viene eseguito al mount iniziale, dopo un caricamento normale,
-    // un refresh o il ripristino di una scheda mobile rimasta inattiva.
-    // replace: true evita di aggiungere una voce artificiale alla cronologia del browser,
-    // quindi il pulsante Indietro non ripropone la URL di ingresso precedente.
-    router.navigate({ to: '/', replace: true });
+    router.navigate({ to: "/", replace: true });
   }, [router]);
 
   return (
     <QueryClientProvider client={queryClient}>
       <Preloader />
 
-      <div className="relative flex flex-col min-h-screen w-full max-w-[100vw] overflow-x-hidden">
+      <div className="relative flex flex-col min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-white">
         <Navbar />
 
         <main className="flex-1 w-full relative">
@@ -201,7 +165,7 @@ function RootComponent() {
         </main>
 
         <Footer />
-        
+
         <CookieBanner />
       </div>
     </QueryClientProvider>

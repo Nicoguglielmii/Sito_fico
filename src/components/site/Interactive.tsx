@@ -1,7 +1,3 @@
-// Raccolta di componenti interattivi riutilizzati in più pagine del sito.
-// Il file contiene effetti grafici, messaggistica,
-// una timeline di processo e la mappa interattiva delle aree operative.
-
 import { useEffect, useRef, useState } from "react";
 import {
   X,
@@ -13,7 +9,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-// Immagini associate alle regioni mostrate nella scheda informativa della mappa.
 import imgPiemonte from "@/assets/piemonte.webp";
 import imgLombardia from "@/assets/lombardia.avif";
 import imgVeneto from "@/assets/veneto.jpg";
@@ -82,7 +77,7 @@ export function HeroParticles() {
           const d2 = dx * dx + dy * dy;
           if (d2 < 140 * 140) {
             const o = 1 - Math.sqrt(d2) / 140;
-            ctx.strokeStyle = `rgba(64, 224, 255, ${o * 0.35})`;
+            ctx.strokeStyle = `rgba(29, 161, 219, ${o * 0.35})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -92,10 +87,10 @@ export function HeroParticles() {
         }
       }
 
-      ctx.fillStyle = "rgba(250, 189, 24, 0.8)";
+      ctx.fillStyle = "rgba(245, 184, 0, 0.85)";
       for (const p of pts) {
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, 1.8, 0, Math.PI * 2);
         ctx.fill();
       }
 
@@ -114,7 +109,7 @@ export function HeroParticles() {
   );
 }
 
-/* Banner per registrare la scelta dell'utente sui cookie del sito. */
+/* Banner per registrare la scelta dell'utente sui cookie del sito (Tema Chiaro). */
 export function CookieBanner() {
   const [show, setShow] = useState(false);
 
@@ -135,39 +130,39 @@ export function CookieBanner() {
   };
 
   return (
-    <div className="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-[99999] w-[calc(100vw-2rem)] md:w-[700px] p-5 md:p-6 rounded-2xl bg-[#011C27] border border-[#0e7490]/50 shadow-2xl flex flex-col md:flex-row md:items-center gap-4 md:gap-6 animate-fade-in">
+    <div className="fixed bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-[99999] w-[calc(100vw-2rem)] md:w-[700px] p-5 md:p-6 rounded-2xl bg-white border-2 border-[#facc15] shadow-2xl flex flex-col md:flex-row md:items-center gap-4 md:gap-6 animate-fade-in">
       <div className="flex-1">
         <div className="flex justify-between items-start mb-2 md:mb-1">
-          <h4 className="font-bold text-white text-base md:text-lg">Utilizziamo i cookie</h4>
+          <h4 className="font-extrabold text-[#012b3a] text-base md:text-lg">Utilizziamo i cookie</h4>
           <button 
             onClick={() => setShow(false)} 
             aria-label="Chiudi" 
-            className="md:hidden text-gray-400 hover:text-white transition-colors"
+            className="md:hidden text-[#00779b] hover:text-[#012b3a] transition-colors"
           >
             <X size={20} />
           </button>
         </div>
-        <p className="text-sm text-gray-300 leading-relaxed">
+        <p className="text-sm text-[#00779b] leading-relaxed">
           Utilizziamo cookie tecnici essenziali e analitici anonimi per migliorare l'esperienza di navigazione.
         </p>
       </div>
       <div className="flex items-center gap-3 justify-end shrink-0 mt-2 md:mt-0">
         <button 
           onClick={reject} 
-          className="px-4 py-2.5 text-[14px] font-semibold rounded-xl bg-transparent text-gray-300 hover:text-white hover:bg-white/10 border border-gray-500 transition-colors"
+          className="px-4 py-2.5 text-[14px] font-semibold rounded-xl bg-transparent text-[#00779b] hover:text-[#012b3a] hover:bg-gray-100 border border-[#00779b]/40 transition-colors"
         >
           Rifiuta
         </button>
         <button 
           onClick={accept} 
-          className="px-5 py-2.5 text-[14px] font-bold rounded-xl bg-[#38bdf8] text-[#011C27] hover:bg-[#0284c7] hover:text-white transition-all shadow-[0_0_15px_rgba(56,189,248,0.4)]"
+          className="px-5 py-2.5 text-[14px] font-bold rounded-xl bg-[#f5d000] text-[#012b3a] hover:bg-[#eab308] transition-all shadow-sm"
         >
           Accetta tutti
         </button>
         <button 
           onClick={() => setShow(false)} 
           aria-label="Chiudi" 
-          className="hidden md:flex items-center justify-center p-2 text-gray-400 hover:text-white transition-colors ml-1"
+          className="hidden md:flex items-center justify-center p-2 text-[#00779b] hover:text-[#012b3a] transition-colors ml-1"
         >
           <X size={22} />
         </button>
@@ -187,7 +182,7 @@ const STEPS = [
 
 export function ProcessTimeline() {
   return (
-    <section className="container-x py-24 md:py-32">
+    <section className="container-x py-20 md:py-28">
       <style>{`
         @keyframes lineTravel {
           0% { stroke-dashoffset: 0; }
@@ -195,11 +190,11 @@ export function ProcessTimeline() {
         }
       `}</style>
       <div className="max-w-3xl mb-16">
-        <span className="text-xs uppercase tracking-[0.3em] text-[#fde047] font-semibold">
+        <span className="text-xs uppercase tracking-[0.25em] text-[#00779b] font-bold">
           Il nostro processo
         </span>
-        <h2 className="mt-3 text-4xl md:text-5xl font-bold leading-tight text-gradient">
-          Dalla prima idea al go-live
+        <h2 className="mt-3 text-4xl md:text-5xl font-extrabold leading-tight text-[#012b3a]">
+          Dalla prima idea al <span className="text-[#1da1db]">go-live</span>
         </h2>
       </div>
       <div className="relative">
@@ -210,23 +205,23 @@ export function ProcessTimeline() {
           <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
             <defs>
               <filter id="timelineGlowFilter" x="-30%" y="-30%" width="160%" height="160%">
-                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feGaussianBlur stdDeviation="3" result="blur" />
                 <feMerge>
                   <feMergeNode in="blur" />
                   <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>
               <linearGradient id="timelineGlowA" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(56, 189, 248, 0)" />
-                <stop offset="20%" stopColor="rgba(56, 189, 248, 0.85)" />
-                <stop offset="70%" stopColor="rgba(248, 146, 6, 0.95)" />
-                <stop offset="100%" stopColor="rgba(248, 146, 6, 0)" />
+                <stop offset="0%" stopColor="rgba(29, 161, 219, 0)" />
+                <stop offset="20%" stopColor="rgba(29, 161, 219, 0.9)" />
+                <stop offset="70%" stopColor="rgba(245, 184, 0, 0.95)" />
+                <stop offset="100%" stopColor="rgba(245, 184, 0, 0)" />
               </linearGradient>
               <linearGradient id="timelineGlowB" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(56, 189, 248, 0)" />
-                <stop offset="15%" stopColor="rgba(56, 189, 248, 0.7)" />
-                <stop offset="60%" stopColor="rgba(248, 146, 6, 0.8)" />
-                <stop offset="100%" stopColor="rgba(248, 146, 6, 0)" />
+                <stop offset="0%" stopColor="rgba(29, 161, 219, 0)" />
+                <stop offset="15%" stopColor="rgba(29, 161, 219, 0.75)" />
+                <stop offset="60%" stopColor="rgba(245, 184, 0, 0.85)" />
+                <stop offset="100%" stopColor="rgba(245, 184, 0, 0)" />
               </linearGradient>
             </defs>
 
@@ -247,7 +242,7 @@ export function ProcessTimeline() {
             <path
               d="M0,45 C22,25 38,80 52,42 C66,20 82,75 100,48"
               fill="none"
-              stroke="rgba(56,189,248,0.55)"
+              stroke="rgba(29,161,219,0.55)"
               strokeWidth="3"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -277,15 +272,15 @@ export function ProcessTimeline() {
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-4 pt-8">
           {STEPS.map((s, i) => (
             <div key={s.title} className="relative group">
-              <div className="relative w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-primary to-accent text-white grid place-items-center shadow-lg group-hover:scale-110 transition-transform">
+              <div className="relative w-20 h-20 mx-auto rounded-full bg-[#013a52] text-[#facc15] grid place-items-center shadow-md group-hover:scale-110 transition-transform">
                 <s.icon size={28} />
-                <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-background border-2 border-primary text-primary text-xs font-bold grid place-items-center">
+                <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-[#f5d000] border-2 border-white text-[#012b3a] text-xs font-extrabold grid place-items-center shadow-xs">
                   {i + 1}
                 </span>
               </div>
               <div className="mt-5 text-center">
-                <h3 className="font-bold text-lg">{s.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
+                <h3 className="font-extrabold text-lg text-[#012b3a]">{s.title}</h3>
+                <p className="mt-2 text-sm text-[#00779b]">{s.desc}</p>
               </div>
             </div>
           ))}
@@ -313,7 +308,7 @@ export function ItalyMap() {
   const [sel, setSel] = useState<typeof REGIONS[0] | null>(null);
 
   return (
-    <section className="surface-navy pt-24 pb-8 lg:pb-4 relative overflow-hidden">
+    <section className="bg-white border-b border-[#facc15] pt-20 pb-16 relative overflow-hidden">
       <style>{`
         @keyframes slideDownCard {
           0% { opacity: 0; transform: translateY(-40px); }
@@ -324,29 +319,25 @@ export function ItalyMap() {
         }
       `}</style>
 
-      <div
-        className="absolute inset-0 opacity-30 pointer-events-none"
-        style={{ backgroundImage: "var(--gradient-glow)" }}
-      />
-
       <div className="container-x relative">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="text-xs uppercase tracking-[0.3em] text-[#facc15] font-semibold">
+          <span className="text-xs uppercase tracking-[0.25em] text-[#00779b] font-bold">
             Presenza
           </span>
-          <h2 className="mt-3 text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#38bdf8] to-[#facc15] bg-clip-text text-transparent pb-2">
-            Presenza consolidata in tutta Italia
+          <h2 className="mt-3 text-4xl md:text-5xl font-extrabold text-[#012b3a] pb-2">
+            Presenza consolidata in <span className="text-[#1da1db]">tutta Italia</span>
           </h2>
         </div>
 
         <div className="grid lg:grid-cols-5 gap-10 lg:gap-16 items-center">
           <div className="lg:col-span-3 relative">
-            <div className="relative max-w-lg mx-auto">
+            {/* Contenitore blu notte con bordo giallo per preservare la visibilità di cartina-italia.png (mix-blend-lighten) */}
+            <div className="relative max-w-lg mx-auto bg-[#012b3a] p-4 sm:p-6 rounded-3xl border-2 border-[#facc15] shadow-xl">
               
               {sel && (
                 <div key={sel.id} className="hidden lg:block absolute inset-0 z-0 pointer-events-none animate-in fade-in duration-500">
                   <div
-                    className="absolute bg-white opacity-80"
+                    className="absolute bg-[#facc15] opacity-90"
                     style={{
                       top: `calc(${sel.y}% - 1px)`,
                       left: `${sel.x}%`,
@@ -355,7 +346,7 @@ export function ItalyMap() {
                     }}
                   />
                   <div
-                    className="absolute bg-white opacity-80"
+                    className="absolute bg-[#facc15] opacity-90"
                     style={{
                       left: `calc(100% - 1px)`,
                       top: `calc(${Math.min(sel.y, 50)}% - 1px)`,
@@ -364,7 +355,7 @@ export function ItalyMap() {
                     }}
                   />
                   <div
-                    className="absolute bg-white opacity-80"
+                    className="absolute bg-[#facc15] opacity-90"
                     style={{
                       top: `calc(50% - 1px)`,
                       left: `calc(100% - 1px)`,
@@ -374,8 +365,8 @@ export function ItalyMap() {
                   />
                   <ArrowRight 
                     size={28} 
-                    strokeWidth={2} 
-                    className="absolute text-white opacity-80" 
+                    strokeWidth={2.5} 
+                    className="absolute text-[#facc15]" 
                     style={{
                       top: `50%`,
                       left: `calc(115% - 12px)`, 
@@ -427,33 +418,31 @@ export function ItalyMap() {
 
           <div className="lg:col-span-2 relative flex items-center justify-center min-h-[400px]">
             {sel ? (
-              <div key={sel.id} className="w-full bg-[#01425f]/40 backdrop-blur-xl border border-[#0e7490]/50 rounded-3xl p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] animate-card relative z-20">
-                <h3 className="text-4xl font-bold text-[#facc15] mb-6 tracking-wide drop-shadow-md">
+              <div key={sel.id} className="w-full bg-white border-2 border-[#facc15] rounded-3xl p-8 shadow-xl animate-card relative z-20">
+                <h3 className="text-4xl font-extrabold text-[#1da1db] mb-6 tracking-wide">
                   {sel.id}
                 </h3>
                 
-                <div className="w-full h-56 bg-[#011C27] rounded-2xl overflow-hidden relative border border-white/10 group shadow-inner">
+                <div className="w-full h-56 bg-[#012b3a] rounded-2xl overflow-hidden relative border border-[#facc15] group shadow-sm">
                   <img 
                     src={sel.image} 
                     alt={`Sede operativa FI.CO. in ${sel.id}`} 
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" 
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#011C27] via-[#011C27]/20 to-transparent opacity-90" />
-                  
                 </div>
                 
-                <p className="mt-6 text-[17px] text-gray-200 leading-relaxed text-justify">
+                <p className="mt-6 text-[17px] text-[#00779b] leading-relaxed">
                   {sel.desc}
                 </p>
 
               </div>
             ) : (
-              <div className="w-full h-[400px] flex flex-col items-center justify-center p-8 border-2 border-dashed border-[#0e7490]/50 rounded-3xl text-center bg-[#01425f]/10 animate-fade-in relative z-20">
-                <div className="w-16 h-16 rounded-full bg-[#011C27] flex items-center justify-center border border-[#0e7490]/30 mb-6 shadow-lg">
+              <div className="w-full h-[400px] flex flex-col items-center justify-center p-8 border-2 border-dashed border-[#facc15] rounded-3xl text-center bg-white shadow-md animate-fade-in relative z-20">
+                <div className="w-16 h-16 rounded-full bg-[#013a52] flex items-center justify-center border-2 border-[#facc15] mb-6 shadow-md">
                   <span className="w-4 h-4 rounded-full bg-[#facc15] animate-pulse shadow-[0_0_15px_rgba(250,189,24,0.8)]" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3">Scopri il territorio</h3>
-                <p className="text-gray-400 text-[16px] max-w-[250px]">
+                <h3 className="text-2xl font-extrabold text-[#012b3a] mb-3">Scopri il territorio</h3>
+                <p className="text-[#00779b] text-[16px] max-w-[250px]">
                   Clicca su un indicatore sulla mappa per scoprire i dettagli della nostra presenza e i progetti attivi.
                 </p>
               </div>

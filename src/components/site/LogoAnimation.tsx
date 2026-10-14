@@ -63,9 +63,6 @@ export function LogoAnimation({ className = "", onDotClick, dotLabels }: Props) 
     }
     resetAll();
 
-    // timing: [startFraction, durationFraction]
-    // Ogni arco occupa una finestra di ~0.45, dot pop appena finisce l'arco
-    // dot5 (Permitting): start 0.40, dur 0.42 → appare a 0.82 — ben prima della fine
     const TOTAL_DRAW = 2800;
     const POP_DUR = 0.1;
 
@@ -96,7 +93,7 @@ export function LogoAnimation({ className = "", onDotClick, dotLabels }: Props) 
         const [s, d] = timing[i];
         const appearStart = s + d;
         const appear = Math.max(0, Math.min(1, (drawT - appearStart) / POP_DUR));
-        const eased = easeOutBack(appear); // overshoot per effetto "pop"
+        const eased = easeOutBack(appear);
         const cx = parseFloat(dot.getAttribute("cx") ?? "0");
         const cy = parseFloat(dot.getAttribute("cy") ?? "0");
         dot.style.opacity = appear > 0 ? "1" : "0";
@@ -109,7 +106,6 @@ export function LogoAnimation({ className = "", onDotClick, dotLabels }: Props) 
       if (elapsed < TOTAL_DRAW) {
         rafId = requestAnimationFrame(animate);
       } else {
-        // assicura tutti i dot a scale(1) finale
         dots.forEach((dot) => {
           const cx = parseFloat(dot.getAttribute("cx") ?? "0");
           const cy = parseFloat(dot.getAttribute("cy") ?? "0");
@@ -126,7 +122,6 @@ export function LogoAnimation({ className = "", onDotClick, dotLabels }: Props) 
 
   return (
     <>
-      {/* CSS per hover ring e fade-in label */}
       <style>{`
         .fco-dot-btn {
           position: absolute;
@@ -145,28 +140,28 @@ export function LogoAnimation({ className = "", onDotClick, dotLabels }: Props) 
           position: absolute;
           inset: -6px;
           border-radius: 50%;
-          border: 2px solid rgba(240,182,24,0);
+          border: 2px solid rgba(250,204,21,0);
           transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
           transform: scale(0.85);
         }
         .fco-dot-btn:hover::before,
         .fco-dot-btn.hovered::before {
-          border-color: rgba(240,182,24,0.75);
+          border-color: rgba(250,204,21,0.95);
           transform: scale(1);
-          box-shadow: 0 0 14px 3px rgba(240,182,24,0.25);
+          box-shadow: 0 0 14px 3px rgba(250,204,21,0.35);
         }
         .fco-dot-btn::after {
           content: '';
           position: absolute;
           inset: -12px;
           border-radius: 50%;
-          border: 1.5px solid rgba(240,182,24,0);
+          border: 1.5px solid rgba(29,161,219,0);
           transition: border-color 0.25s ease 0.05s, transform 0.25s ease 0.05s;
           transform: scale(0.7);
         }
         .fco-dot-btn:hover::after,
         .fco-dot-btn.hovered::after {
-          border-color: rgba(240,182,24,0.30);
+          border-color: rgba(29,161,219,0.45);
           transform: scale(1);
         }
         @keyframes fco-label-in {
@@ -196,24 +191,24 @@ export function LogoAnimation({ className = "", onDotClick, dotLabels }: Props) 
         >
           <defs>
             <linearGradient id="lg1" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#0B5A87" />
-              <stop offset="100%" stopColor="#1675A7" />
+              <stop offset="0%" stopColor="#00779b" />
+              <stop offset="100%" stopColor="#1da1db" />
             </linearGradient>
             <linearGradient id="lg2" x1="100%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stopColor="#18A9C0" />
-              <stop offset="100%" stopColor="#2585BC" />
+              <stop offset="0%" stopColor="#00b4d8" />
+              <stop offset="100%" stopColor="#1da1db" />
             </linearGradient>
             <linearGradient id="lg3" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#0B5A87" />
-              <stop offset="100%" stopColor="#1675A7" />
+              <stop offset="0%" stopColor="#0a5c75" />
+              <stop offset="100%" stopColor="#00779b" />
             </linearGradient>
             <linearGradient id="lg4" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#1675A7" />
-              <stop offset="100%" stopColor="#2585BC" />
+              <stop offset="0%" stopColor="#00779b" />
+              <stop offset="100%" stopColor="#1da1db" />
             </linearGradient>
             <linearGradient id="lg6" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#2585BC" />
-              <stop offset="100%" stopColor="#1675A7" />
+              <stop offset="0%" stopColor="#1da1db" />
+              <stop offset="100%" stopColor="#00779b" />
             </linearGradient>
           </defs>
 
@@ -273,15 +268,15 @@ export function LogoAnimation({ className = "", onDotClick, dotLabels }: Props) 
           />
 
           {/* Nodo origine – sempre visibile */}
-          <circle cx="290" cy="490" r="22" fill="#F0B618" />
+          <circle cx="290" cy="490" r="22" fill="#f5b800" />
 
           {/* Endpoint dots – animati via JS */}
-          <circle data-dot="0" cx="120" cy="120" r="22" fill="#F0B618" />
-          <circle data-dot="1" cx="60" cy="305" r="22" fill="#F0B618" />
-          <circle data-dot="2" cx="90" cy="500" r="22" fill="#F0B618" />
-          <circle data-dot="3" cx="530" cy="100" r="22" fill="#F0B618" />
-          <circle data-dot="4" cx="820" cy="415" r="22" fill="#F0B618" />
-          <circle data-dot="5" cx="860" cy="180" r="22" fill="#F0B618" />
+          <circle data-dot="0" cx="120" cy="120" r="22" fill="#f5b800" />
+          <circle data-dot="1" cx="60" cy="305" r="22" fill="#f5b800" />
+          <circle data-dot="2" cx="90" cy="500" r="22" fill="#f5b800" />
+          <circle data-dot="3" cx="530" cy="100" r="22" fill="#f5b800" />
+          <circle data-dot="4" cx="820" cy="415" r="22" fill="#f5b800" />
+          <circle data-dot="5" cx="860" cy="180" r="22" fill="#f5b800" />
         </svg>
 
         {/* Overlay cliccabile con hover ring */}
@@ -303,7 +298,7 @@ export function LogoAnimation({ className = "", onDotClick, dotLabels }: Props) 
             />
           ))}
 
-        {/* Label con fade-in a fine animazione e stagger */}
+        {/* Label con fade-in a fine animazione e stagger (Tema Chiaro) */}
         {labelsVisible &&
           dotLabels?.map((label, i) => (
             <div
@@ -315,18 +310,18 @@ export function LogoAnimation({ className = "", onDotClick, dotLabels }: Props) 
                 left: `${(DOT_POSITIONS[i].cx / VIEWBOX.w) * 100}%`,
                 top: `${(DOT_POSITIONS[i].cy / VIEWBOX.h) * 100}%`,
                 transform: "translate(-50%, -180%)",
-                background: "rgba(0,45,75,0.88)",
-                border: "1px solid rgba(0,153,242,0.4)",
+                background: "rgba(255, 255, 255, 0.96)",
+                border: "1.5px solid #facc15",
                 borderRadius: 999,
-                padding: "5px 13px",
-                color: "#E8F4FB",
+                padding: "5px 14px",
+                color: "#012b3a",
                 fontSize: 11.5,
-                fontWeight: 600,
+                fontWeight: 700,
                 letterSpacing: "0.03em",
                 whiteSpace: "nowrap",
                 pointerEvents: "none",
                 backdropFilter: "blur(12px)",
-                boxShadow: "0 4px 16px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,153,242,0.1) inset",
+                boxShadow: "0 4px 16px rgba(1, 43, 58, 0.12)",
                 zIndex: 10,
               }}
             >
