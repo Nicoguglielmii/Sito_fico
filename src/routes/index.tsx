@@ -107,7 +107,7 @@ function Index() {
         <div className="container-x relative z-10 flex flex-col items-start text-left w-full">
           <Reveal delay={100}>
             <h1 className="font-[var(--font-display)] text-4xl sm:text-5xl md:text-7xl lg:text-[84px] font-extrabold leading-[1.05] tracking-tight text-[#012b3a] max-w-5xl pb-2 mt-4 sm:mt-0">
-              Tutto parte da una <span className="text-[#1da1db]">connessione.</span>
+             <span className="text-[#1da1db]"> Tutto parte da una connessione</span>
             </h1>
           </Reveal>
           <Reveal delay={200}>
@@ -157,8 +157,8 @@ function Index() {
             <div className="max-w-4xl text-left">
               <Reveal>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-[var(--font-display)] text-[#012b3a] pb-2">
-                  Dalla complessità,<br />
-                  una direzione <span className="text-[#0a5c75]">chiara.</span>
+                  <br /><span className="text-[#0a5c75]">Dalla complessità,
+                  una direzione chiara</span>
                 </h2>
                 <div className="mt-6 sm:mt-8 space-y-4 sm:space-y-6 text-[#00779b] text-base sm:text-lg md:text-xl leading-relaxed">
                   <p>
@@ -178,7 +178,7 @@ function Index() {
             <Reveal>
               <div className="mb-8 md:mb-12">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tight text-[#012b3a] pb-2">
-                  Tre aree, un unico <span className="text-[#0a5c75]">approccio.</span>
+                 <span className="text-[#0a5c75]"> Tre aree, un unico approccio</span>
                 </h2>
                 <p className="mt-4 sm:mt-6 max-w-3xl text-base sm:text-lg md:text-xl text-[#3b8ea5] leading-relaxed">
                   Competenze diverse, lo stesso metodo: comprendere il contesto, progettare con precisione e portare ogni attività verso un risultato concreto.
