@@ -6,6 +6,7 @@ import networkingImg from "@/assets/project-it.jpg";
 import energiaImg from "@/assets/Energia.jpg";
 import { Reveal } from "@/components/site/Reveal";
 import { HeroParticles } from "@/components/site/Interactive";
+import { FicoImage } from "@/components/site/FicoImage";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -24,7 +25,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// Pittogramma interattivo mantenuto intatto nella logica GSAP, aggiornato con il bagliore giallo del nuovo mockup
 function InteractiveHeroLogo() {
   const container = useRef<HTMLDivElement>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
@@ -52,7 +52,6 @@ function InteractiveHeroLogo() {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Bagliore giallo/oro centrale come in FICO_WEBSITE_1 */}
       <div className="absolute inset-0 bg-[#facc15]/35 rounded-full blur-[60px] sm:blur-[80px] group-hover:bg-[#facc15]/50 transition-colors duration-[2000ms] pointer-events-none" />
       
       <svg viewBox="0 -40 170 170" className="w-full h-auto overflow-hidden sm:overflow-visible z-10 relative px-4 sm:px-0">
@@ -101,7 +100,7 @@ function Index() {
   return (
     <div className="bg-white w-full max-w-[100vw] min-h-screen overflow-x-hidden flex flex-col">
       
-      {/* HERO SECTION (FICO_WEBSITE_1) */}
+      {/* HERO SECTION */}
       <section className="relative pt-28 sm:pt-36 lg:pt-44 pb-8 sm:pb-12 flex flex-col justify-center overflow-hidden w-full max-w-[100vw] bg-white">
         <HeroParticles />
 
@@ -144,7 +143,7 @@ function Index() {
         </div>
       </section>
 
-      {/* CONTENUTO CENTRALE CON PATTERN DI PUNTINI GIALLI (FICO_WEBSITE_2, 3, 6) */}
+      {/* CONTENUTO CENTRALE CON PATTERN DI PUNTINI GIALLI */}
       <div
         className="w-full"
         style={{
@@ -195,10 +194,11 @@ function Index() {
                     to="/servizi/fibra-mobile"
                     className="block group overflow-hidden rounded-3xl w-full shadow-md"
                   >
-                    <img
+                    <FicoImage
                       src={fibraMobileImg}
                       alt="Fibra & Mobile"
-                      className="w-full h-auto max-h-[480px] object-cover transition-transform duration-500 group-hover:scale-105"
+                      variant={1}
+                      className="w-full h-[280px] sm:h-[380px] md:h-[460px] rounded-3xl"
                     />
                   </Link>
                   <div className="max-w-4xl text-left pt-2">
@@ -225,10 +225,11 @@ function Index() {
                     to="/servizi/it-software"
                     className="block group overflow-hidden rounded-3xl w-full shadow-md"
                   >
-                    <img
+                    <FicoImage
                       src={networkingImg}
                       alt="IT, Networking & Software"
-                      className="w-full h-auto max-h-[480px] object-cover transition-transform duration-500 group-hover:scale-105"
+                      variant={2}
+                      className="w-full h-[280px] sm:h-[380px] md:h-[460px] rounded-3xl"
                     />
                   </Link>
                   <div className="max-w-4xl text-left pt-2">
@@ -248,14 +249,15 @@ function Index() {
                 </div>
               </Reveal>
 
-              {/* 3. ENERGIA (FICO_WEBSITE_6) */}
+              {/* 3. ENERGIA */}
               <Reveal delay={300}>
                 <div className="flex flex-col gap-5 relative">
                   <div className="overflow-hidden rounded-3xl w-full shadow-md">
-                    <img
+                    <FicoImage
                       src={energiaImg}
                       alt="Energia"
-                      className="w-full h-auto max-h-[480px] object-cover"
+                      variant={3}
+                      className="w-full h-[280px] sm:h-[380px] md:h-[460px] rounded-3xl"
                     />
                   </div>
                   <div className="max-w-4xl text-left pt-2">
@@ -291,7 +293,7 @@ function Index() {
           </div>
         </section>
 
-        {/* IL NOSTRO METODO (FICO_WEBSITE_6) */}
+        {/* IL NOSTRO METODO */}
         <section className="pt-8 md:pt-12 pb-12 md:pb-16 relative z-20 w-full overflow-hidden">
           <div className="container-x">
             <div className="max-w-3xl mb-12 md:mb-16 text-left">

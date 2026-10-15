@@ -115,6 +115,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:image", content: "/fico-logo.png" },
     ],
     links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap",
+      },
       {
         rel: "stylesheet",
         href: appCss,
@@ -136,6 +142,18 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="it">
       <head>
         <HeadContent />
+        <style>{`
+          :root {
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+          }
+          body, html, h1, h2, h3, h4, h5, h6, p, a, span, button, input, textarea {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+          }
+          h1, h2, h3 {
+            letter-spacing: -0.025em;
+          }
+        `}</style>
       </head>
       <body className="overflow-x-hidden bg-white text-[#012b3a] antialiased w-full h-full m-0 p-0">
         {children}

@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { HeroParticles } from "@/components/site/Interactive";
+import { FicoImage } from "@/components/site/FicoImage";
 
 import fibraMobileImg from "@/assets/fibraotticaemobile.jpg";
 import networkingImg from "@/assets/networking.jpg";
@@ -55,10 +56,11 @@ function ServiziIndex() {
 
             <div className="w-full lg:w-1/2">
               <Reveal delay={150}>
-                <img 
+                <FicoImage 
                   src={infrastruttureImg} 
                   alt="Dalle infrastrutture al software" 
-                  className="w-full h-auto aspect-video lg:aspect-auto lg:h-[400px] object-cover rounded-3xl shadow-lg" 
+                  variant={1}
+                  className="w-full aspect-video lg:aspect-auto lg:h-[400px] rounded-3xl shadow-lg" 
                 />
               </Reveal>
             </div>
@@ -93,10 +95,11 @@ function ServiziIndex() {
                   to="/servizi/fibra-mobile" 
                   className="block group overflow-hidden shrink-0 rounded-3xl w-full md:max-w-[400px] lg:max-w-[480px] shadow-md"
                 >
-                  <img
+                  <FicoImage
                     src={fibraMobileImg}
                     alt="Fibra & Mobile"
-                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                    variant={1}
+                    className="w-full aspect-video rounded-3xl"
                   />
                 </Link>
                 <div className="flex-1 flex flex-col justify-center text-left">
@@ -120,10 +123,11 @@ function ServiziIndex() {
                   to="/servizi/it-software" 
                   className="block group overflow-hidden shrink-0 rounded-3xl w-full md:max-w-[400px] lg:max-w-[480px] shadow-md"
                 >
-                  <img
+                  <FicoImage
                     src={networkingImg}
                     alt="IT, Networking & Software"
-                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                    variant={2}
+                    className="w-full aspect-video rounded-3xl"
                   />
                 </Link>
                 <div className="flex-1 flex flex-col justify-center text-left">
@@ -144,10 +148,11 @@ function ServiziIndex() {
             <Reveal delay={300}>
               <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 py-8 border-b border-[#facc15] last:border-b-0 relative">
                 <div className="overflow-hidden shrink-0 rounded-3xl w-full md:max-w-[400px] lg:max-w-[480px] shadow-md">
-                  <img
+                  <FicoImage
                     src={energiaImg}
                     alt="Energia"
-                    className="w-full h-auto object-cover"
+                    variant={3}
+                    className="w-full aspect-video rounded-3xl"
                   />
                 </div>
                 <div className="flex-1 flex flex-col justify-center text-left">
@@ -190,10 +195,11 @@ function ServiziIndex() {
             <Reveal delay={100}>
               <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
                 <div className="w-full md:w-1/2">
-                  <img 
+                  <FicoImage 
                     src={operatoriImg} 
                     alt="Operatori" 
-                    className="w-full aspect-[4/3] md:aspect-auto md:h-[350px] object-cover rounded-3xl shadow-lg" 
+                    variant={1}
+                    className="w-full aspect-[4/3] md:aspect-auto md:h-[350px] rounded-3xl shadow-lg" 
                   />
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
@@ -211,10 +217,11 @@ function ServiziIndex() {
             <Reveal delay={200}>
               <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
                 <div className="w-full md:w-1/2">
-                  <img 
+                  <FicoImage 
                     src={paImg} 
                     alt="Pubbliche Amministrazioni" 
-                    className="w-full aspect-[4/3] md:aspect-auto md:h-[350px] object-cover rounded-3xl shadow-lg" 
+                    variant={2}
+                    className="w-full aspect-[4/3] md:aspect-auto md:h-[350px] rounded-3xl shadow-lg" 
                   />
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
@@ -232,10 +239,11 @@ function ServiziIndex() {
             <Reveal delay={300}>
               <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
                 <div className="w-full md:w-1/2">
-                  <img 
+                  <FicoImage 
                     src={privatiImg} 
                     alt="Imprese e Privati" 
-                    className="w-full aspect-[4/3] md:aspect-auto md:h-[350px] object-cover rounded-3xl shadow-lg" 
+                    variant={3}
+                    className="w-full aspect-[4/3] md:aspect-auto md:h-[350px] rounded-3xl shadow-lg" 
                   />
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col justify-center text-left">

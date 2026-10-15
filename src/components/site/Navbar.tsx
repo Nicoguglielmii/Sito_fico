@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X, ChevronDown, Home, Building2, Briefcase, Phone } from "lucide-react";
+import { FicoImage } from "@/components/site/FicoImage";
 
 import fibraMobileImg from "@/assets/fibraotticaemobile.jpg";
 import networkingImg from "@/assets/networking.jpg";
@@ -20,7 +21,7 @@ export function Navbar() {
   const handleNavClick = (e: React.MouseEvent, path: string) => {
     if (window.location.pathname === path) {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
     closeAllMenus();
   };
@@ -31,9 +32,9 @@ export function Navbar() {
   ];
 
   const serviziMenu = [
-    { name: "Fibra & Mobile", path: "/servizi/fibra-mobile", image: fibraMobileImg, active: true },
-    { name: "IT & Software", path: "/servizi/it-software", image: networkingImg, active: true },
-    { name: "Energia", path: "#", image: energiaImg, active: false },
+    { name: "Fibra & Mobile", path: "/servizi/fibra-mobile", image: fibraMobileImg, active: true, variant: 1 as const },
+    { name: "IT & Software", path: "/servizi/it-software", image: networkingImg, active: true, variant: 2 as const },
+    { name: "Energia", path: "#", image: energiaImg, active: false, variant: 3 as const },
   ];
 
   return (
@@ -95,7 +96,12 @@ export function Navbar() {
                   e.stopPropagation();
                   setIsDesktopServiziOpen(!isDesktopServiziOpen);
                 }}
-                className="p-1.5 rounded-lg bg-[#012b3a] border border-[#facc15] text-[#facc15] hover:bg-[#013a52] outline-none transition-colors"
+                aria-label="Apri menu Servizi"
+                className={`p-1.5 rounded-xl border transition-all outline-none ${
+                  isDesktopServiziOpen
+                    ? "bg-[#f5d000] border-[#facc15] text-[#012b3a]"
+                    : "bg-white border-[#facc15] text-[#1da1db] hover:bg-[#f5d000] hover:text-[#012b3a]"
+                }`}
               >
                 <ChevronDown
                   size={16}
@@ -121,22 +127,24 @@ export function Navbar() {
                       onClick={(e) => handleNavClick(e, item.path)}
                       className="flex flex-col gap-3 p-3 rounded-xl hover:bg-[#1da1db]/5 text-[#012b3a] group transition-all"
                     >
-                      <div className="w-full aspect-video rounded-xl overflow-hidden border border-[#facc15]/40 shadow-sm">
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        />
-                      </div>
+                      <FicoImage
+                        src={item.image}
+                        alt={item.name}
+                        variant={item.variant}
+                        className="w-full aspect-video rounded-xl shadow-sm"
+                      />
                       <span className="font-bold text-base text-[#1da1db] group-hover:text-[#012b3a] transition-colors">
                         {item.name}
                       </span>
                     </Link>
                   ) : (
                     <div key={item.name} className="flex flex-col gap-3 p-3 rounded-xl cursor-not-allowed">
-                      <div className="w-full aspect-video rounded-xl overflow-hidden border border-gray-200 shadow-sm relative">
-                        <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                      </div>
+                      <FicoImage
+                        src={item.image}
+                        alt={item.name}
+                        variant={item.variant}
+                        className="w-full aspect-video rounded-xl shadow-sm"
+                      />
                       <div className="flex items-center justify-between">
                         <span className="font-bold text-base text-[#00779b]">{item.name}</span>
                         <span className="bg-[#1da1db] text-white text-[9px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
@@ -161,7 +169,7 @@ export function Navbar() {
         <div className="hidden md:block w-[120px] shrink-0"></div>
       </nav>
 
-      {/* Sidebar Mobile / Drawer Laterale (FICO_WEBSITE_2) */}
+      {/* Sidebar Mobile / Drawer Laterale */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/25 backdrop-blur-xs z-[9999] transition-opacity"
@@ -174,7 +182,6 @@ export function Navbar() {
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        {/* Intestazione della sidebar */}
         <div className="flex justify-between items-start p-6 border-b border-[#facc15] shrink-0">
           <div className="flex flex-col gap-7">
             <img src="/fico-logo.png" alt="FI.CO. SRL" className="h-12 w-auto object-contain" />
@@ -197,7 +204,7 @@ export function Navbar() {
             </Link>
           ))}
 
-          {/* Dropdown Servizi nella Sidebar */}
+          {/* Dropdown Servizi nella Sidebar Mobile */}
           <div className="flex flex-col">
             <div className="flex items-center justify-between mb-2">
               <Link
@@ -209,7 +216,12 @@ export function Navbar() {
               </Link>
               <button
                 onClick={() => setIsMobileServiziOpen(!isMobileServiziOpen)}
-                className="w-10 h-10 flex items-center justify-center text-[#facc15] bg-[#012b3a] border border-[#facc15] rounded-xl shadow-sm"
+                aria-label="Espandi Servizi"
+                className={`w-10 h-10 flex items-center justify-center border rounded-xl shadow-xs transition-all ${
+                  isMobileServiziOpen
+                    ? "bg-[#f5d000] border-[#facc15] text-[#012b3a]"
+                    : "bg-white border-[#facc15] text-[#1da1db] hover:bg-[#f5d000] hover:text-[#012b3a]"
+                }`}
               >
                 <ChevronDown
                   size={22}
@@ -232,19 +244,21 @@ export function Navbar() {
                       onClick={(e) => handleNavClick(e, item.path)}
                       className="flex flex-col gap-2 text-base text-[#012b3a] group"
                     >
-                      <div className="w-full aspect-video shrink-0 rounded-2xl overflow-hidden shadow-sm">
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
+                      <FicoImage
+                        src={item.image}
+                        alt={item.name}
+                        variant={item.variant}
+                        className="w-full aspect-video shrink-0 rounded-2xl shadow-sm"
+                      />
                     </Link>
                   ) : (
                     <div key={item.name} className="flex flex-col gap-2 text-base cursor-not-allowed">
-                      <div className="w-full aspect-video shrink-0 rounded-2xl overflow-hidden shadow-sm">
-                        <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                      </div>
+                      <FicoImage
+                        src={item.image}
+                        alt={item.name}
+                        variant={item.variant}
+                        className="w-full aspect-video shrink-0 rounded-2xl shadow-sm"
+                      />
                       <div className="flex items-center justify-end mt-1">
                         <span className="bg-[#1da1db] text-white text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                           In Sviluppo
@@ -265,7 +279,6 @@ export function Navbar() {
             <Phone size={22} /> Contatti
           </Link>
 
-          {/* Footer della sidebar */}
           <div className="mt-auto pt-10 flex flex-col items-start">
             <p className="text-[12px] text-[#00779b] leading-relaxed mb-5">
               Telecomunicazioni, reti in fibra ottica, ingegneria, permitting e servizi IT per enti pubblici e privati.

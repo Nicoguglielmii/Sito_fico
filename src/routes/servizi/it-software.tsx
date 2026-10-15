@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { HeroParticles } from "@/components/site/Interactive";
+import { FicoImage } from "@/components/site/FicoImage";
 
 import netwImg from "@/assets/netw.jpg";
 import itservicesImg from "@/assets/itservices.jpg";
@@ -18,6 +19,7 @@ function ItSoftwarePage() {
       subtitle: "CONNESSIONI SOLIDE ED EFFICIENTI",
       desc: "Progettiamo, installiamo e supportiamo le infrastrutture che permettono a sistemi, persone e dati di restare connessi.",
       image: netwImg,
+      variant: 2 as const,
       activities: [
         "Installazione e manutenzione di apparati networking",
         "Progettazione e gestione delle reti",
@@ -30,6 +32,7 @@ function ItSoftwarePage() {
       subtitle: "CONTINUITÀ OPERATIVA, OGNI GIORNO",
       desc: "Gestiamo servizi e attività di supporto IT secondo livelli e modalità concordati con il cliente.",
       image: itservicesImg,
+      variant: 1 as const,
       activities: [
         "Assistenza hardware e software",
         "Reperibilità H24 nei servizi contrattualizzati",
@@ -42,6 +45,7 @@ function ItSoftwarePage() {
       subtitle: "DAL CODICE ALL'APPLICAZIONE",
       desc: "Sviluppiamo internamente software, piattaforme e strumenti digitali progettati per rispondere a esigenze specifiche.",
       image: digitaldevelopmentImg,
+      variant: 3 as const,
       activities: [
         "Siti web e piattaforme digitali sviluppati su misura",
         "Programmi e strumenti per esigenze operative",
@@ -53,7 +57,7 @@ function ItSoftwarePage() {
   return (
     <div className="bg-white w-full min-h-screen pb-16 overflow-x-hidden selection:bg-[#facc15] selection:text-[#012b3a]">
       
-      {/* HERO (FICO_WEBSITE_5) */}
+      {/* HERO */}
       <section className="relative pt-32 md:pt-36 pb-12 md:pb-16 border-b border-[#facc15] overflow-hidden bg-white">
         <HeroParticles />
         <div className="container-x relative z-10 text-left">
@@ -87,10 +91,11 @@ function ItSoftwarePage() {
                   <div className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-8 md:gap-12 lg:gap-16`}>
                     
                     <div className="w-full md:w-1/2">
-                      <img 
-                        src={item.image} 
-                        alt={`${item.titleFirst}${item.titleHighlight}`} 
-                        className="w-full aspect-[4/3] md:aspect-auto md:h-[400px] object-cover rounded-3xl shadow-lg relative z-10" 
+                      <FicoImage
+                        src={item.image}
+                        alt={`${item.titleFirst}${item.titleHighlight}`}
+                        variant={item.variant}
+                        className="w-full aspect-[4/3] md:aspect-auto md:h-[400px] rounded-3xl shadow-lg"
                       />
                     </div>
 

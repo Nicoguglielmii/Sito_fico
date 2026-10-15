@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { HeroParticles } from "@/components/site/Interactive";
+import { FicoImage } from "@/components/site/FicoImage";
 
 import surveyImg from "@/assets/survey.webp";
 import netdesignImg from "@/assets/netdesign.png";
@@ -21,6 +22,7 @@ function FibraMobilePage() {
       subtitle: "Dal territorio al dato",
       desc: "Raccogliamo e organizziamo le informazioni necessarie per leggere correttamente il contesto e impostare il progetto su basi affidabili.",
       image: surveyImg,
+      variant: 1 as const,
       activities: ["Sopralluoghi e rilievi planimetrici", "Raccolta delle informazioni di campo", "Verifica delle infrastrutture esistenti", "Attività di walk-in e walk-out"]
     },
     {
@@ -29,6 +31,7 @@ function FibraMobilePage() {
       subtitle: "Dal dato al progetto",
       desc: "Trasformiamo i dati raccolti in una rete dimensionata, documentata e pronta per le successive fasi autorizzative e operative.",
       image: netdesignImg,
+      variant: 2 as const,
       activities: ["Studio e dimensionamento della rete", "Progettazione logica dei circuiti", "Progettazione delle infrastrutture", "Progettazione e gestione su sistemi GIS", "Scelta degli apparati trasmissivi", "Revisione e aggiornamento banche dati"]
     },
     {
@@ -37,6 +40,7 @@ function FibraMobilePage() {
       subtitle: "Dal progetto alle autorizzazioni",
       desc: "Gestiamo l'iter autorizzativo e i rapporti con pubbliche amministrazioni ed enti coinvolti nella realizzazione degli interventi.",
       image: entiImg,
+      variant: 3 as const,
       activities: ["Analisi vincoli urbanistici e paesaggistici", "Predisposizione istanze ed elaborati", "Acquisizione pareri tecnici", "Trasmissione pratiche e monitoraggio", "Gestione silenzio-assenso e conferenze"]
     },
     {
@@ -45,6 +49,7 @@ function FibraMobilePage() {
       subtitle: "Dal progetto all'implementazione",
       desc: "Coordiniamo le attività e gli interlocutori necessari a trasformare il progetto in un percorso operativo governato.",
       image: projectImg,
+      variant: 1 as const,
       activities: ["Gestione degli ordini di collegamento", "Analisi di tempi e costi", "Coordinamento fasi operative", "Supporto all'implementazione", "Monitoraggio dell'avanzamento", "Consuntivazione"]
     },
     {
@@ -53,6 +58,7 @@ function FibraMobilePage() {
       subtitle: "Il progetto diventa dato",
       desc: "Documentiamo il realizzato perché ogni informazione resti tracciabile, aggiornabile e utile nel tempo.",
       image: dataImg,
+      variant: 2 as const,
       activities: ["Redazione e caricamento As-Built", "Aggiornamento banche dati", "Gestione cartografia e dati alfanumerici", "Documentazione sui sistemi informatici"]
     },
     {
@@ -61,6 +67,7 @@ function FibraMobilePage() {
       subtitle: "La rete non finisce col progetto",
       desc: "Affianchiamo i clienti anche nelle attività successive alla realizzazione, attraverso manutenzione e supporto tecnico coerenti con il perimetro del progetto.",
       image: manutenzioneImg,
+      variant: 3 as const,
       activities: []
     }
   ];
@@ -91,10 +98,11 @@ function FibraMobilePage() {
   );
 
   const renderImageBlock = (item: typeof fasi[0]) => (
-    <img 
+    <FicoImage 
       src={item.image} 
       alt={`${item.titleFirst}${item.titleHighlight}`} 
-      className="w-full md:max-w-[500px] aspect-video md:aspect-[4/3] object-cover rounded-2xl md:rounded-3xl shadow-lg"
+      variant={item.variant}
+      className="w-full md:max-w-[500px] aspect-video md:aspect-[4/3] rounded-2xl md:rounded-3xl shadow-lg"
     />
   );
 
@@ -175,7 +183,6 @@ function FibraMobilePage() {
                   <Reveal key={item.subtitle} delay={100}>
                     <div className="relative flex flex-col md:flex-row md:items-center w-full">
                       
-                      {/* Nodo numerato stile cerchio blu notte con testo giallo */}
                       <div className="absolute left-5 md:left-1/2 top-0 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 z-10 flex justify-center mt-3 md:mt-0">
                         <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#013a52] border-2 md:border-4 border-[#facc15] flex items-center justify-center shadow-md">
                           <span className="fm-tabular-num text-sm md:text-lg font-extrabold text-[#facc15]">
@@ -184,13 +191,11 @@ function FibraMobilePage() {
                         </div>
                       </div>
 
-                      {/* MOBILE */}
                       <div className="md:hidden flex flex-col gap-6 pl-14 pr-0 w-full pt-2 relative z-20">
                         {renderImageBlock(item)}
                         {renderTextBlock(item)}
                       </div>
 
-                      {/* DESKTOP */}
                       <div className="hidden md:flex w-full items-center">
                         <div className="w-1/2 pr-12 lg:pr-16 flex justify-end">
                           {isEven ? renderTextBlock(item) : renderImageBlock(item)}
