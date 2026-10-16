@@ -107,7 +107,7 @@ function Index() {
         <div className="container-x relative z-10 flex flex-col items-start text-left w-full">
           <Reveal delay={100}>
             <h1 className="font-[var(--font-display)] text-4xl sm:text-5xl md:text-7xl lg:text-[84px] font-extrabold leading-[1.05] tracking-tight text-[#012b3a] max-w-5xl pb-2 mt-4 sm:mt-0">
-             <span className="text-[#1da1db]"> Tutto parte da una connessione</span>
+              Tutto parte da una connessione
             </h1>
           </Reveal>
           <Reveal delay={200}>
@@ -283,8 +283,7 @@ function Index() {
             <Reveal delay={400}>
               <div className="mt-12 sm:mt-16 text-left max-w-4xl">
                 <p className="text-xl sm:text-2xl md:text-3xl font-bold leading-snug text-[#013547]">
-                  Ricerca e innovazione attraversano{" "}
-                  <span className="text-[#1da1db]">
+                  <span className="text-[#1da1db]"> Ricerca e innovazione attraversano{" "}                 
                     ogni area, connettendo infrastrutture, dati e nuove tecnologie.
                   </span>
                 </p>
@@ -299,8 +298,8 @@ function Index() {
             <div className="max-w-3xl mb-12 md:mb-16 text-left">
               <Reveal>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-[var(--font-display)] text-[#012b3a] pb-2">
-                  Il risultato non è un <span className="text-[#0a5c75]">caso,</span>
-                  <br />è un processo.
+                  Il risultato non è un caso,
+                  <br />è un processo
                 </h2>
                 <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-[#00779b] leading-relaxed">
                   Ogni progetto parte da un'esigenza e prende forma attraverso passaggi chiari, responsabilità definite e risultati verificabili.
@@ -344,8 +343,8 @@ function Index() {
                   CIÒ CHE CI GUIDA
                 </span>
                 <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight font-[var(--font-display)] text-[#012b3a]">
-                  La tecnica è il punto di <span className="text-[#1da1db]">partenza,</span> <br />
-                  il valore è <span className="text-[#0a5c75]">l'obiettivo.</span>
+                  La tecnica è il punto di partenza, <br />
+                  il valore è l'obiettivo
                 </h2>
               </Reveal>
 
@@ -378,7 +377,7 @@ function Index() {
                   INIZIAMO DA QUI
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold max-w-3xl mx-auto leading-tight mb-4 sm:mb-6 font-[var(--font-display)] text-[#012b3a] pb-2">
-                  Il prossimo progetto parte da una <span className="text-[#1da1db]">conversazione.</span>
+                  Il prossimo progetto parte da unaconversazione.
                 </h2>
                 <p className="text-base sm:text-lg text-[#00779b] max-w-2xl mx-auto mb-8 sm:mb-10">
                   Raccontaci l'esigenza, il contesto o l'obiettivo. Metteremo in campo le competenze giuste per costruire un percorso chiaro, concreto e realizzabile.

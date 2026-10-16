@@ -17,8 +17,7 @@ export const Route = createFileRoute("/servizi/fibra-mobile")({
 function FibraMobilePage() {
   const fasi = [
     {
-      titleFirst: "Survey & ",
-      titleHighlight: "Rilievi",
+      titleFirst: "Survey & Rilievi ",
       subtitle: "Dal territorio al dato",
       desc: "Raccogliamo e organizziamo le informazioni necessarie per leggere correttamente il contesto e impostare il progetto su basi affidabili.",
       image: surveyImg,
@@ -26,8 +25,7 @@ function FibraMobilePage() {
       activities: ["Sopralluoghi e rilievi planimetrici", "Raccolta delle informazioni di campo", "Verifica delle infrastrutture esistenti", "Attività di walk-in e walk-out"]
     },
     {
-      titleFirst: "Network ",
-      titleHighlight: "Design",
+      titleFirst: "Network Design ",
       subtitle: "Dal dato al progetto",
       desc: "Trasformiamo i dati raccolti in una rete dimensionata, documentata e pronta per le successive fasi autorizzative e operative.",
       image: netdesignImg,
@@ -35,8 +33,7 @@ function FibraMobilePage() {
       activities: ["Studio e dimensionamento della rete", "Progettazione logica dei circuiti", "Progettazione delle infrastrutture", "Progettazione e gestione su sistemi GIS", "Scelta degli apparati trasmissivi", "Revisione e aggiornamento banche dati"]
     },
     {
-      titleFirst: "Permitting & ",
-      titleHighlight: "Rapporti Enti",
+      titleFirst: "Permitting & Rapporti Enti ",
       subtitle: "Dal progetto alle autorizzazioni",
       desc: "Gestiamo l'iter autorizzativo e i rapporti con pubbliche amministrazioni ed enti coinvolti nella realizzazione degli interventi.",
       image: entiImg,
@@ -44,8 +41,7 @@ function FibraMobilePage() {
       activities: ["Analisi vincoli urbanistici e paesaggistici", "Predisposizione istanze ed elaborati", "Acquisizione pareri tecnici", "Trasmissione pratiche e monitoraggio", "Gestione silenzio-assenso e conferenze"]
     },
     {
-      titleFirst: "Implementazione & ",
-      titleHighlight: "PM",
+      titleFirst: "Implementazione & PM",
       subtitle: "Dal progetto all'implementazione",
       desc: "Coordiniamo le attività e gli interlocutori necessari a trasformare il progetto in un percorso operativo governato.",
       image: projectImg,
@@ -53,8 +49,7 @@ function FibraMobilePage() {
       activities: ["Gestione degli ordini di collegamento", "Analisi di tempi e costi", "Coordinamento fasi operative", "Supporto all'implementazione", "Monitoraggio dell'avanzamento", "Consuntivazione"]
     },
     {
-      titleFirst: "As-Built & ",
-      titleHighlight: "Data Management",
+      titleFirst: "As-Built & Data Management",
       subtitle: "Il progetto diventa dato",
       desc: "Documentiamo il realizzato perché ogni informazione resti tracciabile, aggiornabile e utile nel tempo.",
       image: dataImg,
@@ -62,8 +57,8 @@ function FibraMobilePage() {
       activities: ["Redazione e caricamento As-Built", "Aggiornamento banche dati", "Gestione cartografia e dati alfanumerici", "Documentazione sui sistemi informatici"]
     },
     {
-      titleFirst: "Manutenzione & ",
-      titleHighlight: "Supporto",
+      titleFirst: "Manutenzione & Supporto",
+
       subtitle: "La rete non finisce col progetto",
       desc: "Affianchiamo i clienti anche nelle attività successive alla realizzazione, attraverso manutenzione e supporto tecnico coerenti con il perimetro del progetto.",
       image: manutenzioneImg,
@@ -80,7 +75,6 @@ function FibraMobilePage() {
         </span>
         <h3 className="text-2xl md:text-3xl font-extrabold text-[#012b3a] pb-1">
           {item.titleFirst}
-          <span className="text-[#0a5c75]">{item.titleHighlight}</span>
         </h3>
       </div>
       <p className="text-[#00779b] text-base md:text-lg leading-relaxed mt-2">{item.desc}</p>
@@ -100,7 +94,7 @@ function FibraMobilePage() {
   const renderImageBlock = (item: typeof fasi[0]) => (
     <FicoImage 
       src={item.image} 
-      alt={`${item.titleFirst}${item.titleHighlight}`} 
+      alt={item.titleFirst.trim()}
       variant={item.variant}
       className="w-full md:max-w-[500px] aspect-video md:aspect-[4/3] rounded-2xl md:rounded-3xl shadow-lg"
     />
@@ -144,8 +138,8 @@ function FibraMobilePage() {
               </span>
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[80px] font-extrabold leading-[1.05] tracking-tight text-[#012b3a] max-w-4xl pb-2">
-              Progettiamo la <span className="text-[#1da1db]">rete.</span><br/>
-              Governiamo il <span className="text-[#0a5c75]">processo.</span>
+              Progettiamo la rete<br/>
+              Governiamo il processo
             </h1>
             <p className="mt-6 md:mt-8 text-base md:text-xl text-[#00779b] max-w-2xl leading-relaxed">
               Fi.Co. affianca operatori e imprese nelle diverse fasi di sviluppo delle infrastrutture di telecomunicazione. Dalla survey alla progettazione, dalla gestione autorizzativa al coordinamento, fino alla documentazione del realizzato.

@@ -78,7 +78,7 @@ function ChiSiamo() {
               FI.CO. / AZIENDA
             </span>
             <h1 className="mt-4 text-4xl sm:text-5xl md:text-7xl lg:text-[80px] font-[var(--font-display)] font-extrabold leading-[1.05] tracking-tight max-w-5xl text-[#012b3a] pb-2">
-              Siamo costruiti <br className="hidden md:block"/> per far crescere <span className="text-[#1da1db]">le idee.</span>
+             Siamo costruiti <br className="hidden md:block"/> per far crescere le idee
             </h1>
             <p className="mt-6 md:mt-8 text-base sm:text-lg md:text-xl text-[#00779b] max-w-2xl leading-relaxed">
               Competenze tecniche, organizzazione e visione per affrontare progetti in continua evoluzione.
@@ -103,7 +103,7 @@ function ChiSiamo() {
                 IDENTITÀ
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#012b3a] pb-2 mb-6 md:mb-8">
-                Da una competenza <br/> a una <span className="text-[#0a5c75]">struttura.</span>
+               <span className="text-[#0a5c75]"> Da una competenza <br/> a una struttura</span>
               </h2>
               <div className="space-y-4 md:space-y-5 text-[#00779b] text-base md:text-lg leading-relaxed">
                 <p>
@@ -149,7 +149,7 @@ function ChiSiamo() {
                 FI.CO. / BRAND IDENTITY
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#012b3a] pb-2 mb-6 md:mb-8">
-                Un nome. <br/> Molte <span className="text-[#1da1db]">connessioni.</span>
+              Un nome,<br/> Molte connessioni
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-[#00779b] leading-relaxed">
                 Fi.Co. è un'identità costruita intorno a un concetto semplice: connettere. Il nome, il pittogramma e il linguaggio visivo nascono da punti, nodi e linee: elementi che raccontano il modo in cui mettiamo in relazione persone, competenze, aziende e opportunità.
@@ -170,7 +170,7 @@ function ChiSiamo() {
               <Reveal delay={100}>
                 <div>
                   <h3 className="text-3xl md:text-4xl font-extrabold text-[#012b3a] mb-3">
-                    Tre punti. <span className="text-[#1da1db]">Infinite connessioni.</span>
+                    Tre punti. Infinite connessioni
                   </h3>
                   <p className="text-[#00779b] text-sm md:text-base leading-relaxed">
                     Il pittogramma nasce dai tre punti presenti nel logotipo e dalla loro connessione attraverso linee curve. Il risultato è un segno espressivo e aperto, capace di assumere significati differenti a seconda del contesto.
@@ -253,7 +253,7 @@ function ChiSiamo() {
             <Reveal>
               <div>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#012b3a] pb-2 mb-6">
-                  Tecnica nel metodo. <br/> <span className="text-[#0a5c75]">Trasversale nelle competenze.</span>
+                <span className="text-[#0a5c75]">  Tecnica nel metodo. <br/> Trasversale nelle competenze.</span>
                 </h2>
                 <div className="space-y-4 text-[#00779b] text-base md:text-lg leading-relaxed">
                   <p>
@@ -315,7 +315,7 @@ function ChiSiamo() {
           <Reveal>
             <div className="text-left max-w-3xl mb-12 md:mb-16">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#012b3a] pb-2 mb-4 md:mb-6">
-                Ogni risultato <br/> nasce da un <span className="text-[#1da1db]">sistema.</span>
+                Ogni risultato <br/> nasce da un sistema.
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-[#00779b] leading-relaxed">
                 Un progetto efficace non dipende soltanto dalla competenza tecnica. Richiede persone, processi, coordinamento, controllo e capacità di adattarsi alle condizioni reali.

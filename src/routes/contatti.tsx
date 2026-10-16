@@ -14,7 +14,7 @@ function ContactFormVisual() {
       <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#facc15]/20 to-transparent blur-3xl rounded-full pointer-events-none" />
       
       <div className="mb-6 relative z-10">
-        <h3 className="text-3xl font-bold text-[#1da1db] mb-2">Richiedi una consulenza</h3>
+        <h2 className="text-3xl md:text-4xl font-extrabold text-[#012b3a] mb-4">Richiedi una consulenza</h2>
         <p className="text-[#00779b] text-[15px]">
           Raccontaci il tuo progetto: ti ricontatteremo per un confronto tecnico.
         </p>
@@ -87,7 +87,7 @@ function ContattiPage() {
           
           <h1 className="mt-4 text-5xl md:text-7xl font-extrabold leading-tight md:leading-[1.1] text-[#012b3a] pb-2">
             Parliamo del tuo <br className="hidden md:block" />
-            <span className="text-[#1da1db]">prossimo progetto.</span>
+            prossimo progetto
           </h1>
           
           <p className="mt-4 md:mt-6 text-lg md:text-xl text-[#00779b] leading-relaxed max-w-3xl">
@@ -110,7 +110,7 @@ function ContattiPage() {
           <div className="flex flex-col gap-10">
             <div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-[#012b3a] mb-4">
-                FI.CO. <span className="text-[#0a5c75]">SRL</span>
+                FI.CO. SRL
               </h2>
               <p className="text-[#00779b] text-lg leading-relaxed">
                 Siamo pronti ad ascoltare le tue esigenze e a trasformarle in soluzioni concrete. Contattaci senza impegno.
@@ -137,8 +137,9 @@ function ContattiPage() {
                 <div className="w-12 h-12 rounded-full bg-[#013a52] flex items-center justify-center shrink-0 text-[#facc15] shadow-md transition-transform duration-300 group-hover:scale-105">
                   <Phone size={22} />
                 </div>
-                <div className="pt-2">
-                  <a href="tel:+393757932669" className="text-[17px] font-bold text-[#012b3a] hover:text-[#1da1db] transition-colors">
+                <div className="pt-2 flex flex-wrap items-center gap-x-2">
+                  <span className="text-[16px] font-bold text-[#012b3a]">Telefono:</span>
+                  <a href="tel:+393757932669" className="text-[16px] text-[#00779b] hover:text-[#1da1db] transition-colors">
                     +39 375 793 2669
                   </a>
                 </div>
@@ -167,7 +168,7 @@ function ContattiPage() {
                   <Send size={20} />
                 </div>
                 <div className="pt-2 flex flex-wrap items-center gap-2 min-w-0 flex-1">
-                  <span className="text-[#00779b] font-bold text-sm">PEC:</span>
+                  <span className="text-[16px] font-bold text-[#012b3a]">PEC:</span>
                   <a href="mailto:fi.co.srl@pec.it" className="text-[16px] font-bold text-[#012b3a] hover:text-[#1da1db] transition-colors break-all md:break-normal">fi.co.srl@pec.it</a>
                 </div>
               </div>
@@ -178,9 +179,9 @@ function ContattiPage() {
                   <FileText size={22} />
                 </div>
                 <div className="pt-1">
-                  <p className="text-[15px] font-semibold text-[#00779b] leading-snug">
-                    P.IVA 08964920725<br/>
-                    Cod. SDI: QULXG4S
+                  <p className="text-[15px] font-semibold leading-snug">
+                    <span className="text-[#012b3a]">P.IVA 08964920725</span><br/>
+                    <span className="text-[#00779b] font-normal">Cod. SDI: QULXG4S</span>
                   </p>
                 </div>
               </div>

@@ -29,7 +29,7 @@ function ServiziIndex() {
               I NOSTRI SERVIZI
             </span>
             <h1 className="mt-4 text-4xl sm:text-5xl md:text-7xl lg:text-[80px] font-extrabold leading-[1.05] tracking-tight text-[#012b3a] max-w-4xl pb-2">
-              Progettiamo, sviluppiamo, <span className="text-[#1da1db]">connettiamo.</span>
+              Progettiamo, sviluppiamo, connettiamo
             </h1>
             <p className="mt-6 md:mt-8 text-lg md:text-xl text-[#00779b] max-w-2xl leading-relaxed">
               Competenze tecniche e digitali per progettare infrastrutture, sviluppare strumenti e governare i processi dall'analisi al risultato.
@@ -46,7 +46,7 @@ function ServiziIndex() {
             <div className="w-full lg:w-1/2 text-left">
               <Reveal>
                 <h2 className="text-3xl md:text-5xl font-extrabold leading-tight font-[var(--font-display)] text-[#012b3a] pb-2 mb-6">
-                  Dalle infrastrutture al <span className="text-[#1da1db]">software.</span>
+                  Dalle infrastrutture al software
                 </h2>
                 <p className="text-[#00779b] text-lg md:text-xl leading-relaxed">
                   Fi.Co. opera attraverso competenze specialistiche unite dallo stesso metodo: comprendere un'esigenza, progettare una soluzione realizzabile e governarne ogni fase. Il nostro percorso nasce nelle telecomunicazioni e nella progettazione di reti in fibra ottica, per ampliarsi verso servizi IT, networking, sviluppo software e nuove opportunità nel settore energetico. Oggi lavoriamo su progetti nei quali infrastrutture, dati e tecnologia possono integrarsi per rispondere alle esigenze di operatori, imprese, enti e privati.
@@ -81,7 +81,7 @@ function ServiziIndex() {
           <div className="max-w-3xl mb-6 text-left">
             <Reveal>
               <h2 className="text-4xl md:text-5xl font-extrabold leading-tight font-[var(--font-display)] text-[#012b3a] pb-2">
-                Tre aree, un unico <span className="text-[#0a5c75]">approccio.</span>
+                Tre aree, un unico approccio
               </h2>
             </Reveal>
           </div>
@@ -104,7 +104,7 @@ function ServiziIndex() {
                 </Link>
                 <div className="flex-1 flex flex-col justify-center text-left">
                   <h3 className="text-3xl md:text-4xl font-extrabold mb-4 pb-1 text-[#013547]">
-                    Fibra & <span className="text-[#0a5c75]">Mobile</span>
+                    Fibra & Mobile
                   </h3>
                   <p className="text-[#00779b] text-lg leading-relaxed mb-6 max-w-2xl">
                     Dalla survey al network design, dal permitting all'implementazione, fino agli As-Built e al supporto operativo.
@@ -132,7 +132,7 @@ function ServiziIndex() {
                 </Link>
                 <div className="flex-1 flex flex-col justify-center text-left">
                   <h3 className="text-3xl md:text-4xl font-extrabold mb-4 pb-1 text-[#013547]">
-                    IT, Networking & <span className="text-[#0a5c75]">Software</span>
+                    IT, Networking & Software
                   </h3>
                   <p className="text-[#00779b] text-lg leading-relaxed mb-6 max-w-2xl">
                     Dall'infrastruttura fisica agli ambienti digitali, sviluppiamo e integriamo soluzioni tecnologiche per esigenze operative.
@@ -184,7 +184,7 @@ function ServiziIndex() {
           <div className="text-left max-w-4xl mb-12">
             <Reveal>
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-[var(--font-display)] text-[#012b3a] pb-2">
-                Competenze al servizio di <span className="text-[#1da1db]">contesti diversi.</span>
+                Competenze al servizio di contesti diversi
               </h2>
             </Reveal>
           </div>
@@ -226,7 +226,7 @@ function ServiziIndex() {
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
                   <h3 className="text-3xl md:text-4xl font-extrabold mb-4 pb-1 text-[#012b3a]">
-                    Pubbliche <span className="text-[#0a5c75]">Amministrazioni</span>
+                    Pubbliche Amministrazioni
                   </h3>
                   <p className="text-lg md:text-xl text-[#00779b] leading-relaxed">
                     Gestione autorizzativa, servizi tecnologici e soluzioni digitali integrate.
@@ -248,7 +248,7 @@ function ServiziIndex() {
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col justify-center text-left">
                   <h3 className="text-3xl md:text-4xl font-extrabold mb-4 pb-1 text-[#012b3a]">
-                    Imprese e <span className="text-[#0a5c75]">Privati</span>
+                    Imprese e Privati
                   </h3>
                   <p className="text-lg md:text-xl text-[#00779b] leading-relaxed">
                     Infrastrutture di rete, servizi IT, sviluppo web e consulenza tecnologica.
