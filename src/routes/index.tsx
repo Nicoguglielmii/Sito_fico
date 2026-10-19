@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Search, PenTool, GitMerge, FileText, TrendingUp } from "lucide-react";
 import fibraMobileImg from "@/assets/fibraotticaemobile.jpg";
 import networkingImg from "@/assets/project-it.jpg";
+import ascensoristicaImg from "@/assets/ascensoristica.jpg";
 import energiaImg from "@/assets/Energia.jpg";
 import { Reveal } from "@/components/site/Reveal";
 import { HeroParticles } from "@/components/site/Interactive";
@@ -178,7 +179,7 @@ function Index() {
             <Reveal>
               <div className="mb-8 md:mb-12">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tight text-[#012b3a] pb-2">
-                 <span className="text-[#0a5c75]"> Tre aree, un unico approccio</span>
+                 <span className="text-[#0a5c75]"> Quattro aree, un unico approccio</span>
                 </h2>
                 <p className="mt-4 sm:mt-6 max-w-3xl text-base sm:text-lg md:text-xl text-[#3b8ea5] leading-relaxed">
                   Competenze diverse, lo stesso metodo: comprendere il contesto, progettare con precisione e portare ogni attività verso un risultato concreto.
@@ -249,7 +250,38 @@ function Index() {
                 </div>
               </Reveal>
 
-              {/* 3. ENERGIA */}
+              {/* 3. PROGETTAZIONE ASCENSORISTICA */}
+              <Reveal delay={250}>
+                <div className="flex flex-col gap-5">
+                  <Link
+                    to="/servizi/ascensoristica"
+                    className="block group overflow-hidden rounded-3xl w-full shadow-md"
+                  >
+                    <FicoImage
+                      src={ascensoristicaImg}
+                      alt="Progettazione Ascensoristica"
+                      variant={1}
+                      className="w-full h-[280px] sm:h-[380px] md:h-[460px] rounded-3xl"
+                    />
+                  </Link>
+                  <div className="max-w-4xl text-left pt-2">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 text-[#013547]">
+                      Progettazione Ascensoristica
+                    </h3>
+                    <p className="text-sm sm:text-base md:text-lg text-[#00779b] leading-relaxed mb-4 max-w-3xl">
+                      Servizi tecnici e architettonici per ascensori standard e fuori standard, dalla fattibilità alla progettazione esecutiva, fino alla produzione e al cantiere.
+                    </p>
+                    <Link
+                      to="/servizi/ascensoristica"
+                      className="inline-flex items-center text-[#1da1db] text-sm sm:text-base md:text-lg font-bold hover:text-[#012b3a] transition-colors gap-2"
+                    >
+                      Scopri Progettazione Ascensoristica <ArrowRight size={18} />
+                    </Link>
+                  </div>
+                </div>
+              </Reveal>
+
+              {/* 4. ENERGIA */}
               <Reveal delay={300}>
                 <div className="flex flex-col gap-5 relative">
                   <div className="overflow-hidden rounded-3xl w-full shadow-md">

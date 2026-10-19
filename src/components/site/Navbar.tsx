@@ -5,6 +5,7 @@ import { FicoImage } from "@/components/site/FicoImage";
 
 import fibraMobileImg from "@/assets/fibraotticaemobile.jpg";
 import networkingImg from "@/assets/networking.jpg";
+import ascensoristicaImg from "@/assets/ascensoristica.jpg";
 import energiaImg from "@/assets/Energia.jpg";
 
 export function Navbar() {
@@ -34,6 +35,7 @@ export function Navbar() {
   const serviziMenu = [
     { name: "Fibra & Mobile", path: "/servizi/fibra-mobile", image: fibraMobileImg, active: true, variant: 1 as const },
     { name: "IT & Software", path: "/servizi/it-software", image: networkingImg, active: true, variant: 2 as const },
+    { name: "Ascensoristica", path: "/servizi/ascensoristica", image: ascensoristicaImg, active: true, variant: 1 as const },
     { name: "Energia", path: "#", image: energiaImg, active: false, variant: 3 as const },
   ];
 
@@ -112,13 +114,13 @@ export function Navbar() {
 
             {/* Tendina Desktop */}
             <div
-              className={`absolute top-[85%] left-1/2 -translate-x-1/2 w-[760px] pt-4 transition-all duration-500 z-[999] ${
+              className={`absolute top-[85%] left-1/2 -translate-x-1/2 w-[920px] max-w-[94vw] pt-4 transition-all duration-500 z-[999] ${
                 isDesktopServiziOpen
                   ? "opacity-100 translate-y-0 pointer-events-auto"
                   : "opacity-0 -translate-y-4 pointer-events-none"
               }`}
             >
-              <div className="bg-white border border-[#facc15] rounded-2xl shadow-2xl p-5 grid grid-cols-3 gap-4">
+              <div className="bg-white border border-[#facc15] rounded-2xl shadow-2xl p-5 grid grid-cols-4 gap-4">
                 {serviziMenu.map((item) =>
                   item.active ? (
                     <Link
@@ -232,7 +234,7 @@ export function Navbar() {
 
             <div
               className={`overflow-hidden transition-all duration-300 ${
-                isMobileServiziOpen ? "max-h-[900px]" : "max-h-0"
+                isMobileServiziOpen ? "max-h-[1200px]" : "max-h-0"
               }`}
             >
               <div className="flex flex-col gap-6 pl-4 border-l border-[#facc15] ml-3 py-3">

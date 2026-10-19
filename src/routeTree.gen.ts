@@ -18,6 +18,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServiziIndexRouteImport } from './routes/servizi/index'
 import { Route as ServiziItSoftwareRouteImport } from './routes/servizi/it-software'
 import { Route as ServiziFibraMobileRouteImport } from './routes/servizi/fibra-mobile'
+import { Route as ServiziAscensoristicaRouteImport } from './routes/servizi/ascensoristica'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -64,6 +65,11 @@ const ServiziFibraMobileRoute = ServiziFibraMobileRouteImport.update({
   path: '/servizi/fibra-mobile',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServiziAscensoristicaRoute = ServiziAscensoristicaRouteImport.update({
+  id: '/servizi/ascensoristica',
+  path: '/servizi/ascensoristica',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -72,6 +78,7 @@ export interface FileRoutesByFullPath {
   '/cookie-policy': typeof CookiePolicyRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/servizi/ascensoristica': typeof ServiziAscensoristicaRoute
   '/servizi/fibra-mobile': typeof ServiziFibraMobileRoute
   '/servizi/it-software': typeof ServiziItSoftwareRoute
   '/servizi/': typeof ServiziIndexRoute
@@ -83,6 +90,7 @@ export interface FileRoutesByTo {
   '/cookie-policy': typeof CookiePolicyRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/servizi/ascensoristica': typeof ServiziAscensoristicaRoute
   '/servizi/fibra-mobile': typeof ServiziFibraMobileRoute
   '/servizi/it-software': typeof ServiziItSoftwareRoute
   '/servizi': typeof ServiziIndexRoute
@@ -95,6 +103,7 @@ export interface FileRoutesById {
   '/cookie-policy': typeof CookiePolicyRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/servizi/ascensoristica': typeof ServiziAscensoristicaRoute
   '/servizi/fibra-mobile': typeof ServiziFibraMobileRoute
   '/servizi/it-software': typeof ServiziItSoftwareRoute
   '/servizi/': typeof ServiziIndexRoute
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/cookie-policy'
     | '/privacy-policy'
     | '/sitemap.xml'
+    | '/servizi/ascensoristica'
     | '/servizi/fibra-mobile'
     | '/servizi/it-software'
     | '/servizi/'
@@ -119,6 +129,7 @@ export interface FileRouteTypes {
     | '/cookie-policy'
     | '/privacy-policy'
     | '/sitemap.xml'
+    | '/servizi/ascensoristica'
     | '/servizi/fibra-mobile'
     | '/servizi/it-software'
     | '/servizi'
@@ -130,6 +141,7 @@ export interface FileRouteTypes {
     | '/cookie-policy'
     | '/privacy-policy'
     | '/sitemap.xml'
+    | '/servizi/ascensoristica'
     | '/servizi/fibra-mobile'
     | '/servizi/it-software'
     | '/servizi/'
@@ -142,6 +154,7 @@ export interface RootRouteChildren {
   CookiePolicyRoute: typeof CookiePolicyRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ServiziAscensoristicaRoute: typeof ServiziAscensoristicaRoute
   ServiziFibraMobileRoute: typeof ServiziFibraMobileRoute
   ServiziItSoftwareRoute: typeof ServiziItSoftwareRoute
   ServiziIndexRoute: typeof ServiziIndexRoute
@@ -212,6 +225,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiziFibraMobileRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/servizi/ascensoristica': {
+      id: '/servizi/ascensoristica'
+      path: '/servizi/ascensoristica'
+      fullPath: '/servizi/ascensoristica'
+      preLoaderRoute: typeof ServiziAscensoristicaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -222,6 +242,7 @@ const rootRouteChildren: RootRouteChildren = {
   CookiePolicyRoute: CookiePolicyRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ServiziAscensoristicaRoute: ServiziAscensoristicaRoute,
   ServiziFibraMobileRoute: ServiziFibraMobileRoute,
   ServiziItSoftwareRoute: ServiziItSoftwareRoute,
   ServiziIndexRoute: ServiziIndexRoute,
@@ -229,13 +250,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
