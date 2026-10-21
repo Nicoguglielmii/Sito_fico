@@ -284,29 +284,30 @@ function Index() {
               {/* 4. ENERGIA */}
               <Reveal delay={300}>
                 <div className="flex flex-col gap-5 relative">
-                  <div className="overflow-hidden rounded-3xl w-full shadow-md">
+                  <Link
+                    to="/servizi/energia"
+                    className="block group overflow-hidden rounded-3xl w-full shadow-md"
+                  >
                     <FicoImage
                       src={energiaImg}
                       alt="Energia"
                       variant={3}
                       className="w-full h-[280px] sm:h-[380px] md:h-[460px] rounded-3xl"
                     />
-                  </div>
+                  </Link>
                   <div className="max-w-4xl text-left pt-2">
-                    <div className="flex items-center justify-between gap-4 flex-wrap mb-3">
-                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#013547]">
-                        Energia
-                      </h3>
-                      <span className="bg-[#f5d000] text-[#012b3a] text-xs font-extrabold px-4 py-1.5 rounded-full uppercase tracking-wider">
-                        In Sviluppo
-                      </span>
-                    </div>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 text-[#013547]">
+                      Energia
+                    </h3>
                     <p className="text-sm sm:text-base md:text-lg text-[#00779b] leading-relaxed mb-4 max-w-3xl">
-                      Integriamo infrastrutture IT, servizi di assistenza e sviluppo software per costruire strumenti digitali solidi, garantendo continuità, sicurezza ed efficienza per ogni tua esigenza operativa.
+                      Fotovoltaico e servizi energetici per edifici e imprese: progettazione, installazione, adeguamento e manutenzione degli impianti.
                     </p>
-                    <span className="inline-flex items-center text-[#1da1db] text-sm sm:text-base md:text-lg font-bold gap-2 cursor-not-allowed">
-                      Pagina in arrivo
-                    </span>
+                    <Link
+                      to="/servizi/energia"
+                      className="inline-flex items-center text-[#1da1db] text-sm sm:text-base md:text-lg font-bold hover:text-[#012b3a] transition-colors gap-2"
+                    >
+                      Scopri Energia <ArrowRight size={18} />
+                    </Link>
                   </div>
                 </div>
               </Reveal>

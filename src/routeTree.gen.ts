@@ -18,6 +18,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServiziIndexRouteImport } from './routes/servizi/index'
 import { Route as ServiziItSoftwareRouteImport } from './routes/servizi/it-software'
 import { Route as ServiziFibraMobileRouteImport } from './routes/servizi/fibra-mobile'
+import { Route as ServiziEnergiaRouteImport } from './routes/servizi/energia'
 import { Route as ServiziAscensoristicaRouteImport } from './routes/servizi/ascensoristica'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -65,6 +66,11 @@ const ServiziFibraMobileRoute = ServiziFibraMobileRouteImport.update({
   path: '/servizi/fibra-mobile',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServiziEnergiaRoute = ServiziEnergiaRouteImport.update({
+  id: '/servizi/energia',
+  path: '/servizi/energia',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServiziAscensoristicaRoute = ServiziAscensoristicaRouteImport.update({
   id: '/servizi/ascensoristica',
   path: '/servizi/ascensoristica',
@@ -79,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/servizi/ascensoristica': typeof ServiziAscensoristicaRoute
+  '/servizi/energia': typeof ServiziEnergiaRoute
   '/servizi/fibra-mobile': typeof ServiziFibraMobileRoute
   '/servizi/it-software': typeof ServiziItSoftwareRoute
   '/servizi/': typeof ServiziIndexRoute
@@ -91,6 +98,7 @@ export interface FileRoutesByTo {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/servizi/ascensoristica': typeof ServiziAscensoristicaRoute
+  '/servizi/energia': typeof ServiziEnergiaRoute
   '/servizi/fibra-mobile': typeof ServiziFibraMobileRoute
   '/servizi/it-software': typeof ServiziItSoftwareRoute
   '/servizi': typeof ServiziIndexRoute
@@ -104,6 +112,7 @@ export interface FileRoutesById {
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/servizi/ascensoristica': typeof ServiziAscensoristicaRoute
+  '/servizi/energia': typeof ServiziEnergiaRoute
   '/servizi/fibra-mobile': typeof ServiziFibraMobileRoute
   '/servizi/it-software': typeof ServiziItSoftwareRoute
   '/servizi/': typeof ServiziIndexRoute
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/sitemap.xml'
     | '/servizi/ascensoristica'
+    | '/servizi/energia'
     | '/servizi/fibra-mobile'
     | '/servizi/it-software'
     | '/servizi/'
@@ -130,6 +140,7 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/sitemap.xml'
     | '/servizi/ascensoristica'
+    | '/servizi/energia'
     | '/servizi/fibra-mobile'
     | '/servizi/it-software'
     | '/servizi'
@@ -142,6 +153,7 @@ export interface FileRouteTypes {
     | '/privacy-policy'
     | '/sitemap.xml'
     | '/servizi/ascensoristica'
+    | '/servizi/energia'
     | '/servizi/fibra-mobile'
     | '/servizi/it-software'
     | '/servizi/'
@@ -155,6 +167,7 @@ export interface RootRouteChildren {
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ServiziAscensoristicaRoute: typeof ServiziAscensoristicaRoute
+  ServiziEnergiaRoute: typeof ServiziEnergiaRoute
   ServiziFibraMobileRoute: typeof ServiziFibraMobileRoute
   ServiziItSoftwareRoute: typeof ServiziItSoftwareRoute
   ServiziIndexRoute: typeof ServiziIndexRoute
@@ -225,6 +238,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiziFibraMobileRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/servizi/energia': {
+      id: '/servizi/energia'
+      path: '/servizi/energia'
+      fullPath: '/servizi/energia'
+      preLoaderRoute: typeof ServiziEnergiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/servizi/ascensoristica': {
       id: '/servizi/ascensoristica'
       path: '/servizi/ascensoristica'
@@ -243,6 +263,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ServiziAscensoristicaRoute: ServiziAscensoristicaRoute,
+  ServiziEnergiaRoute: ServiziEnergiaRoute,
   ServiziFibraMobileRoute: ServiziFibraMobileRoute,
   ServiziItSoftwareRoute: ServiziItSoftwareRoute,
   ServiziIndexRoute: ServiziIndexRoute,

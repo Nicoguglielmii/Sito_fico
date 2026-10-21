@@ -194,7 +194,7 @@ export function ProcessTimeline() {
           Il nostro processo
         </span>
         <h2 className="mt-3 text-4xl md:text-5xl font-extrabold leading-tight text-[#012b3a]">
-          Dalla prima idea al <span className="text-[#1da1db]">go-live</span>
+          Dalla prima idea al go-live
         </h2>
       </div>
       <div className="relative">
@@ -325,7 +325,7 @@ export function ItalyMap() {
             Presenza
           </span>
           <h2 className="mt-3 text-4xl md:text-5xl font-extrabold text-[#012b3a] pb-2">
-            Presenza consolidata in <span className="text-[#1da1db]">tutta Italia</span>
+            Presenza consolidata in tutta Italia
           </h2>
         </div>
 

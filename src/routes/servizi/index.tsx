@@ -6,6 +6,7 @@ import { FicoImage } from "@/components/site/FicoImage";
 
 import fibraMobileImg from "@/assets/fibraotticaemobile.jpg";
 import networkingImg from "@/assets/networking.jpg";
+import ascensoristicaImg from "@/assets/ascensoristica.jpg";
 import energiaImg from "@/assets/Energia.jpg";
 import infrastruttureImg from "@/assets/infrastrutture.jpg";
 
@@ -49,7 +50,7 @@ function ServiziIndex() {
                   Dalle infrastrutture al software
                 </h2>
                 <p className="text-[#00779b] text-lg md:text-xl leading-relaxed">
-                  Fi.Co. opera attraverso competenze specialistiche unite dallo stesso metodo: comprendere un'esigenza, progettare una soluzione realizzabile e governarne ogni fase. Il nostro percorso nasce nelle telecomunicazioni e nella progettazione di reti in fibra ottica, per ampliarsi verso servizi IT, networking, sviluppo software e nuove opportunità nel settore energetico. Oggi lavoriamo su progetti nei quali infrastrutture, dati e tecnologia possono integrarsi per rispondere alle esigenze di operatori, imprese, enti e privati.
+                  Fi.Co. opera attraverso competenze specialistiche unite dallo stesso metodo: comprendere un'esigenza, progettare una soluzione realizzabile e governarne ogni fase. Il nostro percorso nasce nelle telecomunicazioni e nella progettazione di reti in fibra ottica, per ampliarsi verso servizi IT, networking, sviluppo software, progettazione ascensoristica e soluzioni nel settore energetico. Oggi lavoriamo su progetti nei quali infrastrutture, dati e tecnologia possono integrarsi per rispondere alle esigenze di operatori, imprese, enti e privati.
                 </p>
               </Reveal>
             </div>
@@ -81,7 +82,7 @@ function ServiziIndex() {
           <div className="max-w-3xl mb-6 text-left">
             <Reveal>
               <h2 className="text-4xl md:text-5xl font-extrabold leading-tight font-[var(--font-display)] text-[#012b3a] pb-2">
-                Tre aree, un unico approccio
+                Quattro aree, un unico approccio
               </h2>
             </Reveal>
           </div>
@@ -144,32 +145,58 @@ function ServiziIndex() {
               </div>
             </Reveal>
 
+            {/* PROGETTAZIONE ASCENSORISTICA */}
+            <Reveal delay={250}>
+              <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 py-8 border-b border-[#facc15] last:border-b-0">
+                <Link 
+                  to="/servizi/ascensoristica" 
+                  className="block group overflow-hidden shrink-0 rounded-3xl w-full md:max-w-[400px] lg:max-w-[480px] shadow-md"
+                >
+                  <FicoImage
+                    src={ascensoristicaImg}
+                    alt="Progettazione Ascensoristica"
+                    variant={1}
+                    className="w-full aspect-video rounded-3xl"
+                  />
+                </Link>
+                <div className="flex-1 flex flex-col justify-center text-left">
+                  <h3 className="text-3xl md:text-4xl font-extrabold mb-4 pb-1 text-[#013547]">
+                    Progettazione Ascensoristica
+                  </h3>
+                  <p className="text-[#00779b] text-lg leading-relaxed mb-6 max-w-2xl">
+                    Servizi tecnici e architettonici per ascensori, dalla fattibilità al cantiere. Soluzioni standard e fuori standard.
+                  </p>
+                  <Link to="/servizi/ascensoristica" className="inline-flex items-center text-[#1da1db] font-bold hover:text-[#012b3a] transition-colors gap-2 w-max">
+                    Scopri di più <ArrowRight size={18} />
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
+
             {/* ENERGIA */}
             <Reveal delay={300}>
-              <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 py-8 border-b border-[#facc15] last:border-b-0 relative">
-                <div className="overflow-hidden shrink-0 rounded-3xl w-full md:max-w-[400px] lg:max-w-[480px] shadow-md">
+              <div className="flex flex-col md:flex-row-reverse md:items-center gap-8 md:gap-12 py-8 border-b border-[#facc15] last:border-b-0 relative">
+                <Link 
+                  to="/servizi/energia" 
+                  className="block group overflow-hidden shrink-0 rounded-3xl w-full md:max-w-[400px] lg:max-w-[480px] shadow-md"
+                >
                   <FicoImage
                     src={energiaImg}
                     alt="Energia"
                     variant={3}
                     className="w-full aspect-video rounded-3xl"
                   />
-                </div>
+                </Link>
                 <div className="flex-1 flex flex-col justify-center text-left">
-                  <div className="flex items-center justify-between gap-4 flex-wrap mb-4">
-                    <h3 className="text-3xl md:text-4xl font-extrabold pb-1 text-[#013547]">
-                      Energia
-                    </h3>
-                    <span className="bg-[#f5d000] text-[#012b3a] text-xs font-extrabold px-4 py-1.5 rounded-full uppercase tracking-wider">
-                      In Sviluppo
-                    </span>
-                  </div>
+                  <h3 className="text-3xl md:text-4xl font-extrabold mb-4 pb-1 text-[#013547]">
+                    Energia
+                  </h3>
                   <p className="text-[#00779b] text-lg leading-relaxed mb-6 max-w-2xl">
-                    Stiamo sviluppando nuove competenze nel settore energetico, per integrare progettazione, tecnologia ed efficienza.
+                    Fotovoltaico e servizi energetici per edifici e imprese: progettazione, installazione, adeguamento e manutenzione degli impianti.
                   </p>
-                  <span className="inline-flex items-center text-[#1da1db] font-bold gap-2 cursor-not-allowed w-max">
-                    Pagina in arrivo
-                  </span>
+                  <Link to="/servizi/energia" className="inline-flex items-center text-[#1da1db] font-bold hover:text-[#012b3a] transition-colors gap-2 w-max">
+                    Scopri di più <ArrowRight size={18} />
+                  </Link>
                 </div>
               </div>
             </Reveal>

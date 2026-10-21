@@ -36,7 +36,7 @@ export function Navbar() {
     { name: "Fibra & Mobile", path: "/servizi/fibra-mobile", image: fibraMobileImg, active: true, variant: 1 as const },
     { name: "IT & Software", path: "/servizi/it-software", image: networkingImg, active: true, variant: 2 as const },
     { name: "Ascensoristica", path: "/servizi/ascensoristica", image: ascensoristicaImg, active: true, variant: 1 as const },
-    { name: "Energia", path: "#", image: energiaImg, active: false, variant: 3 as const },
+    { name: "Energia", path: "/servizi/energia", image: energiaImg, active: true, variant: 3 as const },
   ];
 
   return (
@@ -252,6 +252,9 @@ export function Navbar() {
                         variant={item.variant}
                         className="w-full aspect-video shrink-0 rounded-2xl shadow-sm"
                       />
+                      <span className="font-bold text-base text-[#1da1db] group-hover:text-[#012b3a] transition-colors">
+                        {item.name}
+                      </span>
                     </Link>
                   ) : (
                     <div key={item.name} className="flex flex-col gap-2 text-base cursor-not-allowed">
@@ -261,6 +264,7 @@ export function Navbar() {
                         variant={item.variant}
                         className="w-full aspect-video shrink-0 rounded-2xl shadow-sm"
                       />
+                      <span className="font-bold text-base text-[#00779b]">{item.name}</span>
                       <div className="flex items-center justify-end mt-1">
                         <span className="bg-[#1da1db] text-white text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                           In Sviluppo
