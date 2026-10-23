@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { 
   Lightbulb, 
@@ -8,6 +9,7 @@ import {
   Layers, 
   Target, 
   ArrowRight, 
+  ArrowUpRight,
   CheckCircle2,
   Cpu,
   Handshake,
@@ -65,8 +67,47 @@ const TIMELINE = [
 ];
 
 function ChiSiamo() {
+  const [activeNode, setActiveNode] = useState<string | null>(null);
+
+  const funzioniAziendali = [
+    { id: "amm", label: "Amministrazione" },
+    { id: "fac", label: "Facility" },
+    { id: "bus", label: "Business Development" },
+  ];
+
+  const areeOperative = [
+    { id: "fibra", label: "Fibra & Mobile", path: "/servizi/fibra-mobile" },
+    { id: "it", label: "IT, Networking & Software", path: "/servizi/it-software" },
+    { id: "asc", label: "Progettazione Ascensoristica", path: "/servizi/ascensoristica" },
+    { id: "ene", label: "Energia", path: "/servizi/energia" },
+  ];
+
   return (
     <div className="bg-white w-full min-h-screen overflow-x-hidden selection:bg-[#facc15] selection:text-[#012b3a]">
+      <style>{`
+        @keyframes pulse-signal {
+          0% { stroke-dashoffset: 120; }
+          100% { stroke-dashoffset: 0; }
+        }
+        @keyframes core-radar {
+          0% { transform: scale(0.95); opacity: 0.6; }
+          70% { transform: scale(1.35); opacity: 0; }
+          100% { transform: scale(1.35); opacity: 0; }
+        }
+        .synapse-line {
+          stroke-dasharray: 6 6;
+          animation: pulse-signal 3.5s linear infinite;
+        }
+        .core-ring::before {
+          content: "";
+          position: absolute;
+          inset: -10px;
+          border-radius: 9999px;
+          border: 1.5px solid #facc15;
+          animation: core-radar 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+          pointer-events: none;
+        }
+      `}</style>
       
       {/* HERO */}
       <section className="relative pt-28 sm:pt-32 md:pt-36 pb-16 md:pb-20 overflow-hidden border-b border-[#facc15] bg-white">
@@ -209,7 +250,7 @@ function ChiSiamo() {
                 <div className="w-14 h-14 rounded-full bg-[#013a52] flex items-center justify-center text-[#facc15] mb-6">
                   <Layers size={26} />
                 </div>
-                <h3 className="text-xl md:text-2xl font-extrabold text-[#012b3a] mb-3 md:mb-4">Non un simbolo. Un sistema.</h3>
+                <h3 className="text-xl md:text-2xl font-extrabold text-[#012b3a] mb-3 md:mb-4">Non un simbolo, un sistema</h3>
                 <p className="text-[#00779b] text-sm md:text-base leading-relaxed">
                   Il pittogramma è generativo: i nodi possono cambiare posizione e creare nuove configurazioni senza perdere riconoscibilità. Lo stesso principio guida animazioni, transizioni e rappresentazioni dei processi.
                 </p>
@@ -246,65 +287,174 @@ function ChiSiamo() {
         </div>
       </section>
 
-      {/* COSA CI DEFINISCE E ORGANIZZAZIONE */}
-      <section className="py-12 md:py-16 relative border-b border-[#facc15] overflow-hidden bg-white">
+      {/* COSA CI DEFINISCE E ORGANIZZAZIONE (SENZA CARD CHIUSA, CON RETE SINAPTICA) */}
+      <section className="py-12 md:py-20 relative border-b border-[#facc15] overflow-hidden bg-white">
         <div className="container-x">
           
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-            <Reveal>
-              <div>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#012b3a] pb-2 mb-6">
-                <span className="text-[#0a5c75]">  Tecnica nel metodo. <br/> Trasversale nelle competenze.</span>
-                </h2>
-                <div className="space-y-4 text-[#00779b] text-base md:text-lg leading-relaxed">
-                  <p>
-                    Fi.Co. nasce da una cultura tecnica e mantiene nella progettazione il proprio punto di forza.
-                    A questa base affianchiamo organizzazione, capacità di gestione, conoscenza dei processi e una visione orientata all'evoluzione.
-                    Il risultato è una struttura capace di mettere in relazione professionalità differenti e affrontare progetti che richiedono più di una singola competenza.
-                  </p>
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div className="lg:col-span-5">
+              <Reveal>
+                <div>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#012b3a] pb-2 mb-6">
+                  <span className="text-[#0a5c75]">  Tecnica nel metodo. <br/> Trasversale nelle competenze.</span>
+                  </h2>
+                  <div className="space-y-4 text-[#00779b] text-base md:text-lg leading-relaxed">
+                    <p>
+                      Fi.Co. nasce da una cultura tecnica e mantiene nella progettazione il proprio punto di forza.
+                      A questa base affianchiamo organizzazione, capacità di gestione, conoscenza dei processi e una visione orientata all'evoluzione.
+                      Il risultato è una struttura capace di mettere in relazione professionalità differenti e affrontare progetti che richiedono più di una singola competenza.
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
 
-            <Reveal delay={150}>
-              <div className="bg-white p-6 sm:p-8 md:p-10 rounded-3xl border-2 border-[#facc15] shadow-lg">
-                <span className="text-xs uppercase tracking-[0.2em] text-[#00779b] font-bold block mb-4">
-                  ORGANIZZAZIONE
-                </span>
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#012b3a] mb-4 md:mb-6">
-                  Competenze diverse, un'unica organizzazione
-                </h3>
-                <p className="text-[#00779b] text-sm md:text-base leading-relaxed mb-6 md:mb-8">
-                  Fi.Co. è organizzata attraverso funzioni aziendali e competenze specialistiche che collaborano in modo trasversale. Le funzioni di supporto coordinano processi e risorse. Le aree operative mettono a disposizione competenze tecniche e digitali. Non una struttura rigida, ma un'organizzazione costruita attorno a responsabilità chiare.
-                </p>
-                
-                <div className="space-y-5 md:space-y-6">
-                  <div>
-                    <h4 className="text-xs md:text-sm font-bold text-[#1da1db] uppercase tracking-wider mb-3">Funzioni Aziendali</h4>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-[#1da1db]/10 border border-[#1da1db]/40 text-[#012b3a] text-xs md:text-sm font-semibold">Amministrazione</span>
-                      <span className="px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-[#1da1db]/10 border border-[#1da1db]/40 text-[#012b3a] text-xs md:text-sm font-semibold">Facility</span>
-                      <span className="px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-[#1da1db]/10 border border-[#1da1db]/40 text-[#012b3a] text-xs md:text-sm font-semibold">Business Development</span>
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="text-xs md:text-sm font-bold text-[#0a5c75] uppercase tracking-wider mb-3">Aree Operative</h4>
-                    <div className="flex flex-wrap gap-2">
-                      <Link to="/servizi/fibra-mobile" className="px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-[#f5d000] text-[#012b3a] text-xs md:text-sm font-bold hover:bg-[#eab308] transition-all">Fibra & Mobile</Link>
-                      <Link to="/servizi/it-software" className="px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-[#f5d000] text-[#012b3a] text-xs md:text-sm font-bold hover:bg-[#eab308] transition-all">IT, Networking & Software</Link>
-                      <span className="px-3.5 py-1.5 md:px-4 md:py-2 rounded-full bg-gray-100 border border-gray-300 text-[#00779b] text-xs md:text-sm font-medium border-dashed cursor-not-allowed">Energia (in sviluppo)</span>
-                    </div>
-                  </div>
-                  <div className="w-full h-px bg-[#facc15]" />
-                  <div className="text-center">
-                    <span className="inline-block px-5 py-2 rounded-full bg-[#013a52] text-[#facc15] text-xs md:text-sm font-bold shadow-sm">
-                      Ricerca & Innovazione (Trasversale)
+            <div className="lg:col-span-7">
+              <Reveal delay={150}>
+                <div className="w-full">
+                  <div className="text-left mb-8">
+                    <span className="text-xs uppercase tracking-[0.2em] text-[#00779b] font-bold block mb-3">
+                      ORGANIZZAZIONE
                     </span>
+                    <h3 className="text-2xl sm:text-3xl font-extrabold text-[#012b3a] mb-4">
+                      Competenze diverse, un'unica organizzazione
+                    </h3>
+                    <p className="text-[#00779b] text-sm md:text-base leading-relaxed">
+                      Fi.Co. è organizzata attraverso funzioni aziendali e competenze specialistiche che collaborano in modo trasversale. Le funzioni di supporto coordinano processi e risorse. Le aree operative mettono a disposizione competenze tecniche e digitali. Non una struttura rigida, ma un'organizzazione costruita attorno a responsabilità chiare.
+                    </p>
                   </div>
-                </div>
 
-              </div>
-            </Reveal>
+                  {/* Diagramma aperto a Rete Sinaptica */}
+                  <div className="relative py-4 px-1 sm:px-4">
+                    <svg
+                      viewBox="0 0 600 400"
+                      className="hidden sm:block absolute inset-0 w-full h-full pointer-events-none z-0"
+                      preserveAspectRatio="none"
+                    >
+                      {/* Connessioni superiori: Funzioni Aziendali -> Nucleo Centrale */}
+                      <path
+                        d="M 100,65 C 100,145 300,135 300,200"
+                        fill="none"
+                        stroke={activeNode === "amm" ? "#1da1db" : "#00779b"}
+                        strokeWidth={activeNode === "amm" ? "3" : "1.8"}
+                        strokeOpacity={activeNode === "amm" ? "1" : "0.35"}
+                        className="synapse-line transition-all duration-300"
+                      />
+                      <path
+                        d="M 300,65 L 300,200"
+                        fill="none"
+                        stroke={activeNode === "fac" ? "#1da1db" : "#00779b"}
+                        strokeWidth={activeNode === "fac" ? "3" : "1.8"}
+                        strokeOpacity={activeNode === "fac" ? "1" : "0.35"}
+                        className="synapse-line transition-all duration-300"
+                      />
+                      <path
+                        d="M 500,65 C 500,145 300,135 300,200"
+                        fill="none"
+                        stroke={activeNode === "bus" ? "#1da1db" : "#00779b"}
+                        strokeWidth={activeNode === "bus" ? "3" : "1.8"}
+                        strokeOpacity={activeNode === "bus" ? "1" : "0.35"}
+                        className="synapse-line transition-all duration-300"
+                      />
+
+                      {/* Orizzonte Trasversale Giallo */}
+                      <line
+                        x1="20"
+                        y1="200"
+                        x2="580"
+                        y2="200"
+                        stroke="#facc15"
+                        strokeWidth="2"
+                        strokeDasharray="4 4"
+                      />
+
+                      {/* Connessioni inferiori: Nucleo Centrale -> 4 Aree Operative */}
+                      <path
+                        d="M 300,200 C 300,265 150,255 150,335"
+                        fill="none"
+                        stroke={activeNode === "fibra" || activeNode === "asc" ? "#1da1db" : "#facc15"}
+                        strokeWidth="2.2"
+                        className="synapse-line transition-all duration-300"
+                      />
+                      <path
+                        d="M 300,200 C 300,265 450,255 450,335"
+                        fill="none"
+                        stroke={activeNode === "it" || activeNode === "ene" ? "#1da1db" : "#facc15"}
+                        strokeWidth="2.2"
+                        className="synapse-line transition-all duration-300"
+                      />
+                    </svg>
+
+                    {/* LIVELLO 1: FUNZIONI AZIENDALI */}
+                    <div className="relative z-10 mb-10 sm:mb-12">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-xs md:text-sm font-bold text-[#1da1db] uppercase tracking-wider bg-white pr-3">
+                          Funzioni Aziendali
+                        </span>
+                        <span className="h-[1px] flex-1 bg-[#1da1db]/30" />
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        {funzioniAziendali.map((fn) => (
+                          <div
+                            key={fn.id}
+                            onMouseEnter={() => setActiveNode(fn.id)}
+                            onMouseLeave={() => setActiveNode(null)}
+                            className="flex items-center justify-center text-center px-4 py-3 rounded-full bg-[#1da1db]/10 border border-[#1da1db]/40 hover:border-[#1da1db] hover:bg-white hover:shadow-md transition-all cursor-default"
+                          >
+                            <span className="text-xs md:text-sm font-semibold text-[#012b3a]">
+                              {fn.label}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* LIVELLO 2: NUCLEO CENTRALE TRASVERSALE */}
+                    <div className="relative z-20 my-8 sm:my-10 flex items-center justify-center">
+                      <div className="core-ring relative inline-flex items-center gap-3 px-6 py-3 rounded-full bg-[#013a52] border-2 border-[#facc15] text-[#facc15] shadow-xl">
+                        <Sparkles
+                          size={16}
+                          className="text-[#facc15] shrink-0 animate-spin"
+                          style={{ animationDuration: "8s" }}
+                        />
+                        <span className="text-xs md:text-sm font-bold">
+                          Ricerca & Innovazione (Trasversale)
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* LIVELLO 3: AREE OPERATIVE */}
+                    <div className="relative z-10 mt-10 sm:mt-12">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-xs md:text-sm font-bold text-[#0a5c75] uppercase tracking-wider bg-white pr-3">
+                          Aree Operative
+                        </span>
+                        <span className="h-[1px] flex-1 bg-[#facc15]" />
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {areeOperative.map((area) => (
+                          <Link
+                            key={area.id}
+                            to={area.path}
+                            onMouseEnter={() => setActiveNode(area.id)}
+                            onMouseLeave={() => setActiveNode(null)}
+                            className="group flex items-center justify-between px-5 py-3 rounded-full bg-[#f5d000] hover:bg-[#eab308] text-[#012b3a] shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+                          >
+                            <span className="text-xs md:text-sm font-bold text-[#012b3a]">
+                              {area.label}
+                            </span>
+                            <div className="w-6 h-6 rounded-full bg-[#012b3a] text-[#facc15] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                              <ArrowUpRight size={14} />
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </Reveal>
+            </div>
           </div>
 
         </div>

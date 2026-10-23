@@ -19,7 +19,7 @@ function FibraMobilePage() {
     {
       titleFirst: "Survey & Rilievi ",
       subtitle: "Dal territorio al dato",
-      desc: "Raccogliamo e organizziamo le informazioni necessarie per leggere correttamente il contesto e impostare il progetto su basi affidabili.",
+      desc: "Raccogliamo e organizziamo le informazioni necessarie per leggere correttamente il contesto e impostare il progetto su dati affidabili.",
       image: surveyImg,
       variant: 1 as const,
       activities: ["Sopralluoghi e rilievi planimetrici", "Raccolta delle informazioni di campo", "Verifica delle infrastrutture esistenti", "Attività di walk-in e walk-out"]
@@ -33,9 +33,9 @@ function FibraMobilePage() {
       activities: ["Studio e dimensionamento della rete", "Progettazione logica dei circuiti", "Progettazione delle infrastrutture", "Progettazione e gestione su sistemi GIS", "Scelta degli apparati trasmissivi", "Revisione e aggiornamento banche dati"]
     },
     {
-      titleFirst: "Permitting & Rapporti Enti ",
+      titleFirst: "Permitting & Relazioni con gli Enti ",
       subtitle: "Dal progetto alle autorizzazioni",
-      desc: "Gestiamo l'iter autorizzativo e i rapporti con pubbliche amministrazioni ed enti coinvolti nella realizzazione degli interventi.",
+      desc: "Gestiamo l'iter autorizzativo e curiamo la relazione con le pubbliche amministrazioni e gli enti coinvolti nella realizzazione degli interventi.",
       image: entiImg,
       variant: 3 as const,
       activities: ["Analisi vincoli urbanistici e paesaggistici", "Predisposizione istanze ed elaborati", "Acquisizione pareri tecnici", "Trasmissione pratiche e monitoraggio", "Gestione silenzio-assenso e conferenze"]
@@ -43,7 +43,7 @@ function FibraMobilePage() {
     {
       titleFirst: "Implementazione & PM",
       subtitle: "Dal progetto all'implementazione",
-      desc: "Coordiniamo le attività e gli interlocutori necessari a trasformare il progetto in un percorso operativo governato.",
+      desc: "Coordiniamo le attività e gli interlocutori coinvolti nella realizzazione del progetto in un percorso operativo governato.",
       image: projectImg,
       variant: 1 as const,
       activities: ["Gestione degli ordini di collegamento", "Analisi di tempi e costi", "Coordinamento fasi operative", "Supporto all'implementazione", "Monitoraggio dell'avanzamento", "Consuntivazione"]
@@ -59,8 +59,8 @@ function FibraMobilePage() {
     {
       titleFirst: "Manutenzione & Supporto",
 
-      subtitle: "La rete non finisce col progetto",
-      desc: "Affianchiamo i clienti anche nelle attività successive alla realizzazione, attraverso manutenzione e supporto tecnico coerenti con il perimetro del progetto.",
+      subtitle: "sistemi interconnessi e collaudati",
+      desc: "Affianchiamo i clienti dopo la realizzazione, attraverso manutenzione e supporto tecnico coerenti con il perimetro del progetto.",
       image: manutenzioneImg,
       variant: 3 as const,
       activities: []
@@ -138,11 +138,11 @@ function FibraMobilePage() {
               </span>
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[80px] font-extrabold leading-[1.05] tracking-tight text-[#012b3a] max-w-4xl pb-2">
-              Progettiamo la rete<br/>
-              Governiamo il processo
+              Progettiamo la rete,<br/>
+              governiamo il processo
             </h1>
             <p className="mt-6 md:mt-8 text-base md:text-xl text-[#00779b] max-w-2xl leading-relaxed">
-              Fi.Co. affianca operatori e imprese nelle diverse fasi di sviluppo delle infrastrutture di telecomunicazione. Dalla survey alla progettazione, dalla gestione autorizzativa al coordinamento, fino alla documentazione del realizzato.
+              Progettazione e gestione tecnica di infrastrutture di telecomunicazione, dalla survey alla documentazione finale.
             </p>
           </Reveal>
         </div>

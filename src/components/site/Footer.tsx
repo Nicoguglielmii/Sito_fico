@@ -52,18 +52,26 @@ export function Footer() {
               </li>
               <li>
                 <Link to="/servizi/it-software" className="text-[#00779b] hover:text-[#1da1db] transition-colors text-[15px] font-medium block">
-                  IT, Networking & Software
+                  IT & Software
                 </Link>
               </li>
               <li>
                 <Link to="/servizi/ascensoristica" className="text-[#00779b] hover:text-[#1da1db] transition-colors text-[15px] font-medium block">
-                  Progettazione Ascensoristica
+                  Ascensoristica
                 </Link>
               </li>
               <li>
                 <Link to="/servizi/energia" className="text-[#00779b] hover:text-[#1da1db] transition-colors text-[15px] font-medium block">
                   Energia
                 </Link>
+              </li>
+              <li>
+                <span className="text-[#00779b]/60 cursor-not-allowed text-[15px] font-medium flex items-center gap-2">
+                  Networking{" "}
+                  <span className="text-[10px] uppercase tracking-wider bg-[#f5d000] text-[#012b3a] font-bold px-2.5 py-0.5 rounded-full">
+                    In Sviluppo
+                  </span>
+                </span>
               </li>
             </ul>
           </div>

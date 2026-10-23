@@ -6,7 +6,6 @@ import {
   Layers,
   CheckCircle2,
   ArrowRight,
-  DraftingCompass,
   Wrench,
   ShieldCheck,
   Briefcase,
@@ -21,7 +20,7 @@ import ascensoristicaImg from "@/assets/ascensoristica.jpg";
 export const Route = createFileRoute("/servizi/ascensoristica")({
   head: () => ({
     meta: [
-      { title: "Progettazione Ascensoristica — FI.CO. SRL" },
+      { title: " Ascensoristica — FI.CO. SRL" },
       {
         name: "description",
         content:
@@ -63,97 +62,6 @@ function AscensoristicaPage() {
       step: "06",
       title: "Ottimizzazione",
       desc: "Confronto tra soluzioni alternative per migliorare ingombri, funzionalità, realizzabilità e costi.",
-    },
-  ];
-
-  const macroServizi = [
-    {
-      code: "AREA 01",
-      icon: Compass,
-      badge: "IMPOSTAZIONE & STUDIO",
-      title: "Fattibilità, Avamprogetto & Scelte Impiantistiche",
-      items: [
-        {
-          name: "Studi di fattibilità e avamprogetto",
-          desc: "Analisi preliminare degli spazi, dei vincoli e della tipologia di impianto più adatta.",
-        },
-        {
-          name: "Progettazione preliminare ed esecutiva",
-          desc: "Sviluppo dell'impianto dalla configurazione iniziale agli elaborati tecnici di dettaglio.",
-        },
-        {
-          name: "Ascensori standard e fuori standard",
-          desc: "Soluzioni per configurazioni ricorrenti e impianti speciali o personalizzati.",
-        },
-        {
-          name: "Nuove installazioni ed edifici esistenti",
-          desc: "Progettazione per nuove costruzioni e inserimento di impianti in contesti con vincoli dimensionali o architettonici.",
-        },
-        {
-          name: "Modernizzazioni e sostituzioni",
-          desc: "Studio delle nuove configurazioni e ottimizzazione degli spazi disponibili su impianti esistenti.",
-        },
-      ],
-    },
-    {
-      code: "AREA 02",
-      icon: DraftingCompass,
-      badge: "INGEGNERIA & ARCHITETTURA",
-      title: "Modellazione, Strutture & Integrazione Edilizia",
-      items: [
-        {
-          name: "Disegni 2D e modellazione 3D",
-          desc: "Documentazione grafica per cliente, progettazione, produzione e coordinamento tecnico.",
-        },
-        {
-          name: "Layout, piante, sezioni e prospetti",
-          desc: "Elaborati di disposizione per vano, cabina, porte, accessi e componenti principali.",
-        },
-        {
-          name: "Vani ascensore e strutture metalliche",
-          desc: "Definizione geometrica, verifiche dimensionali e progettazione delle incastellature di supporto.",
-        },
-        {
-          name: "Cabine, porte e configurazioni speciali",
-          desc: "Sviluppo di soluzioni personalizzate, accessi contrapposti o adiacenti e particolari esigenze dimensionali.",
-        },
-        {
-          name: "Integrazione architettonica",
-          desc: "Coordinamento con facciate, scale, passerelle, tamponamenti, vetrate e finiture.",
-        },
-        {
-          name: "Verifica interferenze",
-          desc: "Coordinamento con strutture, opere murarie, impianti e altri elementi dell'edificio.",
-        },
-      ],
-    },
-    {
-      code: "AREA 03",
-      icon: HardHat,
-      badge: "PRODUZIONE, NORMATIVA & CANTIERE",
-      title: "Supporto Operativo, Capitolati & Ottimizzazione",
-      items: [
-        {
-          name: "Supporto a produzione e pre-produzione",
-          desc: "Predisposizione e verifica degli elaborati necessari allo sviluppo dei componenti e alla produzione.",
-        },
-        {
-          name: "Capitolati e specifiche tecniche",
-          desc: "Supporto alla definizione delle caratteristiche dell'impianto per gare, affidamenti e richieste d'offerta.",
-        },
-        {
-          name: "Supporto normativo e accessibilità",
-          desc: "Assistenza nella corretta impostazione progettuale rispetto ai requisiti tecnici e di accessibilità applicabili.",
-        },
-        {
-          name: "Documentazione e assistenza di cantiere",
-          desc: "Disegni esecutivi, dettagli e supporto tecnico durante l'installazione.",
-        },
-        {
-          name: "Ottimizzazione tecnico-economica",
-          desc: "Valutazione di soluzioni alternative per migliorare prestazioni, ingombri, realizzabilità e costi.",
-        },
-      ],
     },
   ];
 
@@ -224,14 +132,12 @@ function AscensoristicaPage() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[80px] font-extrabold leading-[1.05] tracking-tight text-[#012b3a] max-w-4xl pb-2">
-              Progettazione <br className="hidden md:block" />
-              <span className="text-[#012b3a]">ascensoristica.</span>
+              <span className="text-[#012b3a]">Ascensoristica</span>
             </h1>
 
             <p className="mt-6 md:mt-8 text-base md:text-xl text-[#00779b] max-w-3xl leading-relaxed">
-              Servizi tecnici e architettonici per ascensori, dalla fattibilità al cantiere.
-              Competenza ascensoristica specialistica integrata nei servizi Fi.Co.: un unico
-              approccio per collegare architettura, progettazione tecnica, produzione e cantiere.
+              Effettuiamo progettazione ascensoristica, dalla fattibilità al cantiere.
+              Fi.Co. collega attraverso competenze specialistiche integrate architettura, progettazione tecnica, produzione e cantiere.
             </p>
 
             {/* Stepper lineare architettonico al posto dei badge isolati */}
@@ -276,15 +182,12 @@ function AscensoristicaPage() {
 
             <div className="w-full lg:w-7/12 text-left">
               <Reveal delay={100}>
-                <span className="text-xs md:text-sm font-bold text-[#00779b] uppercase tracking-[0.22em] block mb-2">
-                  PERCHÉ FI.CO.
-                </span>
+                
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#012b3a] leading-tight pb-2">
                   Una nuova competenza, un'evoluzione naturale
                 </h2>
                 <p className="mt-4 text-base md:text-lg text-[#00779b] leading-relaxed">
-                  L'ampliamento dei servizi Fi.Co. al settore ascensoristico nasce dall'incontro tra
-                  competenze tecniche multidisciplinari e un'esperienza specialistica maturata nel
+                  L'ampliamento dei servizi Fi.Co. al settore ascensoristico nasce grazie all'incontro con la competenza specialistica di professionisti con lunga esperienza maturata nel
                   settore degli impianti elevatori.
                 </p>
 
@@ -293,22 +196,21 @@ function AscensoristicaPage() {
                   <div className="relative group">
                     <span className="absolute -left-[31px] sm:-left-[39px] top-1 w-4 h-4 rounded-full bg-white border-4 border-[#1da1db]" />
                     <span className="text-xs font-extrabold uppercase tracking-wider text-[#1da1db] block mb-1.5">
-                      DA COMPETENZA VERTICALE…
+                      
                     </span>
                     <p className="text-sm md:text-base text-[#012b3a] leading-relaxed">
-                      L'inserimento di una professionalità con esperienza nella progettazione
-                      ascensoristica consente a Fi.Co. di sviluppare internamente un servizio
-                      specialistico dedicato agli impianti elevatori.
+                      
                     </p>
                   </div>
 
                   <div className="relative group">
                     <span className="absolute -left-[31px] sm:-left-[39px] top-1 w-4 h-4 rounded-full bg-[#facc15] ring-4 ring-[#facc15]/30" />
                     <span className="text-xs font-extrabold uppercase tracking-wider text-[#0a5c75] block mb-1.5">
-                      …A SERVIZIO INTEGRATO
+                      Un SERVIZIO INTEGRATO e accessibile 
+
                     </span>
                     <p className="text-sm md:text-base text-[#012b3a] leading-relaxed">
-                      L'ascensore viene affrontato come parte dell'edificio: spazi, vano, accessi,
+                      L'ascensore è parte dell'edificio: spazi, vano, accessi,
                       strutture, interferenze e finiture vengono coordinati con le esigenze
                       tecniche, architettoniche e di cantiere.
                     </p>
@@ -458,77 +360,6 @@ function AscensoristicaPage() {
               </p>
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      {/* SEZIONE 3: COSA FACCIAMO — TAVOLA TECNICA / ABACO CON SIDEBAR STICKY */}
-      <section className="py-16 md:py-24 bg-white border-b border-[#facc15]">
-        <div className="container-x max-w-6xl mx-auto">
-          <Reveal>
-            <div className="max-w-3xl mb-16 md:mb-20 text-left">
-              <span className="text-xs md:text-sm font-bold text-[#00779b] uppercase tracking-[0.22em] block mb-2">
-                COSA FACCIAMO
-              </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#012b3a] leading-tight">
-                Servizi di progettazione ascensoristica
-              </h2>
-              <p className="mt-4 text-base md:text-lg text-[#00779b] leading-relaxed">
-                Attività modulabili in funzione della fase progettuale, della tipologia di impianto
-                e delle esigenze del cliente.
-              </p>
-            </div>
-          </Reveal>
-
-          <div className="divide-y-2 divide-[#facc15]">
-            {macroServizi.map((gruppo, groupIdx) => (
-              <div key={gruppo.title} className="py-12 first:pt-0 last:pb-0">
-                <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-                  {/* Intestazione Macro-Area (Sticky a sinistra su desktop) */}
-                  <div className="lg:col-span-5 lg:sticky lg:top-32 text-left">
-                    <Reveal>
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-full bg-[#013a52] text-[#facc15] flex items-center justify-center shrink-0 shadow-md">
-                          <gruppo.icon size={22} />
-                        </div>
-                        <span className="text-xs font-bold uppercase tracking-wider text-[#1da1db]">
-                          {gruppo.badge}
-                        </span>
-                      </div>
-                      <h3 className="text-2xl md:text-3xl font-extrabold text-[#012b3a] leading-snug">
-                        {gruppo.title}
-                      </h3>
-                      <div className="mt-4 w-16 h-1 bg-[#facc15] rounded-full" />
-                    </Reveal>
-                  </div>
-
-                  {/* Elenco Tecnico delle Attività (Abaco a righe orizzontali) */}
-                  <div className="lg:col-span-7 divide-y divide-[#1da1db]/20 border-t border-b border-[#1da1db]/20">
-                    {gruppo.items.map((servizio, itemIdx) => (
-                      <Reveal key={servizio.name} delay={itemIdx * 50}>
-                        <div className="group py-5 px-3 sm:px-4 flex items-start gap-4 hover:bg-[#f4fafd] transition-colors text-left">
-                          <span className="text-xs font-extrabold text-[#1da1db] pt-1 tabular-nums shrink-0">
-                            0{groupIdx + 1}.{itemIdx + 1}
-                          </span>
-                          <div className="flex-1">
-                            <h4 className="text-base md:text-lg font-extrabold text-[#012b3a] group-hover:text-[#0a5c75] transition-colors">
-                              {servizio.name}
-                            </h4>
-                            <p className="text-sm md:text-[15px] text-[#00779b] leading-relaxed mt-1">
-                              {servizio.desc}
-                            </p>
-                          </div>
-                          <CheckCircle2
-                            size={18}
-                            className="text-[#1da1db] shrink-0 mt-1 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all"
-                          />
-                        </div>
-                      </Reveal>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 

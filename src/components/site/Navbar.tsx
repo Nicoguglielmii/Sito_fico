@@ -5,6 +5,7 @@ import { FicoImage } from "@/components/site/FicoImage";
 
 import fibraMobileImg from "@/assets/fibraotticaemobile.jpg";
 import networkingImg from "@/assets/networking.jpg";
+import netwImg from "@/assets/netw.jpg";
 import ascensoristicaImg from "@/assets/ascensoristica.jpg";
 import energiaImg from "@/assets/Energia.jpg";
 
@@ -37,6 +38,7 @@ export function Navbar() {
     { name: "IT & Software", path: "/servizi/it-software", image: networkingImg, active: true, variant: 2 as const },
     { name: "Ascensoristica", path: "/servizi/ascensoristica", image: ascensoristicaImg, active: true, variant: 1 as const },
     { name: "Energia", path: "/servizi/energia", image: energiaImg, active: true, variant: 3 as const },
+    { name: "Networking", path: "#", image: netwImg, active: false, variant: 2 as const },
   ];
 
   return (
@@ -112,15 +114,15 @@ export function Navbar() {
               </button>
             </div>
 
-            {/* Tendina Desktop */}
+            {/* Tendina Desktop a 5 colonne */}
             <div
-              className={`absolute top-[85%] left-1/2 -translate-x-1/2 w-[920px] max-w-[94vw] pt-4 transition-all duration-500 z-[999] ${
+              className={`absolute top-[85%] left-1/2 -translate-x-1/2 w-[1080px] max-w-[95vw] pt-4 transition-all duration-500 z-[999] ${
                 isDesktopServiziOpen
                   ? "opacity-100 translate-y-0 pointer-events-auto"
                   : "opacity-0 -translate-y-4 pointer-events-none"
               }`}
             >
-              <div className="bg-white border border-[#facc15] rounded-2xl shadow-2xl p-5 grid grid-cols-4 gap-4">
+              <div className="bg-white border border-[#facc15] rounded-2xl shadow-2xl p-5 grid grid-cols-5 gap-4">
                 {serviziMenu.map((item) =>
                   item.active ? (
                     <Link
@@ -147,9 +149,9 @@ export function Navbar() {
                         variant={item.variant}
                         className="w-full aspect-video rounded-xl shadow-sm"
                       />
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-center justify-between gap-1">
                         <span className="font-bold text-base text-[#00779b]">{item.name}</span>
-                        <span className="bg-[#1da1db] text-white text-[9px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                        <span className="bg-[#1da1db] text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0">
                           In Sviluppo
                         </span>
                       </div>
@@ -234,7 +236,7 @@ export function Navbar() {
 
             <div
               className={`overflow-hidden transition-all duration-300 ${
-                isMobileServiziOpen ? "max-h-[1200px]" : "max-h-0"
+                isMobileServiziOpen ? "max-h-[1500px]" : "max-h-0"
               }`}
             >
               <div className="flex flex-col gap-6 pl-4 border-l border-[#facc15] ml-3 py-3">
@@ -252,7 +254,7 @@ export function Navbar() {
                         variant={item.variant}
                         className="w-full aspect-video shrink-0 rounded-2xl shadow-sm"
                       />
-                      <span className="font-bold text-base text-[#1da1db] group-hover:text-[#012b3a] transition-colors">
+                      <span className="font-semibold text-[#1da1db] group-hover:text-[#012b3a] transition-colors">
                         {item.name}
                       </span>
                     </Link>
@@ -264,8 +266,8 @@ export function Navbar() {
                         variant={item.variant}
                         className="w-full aspect-video shrink-0 rounded-2xl shadow-sm"
                       />
-                      <span className="font-bold text-base text-[#00779b]">{item.name}</span>
-                      <div className="flex items-center justify-end mt-1">
+                      <div className="flex items-center justify-between gap-1 mt-1">
+                        <span className="font-semibold text-[#00779b]">{item.name}</span>
                         <span className="bg-[#1da1db] text-white text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                           In Sviluppo
                         </span>

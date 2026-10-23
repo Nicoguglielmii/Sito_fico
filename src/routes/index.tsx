@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Search, PenTool, GitMerge, FileText, TrendingUp } from "lucide-react";
 import fibraMobileImg from "@/assets/fibraotticaemobile.jpg";
 import networkingImg from "@/assets/project-it.jpg";
+import netwImg from "@/assets/netw.jpg";
 import ascensoristicaImg from "@/assets/ascensoristica.jpg";
 import energiaImg from "@/assets/Energia.jpg";
 import { Reveal } from "@/components/site/Reveal";
@@ -179,7 +180,7 @@ function Index() {
             <Reveal>
               <div className="mb-8 md:mb-12">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tight text-[#012b3a] pb-2">
-                 <span className="text-[#0a5c75]"> Quattro aree, un unico approccio</span>
+                 <span className="text-[#0a5c75]"> Cinque aree, un unico approccio</span>
                 </h2>
                 <p className="mt-4 sm:mt-6 max-w-3xl text-base sm:text-lg md:text-xl text-[#3b8ea5] leading-relaxed">
                   Competenze diverse, lo stesso metodo: comprendere il contesto, progettare con precisione e portare ogni attività verso un risultato concreto.
@@ -308,6 +309,30 @@ function Index() {
                     >
                       Scopri Energia <ArrowRight size={18} />
                     </Link>
+                  </div>
+                </div>
+              </Reveal>
+
+              {/* 5. NETWORKING */}
+              <Reveal delay={350}>
+                <div className="flex flex-col gap-5">
+                  <div className="block overflow-hidden rounded-3xl w-full shadow-md">
+                    <FicoImage
+                      src={netwImg}
+                      alt="Networking"
+                      variant={2}
+                      className="w-full h-[280px] sm:h-[380px] md:h-[460px] rounded-3xl"
+                    />
+                  </div>
+                  <div className="max-w-4xl text-left pt-2">
+                    <div className="flex flex-wrap items-center gap-3 mb-3">
+                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#013547]">
+                        Networking
+                      </h3>
+                      <span className="bg-[#1da1db] text-white text-xs sm:text-sm font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        In sviluppo
+                      </span>
+                    </div>
                   </div>
                 </div>
               </Reveal>

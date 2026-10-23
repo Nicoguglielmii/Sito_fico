@@ -6,6 +6,7 @@ import { FicoImage } from "@/components/site/FicoImage";
 
 import fibraMobileImg from "@/assets/fibraotticaemobile.jpg";
 import networkingImg from "@/assets/networking.jpg";
+import netwImg from "@/assets/netw.jpg";
 import ascensoristicaImg from "@/assets/ascensoristica.jpg";
 import energiaImg from "@/assets/Energia.jpg";
 import infrastruttureImg from "@/assets/infrastrutture.jpg";
@@ -50,7 +51,7 @@ function ServiziIndex() {
                   Dalle infrastrutture al software
                 </h2>
                 <p className="text-[#00779b] text-lg md:text-xl leading-relaxed">
-                  Fi.Co. opera attraverso competenze specialistiche unite dallo stesso metodo: comprendere un'esigenza, progettare una soluzione realizzabile e governarne ogni fase. Il nostro percorso nasce nelle telecomunicazioni e nella progettazione di reti in fibra ottica, per ampliarsi verso servizi IT, networking, sviluppo software, progettazione ascensoristica e soluzioni nel settore energetico. Oggi lavoriamo su progetti nei quali infrastrutture, dati e tecnologia possono integrarsi per rispondere alle esigenze di operatori, imprese, enti e privati.
+                  Fi.Co. opera attraverso competenze specialistiche plurali e una metodologia condivisa per comprendere un'esigenza, progettare una soluzione realizzabile e governarne ogni fase. Forniamo servizi nel settore delle telecomunicazioni e nella progettazione di reti in fibra ottica. Stiamo ampliando la nostra offerta verso servizi IT, networking, sviluppo software, progettazione ascensoristica e soluzioni nel settore energetico. Oggi lavoriamo su progetti nei quali infrastrutture, dati e tecnologia possano integrarsi per rispondere alle esigenze di operatori, imprese, enti e privati.
                 </p>
               </Reveal>
             </div>
@@ -82,7 +83,7 @@ function ServiziIndex() {
           <div className="max-w-3xl mb-6 text-left">
             <Reveal>
               <h2 className="text-4xl md:text-5xl font-extrabold leading-tight font-[var(--font-display)] text-[#012b3a] pb-2">
-                Quattro aree, un unico approccio
+                Cinque aree, un unico approccio
               </h2>
             </Reveal>
           </div>
@@ -133,7 +134,7 @@ function ServiziIndex() {
                 </Link>
                 <div className="flex-1 flex flex-col justify-center text-left">
                   <h3 className="text-3xl md:text-4xl font-extrabold mb-4 pb-1 text-[#013547]">
-                    IT, Networking & Software
+                    IT & Software
                   </h3>
                   <p className="text-[#00779b] text-lg leading-relaxed mb-6 max-w-2xl">
                     Dall'infrastruttura fisica agli ambienti digitali, sviluppiamo e integriamo soluzioni tecnologiche per esigenze operative.
@@ -161,10 +162,10 @@ function ServiziIndex() {
                 </Link>
                 <div className="flex-1 flex flex-col justify-center text-left">
                   <h3 className="text-3xl md:text-4xl font-extrabold mb-4 pb-1 text-[#013547]">
-                    Progettazione Ascensoristica
+                     Ascensoristica
                   </h3>
                   <p className="text-[#00779b] text-lg leading-relaxed mb-6 max-w-2xl">
-                    Servizi tecnici e architettonici per ascensori, dalla fattibilità al cantiere. Soluzioni standard e fuori standard.
+                    Servizi tecnici e architettonici per ascensori, dalla fattibilità al cantiere.
                   </p>
                   <Link to="/servizi/ascensoristica" className="inline-flex items-center text-[#1da1db] font-bold hover:text-[#012b3a] transition-colors gap-2 w-max">
                     Scopri di più <ArrowRight size={18} />
@@ -197,6 +198,36 @@ function ServiziIndex() {
                   <Link to="/servizi/energia" className="inline-flex items-center text-[#1da1db] font-bold hover:text-[#012b3a] transition-colors gap-2 w-max">
                     Scopri di più <ArrowRight size={18} />
                   </Link>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* NETWORKING (IN SVILUPPO) */}
+            <Reveal delay={350}>
+              <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 py-8 border-b border-[#facc15] last:border-b-0 relative">
+                <div className="overflow-hidden shrink-0 rounded-3xl w-full md:max-w-[400px] lg:max-w-[480px] shadow-md">
+                  <FicoImage
+                    src={netwImg}
+                    alt="Networking"
+                    variant={2}
+                    className="w-full aspect-video rounded-3xl"
+                  />
+                </div>
+                <div className="flex-1 flex flex-col justify-center text-left">
+                  <div className="flex items-center justify-between gap-4 flex-wrap mb-4">
+                    <h3 className="text-3xl md:text-4xl font-extrabold pb-1 text-[#013547]">
+                      Networking
+                    </h3>
+                    <span className="bg-[#f5d000] text-[#012b3a] text-xs font-extrabold px-4 py-1.5 rounded-full uppercase tracking-wider">
+                      In Sviluppo
+                    </span>
+                  </div>
+                  <p className="text-[#00779b] text-lg leading-relaxed mb-6 max-w-2xl">
+                    Progettazione, configurazione e gestione di architetture di rete, apparati di comunicazione e cablaggio strutturato per garantire connessioni sicure e performanti.
+                  </p>
+                  <span className="inline-flex items-center text-[#1da1db] font-bold gap-2 cursor-not-allowed w-max">
+                    Pagina in arrivo
+                  </span>
                 </div>
               </div>
             </Reveal>
