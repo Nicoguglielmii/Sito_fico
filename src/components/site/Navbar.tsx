@@ -38,7 +38,7 @@ export function Navbar() {
     { name: "IT & Software", path: "/servizi/it-software", image: networkingImg, active: true, variant: 2 as const },
     { name: "Ascensoristica", path: "/servizi/ascensoristica", image: ascensoristicaImg, active: true, variant: 1 as const },
     { name: "Energia", path: "/servizi/energia", image: energiaImg, active: true, variant: 3 as const },
-    { name: "Networking", path: "#", image: netwImg, active: false, variant: 2 as const },
+    { name: "Networking", path: "/servizi/networking", image: netwImg, active: true, variant: 2 as const },
   ];
 
   return (

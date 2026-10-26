@@ -16,6 +16,7 @@ import { Route as ContattiRouteImport } from './routes/contatti'
 import { Route as ChiSiamoRouteImport } from './routes/chi-siamo'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServiziIndexRouteImport } from './routes/servizi/index'
+import { Route as ServiziNetworkingRouteImport } from './routes/servizi/networking'
 import { Route as ServiziItSoftwareRouteImport } from './routes/servizi/it-software'
 import { Route as ServiziFibraMobileRouteImport } from './routes/servizi/fibra-mobile'
 import { Route as ServiziEnergiaRouteImport } from './routes/servizi/energia'
@@ -56,6 +57,11 @@ const ServiziIndexRoute = ServiziIndexRouteImport.update({
   path: '/servizi/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServiziNetworkingRoute = ServiziNetworkingRouteImport.update({
+  id: '/servizi/networking',
+  path: '/servizi/networking',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServiziItSoftwareRoute = ServiziItSoftwareRouteImport.update({
   id: '/servizi/it-software',
   path: '/servizi/it-software',
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/servizi/energia': typeof ServiziEnergiaRoute
   '/servizi/fibra-mobile': typeof ServiziFibraMobileRoute
   '/servizi/it-software': typeof ServiziItSoftwareRoute
+  '/servizi/networking': typeof ServiziNetworkingRoute
   '/servizi/': typeof ServiziIndexRoute
 }
 export interface FileRoutesByTo {
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/servizi/energia': typeof ServiziEnergiaRoute
   '/servizi/fibra-mobile': typeof ServiziFibraMobileRoute
   '/servizi/it-software': typeof ServiziItSoftwareRoute
+  '/servizi/networking': typeof ServiziNetworkingRoute
   '/servizi': typeof ServiziIndexRoute
 }
 export interface FileRoutesById {
@@ -115,6 +123,7 @@ export interface FileRoutesById {
   '/servizi/energia': typeof ServiziEnergiaRoute
   '/servizi/fibra-mobile': typeof ServiziFibraMobileRoute
   '/servizi/it-software': typeof ServiziItSoftwareRoute
+  '/servizi/networking': typeof ServiziNetworkingRoute
   '/servizi/': typeof ServiziIndexRoute
 }
 export interface FileRouteTypes {
@@ -130,6 +139,7 @@ export interface FileRouteTypes {
     | '/servizi/energia'
     | '/servizi/fibra-mobile'
     | '/servizi/it-software'
+    | '/servizi/networking'
     | '/servizi/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -143,6 +153,7 @@ export interface FileRouteTypes {
     | '/servizi/energia'
     | '/servizi/fibra-mobile'
     | '/servizi/it-software'
+    | '/servizi/networking'
     | '/servizi'
   id:
     | '__root__'
@@ -156,6 +167,7 @@ export interface FileRouteTypes {
     | '/servizi/energia'
     | '/servizi/fibra-mobile'
     | '/servizi/it-software'
+    | '/servizi/networking'
     | '/servizi/'
   fileRoutesById: FileRoutesById
 }
@@ -170,6 +182,7 @@ export interface RootRouteChildren {
   ServiziEnergiaRoute: typeof ServiziEnergiaRoute
   ServiziFibraMobileRoute: typeof ServiziFibraMobileRoute
   ServiziItSoftwareRoute: typeof ServiziItSoftwareRoute
+  ServiziNetworkingRoute: typeof ServiziNetworkingRoute
   ServiziIndexRoute: typeof ServiziIndexRoute
 }
 
@@ -224,6 +237,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiziIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/servizi/networking': {
+      id: '/servizi/networking'
+      path: '/servizi/networking'
+      fullPath: '/servizi/networking'
+      preLoaderRoute: typeof ServiziNetworkingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/servizi/it-software': {
       id: '/servizi/it-software'
       path: '/servizi/it-software'
@@ -266,6 +286,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServiziEnergiaRoute: ServiziEnergiaRoute,
   ServiziFibraMobileRoute: ServiziFibraMobileRoute,
   ServiziItSoftwareRoute: ServiziItSoftwareRoute,
+  ServiziNetworkingRoute: ServiziNetworkingRoute,
   ServiziIndexRoute: ServiziIndexRoute,
 }
 export const routeTree = rootRouteImport

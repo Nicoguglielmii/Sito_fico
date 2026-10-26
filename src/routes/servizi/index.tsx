@@ -202,32 +202,30 @@ function ServiziIndex() {
               </div>
             </Reveal>
 
-            {/* NETWORKING (IN SVILUPPO) */}
+            {/* NETWORKING */}
             <Reveal delay={350}>
               <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 py-8 border-b border-[#facc15] last:border-b-0 relative">
-                <div className="overflow-hidden shrink-0 rounded-3xl w-full md:max-w-[400px] lg:max-w-[480px] shadow-md">
+                <Link 
+                  to="/servizi/networking" 
+                  className="block group overflow-hidden shrink-0 rounded-3xl w-full md:max-w-[400px] lg:max-w-[480px] shadow-md"
+                >
                   <FicoImage
                     src={netwImg}
                     alt="Networking"
                     variant={2}
                     className="w-full aspect-video rounded-3xl"
                   />
-                </div>
+                </Link>
                 <div className="flex-1 flex flex-col justify-center text-left">
-                  <div className="flex items-center justify-between gap-4 flex-wrap mb-4">
-                    <h3 className="text-3xl md:text-4xl font-extrabold pb-1 text-[#013547]">
-                      Networking
-                    </h3>
-                    <span className="bg-[#f5d000] text-[#012b3a] text-xs font-extrabold px-4 py-1.5 rounded-full uppercase tracking-wider">
-                      In Sviluppo
-                    </span>
-                  </div>
+                  <h3 className="text-3xl md:text-4xl font-extrabold mb-4 pb-1 text-[#013547]">
+                    Networking
+                  </h3>
                   <p className="text-[#00779b] text-lg leading-relaxed mb-6 max-w-2xl">
                     Progettazione, configurazione e gestione di architetture di rete, apparati di comunicazione e cablaggio strutturato per garantire connessioni sicure e performanti.
                   </p>
-                  <span className="inline-flex items-center text-[#1da1db] font-bold gap-2 cursor-not-allowed w-max">
-                    Pagina in arrivo
-                  </span>
+                  <Link to="/servizi/networking" className="inline-flex items-center text-[#1da1db] font-bold hover:text-[#012b3a] transition-colors gap-2 w-max">
+                    Scopri di più <ArrowRight size={18} />
+                  </Link>
                 </div>
               </div>
             </Reveal>

@@ -4,7 +4,6 @@ import { Reveal } from "@/components/site/Reveal";
 import { HeroParticles } from "@/components/site/Interactive";
 import { FicoImage } from "@/components/site/FicoImage";
 
-import netwImg from "@/assets/netw.jpg";
 import itservicesImg from "@/assets/itservices.jpg";
 import digitaldevelopmentImg from "@/assets/digitaldevelopment.webp";
 
@@ -14,18 +13,6 @@ export const Route = createFileRoute("/servizi/it-software")({
 
 function ItSoftwarePage() {
   const serviziIT = [
-    {
-      titleFirst: "Networking & Infrastrutture IT",
-      subtitle: "CONNESSIONI SOLIDE ED EFFICIENTI",
-      desc: "Progettiamo, installiamo e supportiamo le infrastrutture che permettono a sistemi, persone e dati di restare connessi.",
-      image: netwImg,
-      variant: 2 as const,
-      activities: [
-        "Installazione e manutenzione di apparati networking",
-        "Progettazione e gestione delle reti",
-        "Cablaggio strutturato",
-      ],
-    },
     {
       titleFirst: "IT Services ",
       subtitle: "CONTINUITÀ OPERATIVA, OGNI GIORNO",
@@ -57,23 +44,22 @@ function ItSoftwarePage() {
     {
       icon: Zap,
       title: "Abbattimento dei tempi di sviluppo",
-      desc: "Trasformiamo le idee in software funzionante in tempi drasticamente ridotti rispetto ai metodi tradizionali.",
+      desc: "Trasformiamo le idee in software funzionante in tempi ridotti rispetto ai metodi tradizionali.",
     },
     {
       icon: Layers,
       title: "Scalabilità e flessibilità",
-      desc: "Scriviamo codice pulito e architetture modulari pronte a crescere ed evolvere insieme al business del cliente.",
+      desc: "Scriviamo codice pulito e architetture modulari, pronte a crescere insieme al business del cliente.",
     },
     {
       icon: Sliders,
-      title: "Soluzioni realmente su misura",
-      desc: "Personalizziamo ogni piattaforma sulle specifiche esigenze operative aziendali, massimizzando la qualità e ottimizzando i costi.",
+      title: "Soluzioni su misura",
+      desc: "Personalizziamo ogni piattaforma sulle esigenze operative aziendali, ottimizzando qualità e costi.",
     },
   ];
 
   return (
     <div className="bg-white w-full min-h-screen pb-20 overflow-x-hidden selection:bg-[#facc15] selection:text-[#012b3a]">
-      
       {/* HERO SECTION */}
       <section className="relative pt-32 md:pt-36 pb-12 md:pb-16 border-b border-[#facc15] overflow-hidden bg-white">
         <HeroParticles />
@@ -89,7 +75,9 @@ function ItSoftwarePage() {
               all'ambiente digitale
             </h1>
             <p className="mt-6 md:mt-8 text-base md:text-xl text-[#00779b] max-w-2xl leading-relaxed">
-              Integriamo infrastrutture IT, servizi di assistenza e sviluppo software per costruire strumenti digitali solidi, garantendo continuità, sicurezza ed efficienza per ogni tua esigenza operativa.
+              Integriamo infrastrutture IT, servizi di assistenza e sviluppo software per costruire
+              strumenti digitali solidi, garantendo continuità, sicurezza ed efficienza per ogni tua
+              esigenza operativa.
             </p>
           </Reveal>
         </div>
@@ -128,9 +116,7 @@ function ItSoftwarePage() {
                         </h3>
                       </div>
 
-                      <p className="text-lg text-[#00779b] leading-relaxed mt-2">
-                        {item.desc}
-                      </p>
+                      <p className="text-lg text-[#00779b] leading-relaxed mt-2">{item.desc}</p>
 
                       {item.activities.length > 0 && (
                         <ul className="mt-6 space-y-3 pt-6 border-t border-[#facc15]">
@@ -168,7 +154,6 @@ function ItSoftwarePage() {
         }}
       >
         <div className="container-x max-w-6xl mx-auto flex flex-col gap-16 md:gap-20">
-          
           {/* INTESTAZIONE FOCUS DIGITALE */}
           <Reveal>
             <div className="max-w-3xl text-left">
@@ -179,14 +164,15 @@ function ItSoftwarePage() {
                 Soluzioni digitali concrete e tecnologie di frontiera
               </h2>
               <p className="mt-4 text-base md:text-lg text-[#00779b] leading-relaxed">
-                Uniamo lo sviluppo di asset digitali immediatamente cantierabili per la crescita aziendale alla ricerca su architetture software basate sull'Intelligenza Artificiale.
+                Uniamo lo sviluppo di asset digitali immediatamente cantierabili per la crescita
+                aziendale alla ricerca su architetture software basate sull'Intelligenza
+                Artificiale.
               </p>
             </div>
           </Reveal>
 
           {/* GRIGLIA: OFFERTA CORE (WEB STRATEGY) + METODOLOGIA AI-AUGMENTED */}
           <div className="grid lg:grid-cols-2 gap-8 md:gap-10 items-stretch">
-            
             {/* Card 1: L'Offerta Pratica / Web & Conversione */}
             <Reveal delay={100}>
               <div className="bg-white border-2 border-[#facc15] rounded-3xl p-8 md:p-10 shadow-lg h-full flex flex-col justify-between">
@@ -206,15 +192,26 @@ function ItSoftwarePage() {
                   </div>
 
                   <p className="text-[#00779b] text-base md:text-[17px] leading-relaxed mb-6">
-                    Oltre ai progetti sperimentali, realizziamo soluzioni digitali consolidate pensate per rispondere alle esigenze concrete delle aziende. Progettiamo e sviluppiamo <strong>siti web vetrina ad alte prestazioni</strong> e <strong>landing page ottimizzate per la conversione</strong>.
+                    Rispondiamo alle esigenze concrete delle aziende con soluzioni digitali
+                    consolidate. Progettiamo e sviluppiamo{" "}
+                    <strong>siti web vetrina ad alte prestazioni</strong> e{" "}
+                    <strong>landing page ottimizzate per la conversione</strong>.
                   </p>
                   <p className="text-[#00779b] text-base md:text-[17px] leading-relaxed">
-                    Questi strumenti non sono semplici "biglietti da visita digitali", ma veri e propri <strong>asset strategici</strong> costruiti per aumentare la visibilità del brand, supportare attivamente le campagne di marketing e lead generation e accelerare gli obiettivi di espansione territoriale e commerciale.
+                    Questi strumenti non sono semplici "biglietti da visita digitali", ma veri e
+                    propri <strong>asset strategici</strong> pensati per aumentare la visibilità del
+                    brand, supportare attivamente le campagne di marketing e lead generation e
+                    accelerare gli obiettivi di espansione territoriale e commerciale.
                   </p>
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-[#facc15] flex flex-wrap gap-2">
-                  {["Siti Web Performanti", "Landing Page & Conversion", "Lead Generation", "SEO & Posizionamento"].map((tag) => (
+                  {[
+                    "Siti Web Performanti",
+                    "Landing Page & Conversion",
+                    "Lead Generation",
+                    "SEO & Posizionamento",
+                  ].map((tag) => (
                     <span
                       key={tag}
                       className="px-3.5 py-1.5 rounded-full bg-[#1da1db]/10 border border-[#1da1db]/30 text-[#012b3a] text-xs font-bold"
@@ -245,7 +242,11 @@ function ItSoftwarePage() {
                   </div>
 
                   <p className="text-[#00779b] text-base md:text-[17px] leading-relaxed mb-6">
-                    Il nostro elemento di differenziazione risiede nell'adozione del <strong>"Vibe Coding"</strong>: un approccio di sviluppo rapido, agile e iterativo che integra nativamente i più potenti modelli di Intelligenza Artificiale attuali (tra cui <strong>Google Gemini, Anthropic Claude e GitHub Copilot</strong>) nei nostri ambienti di ingegnerizzazione.
+                    Ci differenziamo adottando il <strong>"Vibe Coding"</strong>: un approccio di
+                    sviluppo rapido, agile e iterativo che integra nativamente i più potenti modelli
+                    di Intelligenza Artificiale attuali (tra cui{" "}
+                    <strong>Google Gemini, Anthropic Claude e GitHub Copilot</strong>) nei nostri
+                    ambienti di ingegnerizzazione.
                   </p>
 
                   <div className="space-y-4 mt-6">
@@ -268,7 +269,6 @@ function ItSoftwarePage() {
                 </div>
               </div>
             </Reveal>
-
           </div>
 
           {/* CARD GRANDE: LA VISIONE / RICERCA E SVILUPPO AI & RETE NEURALE 3D */}
@@ -278,7 +278,6 @@ function ItSoftwarePage() {
               <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-[#1da1db]/15 rounded-full blur-3xl pointer-events-none" />
 
               <div className="relative z-10 grid lg:grid-cols-12 gap-8 md:gap-12 items-center">
-                
                 <div className="lg:col-span-8 text-left">
                   <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f5d000] text-[#012b3a] text-xs font-extrabold uppercase tracking-wider mb-4">
                     <Sparkles size={14} /> La Nostra Visione · R&D
@@ -289,11 +288,22 @@ function ItSoftwarePage() {
                   </h3>
 
                   <p className="text-[#00779b] text-base md:text-lg leading-relaxed mb-4">
-                    Progettiamo sistemi innovativi di Intelligenza Artificiale dotati di <strong>dashboard visive interattive che rappresentano una rete neurale in 3D</strong>. Il sistema reagisce agli input vocali in tempo reale: la struttura neurale si anima fluidamente mentre è in ascolto e cambia dinamicamente colore durante la fase di elaborazione.
+                    Il nostro sistema innovativo di Intelligenza Artificiale è dotato di{" "}
+                    <strong>
+                      una dashboard visiva interattiva rappresentata da una rete neurale in 3D
+                    </strong>{" "}
+                    che risponde agli input vocali in tempo reale. Il sistema reticolare, come una
+                    rete neurale, si attiva in base agli stimoli e cambia colore durante la fase di
+                    elaborazione.
                   </p>
 
                   <p className="text-[#00779b] text-base md:text-lg leading-relaxed">
-                    L'interfaccia è completamente esplorabile nello spazio tridimensionale fino a visualizzare lo stato dei singoli neuroni e delle sinapsi attive. Grazie a un'<strong>architettura modulare ad "agenti"</strong>, l'assistente si interfaccia simultaneamente con molteplici ecosistemi (modelli AI come Gemini, Home Assistant per la domotica e l'IoT, motori di ricerca e flussi informativi live), fungendo da hub centrale intelligente per l'automazione.
+                    L'interfaccia esplorabile nello spazio tridimensionale permette di visualizzare
+                    lo stato dei singoli neuroni e delle sinapsi attive. Grazie a un'
+                    <strong>architettura modulare ad "agenti"</strong>, l'assistente si interfaccia
+                    simultaneamente con molteplici ecosistemi (modelli AI come Gemini, Home
+                    Assistant per la domotica e l'IoT, motori di ricerca e flussi informativi live),
+                    fungendo da hub centrale intelligente per l'automazione.
                   </p>
                 </div>
 
@@ -304,8 +314,12 @@ function ItSoftwarePage() {
                       <Mic size={20} />
                     </div>
                     <div>
-                      <h4 className="font-extrabold text-[#012b3a] text-sm">Interazione Vocale Real-Time</h4>
-                      <p className="text-xs text-[#00779b]">Risposta dinamica e feedback visivo immediato</p>
+                      <h4 className="font-extrabold text-[#012b3a] text-sm">
+                        Interazione Vocale Real-Time
+                      </h4>
+                      <p className="text-xs text-[#00779b]">
+                        Risposta dinamica e feedback visivo immediato
+                      </p>
                     </div>
                   </div>
 
@@ -316,8 +330,12 @@ function ItSoftwarePage() {
                       <Network size={20} />
                     </div>
                     <div>
-                      <h4 className="font-extrabold text-[#012b3a] text-sm">Rete Neurale 3D Esplorabile</h4>
-                      <p className="text-xs text-[#00779b]">Rotazione 360° e zoom su neuroni e sinapsi</p>
+                      <h4 className="font-extrabold text-[#012b3a] text-sm">
+                        Rete Neurale 3D Esplorabile
+                      </h4>
+                      <p className="text-xs text-[#00779b]">
+                        Rotazione 360° e zoom su neuroni e sinapsi
+                      </p>
                     </div>
                   </div>
 
@@ -328,8 +346,12 @@ function ItSoftwarePage() {
                       <Cpu size={20} />
                     </div>
                     <div>
-                      <h4 className="font-extrabold text-[#012b3a] text-sm">Architettura Multi-Agente</h4>
-                      <p className="text-xs text-[#00779b]">Integrazione con LLM, IoT, API e dati live</p>
+                      <h4 className="font-extrabold text-[#012b3a] text-sm">
+                        Architettura Multi-Agente
+                      </h4>
+                      <p className="text-xs text-[#00779b]">
+                        Integrazione con LLM, IoT, API e dati live
+                      </p>
                     </div>
                   </div>
 
@@ -340,14 +362,11 @@ function ItSoftwarePage() {
                     Richiedi una demo <ArrowRight size={16} />
                   </Link>
                 </div>
-
               </div>
             </div>
           </Reveal>
-
         </div>
       </section>
-
     </div>
   );
 }

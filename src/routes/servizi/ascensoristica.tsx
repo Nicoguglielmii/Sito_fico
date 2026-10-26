@@ -431,11 +431,10 @@ function AscensoristicaPage() {
                   </div>
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#012b3a] leading-tight mb-4">
                     Non solo il disegno dell'ascensore, ma il coordinamento{" "}
-                    dell'intero problema progettuale
+                    dell'intero progetto
                   </h3>
                   <p className="text-[#00779b] text-base md:text-lg leading-relaxed mb-5">
-                    Una visione che unisce competenza ascensoristica, esigenze architettoniche,
-                    realizzabilità tecnica e supporto operativo, con l'obiettivo di ridurre
+                    Una visione integrata che ha come obiettivo ridurre
                     interferenze, revisioni e criticità tra progetto, produzione e cantiere.
                   </p>
                   <p className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.2em] text-[#0a5c75]">

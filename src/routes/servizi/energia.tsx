@@ -27,7 +27,7 @@ export const Route = createFileRoute("/servizi/energia")({
       {
         name: "description",
         content:
-          "Fotovoltaico e servizi energetici per edifici e imprese: progettazione, installazione, adeguamento e manutenzione degli impianti.",
+          "Fotovoltaico e servizi energetici  ",
       },
     ],
   }),
@@ -179,11 +179,11 @@ function EnergiaPage() {
 
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[80px] font-extrabold leading-[1.05] tracking-tight text-[#012b3a] max-w-4xl pb-2">
               Fotovoltaico e servizi energetici <br className="hidden md:block" />
-              per edifici e imprese
+              
             </h1>
 
             <p className="mt-6 md:mt-8 text-base md:text-xl text-[#00779b] max-w-3xl leading-relaxed">
-              Progettazione, installazione, adeguamento e manutenzione degli impianti. Accompagniamo ogni intervento dall'analisi preliminare dei consumi fino alla messa in esercizio e al monitoraggio nel tempo.
+               Accompagniamo ogni intervento dall'analisi preliminare dei consumi fino alla messa in esercizio e al monitoraggio nel tempo.
             </p>
 
             {/* Destinatari su barra continua (senza card) */}
@@ -235,7 +235,7 @@ function EnergiaPage() {
                   LA SOLUZIONE PROPOSTA
                 </span>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#012b3a] leading-tight pb-2">
-                  Impianti progettati sul contesto e assistiti nel tempo
+                  Impianti progettati ad hoc e assistiti nel tempo
                 </h2>
 
                 {/* Doppio tracciato energetico verticale continuo */}
@@ -425,10 +425,10 @@ function EnergiaPage() {
                     <Users size={16} /> ENERGIA CONDIVISA
                   </div>
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#012b3a] mb-3">
-                    Comunità Energetiche Rinnovabili.
+                   Fonti rinnovabili per comunità resilienti
                   </h3>
                   <p className="text-base md:text-lg text-[#00779b] leading-relaxed">
-                    Fi.Co. può affiancare imprese ed enti nella valutazione e progettazione di configurazioni energetiche condivise. Il servizio viene definito in base ai soggetti coinvolti e al progetto.
+                    Fi.Co. affianca imprese ed enti nella valutazione e progettazione di configurazioni energetiche condivise. Il servizio viene definito in base ai soggetti coinvolti e al progetto.
                   </p>
                 </div>
                 <div className="shrink-0 hidden md:flex w-20 h-20 rounded-full bg-[#013a52] border-2 border-[#facc15] items-center justify-center text-[#facc15] solar-pulse">
@@ -449,7 +449,7 @@ function EnergiaPage() {
                     <FileCheck2 size={14} /> PREVENTIVO SU MISURA
                   </span>
                   <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#012b3a] leading-tight mb-4">
-                    Trasparenza progettuale, tecnica ed economica.
+                    Trasparenza progettuale, tecnica ed economica
                   </h3>
                   <p className="text-[#00779b] text-base md:text-lg leading-relaxed">
                     Il preventivo specifica impianto, eventuali adeguamenti, attività e frequenza della manutenzione, opere incluse ed escluse, tempi e importo.
