@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Search, PenTool, GitMerge, FileText, TrendingUp } from "lucide-react";
 import fibraMobileImg from "@/assets/fibraotticaemobile.jpg";
 import networkingImg from "@/assets/project-it.jpg";
-import netwImg from "@/assets/netw.jpg";
+import networkingWebpImg from "@/assets/networking.webp";
 import ascensoristicaImg from "@/assets/ascensoristica.jpg";
 import energiaImg from "@/assets/Energia.jpg";
 import { Reveal } from "@/components/site/Reveal";
@@ -316,23 +316,32 @@ function Index() {
               {/* 5. NETWORKING */}
               <Reveal delay={350}>
                 <div className="flex flex-col gap-5">
-                  <div className="block overflow-hidden rounded-3xl w-full shadow-md">
+                  <Link
+                    to="/servizi/networking"
+                    className="block group overflow-hidden rounded-3xl w-full shadow-md"
+                  >
                     <FicoImage
-                      src={netwImg}
+                      src={networkingWebpImg}
                       alt="Networking"
                       variant={2}
                       className="w-full h-[280px] sm:h-[380px] md:h-[460px] rounded-3xl"
                     />
-                  </div>
+                  </Link>
                   <div className="max-w-4xl text-left pt-2">
                     <div className="flex flex-wrap items-center gap-3 mb-3">
                       <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#013547]">
                         Networking
                       </h3>
-                      <span className="bg-[#1da1db] text-white text-xs sm:text-sm font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                        In sviluppo
-                      </span>
                     </div>
+                    <p className="text-sm sm:text-base md:text-lg text-[#00779b] leading-relaxed mb-4 max-w-3xl">
+                      Progettazione, configurazione e gestione di architetture di rete, apparati di comunicazione e cablaggio strutturato per garantire connessioni sicure e performanti.
+                    </p>
+                    <Link
+                      to="/servizi/networking"
+                      className="inline-flex items-center text-[#1da1db] text-sm sm:text-base md:text-lg font-bold hover:text-[#012b3a] transition-colors gap-2"
+                    >
+                      Scopri di più <ArrowRight size={18} />
+                    </Link>
                   </div>
                 </div>
               </Reveal>

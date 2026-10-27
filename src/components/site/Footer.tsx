@@ -66,12 +66,9 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <span className="text-[#00779b]/60 cursor-not-allowed text-[15px] font-medium flex items-center gap-2">
-                  Networking{" "}
-                  <span className="text-[10px] uppercase tracking-wider bg-[#f5d000] text-[#012b3a] font-bold px-2.5 py-0.5 rounded-full">
-                    In Sviluppo
-                  </span>
-                </span>
+                <Link to="/servizi/networking" className="text-[#00779b] hover:text-[#1da1db] transition-colors text-[15px] font-medium block">
+                  Networking
+                </Link>
               </li>
             </ul>
           </div>

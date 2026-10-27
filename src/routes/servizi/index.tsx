@@ -6,6 +6,7 @@ import { FicoImage } from "@/components/site/FicoImage";
 
 import fibraMobileImg from "@/assets/fibraotticaemobile.jpg";
 import networkingImg from "@/assets/networking.jpg";
+import networkingWebpImg from "@/assets/networking.webp";
 import netwImg from "@/assets/netw.jpg";
 import ascensoristicaImg from "@/assets/ascensoristica.jpg";
 import energiaImg from "@/assets/Energia.jpg";
@@ -210,7 +211,7 @@ function ServiziIndex() {
                   className="block group overflow-hidden shrink-0 rounded-3xl w-full md:max-w-[400px] lg:max-w-[480px] shadow-md"
                 >
                   <FicoImage
-                    src={netwImg}
+                    src={networkingWebpImg}
                     alt="Networking"
                     variant={2}
                     className="w-full aspect-video rounded-3xl"

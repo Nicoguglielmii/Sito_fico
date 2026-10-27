@@ -5,7 +5,7 @@ import { FicoImage } from "@/components/site/FicoImage";
 
 import fibraMobileImg from "@/assets/fibraotticaemobile.jpg";
 import networkingImg from "@/assets/networking.jpg";
-import netwImg from "@/assets/netw.jpg";
+import networkingWebpImg from "@/assets/networking.webp";
 import ascensoristicaImg from "@/assets/ascensoristica.jpg";
 import energiaImg from "@/assets/Energia.jpg";
 
@@ -38,7 +38,7 @@ export function Navbar() {
     { name: "IT & Software", path: "/servizi/it-software", image: networkingImg, active: true, variant: 2 as const },
     { name: "Ascensoristica", path: "/servizi/ascensoristica", image: ascensoristicaImg, active: true, variant: 1 as const },
     { name: "Energia", path: "/servizi/energia", image: energiaImg, active: true, variant: 3 as const },
-    { name: "Networking", path: "/servizi/networking", image: netwImg, active: true, variant: 2 as const },
+    { name: "Networking", path: "/servizi/networking", image: networkingWebpImg, active: true, variant: 2 as const },
   ];
 
   return (
@@ -210,11 +210,11 @@ export function Navbar() {
 
           {/* Dropdown Servizi nella Sidebar Mobile */}
           <div className="flex flex-col">
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center justify-between">
               <Link
                 to="/servizi"
                 onClick={(e) => handleNavClick(e, "/servizi")}
-                className="text-xl font-semibold text-[#1da1db] hover:text-[#012b3a] transition-colors flex items-center gap-3 py-2 flex-1"
+                className="text-xl font-semibold text-[#1da1db] hover:text-[#012b3a] transition-colors flex items-center gap-3 flex-1"
               >
                 <Briefcase size={22} /> Servizi
               </Link>
