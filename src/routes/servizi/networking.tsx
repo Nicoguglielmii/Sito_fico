@@ -11,12 +11,6 @@ import {
   Cctv,
   Cpu,
   FileCode2,
-  Building2,
-  Landmark,
-  Briefcase,
-  Users,
-  HardHat,
-  Share2,
   ArrowRight,
   Sparkles,
   CheckCircle2,
@@ -171,8 +165,6 @@ function InteractiveNetworkTopology() {
 }
 
 function NetworkingPage() {
-  const [activeTarget, setActiveTarget] = useState<number>(0);
-
   const cicloVitaRete = [
     {
       step: "1",
@@ -275,41 +267,6 @@ function NetworkingPage() {
     },
   ];
 
-  const destinatari = [
-    {
-      title: "PMI e aziende",
-      desc: "Reti per sedi operative, uffici, reparti, dispositivi e servizi aziendali.",
-      icon: Building2,
-    },
-    {
-      title: "Studi e professionisti",
-      desc: "Connettività affidabile per lavoro, collaborazione, accesso ai dati e continuità operativa.",
-      icon: Briefcase,
-    },
-    {
-      title: "Imprese e cantieri",
-      desc: "Reti temporanee o permanenti per coordinamento, impianti, sicurezza e scambio dati.",
-      icon: HardHat,
-    },
-    {
-      title: "Enti pubblici",
-      desc: "Collegamenti tra edifici, Wi-Fi, infrastrutture territoriali e servizi distribuiti.",
-      icon: Landmark,
-    },
-    {
-      title: "Strutture e spazi aperti al pubblico",
-      desc: "Reti separate per attività interne, ospiti, utenti e servizi digitali.",
-      icon: Users,
-    },
-    {
-      title: "Partner tecnologici",
-      desc: "Supporto tecnico nell'integrazione della rete con sistemi IT, sicurezza e servizi cloud.",
-      icon: Share2,
-    },
-  ];
-
-  const currentTarget = destinatari[activeTarget];
-
   return (
     <div className="bg-white w-full min-h-screen pb-20 overflow-x-hidden selection:bg-[#facc15] selection:text-[#012b3a]">
       <style>{`
@@ -325,10 +282,6 @@ function NetworkingPage() {
           0% { background-position: -200% 0; }
           100% { background-position: 200% 0; }
         }
-        @keyframes signal-wave {
-          0% { stroke-dashoffset: 240; }
-          100% { stroke-dashoffset: 0; }
-        }
         .packet-stream {
           animation: packet-flow 1.8s linear infinite;
         }
@@ -340,10 +293,6 @@ function NetworkingPage() {
           background: linear-gradient(90deg, #1da1db 0%, #facc15 50%, #1da1db 100%);
           background-size: 200% 100%;
           animation: bus-data 3.5s linear infinite;
-        }
-        .signal-wave-path {
-          stroke-dasharray: 12 8;
-          animation: signal-wave 4s linear infinite;
         }
       `}</style>
 
@@ -625,9 +574,7 @@ function NetworkingPage() {
         </div>
       </section>
 
-      {/* =========================================================================
-          SEZIONE 4: A CHI CI RIVOLGIAMO — ROUTING SELETTIVO INTERATTIVO (ZERO CARD)
-         ========================================================================= */}
+      {/* SEZIONE 4: IL VALORE AGGIUNTO FI.CO. + CTA */}
       <section
         className="py-16 md:py-24 relative overflow-hidden"
         style={{
@@ -636,168 +583,8 @@ function NetworkingPage() {
         }}
       >
         <div className="container-x max-w-6xl mx-auto">
-          <Reveal>
-            <div className="max-w-3xl mb-14 md:mb-16 text-left">
-              <span className="text-xs md:text-sm font-bold text-[#00779b] uppercase tracking-[0.22em] block mb-2">
-                A CHI CI RIVOLGIAMO
-              </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#012b3a] leading-tight">
-                Una rete progettata intorno alle attività
-              </h2>
-              <p className="mt-4 text-base md:text-lg text-[#00779b] leading-relaxed">
-                Soluzioni per organizzazioni che richiedono affidabilità, gestione centralizzata e capacità di crescita.
-              </p>
-            </div>
-          </Reveal>
-
-          {/* Console di instradamento senza card: Selettore canali a sinistra + Display Nodo a destra */}
           <Reveal delay={100}>
-            <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-              
-              {/* COLONNA SINISTRA: Elenco aperto a righe di segnale */}
-              <div className="lg:col-span-6 relative">
-                <div className="border-l-2 border-[#facc15] pl-4 sm:pl-6 space-y-2">
-                  {destinatari.map((target, idx) => {
-                    const isSelected = activeTarget === idx;
-                    return (
-                      <div
-                        key={target.title}
-                        onMouseEnter={() => setActiveTarget(idx)}
-                        onClick={() => setActiveTarget(idx)}
-                        className={`group relative cursor-pointer py-4 px-5 rounded-r-2xl transition-all duration-300 text-left flex items-center justify-between gap-4 ${
-                          isSelected
-                            ? "bg-[#012b3a] text-white shadow-lg translate-x-2"
-                            : "bg-white/85 hover:bg-white text-[#012b3a]"
-                        }`}
-                      >
-                        {/* Indicatore luminoso sulla dorsale sinistra */}
-                        <span
-                          className={`absolute -left-[23px] sm:-left-[31px] w-3.5 h-3.5 rounded-full transition-all duration-300 ${
-                            isSelected
-                              ? "bg-[#facc15] ring-4 ring-[#facc15]/40 scale-125"
-                              : "bg-white border-2 border-[#1da1db]"
-                          }`}
-                        />
-
-                        <div className="flex items-center gap-4">
-                          <span
-                            className={`text-xs font-extrabold tabular-nums tracking-widest ${
-                              isSelected ? "text-[#facc15]" : "text-[#1da1db]"
-                            }`}
-                          >
-                            0{idx + 1}
-                          </span>
-                          <h3
-                            className={`text-lg sm:text-xl font-extrabold transition-colors ${
-                              isSelected ? "text-white" : "text-[#012b3a]"
-                            }`}
-                          >
-                            {target.title}
-                          </h3>
-                        </div>
-
-                        <div className="flex items-center gap-2 shrink-0">
-                          <span
-                            className={`hidden sm:inline-block text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-full ${
-                              isSelected
-                                ? "bg-[#f5d000] text-[#012b3a]"
-                                : "bg-[#f4fafd] text-[#00779b]"
-                            }`}
-                          >
-                            NODE 0{idx + 1}
-                          </span>
-                          <ArrowRight
-                            size={18}
-                            className={`transition-transform duration-300 ${
-                              isSelected
-                                ? "text-[#facc15] translate-x-1"
-                                : "text-[#1da1db] opacity-40 group-hover:opacity-100"
-                            }`}
-                          />
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* COLONNA DESTRA: Display Dinamico Aperto del Nodo Attivo */}
-              <div className="lg:col-span-6">
-                <div className="relative bg-white/95 backdrop-blur-xs border-l-4 border-[#1da1db] border-y border-r border-y-[#facc15] border-r-[#facc15] rounded-r-3xl p-8 sm:p-12 shadow-xl text-left overflow-hidden min-h-[340px] flex flex-col justify-between">
-                  {/* Filigrana numerica gigante */}
-                  <span className="absolute -bottom-6 -right-2 text-[140px] font-black text-[#012b3a]/[0.04] leading-none select-none pointer-events-none">
-                    0{activeTarget + 1}
-                  </span>
-
-                  {/* Intestazione tecnica con onda di segnale SVG */}
-                  <div>
-                    <div className="flex items-center justify-between gap-4 pb-6 mb-8 border-b border-[#facc15]">
-                      <div className="flex items-center gap-3">
-                        <div className="w-14 h-14 rounded-2xl bg-[#f5d000] text-[#012b3a] flex items-center justify-center shadow-sm">
-                          <currentTarget.icon size={28} />
-                        </div>
-                        <div>
-                          <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-[0.2em] text-[#1da1db]">
-                            <span className="w-2 h-2 rounded-full bg-[#1da1db] animate-ping" />
-                            ACTIVE LINK · NODE 0{activeTarget + 1}
-                          </span>
-                          <p className="text-xs font-bold text-[#0a5c75] mt-0.5">
-                            Canale dedicato Fi.Co. Networking
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Onda sinaptica di traffico dati */}
-                      <svg width="90" height="32" viewBox="0 0 90 32" className="hidden sm:block">
-                        <path
-                          d="M 2,16 Q 15,2 28,16 T 54,16 T 80,16 L 88,16"
-                          fill="none"
-                          stroke="#1da1db"
-                          strokeWidth="2.5"
-                          strokeLinecap="round"
-                          className="signal-wave-path"
-                        />
-                      </svg>
-                    </div>
-
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#012b3a] mb-4 leading-tight">
-                      {currentTarget.title}
-                    </h3>
-
-                    <p className="text-base sm:text-lg md:text-xl text-[#00779b] leading-relaxed">
-                      {currentTarget.desc}
-                    </p>
-                  </div>
-
-                  {/* Barra di stato inferiore con pallini di selezione rapida */}
-                  <div className="mt-10 pt-5 border-t border-[#1da1db]/20 flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      {destinatari.map((_, i) => (
-                        <button
-                          key={i}
-                          onClick={() => setActiveTarget(i)}
-                          aria-label={`Seleziona destinatario ${i + 1}`}
-                          className={`h-2 rounded-full transition-all duration-300 ${
-                            activeTarget === i
-                              ? "w-8 bg-[#1da1db]"
-                              : "w-2 bg-[#facc15] hover:bg-[#1da1db]/50"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                    <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#012b3a]">
-                      0{activeTarget + 1} / 0{destinatari.length}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </Reveal>
-
-          {/* IL VALORE AGGIUNTO FI.CO. + CTA */}
-          <Reveal delay={250}>
-            <div className="mt-20 relative bg-white border-y-2 border-[#facc15] py-12 px-6 sm:px-10 md:px-14 shadow-md overflow-hidden">
+            <div className="relative bg-white border-y-2 border-[#facc15] py-12 px-6 sm:px-10 md:px-14 shadow-md overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-1.5 network-bus-line" />
 
               <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
