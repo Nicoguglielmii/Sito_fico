@@ -285,9 +285,25 @@ function ServiziIndex() {
         }}
       >
         <div className="container-x">
-          <div className="max-w-3xl mb-6 text-left">
+          <div className="max-w-5xl mb-6 text-left">
             <Reveal>
-              <h2 className="text-4xl md:text-5xl font-extrabold leading-tight font-[var(--font-display)] text-[#012b3a] pb-2">
+              <p className="mb-4 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight font-[var(--font-display)] text-[#012b3a]">
+                Non ci limitiamo a utilizzare la tecnologia,{" "}
+                la sperimentiamo
+              </p>
+              <div className="mt-5 max-w-4xl space-y-3 text-lg md:text-xl text-[#00779b] leading-relaxed">
+                <p>
+                  L'innovazione, per Fi.Co., nasce dalla capacità di esplorare
+                  nuove tecnologie, sviluppare strumenti e trasformare esigenze
+                  operative in soluzioni applicabili.
+                </p>
+                <p>
+                  È un'attività trasversale che collega infrastrutture,
+                  software, dati e nuove competenze, alimentando l'evoluzione di
+                  tutte le aree.
+                </p>
+              </div>
+              <h2 className="mt-5 text-4xl md:text-5xl font-extrabold leading-tight font-[var(--font-display)] text-[#012b3a] pb-2">
                 Cinque aree, un unico approccio
               </h2>
             </Reveal>
