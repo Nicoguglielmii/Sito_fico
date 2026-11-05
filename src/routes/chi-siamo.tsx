@@ -21,7 +21,6 @@ import logoPittogramma from "@/assets/fico-pittogramma.png";
 import logoWordmark from "@/assets/fico-wordmark.png";
 import { Reveal } from "@/components/site/Reveal";
 import { HeroParticles, ProcessTimeline, ItalyMap } from "@/components/site/Interactive";
-import { GrowthSection } from "@/components/site/GrowthSection";
 
 export const Route = createFileRoute("/chi-siamo")({
   head: () => ({
@@ -120,7 +119,7 @@ function ChiSiamo() {
               FI.CO. / AZIENDA
             </span>
             <h1 className="mt-4 text-4xl sm:text-5xl md:text-7xl lg:text-[80px] font-[var(--font-display)] font-extrabold leading-[1.05] tracking-tight max-w-5xl text-[#012b3a] pb-2">
-             Siamo costruiti <br className="hidden md:block"/> per far crescere le idee.
+             Siamo costruiti <br className="hidden md:block"/> per far crescere le idee
             </h1>
             <p className="mt-6 md:mt-8 text-base sm:text-lg md:text-xl text-[#00779b] max-w-2xl leading-relaxed">
               Competenze tecniche, organizzazione e visione per affrontare progetti in continua evoluzione.
@@ -145,7 +144,7 @@ function ChiSiamo() {
                 IDENTITÀ
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#012b3a] pb-2 mb-6 md:mb-8">
-               <span className="text-[#0a5c75]"> Da una competenza <br/> a una struttura.</span>
+                Da una competenza <br /> a una struttura
               </h2>
               <div className="space-y-4 md:space-y-5 text-[#00779b] text-base md:text-lg leading-relaxed">
                 <p>
@@ -197,7 +196,7 @@ function ChiSiamo() {
                 FI.CO. / BRAND IDENTITY
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#012b3a] pb-2 mb-6 md:mb-8">
-              Un nome.<br/> Molte connessioni.
+              Un nome<br/> Molte connessioni
               </h2>
               <div className="space-y-4 text-base sm:text-lg md:text-xl text-[#00779b] leading-relaxed">
                 <p>
@@ -225,7 +224,7 @@ function ChiSiamo() {
               <Reveal delay={100}>
                 <div>
                   <h3 className="text-3xl md:text-4xl font-extrabold text-[#012b3a] mb-3">
-                    Tre punti. Infinite connessioni.
+                    Tre punti Infinite connessioni
                   </h3>
                   <p className="text-[#00779b] text-sm md:text-base leading-relaxed">
                     Il pittogramma nasce dai tre punti presenti nel logotipo e dalla loro connessione attraverso linee curve. Il risultato è un segno espressivo e aperto, capace di assumere significati differenti a seconda del contesto.
@@ -263,7 +262,7 @@ function ChiSiamo() {
                 <div className="w-14 h-14 rounded-full bg-[#013a52] flex items-center justify-center text-[#facc15] mb-6">
                   <Layers size={26} />
                 </div>
-                <h3 className="text-xl md:text-2xl font-extrabold text-[#012b3a] mb-3 md:mb-4">Non un simbolo. Un sistema.</h3>
+                <h3 className="text-xl md:text-2xl font-extrabold text-[#012b3a] mb-3 md:mb-4">Non un simbolo, un sistema</h3>
                 <p className="text-[#00779b] text-sm md:text-base leading-relaxed">
                   Il pittogramma è generativo: i nodi possono cambiare posizione e creare nuove configurazioni senza perdere riconoscibilità. Lo stesso principio può guidare animazioni, transizioni, intestazioni, diagrammi e rappresentazioni dei processi.
                 </p>
@@ -274,7 +273,7 @@ function ChiSiamo() {
                 <div className="w-14 h-14 rounded-full bg-[#013a52] flex items-center justify-center text-[#facc15] mb-6">
                   <Sparkles size={26} />
                 </div>
-                <h3 className="text-xl md:text-2xl font-extrabold text-[#012b3a] mb-3 md:mb-4">Un linguaggio che si muove.</h3>
+                <h3 className="text-xl md:text-2xl font-extrabold text-[#012b3a] mb-3 md:mb-4">Un linguaggio che si muove</h3>
                 <p className="text-[#00779b] text-sm md:text-base leading-relaxed">
                   Il sistema visivo identifica aree e contenuti attraverso variazioni controllate di colore, intensità, gradienti e pattern. Le differenze aiutano a orientarsi; il DNA cromatico e grafico resta unico.
                 </p>
@@ -288,7 +287,7 @@ function ChiSiamo() {
               <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-[#1da1db]/15 rounded-full blur-[80px]" />
               
               <h3 className="relative z-10 text-2xl sm:text-3xl md:text-5xl font-[var(--font-display)] font-extrabold text-[#1da1db] mb-6 md:mb-8 tracking-wide">
-                INFINITE CONNECTIONS.
+                INFINITE CONNESSIONI
               </h3>
               <p className="relative z-10 text-base sm:text-lg md:text-xl text-[#012b3a] max-w-4xl leading-relaxed font-medium">
                 "Fi.Co. nasce per creare connessioni. Tra chi sviluppa una tecnologia e chi ne ha bisogno. Tra chi progetta e chi realizza. Tra competenze diverse. Tra un'esigenza e una soluzione. Tra il presente e le possibilità che ancora non abbiamo esplorato."
@@ -309,7 +308,7 @@ function ChiSiamo() {
                 ORGANIZZAZIONE
               </span>
               <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#012b3a] mb-6">
-                Competenze diverse. <br/> Un'unica organizzazione.
+                Competenze diverse<br/> Un'unica organizzazione
               </h3>
               <p className="text-[#00779b] text-base md:text-lg leading-relaxed">
                 Fi.Co. è organizzata attraverso funzioni aziendali e competenze specialistiche che collaborano in modo trasversale. Le funzioni di supporto coordinano processi, persone e risorse. Le aree operative mettono a disposizione competenze tecniche e digitali in base agli obiettivi di ogni progetto. Non una struttura rigida per direzioni, ma un'organizzazione costruita attorno a responsabilità chiare, collaborazione e risultati.
@@ -417,7 +416,7 @@ function ChiSiamo() {
           <Reveal>
             <div className="text-left max-w-3xl mb-12 md:mb-16">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#012b3a] pb-2 mb-4">
-                Quattro principi. <br/> Un modo di lavorare.
+                Quattro principi <br/> Un modo di lavorare
               </h2>
             </div>
           </Reveal>
@@ -466,7 +465,7 @@ function ChiSiamo() {
           <div className="max-w-4xl mb-16 md:mb-24 text-left">
             <Reveal>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#012b3a] pb-2 mb-6">
-                Tecnica nel metodo. <br/> Trasversale nelle competenze.
+                Tecnica nel metodo <br/> Trasversale nelle competenze
               </h2>
               <div className="space-y-4 text-[#00779b] text-base md:text-lg leading-relaxed">
                 <p>
@@ -481,7 +480,7 @@ function ChiSiamo() {
           <Reveal>
             <div className="text-left max-w-3xl mb-12 md:mb-16">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#012b3a] pb-2 mb-4 md:mb-6">
-                Ogni risultato <br/> nasce da un sistema.
+                Ogni risultato <br/> nasce da un sistema
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-[#00779b] leading-relaxed">
                 Un progetto efficace non dipende soltanto dalla competenza tecnica. Richiede persone, processi, coordinamento, controllo e capacità di adattarsi alle condizioni reali. Per questo sviluppiamo il nostro lavoro attraverso un'organizzazione strutturata, nella quale professionalità differenti collaborano lungo tutte le fasi del progetto.
@@ -519,7 +518,7 @@ function ChiSiamo() {
           <Reveal>
             <div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#012b3a] mb-6">
-                Le competenze <br/> sono persone.
+                Le competenze <br/> sono persone
               </h2>
               <p className="text-[#00779b] text-base md:text-lg leading-relaxed mb-8">
                 Dietro ogni progetto ci sono esperienza, responsabilità e capacità di collaborare. Fi.Co. mette in relazione professionalità differenti e costruisce un ambiente nel quale le persone possano sviluppare le proprie competenze e contribuire alla crescita dell'organizzazione.
@@ -539,7 +538,7 @@ function ChiSiamo() {
           <Reveal delay={150}>
             <div className="bg-white p-6 sm:p-8 md:p-10 rounded-3xl border-2 border-[#facc15] shadow-lg text-left">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#012b3a] mb-6">
-                Crescere significa <br/> strutturarsi.
+                Crescere significa <br/> strutturarsi
               </h2>
               <p className="text-[#00779b] text-sm sm:text-base md:text-lg leading-relaxed mb-8">
                 La crescita di Fi.Co. passa dalla capacità di rendere i propri processi sempre più solidi, leggibili e verificabili. Organizzazione, controllo, documentazione e miglioramento continuo sostengono una struttura capace di affrontare nuovi progetti senza perdere qualità e responsabilità.
@@ -568,7 +567,7 @@ function ChiSiamo() {
                 VISION
               </span>
               <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#012b3a] pb-2 mb-6">
-                Guardiamo oltre <br/>il progetto di oggi.
+                Guardiamo oltre <br/>il progetto di oggi
               </h2>
               <div className="space-y-4 text-[#00779b] text-base md:text-lg leading-relaxed">
                 <p>
@@ -604,7 +603,6 @@ function ChiSiamo() {
         </div>
       </section>
 
-      <GrowthSection />
       <ItalyMap />
 
       {/* 09 - CHIUSURA AZIENDA */}
@@ -615,7 +613,7 @@ function ChiSiamo() {
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[#facc15]/20 rounded-full blur-[100px] pointer-events-none" />
               
               <h2 className="relative z-10 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#012b3a] mb-6 md:mb-8 leading-tight">
-                Trasformiamo gli obiettivi in risultati.
+                Trasformiamo gli obiettivi in risultati
               </h2>
               <p className="relative z-10 text-base sm:text-lg md:text-xl text-[#00779b] max-w-2xl mb-8 md:mb-10 leading-relaxed">
                 Esperienza, competenza e dedizione quotidiana guidano ogni nuovo progetto. Per noi il risultato non è soltanto ciò che viene progettato. È ciò che funziona, ciò che può essere verificato e ciò che riusciamo a costruire insieme.
