@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Search, PenTool, GitMerge, FileText, TrendingUp } from "lucide-react";
+import { ArrowRight, Search, PenTool, GitMerge, FileText, TrendingUp, Users, Building2, Briefcase, MapPin, Handshake, Lightbulb, ShieldCheck, RefreshCw, Share2 } from "lucide-react";
 import fibraMobileImg from "@/assets/fibraotticaemobile.jpg";
 import networkingImg from "@/assets/project-it.jpg";
 import networkingWebpImg from "@/assets/networking.webp";
@@ -100,9 +100,9 @@ function InteractiveHeroLogo() {
 
 function Index() {
   return (
-    <div className="bg-white w-full max-w-[100vw] min-h-screen overflow-x-hidden flex flex-col">
+    <div className="bg-white w-full max-w-[100vw] min-h-screen overflow-x-hidden flex flex-col selection:bg-[#facc15] selection:text-[#012b3a]">
       
-      {/* HERO SECTION */}
+      {/* 01 - HERO SECTION */}
       <section className="relative pt-28 sm:pt-36 lg:pt-44 pb-8 sm:pb-12 flex flex-col justify-center overflow-hidden w-full max-w-[100vw] bg-white">
         <HeroParticles />
 
@@ -123,11 +123,11 @@ function Index() {
                 to="/chi-siamo"
                 className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-4 font-bold rounded-2xl bg-[#f5d000] text-[#012b3a] hover:bg-[#eab308] hover:scale-105 transition-all shadow-sm w-full sm:w-auto text-center"
               >
-                Scopri cosa facciamo
+                Scopri l'azienda
               </Link>
               <Link
                 to="/contatti"
-                className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-4 font-bold rounded-2xl bg-[#f5d000] text-[#012b3a] hover:bg-[#eab308] hover:scale-105 transition-all shadow-sm w-full sm:w-auto text-center"
+                className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-4 font-bold rounded-2xl bg-transparent border-2 border-[#f5d000] text-[#012b3a] hover:bg-[#f5d000]/10 hover:scale-105 transition-all w-full sm:w-auto text-center"
               >
                 Parlaci del tuo progetto <ArrowRight size={20} />
               </Link>
@@ -136,8 +136,8 @@ function Index() {
         </div>
       </section>
 
-      {/* PITTOGRAMMA INTERATTIVO */}
-      <section className="relative z-20 pb-8 w-full max-w-[100vw] overflow-hidden bg-white">
+      {/* 02 - PITTOGRAMMA INTERATTIVO */}
+      <section className="relative z-20 pb-8 w-full max-w-[100vw] overflow-hidden bg-white border-b border-[#facc15]">
         <div className="container-x px-4">
           <Reveal delay={400}>
             <InteractiveHeroLogo />
@@ -145,7 +145,6 @@ function Index() {
         </div>
       </section>
 
-      {/* CONTENUTO CENTRALE CON PATTERN DI PUNTINI GIALLI */}
       <div
         className="w-full"
         style={{
@@ -153,19 +152,20 @@ function Index() {
           backgroundSize: "24px 24px",
         }}
       >
-        {/* INTRODUZIONE */}
-        <section className="pt-10 md:pt-14 pb-8 md:pb-12 relative z-20 w-full overflow-hidden">
+        {/* 03 - INTRODUZIONE */}
+        <section className="pt-16 md:pt-24 pb-12 relative z-20 w-full overflow-hidden">
           <div className="container-x">
             <div className="max-w-4xl text-left">
               <Reveal>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight font-[var(--font-display)] text-[#012b3a] pb-2">
-                  <br /><span className="text-[#0a5c75]">Dalla complessità,
-                  una direzione chiara</span>
+                  <span className="text-[#012b3a]">Dalla complessità, <br /> una direzione chiara</span>
                 </h2>
                 <div className="mt-6 sm:mt-8 space-y-4 sm:space-y-6 text-[#00779b] text-base sm:text-lg md:text-xl leading-relaxed">
                   <p>
                     Fi.Co. affianca operatori, imprese, enti e privati nello sviluppo di infrastrutture e soluzioni tecnologiche.
                     Mettiamo in relazione progettazione, coordinamento e capacità operativa per governare ogni fase: dall'analisi dell'esigenza alla documentazione del risultato.
+                  
+                  
                     Un interlocutore. Una visione d'insieme. Un processo verificabile.
                   </p>
                 </div>
@@ -174,193 +174,8 @@ function Index() {
           </div>
         </section>
 
-        {/* AREE DI ATTIVITÀ */}
-        <section className="pt-4 pb-8 relative z-20 w-full overflow-hidden">
-          <div className="container-x">
-            <Reveal>
-              <div className="mb-8 md:mb-12">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tight text-[#012b3a] pb-2">
-                 <span className="text-[#0a5c75]"> Cinque aree, un unico approccio</span>
-                </h2>
-                <p className="mt-4 sm:mt-6 max-w-3xl text-base sm:text-lg md:text-xl text-[#3b8ea5] leading-relaxed">
-                  Competenze diverse, lo stesso metodo: comprendere il contesto, progettare con precisione e portare ogni attività verso un risultato concreto.
-                </p>
-              </div>
-            </Reveal>
-
-            <div className="flex flex-col gap-12 md:gap-16">
-              {/* 1. FIBRA & MOBILE */}
-              <Reveal delay={100}>
-                <div className="flex flex-col gap-5">
-                  <Link
-                    to="/servizi/fibra-mobile"
-                    className="block group overflow-hidden rounded-3xl w-full shadow-md"
-                  >
-                    <FicoImage
-                      src={fibraMobileImg}
-                      alt="Fibra & Mobile"
-                      variant={1}
-                      className="w-full h-[280px] sm:h-[380px] md:h-[460px] rounded-3xl"
-                    />
-                  </Link>
-                  <div className="max-w-4xl text-left pt-2">
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 text-[#013547]">
-                      Fibra & Mobile
-                    </h3>
-                    <p className="text-sm sm:text-base md:text-lg text-[#00779b] leading-relaxed mb-4 max-w-3xl">
-                      Dalla survey al network design, dal permitting all'implementazione, fino agli As-Built e al supporto: gestiamo l'intero ciclo di sviluppo delle infrastrutture di telecomunicazione.
-                    </p>
-                    <Link
-                      to="/servizi/fibra-mobile"
-                      className="inline-flex items-center text-[#1da1db] text-sm sm:text-base md:text-lg font-bold hover:text-[#012b3a] transition-colors gap-2"
-                    >
-                      Scopri Fibra & Mobile <ArrowRight size={18} />
-                    </Link>
-                  </div>
-                </div>
-              </Reveal>
-
-              {/* 2. IT, NETWORKING & SOFTWARE */}
-              <Reveal delay={200}>
-                <div className="flex flex-col gap-5">
-                  <Link
-                    to="/servizi/it-software"
-                    className="block group overflow-hidden rounded-3xl w-full shadow-md"
-                  >
-                    <FicoImage
-                      src={networkingImg}
-                      alt="IT, Networking & Software"
-                      variant={2}
-                      className="w-full h-[280px] sm:h-[380px] md:h-[460px] rounded-3xl"
-                    />
-                  </Link>
-                  <div className="max-w-4xl text-left pt-2">
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 text-[#013547]">
-                      IT, Networking & Software
-                    </h3>
-                    <p className="text-sm sm:text-base md:text-lg text-[#00779b] leading-relaxed mb-4 max-w-3xl">
-                      Integriamo infrastrutture IT, networking, assistenza e sviluppo software per costruire strumenti digitali su misura e rispondere a esigenze operative concrete.
-                    </p>
-                    <Link
-                      to="/servizi/it-software"
-                      className="inline-flex items-center text-[#1da1db] text-sm sm:text-base md:text-lg font-bold hover:text-[#012b3a] transition-colors gap-2"
-                    >
-                      Scopri IT, Networking & Software <ArrowRight size={18} />
-                    </Link>
-                  </div>
-                </div>
-              </Reveal>
-
-              {/* 3. PROGETTAZIONE ASCENSORISTICA */}
-              <Reveal delay={250}>
-                <div className="flex flex-col gap-5">
-                  <Link
-                    to="/servizi/ascensoristica"
-                    className="block group overflow-hidden rounded-3xl w-full shadow-md"
-                  >
-                    <FicoImage
-                      src={ascensoristicaImg}
-                      alt="Progettazione Ascensoristica"
-                      variant={1}
-                      className="w-full h-[280px] sm:h-[380px] md:h-[460px] rounded-3xl"
-                    />
-                  </Link>
-                  <div className="max-w-4xl text-left pt-2">
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 text-[#013547]">
-                      Progettazione Ascensoristica
-                    </h3>
-                    <p className="text-sm sm:text-base md:text-lg text-[#00779b] leading-relaxed mb-4 max-w-3xl">
-                      Servizi tecnici e architettonici per ascensori standard e fuori standard, dalla fattibilità alla progettazione esecutiva, fino alla produzione e al cantiere.
-                    </p>
-                    <Link
-                      to="/servizi/ascensoristica"
-                      className="inline-flex items-center text-[#1da1db] text-sm sm:text-base md:text-lg font-bold hover:text-[#012b3a] transition-colors gap-2"
-                    >
-                      Scopri Progettazione Ascensoristica <ArrowRight size={18} />
-                    </Link>
-                  </div>
-                </div>
-              </Reveal>
-
-              {/* 4. ENERGIA */}
-              <Reveal delay={300}>
-                <div className="flex flex-col gap-5 relative">
-                  <Link
-                    to="/servizi/energia"
-                    className="block group overflow-hidden rounded-3xl w-full shadow-md"
-                  >
-                    <FicoImage
-                      src={energiaImg}
-                      alt="Energia"
-                      variant={3}
-                      className="w-full h-[280px] sm:h-[380px] md:h-[460px] rounded-3xl"
-                    />
-                  </Link>
-                  <div className="max-w-4xl text-left pt-2">
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 text-[#013547]">
-                      Energia
-                    </h3>
-                    <p className="text-sm sm:text-base md:text-lg text-[#00779b] leading-relaxed mb-4 max-w-3xl">
-                      Fotovoltaico e servizi energetici per edifici e imprese: progettazione, installazione, adeguamento e manutenzione degli impianti.
-                    </p>
-                    <Link
-                      to="/servizi/energia"
-                      className="inline-flex items-center text-[#1da1db] text-sm sm:text-base md:text-lg font-bold hover:text-[#012b3a] transition-colors gap-2"
-                    >
-                      Scopri Energia <ArrowRight size={18} />
-                    </Link>
-                  </div>
-                </div>
-              </Reveal>
-
-              {/* 5. NETWORKING */}
-              <Reveal delay={350}>
-                <div className="flex flex-col gap-5">
-                  <Link
-                    to="/servizi/networking"
-                    className="block group overflow-hidden rounded-3xl w-full shadow-md"
-                  >
-                    <FicoImage
-                      src={networkingWebpImg}
-                      alt="Networking"
-                      variant={2}
-                      className="w-full h-[280px] sm:h-[380px] md:h-[460px] rounded-3xl"
-                    />
-                  </Link>
-                  <div className="max-w-4xl text-left pt-2">
-                    <div className="flex flex-wrap items-center gap-3 mb-3">
-                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#013547]">
-                        Networking
-                      </h3>
-                    </div>
-                    <p className="text-sm sm:text-base md:text-lg text-[#00779b] leading-relaxed mb-4 max-w-3xl">
-                      Progettazione, configurazione e gestione di architetture di rete, apparati di comunicazione e cablaggio strutturato per garantire connessioni sicure e performanti.
-                    </p>
-                    <Link
-                      to="/servizi/networking"
-                      className="inline-flex items-center text-[#1da1db] text-sm sm:text-base md:text-lg font-bold hover:text-[#012b3a] transition-colors gap-2"
-                    >
-                      Scopri di più <ArrowRight size={18} />
-                    </Link>
-                  </div>
-                </div>
-              </Reveal>
-            </div>
-
-            <Reveal delay={400}>
-              <div className="mt-12 sm:mt-16 text-left max-w-4xl">
-                <p className="text-xl sm:text-2xl md:text-3xl font-bold leading-snug text-[#013547]">
-                  <span className="text-[#1da1db]"> Ricerca e innovazione attraversano{" "}                 
-                    ogni area, connettendo infrastrutture, dati e nuove tecnologie.
-                  </span>
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* IL NOSTRO METODO */}
-        <section className="pt-8 md:pt-12 pb-12 md:pb-16 relative z-20 w-full overflow-hidden">
+        {/* 04 - IL NOSTRO METODO */}
+        <section className="py-12 md:py-16 relative z-20 w-full overflow-hidden border-b border-[#facc15]/30">
           <div className="container-x">
             <div className="max-w-3xl mb-12 md:mb-16 text-left">
               <Reveal>
@@ -376,23 +191,22 @@ function Index() {
 
             <Reveal delay={200}>
               <div className="relative">
-                <div className="hidden lg:block absolute top-10 left-[5%] right-[5%] h-[2px] bg-[#facc15]" />
+                <div className="hidden lg:block absolute top-6 left-0 right-0 h-0.5 bg-[#facc15]" />
 
-                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4 relative z-10">
+                <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 relative z-10">
                   {[
-                    { step: "01", icon: Search, title: "Analizziamo", desc: "Mettiamo a fuoco contesto, esigenze, vincoli e obiettivi." },
-                    { step: "02", icon: PenTool, title: "Progettiamo", desc: "Traduciamo l'analisi in una soluzione tecnica chiara, sostenibile e realizzabile." },
-                    { step: "03", icon: GitMerge, title: "Coordiniamo", desc: "Governiamo attività, partner, interlocutori e fasi operative." },
-                    { step: "04", icon: FileText, title: "Documentiamo", desc: "Rendiamo ogni passaggio tracciabile e ogni risultato verificabile." },
-                    { step: "05", icon: TrendingUp, title: "Evolviamo", desc: "Miglioriamo processi e soluzioni facendo tesoro dell'esperienza." }
+                    { step: "01", title: "Analizziamo" },
+                    { step: "02", title: "Progettiamo" },
+                    { step: "03", title: "Coordiniamo" },
+                    { step: "04", title: "Documentiamo" },
+                    { step: "05", title: "Evolviamo" }
                   ].map((item) => (
-                    <div key={item.step} className="flex flex-col items-center lg:items-start text-center lg:text-left group">
-                      <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#013a52] flex items-center justify-center text-[#facc15] mb-4 sm:mb-6 shadow-md group-hover:scale-110 transition-all mx-auto lg:mx-0">
-                        <item.icon size={32} className="sm:w-9 sm:h-9" />
+                    <div key={item.step} className="flex flex-col items-start text-left group relative">
+                      <div className="w-12 h-12 rounded-full bg-white border-4 border-[#013a52] flex items-center justify-center mb-4 z-10">
+                        <div className="w-2 h-2 rounded-full bg-[#1da1db] group-hover:bg-[#facc15] transition-colors" />
                       </div>
-                      <span className="text-[#1da1db] font-bold text-xs sm:text-sm tracking-widest mb-1">FASE {item.step}</span>
-                      <h3 className="text-lg sm:text-xl font-extrabold text-[#012b3a] mb-2">{item.title}</h3>
-                      <p className="text-[#00779b] text-xs sm:text-sm leading-relaxed">{item.desc}</p>
+                      <span className="text-[#012b3a] font-extrabold text-xs sm:text-sm tracking-[0.2em] mb-1">FASE {item.step}</span>
+                      <h3 className="text-lg sm:text-xl font-extrabold text-[#1da1db]">{item.title}</h3>
                     </div>
                   ))}
                 </div>
@@ -401,64 +215,208 @@ function Index() {
           </div>
         </section>
 
-        {/* IDENTITÀ */}
-        <section className="pt-8 md:pt-12 pb-12 md:pb-20 relative z-20 w-full overflow-hidden">
+        {/* 05 - AREE DI ATTIVITÀ (Layout Alternato) */}
+        <section className="pt-16 pb-20 relative z-20 w-full overflow-hidden">
           <div className="container-x">
-            <div className="max-w-4xl text-left">
-              <Reveal>
-                <span className="text-xs sm:text-sm uppercase tracking-[0.25em] text-[#00779b] font-bold">
-                  CIÒ CHE CI GUIDA
-                </span>
-                <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight font-[var(--font-display)] text-[#012b3a]">
-                  La tecnica è il punto di partenza, <br />
-                  il valore è l'obiettivo
+            <Reveal>
+              <div className="mb-16 md:mb-24">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.08] tracking-tight text-[#012b3a] pb-2">
+                 <span className="text-[#012b3a]"> Cinque aree, un unico approccio</span>
                 </h2>
-              </Reveal>
-
-              <Reveal delay={200}>
-                <div className="mt-6 sm:mt-8 space-y-4 sm:space-y-6 text-[#00779b] text-base sm:text-lg md:text-xl leading-relaxed">
+                <div className="mt-4 sm:mt-6 space-y-4 max-w-3xl text-base sm:text-lg md:text-xl text-[#3b8ea5] leading-relaxed">
                   <p>
-                    Competenza, responsabilità e capacità di adattamento guidano il nostro lavoro.
-                    Operiamo in contesti in continua evoluzione, costruendo soluzioni solide per il presente e capaci di crescere nel tempo.
-                    Per noi innovare significa applicare la tecnologia dove può generare un beneficio reale.
+                    L'innovazione, per Fi.Co., nasce dalla capacità di esplorare nuove tecnologie, sviluppare strumenti e trasformare esigenze operative in soluzioni applicabili. È un'attività trasversale che collega infrastrutture, software, dati e nuove competenze, alimentando l'evoluzione di tutte le aree.
                   </p>
-                  <Link
-                    to="/chi-siamo"
-                    className="inline-flex items-center gap-2 text-[#1da1db] font-bold hover:text-[#012b3a] transition-all uppercase tracking-widest text-xs sm:text-sm mt-4"
-                  >
-                    Conosci Fi.Co. <ArrowRight size={18} />
-                  </Link>
+                  
+                    Competenze diverse, lo stesso metodo: comprendere il contesto, progettare con precisione e portare ogni attività verso un risultato concreto.
+                  
+                </div>
+              </div>
+            </Reveal>
+
+            <div className="space-y-20 md:space-y-32">
+              
+              {/* 1. FIBRA & MOBILE (Testo Sinistra, Immagine Destra) */}
+              <Reveal delay={100}>
+                <div className="group">
+                  <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+                    <div>
+                      <span className="text-[#1da1db] font-extrabold text-xs uppercase tracking-[0.2em] block mb-2">PROGETTIAMO LA RETE, GOVERNIAMO IL PROCESSO</span>
+                      <h3 className="text-3xl md:text-4xl font-extrabold text-[#012b3a] mb-4">Fibra & Mobile</h3>
+                    <p className="text-sm md:text-base text-[#00779b] leading-relaxed mb-6">Progettazione e gestione tecnica di infrastrutture di telecomunicazione, dalla survey alla documentazione finale.</p>
+                      <Link to="/servizi/fibra-mobile" className="inline-flex items-center gap-2 rounded-full bg-[#013a52] px-4 py-2.5 text-sm md:text-base font-bold text-white shadow-sm transition-colors hover:bg-[#012b3a]">
+                        Approfondisci <ArrowRight size={18} />
+                      </Link>
+                    </div>
+                    <div className="hidden md:block">
+                      <FicoImage src={fibraMobileImg} alt="Fibra & Mobile" variant={1} className="w-full aspect-[4/3] rounded-3xl shadow-lg group-hover:scale-[1.02] transition-transform duration-500" />
+                    </div>
+                  </div>
                 </div>
               </Reveal>
+
+              {/* 2. NETWORKING (Immagine Sinistra, Testo Destra) */}
+              <Reveal delay={150}>
+                <div className="group">
+                  <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+                    <div className="hidden md:block order-2 md:order-1">
+                      <FicoImage src={networkingWebpImg} alt="Networking" variant={2} className="w-full aspect-[4/3] rounded-3xl shadow-lg group-hover:scale-[1.02] transition-transform duration-500" />
+                    </div>
+                    <div className="order-1 md:order-2">
+                      <span className="text-[#1da1db] font-extrabold text-xs uppercase tracking-[0.2em] block mb-2">DALLA CONNESSIONE ALL'INFRASTRUTTURA, DALLA RETE AL SERVIZIO</span>
+                      <h3 className="text-3xl md:text-4xl font-extrabold text-[#012b3a] mb-4">Networking</h3>
+                      <p className="text-sm md:text-base text-[#00779b] leading-relaxed mb-6">Integriamo infrastrutture IT, networking, assistenza e sviluppo software per costruire strumenti digitali su misura e rispondere a esigenze operative concrete.</p>
+                      <Link to="/servizi/networking" className="inline-flex items-center gap-2 rounded-full bg-[#013a52] px-4 py-2.5 text-sm md:text-base font-bold text-white shadow-sm transition-colors hover:bg-[#012b3a]">
+                        Approfondisci <ArrowRight size={18} />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+
+              {/* 3. IT & SOFTWARE (Testo Sinistra, Immagine Destra) */}
+              <Reveal delay={200}>
+                <div className="group">
+                  <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+                    <div>
+                      <span className="text-[#1da1db] font-extrabold text-xs uppercase tracking-[0.2em] block mb-2">ECOSISTEMA DIGITALE</span>
+                      <h3 className="text-3xl md:text-4xl font-extrabold text-[#012b3a] mb-4">IT & Software</h3>
+                      <p className="text-sm md:text-base text-[#00779b] leading-relaxed mb-6">Soluzioni web progettate per presentare, promuovere e digitalizzare attività, servizi e processi.</p>
+                      <Link to="/servizi/it-software" className="inline-flex items-center gap-2 rounded-full bg-[#013a52] px-4 py-2.5 text-sm md:text-base font-bold text-white shadow-sm transition-colors hover:bg-[#012b3a]">
+                        Approfondisci <ArrowRight size={18} />
+                      </Link>
+                    </div>
+                    <div className="hidden md:block">
+                      <FicoImage src={networkingImg} alt="IT & Software" variant={3} className="w-full aspect-[4/3] rounded-3xl shadow-lg group-hover:scale-[1.02] transition-transform duration-500" />
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+
+              {/* 4. ENERGIA (Immagine Sinistra, Testo Destra) */}
+              <Reveal delay={250}>
+                <div className="group">
+                  <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+                    <div className="hidden md:block order-2 md:order-1">
+                      <FicoImage src={energiaImg} alt="Energia" variant={1} className="w-full aspect-[4/3] rounded-3xl shadow-lg group-hover:scale-[1.02] transition-transform duration-500" />
+                    </div>
+                    <div className="order-1 md:order-2">
+                      <span className="text-[#1da1db] font-extrabold text-xs uppercase tracking-[0.2em] block mb-2">LA PROSSIMA CONNESSIONE</span>
+                      <h3 className="text-3xl md:text-4xl font-extrabold text-[#012b3a] mb-4">Energia</h3>
+                     <p className="text-sm md:text-base text-[#00779b] leading-relaxed mb-6">Stiamo costruendo nuove competenze e partnership nel settore energetico, con l'obiettivo di integrare progettazione, tecnologia e infrastrutture.</p>
+                      <Link to="/servizi/energia" className="inline-flex items-center gap-2 rounded-full bg-[#013a52] px-4 py-2.5 text-sm md:text-base font-bold text-white shadow-sm transition-colors hover:bg-[#012b3a]">
+                        Approfondisci <ArrowRight size={18} />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+
+              {/* 5. ASCENSORISTICA (Testo Sinistra, Immagine Destra) */}
+              <Reveal delay={300}>
+                <div className="group">
+                  <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+                    <div>
+                      <span className="text-[#1da1db] font-extrabold text-xs uppercase tracking-[0.2em] block mb-2">UNA NUOVA COMPETENZA, UN'EVOLUZIONE NATURALE</span>
+                      <h3 className="text-3xl md:text-4xl font-extrabold text-[#012b3a] mb-4">Ascensoristica</h3>
+                     <p className="text-sm md:text-base text-[#00779b] leading-relaxed mb-6">L'ampliamento settore nasce dall'incontro tra competenze tecniche multidisciplinari e un'esperienza specialistica maturata nel settore degli impianti elevatori.</p>
+                      <Link to="/servizi/ascensoristica" className="inline-flex items-center gap-2 rounded-full bg-[#013a52] px-4 py-2.5 text-sm md:text-base font-bold text-white shadow-sm transition-colors hover:bg-[#012b3a]">
+                        Approfondisci <ArrowRight size={18} />
+                      </Link>
+                    </div>
+                    <div className="hidden md:block">
+                      <FicoImage src={ascensoristicaImg} alt="Ascensoristica" variant={2} className="w-full aspect-[4/3] rounded-3xl shadow-lg group-hover:scale-[1.02] transition-transform duration-500" />
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+              
             </div>
           </div>
         </section>
 
-        {/* CALL TO ACTION FINALE */}
-        <section className="container-x pb-12 sm:pb-16 md:pb-24 relative z-30 w-full overflow-hidden">
-          <Reveal>
-            <div className="relative overflow-hidden rounded-3xl bg-white border-2 border-[#facc15] p-6 sm:p-10 md:p-20 text-center shadow-xl">
-              <div className="absolute -top-20 -right-20 w-64 sm:w-80 h-64 sm:h-80 rounded-full bg-[#facc15]/20 blur-3xl pointer-events-none" />
-              <div className="relative z-10 flex flex-col items-center">
-                <span className="text-xs sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[#00779b] font-bold block mb-3 sm:mb-4">
-                  INIZIAMO DA QUI
-                </span>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold max-w-3xl mx-auto leading-tight mb-4 sm:mb-6 font-[var(--font-display)] text-[#012b3a] pb-2">
-                  Il prossimo progetto parte da unaconversazione.
+        {/* 06 - ECOSISTEMA E CONNESSIONI */}
+        <section className="py-16 md:py-24 relative z-20 w-full overflow-hidden border-y border-[#1da1db]/20 bg-white">
+          <div className="container-x">
+            <div className="max-w-4xl text-left mb-16">
+              <Reveal>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight font-[var(--font-display)] text-[#012b3a] pb-2">
+                  Connessioni che diventano progetti
                 </h2>
-                <p className="text-base sm:text-lg text-[#00779b] max-w-2xl mx-auto mb-8 sm:mb-10">
-                  Raccontaci l'esigenza, il contesto o l'obiettivo. Metteremo in campo le competenze giuste per costruire un percorso chiaro, concreto e realizzabile.
+                <p className="mt-4 text-base sm:text-lg md:text-xl text-[#00779b] leading-relaxed">
+                  Lavoriamo al centro di un ecosistema fatto di operatori, imprese, enti, professionisti e partner tecnologici. Mettiamo in connessione competenze, esigenze e responsabilità diverse per trasformarle in progetti concreti, coordinati e realizzabili.
                 </p>
-                <Link
-                  to="/contatti"
-                  className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-4 font-bold rounded-2xl bg-[#f5d000] text-[#012b3a] hover:bg-[#eab308] hover:scale-105 transition-all shadow-md w-full sm:w-auto"
-                >
-                  Parliamo del tuo progetto <ArrowRight size={20} />
-                </Link>
-              </div>
+              </Reveal>
             </div>
-          </Reveal>
+
+            <Reveal delay={200}>
+              <div className="relative w-full text-left">
+                <div className="hidden md:block absolute top-[5px] left-[20px] right-[20px] h-[2px] bg-gradient-to-r from-[#1da1db] to-[#facc15] z-0" />
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-6 relative z-10">
+                  {[
+                    { title: "OPERATORI E FILIERA", icon: Share2 },
+                    { title: "ISTITUZIONI E IMPRESE", icon: Building2 },
+                    { title: "PROFESSIONISTI E PARTNER", icon: Briefcase },
+                    { title: "SPAZI E PROGETTI", icon: MapPin }
+                  ].map((item, idx) => (
+                    <div key={item.title} className="flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-5 group">
+                      
+                      <div className="hidden md:block w-3 h-3 rounded-full bg-[#facc15] shrink-0 ml-[14px]" />
+                      
+                      <div className="w-10 h-10 rounded-full bg-[#013a52] flex items-center justify-center text-[#facc15] shrink-0 shadow-sm">
+                        <item.icon size={18} />
+                      </div>
+                      
+                      <span className="font-extrabold text-[#012b3a] text-sm lg:text-base leading-tight md:pr-4">
+                        {item.title}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </section>
+
+        {/* 07 - VALORI E CHIUSURA */}
+        <section className="pt-16 md:pt-24 pb-12 md:pb-20 relative z-20 w-full overflow-hidden">
+          <div className="container-x">
+            <div className="max-w-4xl text-left mb-12">
+              <Reveal>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight font-[var(--font-display)] text-[#012b3a] pb-2">
+                  La tecnica è il punto di partenza, <br />
+                  il valore è l'obiettivo
+                </h2>
+                <div className="mt-6 space-y-4 text-[#00779b] text-base sm:text-lg md:text-xl leading-relaxed">
+                  
+                    Competenza, responsabilità e capacità di adattamento guidano il nostro lavoro. Operiamo in contesti in continua evoluzione, costruendo soluzioni solide per il presente e capaci di crescere nel tempo.
+                  
+                   Per noi innovare significa applicare la tecnologia dove può generare un beneficio reale.
+                </div>
+              </Reveal>
+            </div>
+
+            <Reveal delay={200}>
+              <div className="grid sm:grid-cols-2 gap-x-12 gap-y-6 text-left max-w-4xl border-t border-[#facc15]/50 pt-8">
+                {[
+                  { icon: Handshake, text: "FIDUCIA & CONNESSIONE" },
+                  { icon: Lightbulb, text: "INNOVAZIONE & PROBLEM SOLVING" },
+                  { icon: TrendingUp, text: "CRESCITA" },
+                  { icon: ShieldCheck, text: "ADATTABILITÀ & RESILIENZA" }
+                ].map((val) => (
+                  <div key={val.text} className="flex items-center gap-4 group">
+                    <val.icon className="text-[#1da1db] shrink-0 group-hover:text-[#facc15] transition-colors" size={24} />
+                    <span className="font-extrabold text-[#012b3a] tracking-wider uppercase text-sm md:text-base">
+                      {val.text}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
       </div>
     </div>
   );

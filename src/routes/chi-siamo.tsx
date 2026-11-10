@@ -282,20 +282,23 @@ function ChiSiamo() {
           </div>
 
           <Reveal>
-            <div className="relative py-12 sm:py-16 md:py-24 px-6 md:px-16 rounded-3xl overflow-hidden border-2 border-[#facc15] bg-white text-left shadow-xl">
+            <div className="relative py-12 sm:py-16 md:py-24 px-6 md:px-16 rounded-3xl overflow-hidden border-2 border-[#facc15] bg-white text-center shadow-xl">
               <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#facc15]/25 rounded-full blur-[80px]" />
               <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-[#1da1db]/15 rounded-full blur-[80px]" />
-              
+
               <h3 className="relative z-10 text-2xl sm:text-3xl md:text-5xl font-[var(--font-display)] font-extrabold text-[#1da1db] mb-6 md:mb-8 tracking-wide">
                 INFINITE CONNESSIONI
               </h3>
-              <p className="relative z-10 text-base sm:text-lg md:text-xl text-[#012b3a] max-w-4xl leading-relaxed font-medium">
+              <p className="relative z-10 mx-auto text-base sm:text-lg md:text-xl text-[#012b3a] max-w-4xl leading-relaxed font-medium">
                 "Fi.Co. nasce per creare connessioni. Tra chi sviluppa una tecnologia e chi ne ha bisogno. Tra chi progetta e chi realizza. Tra competenze diverse. Tra un'esigenza e una soluzione. Tra il presente e le possibilità che ancora non abbiamo esplorato."
               </p>
-              <img src={logoWordmark} alt="FI.CO." className="h-8 md:h-12 w-auto mt-8 md:mt-12 relative z-10" />
+              <img
+                src={logoWordmark}
+                alt="FI.CO."
+                className="mx-auto mt-8 md:mt-12 h-8 md:h-12 w-auto relative z-10"
+              />
             </div>
           </Reveal>
-
         </div>
       </section>
 
@@ -318,7 +321,7 @@ function ChiSiamo() {
 
           <Reveal delay={150}>
             {/* Diagramma Rete Organizzativa */}
-            <div className="relative py-4 px-1 sm:px-4 max-w-5xl">
+            <div className="relative py-4 px-1 sm:px-4 max-w-5xl mx-auto">
               <svg
                 viewBox="0 0 600 400"
                 className="hidden lg:block absolute inset-0 w-full h-full pointer-events-none z-0"
@@ -341,7 +344,7 @@ function ChiSiamo() {
               </svg>
 
               {/* LIVELLO 1: FUNZIONI AZIENDALI */}
-              <div className="relative z-10 mb-10 sm:mb-12 max-w-3xl">
+              <div className="relative z-10 mb-14 sm:mb-16 max-w-3xl">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-xs md:text-sm font-bold text-[#1da1db] uppercase tracking-wider bg-white pr-3">
                     Funzioni Aziendali
@@ -365,7 +368,7 @@ function ChiSiamo() {
               </div>
 
               {/* LIVELLO 2: NUCLEO CENTRALE TRASVERSALE */}
-              <div className="relative z-20 my-8 sm:my-10 flex items-center justify-center">
+              <div className="relative z-20 my-10 sm:my-12 flex items-center justify-center">
                 <div className="core-ring relative inline-flex items-center gap-3 px-6 py-3 rounded-full bg-[#013a52] border-2 border-[#facc15] text-[#facc15] shadow-xl">
                   <Sparkles
                     size={16}
@@ -379,7 +382,7 @@ function ChiSiamo() {
               </div>
 
               {/* LIVELLO 3: AREE OPERATIVE (5 Elementi) */}
-              <div className="relative z-10 mt-10 sm:mt-12 w-full">
+              <div className="relative z-10 mt-14 sm:mt-16 w-full">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-xs md:text-sm font-bold text-[#0a5c75] uppercase tracking-wider bg-white pr-3">
                     Aree Operative
@@ -609,13 +612,13 @@ function ChiSiamo() {
       <section className="py-16 md:py-24 relative overflow-hidden bg-white">
         <div className="container-x">
           <Reveal>
-            <div className="max-w-5xl bg-white p-8 sm:p-12 md:p-16 rounded-[30px] md:rounded-[40px] border-2 border-[#facc15] shadow-xl relative overflow-hidden text-left">
+            <div className="mx-auto max-w-5xl bg-white p-7 sm:p-10 md:p-14 rounded-[30px] md:rounded-[40px] border-2 border-[#facc15] shadow-xl relative overflow-hidden text-left">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-[#facc15]/20 rounded-full blur-[100px] pointer-events-none" />
               
-              <h2 className="relative z-10 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#012b3a] mb-6 md:mb-8 leading-tight">
+              <h2 className="relative z-10 text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#012b3a] mb-5 md:mb-6 leading-tight">
                 Trasformiamo gli obiettivi in risultati
               </h2>
-              <p className="relative z-10 text-base sm:text-lg md:text-xl text-[#00779b] max-w-2xl mb-8 md:mb-10 leading-relaxed">
+              <p className="relative z-10 text-base sm:text-lg md:text-lg text-[#00779b] max-w-2xl mb-7 md:mb-8 leading-relaxed">
                 Esperienza, competenza e dedizione quotidiana guidano ogni nuovo progetto. Per noi il risultato non è soltanto ciò che viene progettato. È ciò che funziona, ciò che può essere verificato e ciò che riusciamo a costruire insieme.
               </p>
               

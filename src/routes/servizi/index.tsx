@@ -29,34 +29,40 @@ function ServiziIndex() {
 
   const destinatari = [
     {
-      title: "PMI e aziende",
-      desc: "Reti per sedi operative, uffici, reparti, dispositivi e servizi aziendali.",
-      icon: Building2,
-    },
-    {
-      title: "Studi e professionisti",
-      desc: "Connettività affidabile per lavoro, collaborazione, accesso ai dati e continuità operativa.",
-      icon: Briefcase,
-    },
-    {
-      title: "Imprese e cantieri",
-      desc: "Reti temporanee o permanenti per coordinamento, impianti, sicurezza e scambio dati.",
+      title: "Operatori e filiera",
+      items: [
+        "Operatori di telecomunicazioni",
+        "General contractor",
+        "Imprese e cantieri"
+      ],
       icon: HardHat,
     },
     {
-      title: "Enti pubblici",
-      desc: "Collegamenti tra edifici, Wi-Fi, infrastrutture territoriali e servizi distribuiti.",
+      title: "Enti e organizzazioni",
+      items: [
+        "Enti e amministrazioni",
+        "PMI e aziende"
+      ],
       icon: Landmark,
     },
     {
-      title: "Strutture e spazi aperti al pubblico",
-      desc: "Reti separate per attività interne, ospiti, utenti e servizi digitali.",
-      icon: Users,
+      title: "Professionisti e partner",
+      items: [
+        "Studi e professionisti",
+        "Partner tecnici",
+        "Partner tecnologici"
+      ],
+      icon: Briefcase,
     },
     {
-      title: "Partner tecnologici",
-      desc: "Supporto tecnico nell'integrazione della rete con sistemi IT, sicurezza e servizi cloud.",
-      icon: Share2,
+      title: "Contesti e progetti",
+      items: [
+        "Progetti multidisciplinari",
+        "Edifici residenziali e commerciali",
+        "Condomini e siti produttivi",
+        "Strutture e spazi aperti al pubblico"
+      ],
+      icon: Users,
     },
   ];
 
@@ -244,9 +250,11 @@ function ServiziIndex() {
                       {currentTarget.title}
                     </h3>
 
-                    <p className="text-base sm:text-lg md:text-xl text-[#00779b] leading-relaxed">
-                      {currentTarget.desc}
-                    </p>
+                    <ul className="text-base sm:text-lg md:text-xl text-[#00779b] leading-relaxed list-disc list-inside">
+                      {currentTarget.items.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
                   </div>
 
                   <div className="mt-10 pt-5 border-t border-[#1da1db]/20 flex items-center justify-between">
