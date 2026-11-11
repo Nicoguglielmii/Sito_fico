@@ -126,9 +126,6 @@ function AscensoristicaPage() {
               <span className="text-xs md:text-sm text-[#00779b] font-semibold tracking-[0.22em] uppercase">
                 NUOVO AMBITO SPECIALISTICO
               </span>
-              <span className="bg-[#f5d000] text-[#012b3a] text-[11px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
-                Soluzioni Standard e Fuori Standard
-              </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[80px] font-extrabold leading-[1.05] tracking-tight text-[#012b3a] max-w-4xl pb-2">
@@ -136,8 +133,9 @@ function AscensoristicaPage() {
             </h1>
 
             <p className="mt-6 md:mt-8 text-base md:text-xl text-[#00779b] max-w-3xl leading-relaxed">
-              Effettuiamo progettazione ascensoristica, dalla fattibilità al cantiere.
-              Fi.Co. collega attraverso competenze specialistiche integrate architettura, progettazione tecnica, produzione e cantiere.
+              Progettazione ascensoristica, dallo studio di fattibilità al cantiere.
+              <br />
+              Fi.Co. unisce, attraverso competenze specialistiche integrate, architettura, progettazione tecnica, produzione e cantiere.
             </p>
 
             {/* Stepper lineare architettonico al posto dei badge isolati */}
@@ -187,8 +185,9 @@ function AscensoristicaPage() {
                   Una nuova competenza, un'evoluzione naturale
                 </h2>
                 <p className="mt-4 text-base md:text-lg text-[#00779b] leading-relaxed">
-                  L'ampliamento dei servizi Fi.Co. al settore ascensoristico nasce grazie all'incontro con la competenza specialistica di professionisti con lunga esperienza maturata nel
-                  settore degli impianti elevatori.
+                  Grazie alla competenza specialistica di professionisti con lunga esperienza maturata nel settore degli impianti elevatori, FiCo amplia la sua offerta
+                  di servizi integrando anche il settore ascensoristico
+
                 </p>
 
                 {/* Percorso evolutivo su asse verticale continuo (niente box separati) */}

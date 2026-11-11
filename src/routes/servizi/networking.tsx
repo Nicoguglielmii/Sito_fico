@@ -209,13 +209,13 @@ function NetworkingPage() {
       port: "01",
       icon: Network,
       name: "Reti LAN e WAN",
-      desc: "Progettazione e realizzazione di reti locali e geografiche, collegamenti tra sedi e organizzazione dell'architettura.",
+      desc: "Progettazione e realizzazione di reti locali e geografiche, collegamenti tra sedi e definizione dell'architettura.",
     },
     {
       port: "02",
       icon: Wifi,
       name: "Wi-Fi professionale e HotSpot",
-      desc: "Copertura wireless per uffici, edifici, aree operative e spazi destinati a ospiti o utenti.",
+      desc: "Copertura wireless indoor e outdoor per uffici, edifici, aree operative e spazi comuni.",
     },
     {
       port: "03",
@@ -238,7 +238,7 @@ function NetworkingPage() {
     {
       port: "06",
       icon: Activity,
-      name: "Monitoraggio centralizzato",
+      name: "Monitoraggio proattivo",
       desc: "Controllo dello stato degli apparati, gestione delle configurazioni e individuazione delle anomalie.",
     },
     {
@@ -308,9 +308,6 @@ function NetworkingPage() {
                   <span className="text-xs md:text-sm text-[#00779b] font-semibold tracking-[0.22em] uppercase">
                     AREA TECNOLOGICA
                   </span>
-                  <span className="bg-[#f5d000] text-[#012b3a] text-[11px] font-extrabold px-3.5 py-1 rounded-full uppercase tracking-wider">
-                    La rete come infrastruttura strategica
-                  </span>
                 </div>
 
                 <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[76px] font-extrabold leading-[1.05] tracking-tight text-[#012b3a] pb-2">
@@ -318,11 +315,11 @@ function NetworkingPage() {
                   <span className="text-[#012b3a]">Connettività</span>
                 </h1>
 
-                <p className="mt-5 text-lg md:text-2xl font-bold text-[#0a5c75] max-w-2xl leading-snug">
-                  Infrastrutture di rete affidabili, sicure e scalabili, dalla progettazione alla gestione.
-                </p>
-
                 <p className="mt-4 text-base md:text-lg text-[#00779b] max-w-2xl leading-relaxed">
+                  Infrastrutture di rete affidabili, sicure e scalabili, dalla progettazione alla gestione.
+              
+
+                
                   Un unico approccio per collegare sedi, persone, dispositivi, impianti e servizi digitali, integrando progettazione, configurazione, monitoraggio e assistenza.
                 </p>
 
@@ -395,7 +392,7 @@ function NetworkingPage() {
                 {/* Connessione diretta a 2 nodi senza card */}
                 <div className="mt-10 relative pl-7 sm:pl-9 border-l-2 border-[#1da1db] space-y-8">
                   <div className="relative">
-                    <span className="absolute -left-[35px] sm:-left-[43px] top-1 w-4 h-4 rounded-full bg-white border-4 border-[#1da1db]" />
+                    <span className="absolute -left-[35px] sm:-left-[43px] top-1 w-4 h-4 rounded-full bg-[#facc15] ring-4 ring-[#facc15]/30" />
                     <span className="text-xs font-extrabold uppercase tracking-wider text-[#1da1db] block mb-1.5">
                       DALLA RETE…
                     </span>
@@ -520,18 +517,8 @@ function NetworkingPage() {
               <div className="flex items-center gap-3">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#facc15] animate-ping" />
                 <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#facc15]">
-                  FI.CO. NETWORK ARCHITECTURE · 10 ACTIVE PORTS
+                  FI.CO. NETWORK ARCHITECTURE
                 </span>
-              </div>
-              <div className="hidden sm:flex items-center gap-1.5">
-                {serviziNetworking.map((s) => (
-                  <span
-                    key={s.port}
-                    className="px-2 py-0.5 rounded bg-[#013a52] border border-[#1da1db]/40 text-[10px] font-bold text-[#1da1db]"
-                  >
-                    P{s.port}
-                  </span>
-                ))}
               </div>
             </div>
 

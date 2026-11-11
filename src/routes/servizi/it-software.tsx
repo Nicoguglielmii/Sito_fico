@@ -14,9 +14,9 @@ export const Route = createFileRoute("/servizi/it-software")({
 function ItSoftwarePage() {
   const serviziIT = [
     {
-      titleFirst: "IT Services ",
+      titleFirst: "ICT Services ",
       subtitle: "CONTINUITÀ OPERATIVA, OGNI GIORNO",
-      desc: "Gestiamo servizi e attività di supporto IT secondo livelli e modalità concordati con il cliente.",
+      desc: "Gestiamo servizi e attività di supporto ICT secondo livelli e modalità concordati con il cliente.",
       image: itservicesImg,
       variant: 1 as const,
       activities: [

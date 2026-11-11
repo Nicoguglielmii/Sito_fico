@@ -110,7 +110,7 @@ function ServiziIndex() {
                   Dalle infrastrutture al software
                 </h2>
                 <p className="text-[#00779b] text-lg md:text-xl leading-relaxed">
-                  Fi.Co. opera attraverso competenze specialistiche plurali e una metodologia condivisa per comprendere un'esigenza, progettare una soluzione realizzabile e governarne ogni fase. Forniamo servizi nel settore delle telecomunicazioni e nella progettazione di reti in fibra ottica. Stiamo ampliando la nostra offerta verso servizi IT, networking, sviluppo software, progettazione ascensoristica e soluzioni nel settore energetico. Oggi lavoriamo su progetti nei quali infrastrutture, dati e tecnologia possano integrarsi per rispondere alle esigenze di operatori, imprese, enti e privati.
+                  Fi.Co. opera attraverso competenze specialistiche plurali e una metodologia condivisa per comprendere un'esigenza, progettare una soluzione realizzabile e governarne ogni fase. Forniamo servizi nel settore delle telecomunicazioni e nella progettazione di reti in fibra ottica. Stiamo ampliando la nostra offerta verso servizi ICT, networking, sviluppo software, progettazione ascensoristica e soluzioni nel settore energetico. Oggi lavoriamo su progetti nei quali infrastrutture, dati e tecnologia possano integrarsi per rispondere alle esigenze di operatori, imprese, enti e privati.
                 </p>
               </Reveal>
             </div>
@@ -169,13 +169,6 @@ function ServiziIndex() {
                         />
 
                         <div className="flex items-center gap-4">
-                          <span
-                            className={`text-xs font-extrabold tabular-nums tracking-widest ${
-                              isSelected ? "text-[#facc15]" : "text-[#1da1db]"
-                            }`}
-                          >
-                            0{idx + 1}
-                          </span>
                           <h3
                             className={`text-lg sm:text-xl font-extrabold transition-colors ${
                               isSelected ? "text-white" : "text-[#012b3a]"
@@ -186,15 +179,6 @@ function ServiziIndex() {
                         </div>
 
                         <div className="flex items-center gap-2 shrink-0">
-                          <span
-                            className={`hidden sm:inline-block text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-full ${
-                              isSelected
-                                ? "bg-[#f5d000] text-[#012b3a]"
-                                : "bg-[#f4fafd] text-[#00779b]"
-                            }`}
-                          >
-                            NODE 0{idx + 1}
-                          </span>
                           <ArrowRight
                             size={18}
                             className={`transition-transform duration-300 ${
@@ -213,10 +197,6 @@ function ServiziIndex() {
               {/* COLONNA DESTRA: Display Dinamico Aperto del Nodo Attivo */}
               <div className="lg:col-span-6">
                 <div className="relative bg-white/95 backdrop-blur-xs border-l-4 border-[#1da1db] border-y border-r border-y-[#facc15] border-r-[#facc15] rounded-r-3xl p-8 sm:p-12 shadow-xl text-left overflow-hidden min-h-[340px] flex flex-col justify-between">
-                  <span className="absolute -bottom-6 -right-2 text-[140px] font-black text-[#012b3a]/[0.04] leading-none select-none pointer-events-none">
-                    0{activeTarget + 1}
-                  </span>
-
                   <div>
                     <div className="flex items-center justify-between gap-4 pb-6 mb-8 border-b border-[#facc15]">
                       <div className="flex items-center gap-3">
@@ -224,10 +204,6 @@ function ServiziIndex() {
                           <currentTarget.icon size={28} />
                         </div>
                         <div>
-                          <span className="inline-flex items-center gap-1.5 text-xs font-extrabold uppercase tracking-[0.2em] text-[#1da1db]">
-                            <span className="w-2 h-2 rounded-full bg-[#1da1db] animate-ping" />
-                            ACTIVE LINK · NODE 0{activeTarget + 1}
-                          </span>
                           <p className="text-xs font-bold text-[#0a5c75] mt-0.5">
                             Canale dedicato Fi.Co.
                           </p>
@@ -263,7 +239,7 @@ function ServiziIndex() {
                         <button
                           key={i}
                           onClick={() => setActiveTarget(i)}
-                          aria-label={`Seleziona destinatario ${i + 1}`}
+                          aria-label={`Seleziona ${destinatari[i].title}`}
                           className={`h-2 rounded-full transition-all duration-300 ${
                             activeTarget === i
                               ? "w-8 bg-[#1da1db]"
@@ -272,9 +248,6 @@ function ServiziIndex() {
                         />
                       ))}
                     </div>
-                    <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#012b3a]">
-                      0{activeTarget + 1} / 0{destinatari.length}
-                    </span>
                   </div>
                 </div>
               </div>
@@ -391,7 +364,7 @@ function ServiziIndex() {
                 </Link>
                 <div className="flex-1 flex flex-col justify-center text-left">
                   <h3 className="text-3xl md:text-4xl font-extrabold mb-4 pb-1 text-[#013547]">
-                    IT & Software
+                    ICT & Software
                   </h3>
                   <p className="text-[#00779b] text-lg leading-relaxed mb-6 max-w-2xl">
                     Dall'infrastruttura fisica agli ambienti digitali, sviluppiamo e integriamo soluzioni tecnologiche per esigenze operative.

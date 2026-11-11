@@ -172,9 +172,6 @@ function EnergiaPage() {
               <span className="text-xs md:text-sm text-[#00779b] font-semibold tracking-[0.22em] uppercase">
                 SERVIZI ENERGETICI
               </span>
-              <span className="inline-flex items-center gap-1.5 bg-[#f5d000] text-[#012b3a] text-[11px] font-extrabold px-3.5 py-1 rounded-full uppercase tracking-wider">
-                <Zap size={12} /> Progettazione, Installazione & Manutenzione
-              </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[80px] font-extrabold leading-[1.05] tracking-tight text-[#012b3a] max-w-4xl pb-2">

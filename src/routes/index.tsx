@@ -113,7 +113,7 @@ function Index() {
             </h1>
           </Reveal>
           <Reveal delay={200}>
-            <p className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-[#012b3a] max-w-2xl leading-relaxed">
+            <p className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-[#00779b] max-w-2xl leading-relaxed">
               Uniamo competenze tecniche, progettuali e digitali per trasformare esigenze complesse in infrastrutture, sistemi e soluzioni capaci di evolvere.
             </p>
           </Reveal>
@@ -191,7 +191,8 @@ function Index() {
 
             <Reveal delay={200}>
               <div className="relative">
-                <div className="hidden lg:block absolute top-6 left-0 right-0 h-0.5 bg-[#facc15]" />
+                <div className="hidden lg:block absolute top-6 left-0 w-[calc(80%_+_43px)] h-0.5 bg-[#013a52]" />
+                <div className="hidden lg:block absolute top-6 left-[calc(80%_+_43px)] right-0 border-t-2 border-dashed border-[#013a52]" />
 
                 <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 relative z-10">
                   {[
@@ -203,7 +204,7 @@ function Index() {
                   ].map((item) => (
                     <div key={item.step} className="flex flex-col items-start text-left group relative">
                       <div className="w-12 h-12 rounded-full bg-white border-4 border-[#013a52] flex items-center justify-center mb-4 z-10">
-                        <div className="w-2 h-2 rounded-full bg-[#1da1db] group-hover:bg-[#facc15] transition-colors" />
+                        <div className="w-8 h-8 rounded-full bg-[#ccff00]" />
                       </div>
                       <span className="text-[#012b3a] font-extrabold text-xs sm:text-sm tracking-[0.2em] mb-1">FASE {item.step}</span>
                       <h3 className="text-lg sm:text-xl font-extrabold text-[#1da1db]">{item.title}</h3>
@@ -280,7 +281,7 @@ function Index() {
                   <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
                     <div>
                       <span className="text-[#1da1db] font-extrabold text-xs uppercase tracking-[0.2em] block mb-2">ECOSISTEMA DIGITALE</span>
-                      <h3 className="text-3xl md:text-4xl font-extrabold text-[#012b3a] mb-4">IT & Software</h3>
+                      <h3 className="text-3xl md:text-4xl font-extrabold text-[#012b3a] mb-4">ICT & Software</h3>
                       <p className="text-sm md:text-base text-[#00779b] leading-relaxed mb-6">Soluzioni web progettate per presentare, promuovere e digitalizzare attività, servizi e processi.</p>
                       <Link to="/servizi/it-software" className="inline-flex items-center gap-2 rounded-full bg-[#013a52] px-4 py-2.5 text-sm md:text-base font-bold text-white shadow-sm transition-colors hover:bg-[#012b3a]">
                         Approfondisci <ArrowRight size={18} />

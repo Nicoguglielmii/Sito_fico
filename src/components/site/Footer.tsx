@@ -52,7 +52,7 @@ export function Footer() {
               </li>
               <li>
                 <Link to="/servizi/it-software" className="text-[#00779b] hover:text-[#1da1db] transition-colors text-[15px] font-medium block">
-                  IT & Software
+                  ICT & Software
                 </Link>
               </li>
               <li>

@@ -35,7 +35,7 @@ export function Navbar() {
 
   const serviziMenu = [
     { name: "Fibra & Mobile", path: "/servizi/fibra-mobile", image: fibraMobileImg, active: true, variant: 1 as const },
-    { name: "IT & Software", path: "/servizi/it-software", image: networkingImg, active: true, variant: 2 as const },
+    { name: "ICT & Software", path: "/servizi/it-software", image: networkingImg, active: true, variant: 2 as const },
     { name: "Ascensoristica", path: "/servizi/ascensoristica", image: ascensoristicaImg, active: true, variant: 1 as const },
     { name: "Energia", path: "/servizi/energia", image: energiaImg, active: true, variant: 3 as const },
     { name: "Networking", path: "/servizi/networking", image: networkingWebpImg, active: true, variant: 2 as const },
