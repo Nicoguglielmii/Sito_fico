@@ -20,7 +20,7 @@ function ItSoftwarePage() {
       image: itservicesImg,
       variant: 1 as const,
       activities: [
-        "Assistenza hardware e software",
+        "Assistenza hardware e software su sla garantiti",
         "Reperibilità H24 nei servizi contrattualizzati",
         "Outsourcing e gestione logistica delle scorte",
       ],
@@ -67,7 +67,7 @@ function ItSoftwarePage() {
           <Reveal>
             <div className="mb-4 md:mb-6">
               <span className="text-xs md:text-sm text-[#00779b] font-semibold tracking-[0.22em] uppercase">
-                IT & SOFTWARE
+                ICT & SOFTWARE
               </span>
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[80px] font-extrabold leading-[1.05] tracking-tight text-[#012b3a] max-w-4xl pb-2">
