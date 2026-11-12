@@ -146,7 +146,7 @@ function ServiziIndex() {
               
               {/* COLONNA SINISTRA: Elenco aperto a righe di segnale */}
               <div className="lg:col-span-6 relative">
-                <div className="border-l-2 border-[#facc15] pl-4 sm:pl-6 space-y-2">
+                <div className="pl-4 sm:pl-6 space-y-2">
                   {destinatari.map((target, idx) => {
                     const isSelected = activeTarget === idx;
                     return (

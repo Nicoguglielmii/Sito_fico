@@ -323,41 +323,109 @@ function ChiSiamo() {
             {/* Diagramma Rete Organizzativa */}
             <div className="relative py-4 px-1 sm:px-4 max-w-5xl mx-auto">
               <svg
-                viewBox="0 0 600 400"
+                viewBox="0 0 1000 350"
                 className="hidden lg:block absolute inset-0 w-full h-full pointer-events-none z-0"
                 preserveAspectRatio="none"
               >
                 {/* Connessioni superiori: 3 Funzioni Aziendali -> Nucleo Centrale */}
-                <path d="M 100,65 C 100,145 300,135 300,200" fill="none" stroke={activeNode === "amm" ? "#1da1db" : "#00779b"} strokeWidth={activeNode === "amm" ? "3" : "1.8"} strokeOpacity={activeNode === "amm" ? "1" : "0.35"} className="synapse-line transition-all duration-300" />
-                <path d="M 300,65 L 300,200" fill="none" stroke={activeNode === "fac" ? "#1da1db" : "#00779b"} strokeWidth={activeNode === "fac" ? "3" : "1.8"} strokeOpacity={activeNode === "fac" ? "1" : "0.35"} className="synapse-line transition-all duration-300" />
-                <path d="M 500,65 C 500,145 300,135 300,200" fill="none" stroke={activeNode === "bus" ? "#1da1db" : "#00779b"} strokeWidth={activeNode === "bus" ? "3" : "1.8"} strokeOpacity={activeNode === "bus" ? "1" : "0.35"} className="synapse-line transition-all duration-300" />
+                <path
+                  d="M 245,71 C 245,135 500,120 500,175"
+                  fill="none"
+                  stroke={activeNode === "amm" ? "#1da1db" : "#00779b"}
+                  strokeWidth={activeNode === "amm" ? "2.8" : "2"}
+                  strokeOpacity={activeNode === "amm" ? "1" : "0.4"}
+                  vectorEffect="non-scaling-stroke"
+                  className="synapse-line transition-all duration-300"
+                />
+                <path
+                  d="M 500,71 L 500,175"
+                  fill="none"
+                  stroke={activeNode === "fac" ? "#1da1db" : "#00779b"}
+                  strokeWidth={activeNode === "fac" ? "2.8" : "2"}
+                  strokeOpacity={activeNode === "fac" ? "1" : "0.4"}
+                  vectorEffect="non-scaling-stroke"
+                  className="synapse-line transition-all duration-300"
+                />
+                <path
+                  d="M 755,71 C 755,135 500,120 500,175"
+                  fill="none"
+                  stroke={activeNode === "bus" ? "#1da1db" : "#00779b"}
+                  strokeWidth={activeNode === "bus" ? "2.8" : "2"}
+                  strokeOpacity={activeNode === "bus" ? "1" : "0.4"}
+                  vectorEffect="non-scaling-stroke"
+                  className="synapse-line transition-all duration-300"
+                />
 
                 {/* Orizzonte Trasversale Giallo */}
-                <line x1="20" y1="200" x2="580" y2="200" stroke="#facc15" strokeWidth="2" strokeDasharray="4 4" />
+                <line
+                  x1="20"
+                  y1="175"
+                  x2="980"
+                  y2="175"
+                  stroke="#facc15"
+                  strokeWidth="2"
+                  strokeDasharray="5 5"
+                  vectorEffect="non-scaling-stroke"
+                />
 
                 {/* Connessioni inferiori: Nucleo Centrale -> 5 Aree Operative */}
-                <path d="M 300,200 C 300,265 60,255 60,335" fill="none" stroke={activeNode === "fibra" ? "#1da1db" : "#facc15"} strokeWidth="2.2" className="synapse-line transition-all duration-300" />
-                <path d="M 300,200 C 300,265 180,255 180,335" fill="none" stroke={activeNode === "it" ? "#1da1db" : "#facc15"} strokeWidth="2.2" className="synapse-line transition-all duration-300" />
-                <path d="M 300,200 C 300,265 300,255 300,335" fill="none" stroke={activeNode === "net" ? "#1da1db" : "#facc15"} strokeWidth="2.2" className="synapse-line transition-all duration-300" />
-                <path d="M 300,200 C 300,265 420,255 420,335" fill="none" stroke={activeNode === "asc" ? "#1da1db" : "#facc15"} strokeWidth="2.2" className="synapse-line transition-all duration-300" />
-                <path d="M 300,200 C 300,265 540,255 540,335" fill="none" stroke={activeNode === "ene" ? "#1da1db" : "#facc15"} strokeWidth="2.2" className="synapse-line transition-all duration-300" />
+                <path
+                  d="M 500,175 C 500,230 95,215 95,279"
+                  fill="none"
+                  stroke={activeNode === "fibra" ? "#1da1db" : "#facc15"}
+                  strokeWidth={activeNode === "fibra" ? "2.8" : "2.2"}
+                  vectorEffect="non-scaling-stroke"
+                  className="synapse-line transition-all duration-300"
+                />
+                <path
+                  d="M 500,175 C 500,230 298,215 298,279"
+                  fill="none"
+                  stroke={activeNode === "it" ? "#1da1db" : "#facc15"}
+                  strokeWidth={activeNode === "it" ? "2.8" : "2.2"}
+                  vectorEffect="non-scaling-stroke"
+                  className="synapse-line transition-all duration-300"
+                />
+                <path
+                  d="M 500,175 L 500,279"
+                  fill="none"
+                  stroke={activeNode === "net" ? "#1da1db" : "#facc15"}
+                  strokeWidth={activeNode === "net" ? "2.8" : "2.2"}
+                  vectorEffect="non-scaling-stroke"
+                  className="synapse-line transition-all duration-300"
+                />
+                <path
+                  d="M 500,175 C 500,230 702,215 702,279"
+                  fill="none"
+                  stroke={activeNode === "asc" ? "#1da1db" : "#facc15"}
+                  strokeWidth={activeNode === "asc" ? "2.8" : "2.2"}
+                  vectorEffect="non-scaling-stroke"
+                  className="synapse-line transition-all duration-300"
+                />
+                <path
+                  d="M 500,175 C 500,230 905,215 905,279"
+                  fill="none"
+                  stroke={activeNode === "ene" ? "#1da1db" : "#facc15"}
+                  strokeWidth={activeNode === "ene" ? "2.8" : "2.2"}
+                  vectorEffect="non-scaling-stroke"
+                  className="synapse-line transition-all duration-300"
+                />
               </svg>
 
               {/* LIVELLO 1: FUNZIONI AZIENDALI */}
-              <div className="relative z-10 mb-14 sm:mb-16 max-w-3xl">
+              <div className="relative z-10 mb-14 max-w-3xl mx-auto">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-xs md:text-sm font-bold text-[#1da1db] uppercase tracking-wider bg-white pr-3">
                     Funzioni Aziendali
                   </span>
                   <span className="h-[1px] flex-1 bg-[#1da1db]/30" />
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {funzioniAziendali.map((fn) => (
                     <div
                       key={fn.id}
                       onMouseEnter={() => setActiveNode(fn.id)}
                       onMouseLeave={() => setActiveNode(null)}
-                      className="flex items-center justify-center text-center px-4 py-3 rounded-full bg-[#1da1db]/10 border border-[#1da1db]/40 hover:border-[#1da1db] hover:bg-white hover:shadow-md transition-all cursor-default"
+                      className="flex items-center justify-center text-center px-4 py-3 rounded-full bg-[#eef8fc] border border-[#1da1db]/40 hover:border-[#1da1db] hover:bg-white hover:shadow-md transition-all cursor-default"
                     >
                       <span className="text-xs md:text-sm font-semibold text-[#012b3a]">
                         {fn.label}
@@ -367,8 +435,8 @@ function ChiSiamo() {
                 </div>
               </div>
 
-              {/* LIVELLO 2: NUCLEO CENTRALE TRASVERSALE */}
-              <div className="relative z-20 my-10 sm:my-12 flex items-center justify-center">
+              {/* LIVELLO 2: NUCLEO CENTRALE */}
+              <div className="relative z-20 my-14 flex items-center justify-center">
                 <div className="core-ring relative inline-flex items-center gap-3 px-6 py-3 rounded-full bg-[#013a52] border-2 border-[#facc15] text-[#facc15] shadow-xl">
                   <Sparkles
                     size={16}
@@ -376,19 +444,13 @@ function ChiSiamo() {
                     style={{ animationDuration: "8s" }}
                   />
                   <span className="text-xs md:text-sm font-bold">
-                    Ricerca & Innovazione (Trasversale)
+                    Ricerca & Innovazione
                   </span>
                 </div>
               </div>
 
               {/* LIVELLO 3: AREE OPERATIVE (5 Elementi) */}
-              <div className="relative z-10 mt-14 sm:mt-16 w-full">
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs md:text-sm font-bold text-[#0a5c75] uppercase tracking-wider bg-white pr-3">
-                    Aree Operative
-                  </span>
-                  <span className="h-[1px] flex-1 bg-[#facc15]" />
-                </div>
+              <div className="relative z-10 mt-14 w-full">
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
                   {areeOperative.map((area) => (
                     <Link
@@ -406,6 +468,12 @@ function ChiSiamo() {
                       </div>
                     </Link>
                   ))}
+                </div>
+                <div className="flex items-center justify-between mt-3">
+                  <span className="text-xs md:text-sm font-bold text-[#0a5c75] uppercase tracking-wider bg-white pr-3">
+                    Aree Operative
+                  </span>
+                  <span className="h-[1px] flex-1 bg-[#facc15]" />
                 </div>
               </div>
             </div>

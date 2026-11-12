@@ -1,25 +1,8 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  Network,
-  Wifi,
-  Radio,
-  Server,
-  Shield,
-  Activity,
-  Wrench,
-  Cctv,
-  Cpu,
-  FileCode2,
-  ArrowRight,
-  Sparkles,
-  CheckCircle2,
-} from "lucide-react";
+import { ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import { HeroParticles } from "@/components/site/Interactive";
-import { FicoImage } from "@/components/site/FicoImage";
-
-import netwImg from "@/assets/netw.jpg";
 
 export const Route = createFileRoute("/servizi/networking")({
   head: () => ({
@@ -52,112 +35,32 @@ function InteractiveNetworkTopology() {
     <div className="relative w-full max-w-[460px] mx-auto select-none">
       <div className="absolute inset-0 bg-[#1da1db]/10 rounded-full blur-3xl pointer-events-none" />
       <svg viewBox="120 0 310 330" className="w-full h-auto overflow-visible relative z-10">
-        {/* Cerchi radar concentrici attorno all'Hub centrale */}
-        <circle
-          cx={center.cx}
-          cy={center.cy}
-          r="58"
-          fill="none"
-          stroke="#facc15"
-          strokeWidth="1"
-          strokeDasharray="4 4"
-          className="net-orbit"
-        />
-        <circle
-          cx={center.cx}
-          cy={center.cy}
-          r="92"
-          fill="none"
-          stroke="#1da1db"
-          strokeOpacity="0.25"
-          strokeWidth="1"
-        />
+        <circle cx={center.cx} cy={center.cy} r="58" fill="none" stroke="#facc15" strokeWidth="1" strokeDasharray="4 4" className="net-orbit" />
+        <circle cx={center.cx} cy={center.cy} r="92" fill="none" stroke="#1da1db" strokeOpacity="0.25" strokeWidth="1" />
 
-        {/* Linee di connessione + Pacchetti dati in transito */}
         {satelliteNodes.map((node, i) => {
           const isActive = hoveredNode === node.id;
           return (
             <g key={node.id}>
-              <line
-                x1={center.cx}
-                y1={center.cy}
-                x2={node.cx}
-                y2={node.cy}
-                stroke={isActive ? "#facc15" : "#008cb4"}
-                strokeWidth={isActive ? "4" : "3"}
-                strokeLinecap="round"
-                className="transition-all duration-300"
-              />
-              {/* Linea tratteggiata animata che simula il flusso pacchetti */}
-              <line
-                x1={center.cx}
-                y1={center.cy}
-                x2={node.cx}
-                y2={node.cy}
-                stroke="#facc15"
-                strokeWidth="2.5"
-                strokeDasharray="4 18"
-                strokeLinecap="round"
-                className="packet-stream"
-                style={{ animationDelay: `${i * 0.35}s` }}
-              />
+              <line x1={center.cx} y1={center.cy} x2={node.cx} y2={node.cy} stroke={isActive ? "#facc15" : "#008cb4"} strokeWidth={isActive ? "4" : "3"} strokeLinecap="round" className="transition-all duration-300" />
+              <line x1={center.cx} y1={center.cy} x2={node.cx} y2={node.cy} stroke="#facc15" strokeWidth="2.5" strokeDasharray="4 18" strokeLinecap="round" className="packet-stream" style={{ animationDelay: `${i * 0.35}s` }} />
             </g>
           );
         })}
 
-        {/* Nodi Satelliti */}
         {satelliteNodes.map((node) => {
           const isActive = hoveredNode === node.id;
           return (
-            <g
-              key={node.id}
-              onMouseEnter={() => setHoveredNode(node.id)}
-              onMouseLeave={() => setHoveredNode(null)}
-              className="cursor-pointer"
-            >
-              <circle
-                cx={node.cx}
-                cy={node.cy}
-                r={isActive ? "20" : "16"}
-                fill="#008cb4"
-                className="transition-all duration-300"
-              />
-              <circle
-                cx={node.cx}
-                cy={node.cy}
-                r="6"
-                fill={isActive ? "#facc15" : "#ffffff"}
-                className="transition-colors duration-300"
-              />
+            <g key={node.id} onMouseEnter={() => setHoveredNode(node.id)} onMouseLeave={() => setHoveredNode(null)} className="cursor-pointer">
+              <circle cx={node.cx} cy={node.cy} r={isActive ? "20" : "16"} fill="#008cb4" className="transition-all duration-300" />
+              <circle cx={node.cx} cy={node.cy} r="6" fill={isActive ? "#facc15" : "#ffffff"} className="transition-colors duration-300" />
             </g>
           );
         })}
 
-        {/* Nodo Centrale NETWORK */}
-        <g
-          className="cursor-pointer"
-          onMouseEnter={() => setHoveredNode(0)}
-          onMouseLeave={() => setHoveredNode(null)}
-        >
-          <circle
-            cx={center.cx}
-            cy={center.cy}
-            r="40"
-            fill="#012b3a"
-            stroke="#facc15"
-            strokeWidth="2.5"
-          />
-          <text
-            x={center.cx}
-            y={center.cy + 4}
-            textAnchor="middle"
-            fill="#ffffff"
-            fontSize="11"
-            fontWeight="800"
-            letterSpacing="0.08em"
-          >
-            NETWORK
-          </text>
+        <g className="cursor-pointer" onMouseEnter={() => setHoveredNode(0)} onMouseLeave={() => setHoveredNode(null)}>
+          <circle cx={center.cx} cy={center.cy} r="40" fill="#012b3a" stroke="#facc15" strokeWidth="2.5" />
+          <text x={center.cx} y={center.cy + 4} textAnchor="middle" fill="#ffffff" fontSize="11" fontWeight="800" letterSpacing="0.08em">NETWORK</text>
         </g>
       </svg>
     </div>
@@ -167,136 +70,58 @@ function InteractiveNetworkTopology() {
 function NetworkingPage() {
   const cicloVitaRete = [
     {
-      step: "1",
-      code: "01",
-      title: "Analisi e sopralluogo",
-      desc: "Esigenze, copertura, vincoli e stato della rete.",
+      step: "1", code: "01",
+      title: "Analisi e progettazione",
+      desc: "Valutiamo esigenze, copertura, vincoli e infrastruttura esistente per definire architettura, apparati e modalità di collegamento.",
     },
     {
-      step: "2",
-      code: "02",
-      title: "Progettazione",
-      desc: "Architettura, apparati e modalità di collegamento.",
+      step: "2", code: "02",
+      title: "Realizzazione e configurazione",
+      desc: "Installiamo e configuriamo l'infrastruttura di rete, organizzando collegamenti e copertura in funzione dei servizi.",
     },
     {
-      step: "3",
-      code: "03",
-      title: "Realizzazione",
-      desc: "Installazione e configurazione della soluzione.",
+      step: "3", code: "03",
+      title: "Sicurezza e segmentazione",
+      desc: "Organizziamo la rete separando utenti, dispositivi e servizi, gestendo accessi e comunicazioni in sicurezza.",
     },
     {
-      step: "4",
-      code: "04",
-      title: "Sicurezza",
-      desc: "Segmentazione, accessi e protezione delle comunicazioni.",
+      step: "4", code: "04",
+      title: "Monitoraggio e continuità",
+      desc: "Controlliamo proattivamente lo stato dell'infrastruttura per individuare anomalie e supportare la continuità del servizio.",
     },
     {
-      step: "5",
-      code: "05",
-      title: "Monitoraggio",
-      desc: "Controllo centralizzato e individuazione delle anomalie.",
+      step: "5", code: "05",
+      title: "Integrazione di sistemi",
+      desc: "Predisponiamo la rete per collegare dispositivi e sistemi IoT presenti negli edifici e negli spazi operativi.",
     },
     {
-      step: "6",
-      code: "06",
-      title: "Evoluzione",
-      desc: "Manutenzione, ampliamento e adeguamento nel tempo.",
+      step: "6", code: "06",
+      title: "Manutenzione ed evoluzione",
+      desc: "L'infrastruttura viene documentata e adeguata nel tempo in funzione di nuove sedi, servizi o necessità operative.",
     },
   ];
 
-  const serviziNetworking = [
-    {
-      port: "01",
-      icon: Network,
-      name: "Reti LAN e WAN",
-      desc: "Progettazione e realizzazione di reti locali e geografiche, collegamenti tra sedi e definizione dell'architettura.",
-    },
-    {
-      port: "02",
-      icon: Wifi,
-      name: "Wi-Fi professionale e HotSpot",
-      desc: "Copertura wireless indoor e outdoor per uffici, edifici, aree operative e spazi comuni.",
-    },
-    {
-      port: "03",
-      icon: Radio,
-      name: "Fibra ottica e ponti radio",
-      desc: "Collegamenti per sedi, edifici, servizi distribuiti, impianti e infrastrutture territoriali.",
-    },
-    {
-      port: "04",
-      icon: Server,
-      name: "Apparati e configurazione",
-      desc: "Configurazione di switch, router, access point, firewall, gateway e dispositivi di rete.",
-    },
-    {
-      port: "05",
-      icon: Shield,
-      name: "Sicurezza e segmentazione",
-      desc: "Separazione logica di utenti, dispositivi e servizi, gestione degli accessi e protezione delle comunicazioni.",
-    },
-    {
-      port: "06",
-      icon: Activity,
-      name: "Monitoraggio proattivo",
-      desc: "Controllo dello stato degli apparati, gestione delle configurazioni e individuazione delle anomalie.",
-    },
-    {
-      port: "07",
-      icon: Wrench,
-      name: "Manutenzione e assistenza",
-      desc: "Diagnostica, interventi da remoto e on-site, aggiornamenti, ampliamenti e supporto continuativo.",
-    },
-    {
-      port: "08",
-      icon: Cctv,
-      name: "Reti per videosorveglianza",
-      desc: "Trasporto dati per telecamere, controllo accessi, lettura targhe e collegamento con centrali operative.",
-    },
-    {
-      port: "09",
-      icon: Cpu,
-      name: "Networking per IoT",
-      desc: "Infrastrutture per sensori, dispositivi connessi e raccolta centralizzata dei dati, come area progettuale e di sviluppo.",
-    },
-    {
-      port: "10",
-      icon: FileCode2,
-      name: "Documentazione tecnica",
-      desc: "Schemi di rete, configurazioni, inventario apparati e supporto alla gestione ordinata dell'infrastruttura.",
-    },
+  const destinatari = [
+    { title: "PMI e aziende", desc: "Reti per sedi operative, uffici, reparti, dispositivi e servizi aziendali." },
+    { title: "Enti pubblici", desc: "Collegamenti tra edifici, Wi-Fi, infrastrutture territoriali e servizi distribuiti." },
+    { title: "Studi e professionisti", desc: "Connettività affidabile per lavoro, collaborazione, accesso ai dati e continuità operativa." },
+    { title: "Strutture aperte al pubblico", desc: "Reti separate per attività interne, ospiti, utenti e servizi digitali." },
+    { title: "Imprese e cantieri", desc: "Reti temporanee o permanenti per coordinamento, impianti, sicurezza e scambio dati." },
+    { title: "Partner tecnologici", desc: "Supporto tecnico nell'integrazione della rete con sistemi IT, sicurezza e servizi cloud." }
   ];
 
   return (
     <div className="bg-white w-full min-h-screen pb-20 overflow-x-hidden selection:bg-[#facc15] selection:text-[#012b3a]">
       <style>{`
-        @keyframes packet-flow {
-          0% { stroke-dashoffset: 44; }
-          100% { stroke-dashoffset: 0; }
-        }
-        @keyframes spin-slow {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-        @keyframes bus-data {
-          0% { background-position: -200% 0; }
-          100% { background-position: 200% 0; }
-        }
-        .packet-stream {
-          animation: packet-flow 1.8s linear infinite;
-        }
-        .net-orbit {
-          transform-origin: 275px 205px;
-          animation: spin-slow 24s linear infinite;
-        }
-        .network-bus-line {
-          background: linear-gradient(90deg, #1da1db 0%, #facc15 50%, #1da1db 100%);
-          background-size: 200% 100%;
-          animation: bus-data 3.5s linear infinite;
-        }
+        @keyframes packet-flow { 0% { stroke-dashoffset: 44; } 100% { stroke-dashoffset: 0; } }
+        @keyframes spin-slow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes bus-data { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        .packet-stream { animation: packet-flow 1.8s linear infinite; }
+        .net-orbit { transform-origin: 275px 205px; animation: spin-slow 24s linear infinite; }
+        .network-bus-line { background: linear-gradient(90deg, #1da1db 0%, #facc15 50%, #1da1db 100%); background-size: 200% 100%; animation: bus-data 3.5s linear infinite; }
       `}</style>
 
-      {/* HERO SECTION CON TOPOLOGIA DI RETE INTERATTIVA */}
+      {/* HERO SECTION */}
       <section className="relative pt-32 md:pt-36 pb-14 md:pb-20 border-b border-[#facc15] overflow-hidden bg-white">
         <HeroParticles />
         <div className="container-x relative z-10">
@@ -311,22 +136,17 @@ function NetworkingPage() {
                 </div>
 
                 <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[76px] font-extrabold leading-[1.05] tracking-tight text-[#012b3a] pb-2">
-                  Networking & <br className="hidden sm:block" />
-                  <span className="text-[#012b3a]">Connettività</span>
+                  Dalla connessione <br className="hidden sm:block" />
+                  all'infrastruttura
                 </h1>
 
                 <p className="mt-4 text-base md:text-lg text-[#00779b] max-w-2xl leading-relaxed">
-                  Infrastrutture di rete affidabili, sicure e scalabili, dalla progettazione alla gestione.
-              
-
-                
-                  Un unico approccio per collegare sedi, persone, dispositivi, impianti e servizi digitali, integrando progettazione, configurazione, monitoraggio e assistenza.
+                  Affrontiamo il networking come un'infrastruttura da progettare, governare e far evolvere nel tempo. Un unico approccio per collegare sedi, persone, dispositivi, impianti e servizi digitali.
                 </p>
 
-                {/* Tracciato fasi lineare */}
                 <div className="mt-8 pt-6 border-t border-[#facc15]/70">
                   <div className="flex flex-wrap items-center gap-y-2">
-                    {["ANALISI", "PROGETTAZIONE", "REALIZZAZIONE", "GESTIONE"].map((fase, i) => (
+                    {["PROGETTAZIONE", "CONFIGURAZIONE", "MONITORAGGIO", "ASSISTENZA"].map((fase, i) => (
                       <div key={fase} className="flex items-center">
                         <div className="flex items-center gap-2">
                           <span className="w-2 h-2 rounded-full bg-[#1da1db]" />
@@ -341,7 +161,7 @@ function NetworkingPage() {
                     ))}
                   </div>
                   <p className="mt-3 text-xs sm:text-sm font-bold text-[#00779b]">
-                    Reti LAN/WAN, Wi-Fi professionale, fibra ottica e ponti radio
+                    Infrastrutture di rete affidabili, sicure e scalabili.
                   </p>
                 </div>
               </Reveal>
@@ -357,68 +177,7 @@ function NetworkingPage() {
         </div>
       </section>
 
-      {/* SEZIONE 1: PERCHÉ FI.CO. — DALLA RETE AL SERVIZIO INTEGRATO */}
-      <section className="py-16 md:py-24 bg-white border-b border-[#facc15]">
-        <div className="container-x max-w-6xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-            
-            <div className="w-full lg:w-5/12">
-              <Reveal>
-                <div className="relative">
-                  <div className="hidden sm:block absolute -top-3 -left-3 right-12 h-1 network-bus-line rounded-full pointer-events-none" />
-                  <div className="hidden sm:block absolute -bottom-3 left-12 -right-3 h-1 network-bus-line rounded-full pointer-events-none" />
-                  <FicoImage
-                    src={netwImg}
-                    alt="Networking & Connettività FI.CO."
-                    variant={2}
-                    className="w-full aspect-[4/3] md:h-[430px] rounded-3xl shadow-xl"
-                  />
-                </div>
-              </Reveal>
-            </div>
-
-            <div className="w-full lg:w-7/12 text-left">
-              <Reveal delay={100}>
-                <span className="text-xs md:text-sm font-bold text-[#00779b] uppercase tracking-[0.22em] block mb-2">
-                  PERCHÉ FI.CO.
-                </span>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#012b3a] leading-tight pb-2">
-                  La connettività come base di ogni servizio digitale
-                </h2>
-                <p className="mt-4 text-base md:text-lg text-[#00779b] leading-relaxed">
-                  Fi.Co. affronta il networking come un'infrastruttura da progettare, governare e far evolvere nel tempo
-                </p>
-
-                {/* Connessione diretta a 2 nodi senza card */}
-                <div className="mt-10 relative pl-7 sm:pl-9 border-l-2 border-[#1da1db] space-y-8">
-                  <div className="relative">
-                    <span className="absolute -left-[35px] sm:-left-[43px] top-1 w-4 h-4 rounded-full bg-[#facc15] ring-4 ring-[#facc15]/30" />
-                    <span className="text-xs font-extrabold uppercase tracking-wider text-[#1da1db] block mb-1.5">
-                      DALLA RETE…
-                    </span>
-                    <p className="text-sm md:text-base text-[#012b3a] leading-relaxed">
-                      Analisi dell'infrastruttura, definizione dell'architettura e realizzazione dei collegamenti cablati e wireless.
-                    </p>
-                  </div>
-
-                  <div className="relative">
-                    <span className="absolute -left-[35px] sm:-left-[43px] top-1 w-4 h-4 rounded-full bg-[#facc15] ring-4 ring-[#facc15]/30" />
-                    <span className="text-xs font-extrabold uppercase tracking-wider text-[#0a5c75] block mb-1.5">
-                      …AL SERVIZIO INTEGRATO
-                    </span>
-                    <p className="text-sm md:text-base text-[#012b3a] leading-relaxed">
-                      Configurazione, sicurezza, monitoraggio e assistenza vengono coordinati in un unico modello operativo.
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* SEZIONE 2: DALL'ESIGENZA ALLA CONTINUITÀ OPERATIVA — DORSALE DI ROUTING A 6 HOP */}
+      {/* DALL'ESIGENZA ALLA CONTINUITÀ OPERATIVA — DORSALE DI ROUTING */}
       <section
         className="py-16 md:py-24 border-b border-[#facc15] relative overflow-hidden"
         style={{
@@ -428,17 +187,19 @@ function NetworkingPage() {
       >
         <div className="container-x max-w-6xl mx-auto">
           <Reveal>
-            <div className="max-w-3xl mb-14 md:mb-16 text-left">
+            <div className="max-w-3xl mb-16 md:mb-20 text-left">
               <span className="text-xs md:text-sm font-bold text-[#00779b] uppercase tracking-[0.22em] block mb-2">
-                IL MODELLO OPERATIVO
+                IL METODO
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#012b3a] leading-tight">
                 Dall'esigenza alla continuità operativa
               </h2>
+              <p className="mt-4 text-base md:text-lg text-[#00779b] leading-relaxed">
+                Attività modulabili in funzione della dimensione, della distribuzione delle sedi e delle esigenze operative del cliente.
+              </p>
             </div>
           </Reveal>
 
-          {/* Matrice di Routing su 2 dorsali interconnesse */}
           <div className="relative">
             <div className="hidden lg:block absolute top-[28px] left-[6%] right-[6%] h-[3px] network-bus-line rounded-full pointer-events-none" />
             <div className="hidden lg:block absolute top-[238px] left-[6%] right-[6%] h-[3px] network-bus-line rounded-full pointer-events-none" />
@@ -450,7 +211,7 @@ function NetworkingPage() {
                     <div className="flex items-center gap-4 mb-4">
                       <div className="w-14 h-14 rounded-2xl bg-[#013a52] border-2 border-[#facc15] text-[#facc15] flex flex-col items-center justify-center shrink-0 shadow-md group-hover:bg-[#1da1db] group-hover:text-white group-hover:scale-110 transition-all">
                         <span className="text-[9px] font-bold uppercase tracking-widest opacity-80 leading-none">
-                          HOP
+                          FASE
                         </span>
                         <span className="text-lg font-extrabold leading-tight">
                           {item.code}
@@ -458,15 +219,12 @@ function NetworkingPage() {
                       </div>
                       <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#1da1db]/30 shadow-2xs">
                         <span className="w-2 h-2 rounded-full bg-[#1da1db] animate-pulse" />
-                        <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#012b3a]">
-                          {item.step}. {item.title}
-                        </span>
                       </div>
                     </div>
 
                     <div className="pl-4 border-l-2 border-[#facc15] bg-white/90 backdrop-blur-xs py-2 pr-3 rounded-r-xl">
-                      <h3 className="text-xl font-extrabold text-[#012b3a] mb-1">
-                        {item.step}. {item.title}
+                      <h3 className="text-xl font-extrabold text-[#012b3a] mb-2">
+                        {item.title}
                       </h3>
                       <p className="text-sm md:text-[15px] text-[#00779b] leading-relaxed">
                         {item.desc}
@@ -477,130 +235,73 @@ function NetworkingPage() {
               ))}
             </div>
           </div>
-
-          <Reveal delay={300}>
-            <div className="mt-14 pt-8 border-t-2 border-[#1da1db] flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-white/95 px-6 py-5 rounded-2xl shadow-sm">
-              <div className="w-11 h-11 rounded-full bg-[#f5d000] text-[#012b3a] flex items-center justify-center shrink-0">
-                <Network size={22} />
-              </div>
-              <p className="text-base md:text-lg font-bold text-[#012b3a] text-left">
-                Il risultato:{" "}
-                <span className="text-[#00779b] font-medium">
-                  un unico interlocutore per l'intero ciclo di vita della rete.
-                </span>
-              </p>
-            </div>
-          </Reveal>
         </div>
       </section>
 
-      {/* SEZIONE 3: COSA FACCIAMO — ARCHITETTURA SWITCH / PATCH PANEL A 10 PORTE */}
-      <section className="py-16 md:py-24 bg-white border-b border-[#facc15]">
+      {/* A CHI CI RIVOLGIAMO */}
+      <section className="py-16 md:py-24 bg-white border-b border-[#facc15]/30 overflow-hidden">
         <div className="container-x max-w-6xl mx-auto">
           <Reveal>
-            <div className="max-w-3xl mb-14 md:mb-16 text-left">
+            <div className="max-w-3xl mb-12 md:mb-16 text-left">
               <span className="text-xs md:text-sm font-bold text-[#00779b] uppercase tracking-[0.22em] block mb-2">
-                COSA FACCIAMO
+                A CHI CI RIVOLGIAMO
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#012b3a] leading-tight">
-                Servizi di networking e connettività
+                Una rete progettata intorno alle attività
               </h2>
               <p className="mt-4 text-base md:text-lg text-[#00779b] leading-relaxed">
-                Attività modulabili in funzione della dimensione, della distribuzione delle sedi e delle esigenze operative del cliente.
+                Soluzioni per organizzazioni che richiedono affidabilità, gestione centralizzata e capacità di crescita strutturale.
               </p>
             </div>
           </Reveal>
 
-          {/* Barra Superiore dello Switch Logico */}
-          <Reveal delay={100}>
-            <div className="bg-[#012b3a] text-white px-6 py-3.5 rounded-t-3xl border-b-2 border-[#facc15] flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#facc15] animate-ping" />
-                <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#facc15]">
-                  FI.CO. NETWORK ARCHITECTURE
-                </span>
-              </div>
-            </div>
-
-            {/* Elenco Tecnico Bicolonna a Porte Connesse */}
-            <div className="grid md:grid-cols-2 border-x-2 border-b-2 border-[#facc15] rounded-b-3xl divide-y divide-[#1da1db]/20 md:divide-x bg-white overflow-hidden shadow-lg">
-              {serviziNetworking.map((srv, idx) => (
-                <div
-                  key={srv.name}
-                  className={`group p-6 sm:p-8 flex items-start gap-5 hover:bg-[#f4fafd] transition-colors text-left relative ${
-                    idx === 0 ? "md:border-t-0" : ""
-                  }`}
-                >
-                  <div className="flex flex-col items-center shrink-0">
-                    <div className="w-12 h-12 rounded-2xl bg-[#013a52] border border-[#facc15] text-[#facc15] flex items-center justify-center group-hover:bg-[#1da1db] group-hover:text-white transition-colors shadow-xs">
-                      <srv.icon size={22} />
-                    </div>
-                    <span className="mt-1.5 text-[10px] font-extrabold tracking-widest text-[#1da1db]">
-                      P.{srv.port}
-                    </span>
-                  </div>
-
-                  <div className="flex-1">
-                    <div className="flex items-center justify-between gap-2 mb-1.5">
-                      <h3 className="text-lg md:text-xl font-extrabold text-[#012b3a] group-hover:text-[#0a5c75] transition-colors">
-                        {srv.name}
-                      </h3>
-                      <CheckCircle2
-                        size={18}
-                        className="text-[#1da1db] shrink-0 opacity-40 group-hover:opacity-100 transition-opacity"
-                      />
-                    </div>
-                    <p className="text-sm md:text-[15px] text-[#00779b] leading-relaxed">
-                      {srv.desc}
-                    </p>
-                  </div>
+          <div className="grid md:grid-cols-2 gap-x-16 gap-y-10 text-left">
+            {destinatari.map((target, idx) => (
+              <Reveal key={target.title} delay={idx * 50}>
+                <div className="border-t-2 border-[#1da1db]/20 pt-5">
+                  <h3 className="text-xl font-extrabold text-[#012b3a] mb-2">
+                    {target.title}
+                  </h3>
+                  <p className="text-base text-[#00779b] leading-relaxed">
+                    {target.desc}
+                  </p>
                 </div>
-              ))}
-            </div>
-          </Reveal>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* SEZIONE 4: IL VALORE AGGIUNTO FI.CO. + CTA */}
-      <section
-        className="py-16 md:py-24 relative overflow-hidden"
-        style={{
-          backgroundImage: "radial-gradient(#facc15 1.2px, transparent 1.2px)",
-          backgroundSize: "24px 24px",
-        }}
-      >
+      {/* IL VALORE AGGIUNTO FI.CO. + CTA */}
+      <section className="py-16 md:py-24 relative overflow-hidden bg-white">
         <div className="container-x max-w-6xl mx-auto">
-          <Reveal delay={100}>
-            <div className="relative bg-white border-y-2 border-[#facc15] py-12 px-6 sm:px-10 md:px-14 shadow-md overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-1.5 network-bus-line" />
-
-              <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-                <div className="max-w-3xl text-left">
-                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f5d000] text-[#012b3a] text-xs font-extrabold uppercase tracking-wider mb-4">
-                    <Sparkles size={14} /> IL VALORE AGGIUNTO FI.CO.
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#012b3a] leading-tight mb-4">
-                    Non solo installazione di apparati, ma governo dell'intera infrastruttura di rete
-                  </h3>
-                  <p className="text-[#00779b] text-base md:text-lg leading-relaxed mb-5">
-                    Una visione che unisce connettività, sistemi IT, sicurezza, monitoraggio e assistenza continuativa, per ridurre disservizi, semplificare la gestione e accompagnare l'evoluzione tecnologica.
-                  </p>
-                  <p className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.2em] text-[#0a5c75] mb-2">
-                    DALLA CONNESSIONE ALL'INFRASTRUTTURA. DALLA RETE AL SERVIZIO.
-                  </p>
-                  <p className="text-sm font-semibold text-[#00779b]">
-                    Fi.Co. integra il networking nei propri servizi tecnologici e di assistenza. Contattaci per valutare insieme la tua infrastruttura di rete.
+          <Reveal>
+            <div className="relative bg-[#f4fafd] border-l-4 border-[#1da1db] py-12 px-8 sm:px-12 rounded-r-3xl shadow-sm text-left flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
+              <div className="max-w-3xl">
+                <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#1da1db] mb-4">
+                  <Sparkles size={16} /> IL VALORE AGGIUNTO FI.CO.
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-[#012b3a] leading-tight mb-4">
+                  Non solo installazione di apparati, ma governo dell'intera infrastruttura.
+                </h3>
+                <p className="text-[#00779b] text-base md:text-lg leading-relaxed mb-6">
+                  Una visione che unisce connettività, sistemi IT, sicurezza, monitoraggio e assistenza continuativa, per ridurre disservizi, semplificare la gestione e accompagnare l'evoluzione tecnologica.
+                </p>
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 size={18} className="text-[#facc15]" />
+                  <p className="text-xs sm:text-sm font-extrabold uppercase tracking-[0.15em] text-[#0a5c75]">
+                    Dall'analisi al risultato. Un processo, un unico approccio.
                   </p>
                 </div>
+              </div>
 
-                <div className="shrink-0 w-full lg:w-auto">
-                  <Link
-                    to="/contatti"
-                    className="inline-flex items-center justify-center gap-2 px-8 py-4 font-bold rounded-2xl bg-[#f5d000] text-[#012b3a] hover:bg-[#eab308] hover:scale-105 transition-all shadow-md w-full lg:w-auto text-center"
-                  >
-                    Valuta la tua rete <ArrowRight size={20} />
-                  </Link>
-                </div>
+              <div className="shrink-0 w-full lg:w-auto">
+                <Link
+                  to="/contatti"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 font-bold rounded-2xl bg-[#f5d000] text-[#012b3a] hover:bg-[#eab308] hover:scale-105 transition-all shadow-md w-full lg:w-auto text-center"
+                >
+                  Valuta la tua rete <ArrowRight size={20} />
+                </Link>
               </div>
             </div>
           </Reveal>
